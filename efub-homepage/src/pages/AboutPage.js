@@ -292,8 +292,8 @@ const AboutPage = () => {
                     </IntroWrapper>
                     <RotateButton>
                         <ModalButton_Career onClick={() => setOpenCareerModal(true)}> EFUB Career > </ModalButton_Career>
-                        <ModalButton_Curriculum onClick={_handleCurriModal}> EFUB Curriculum > </ModalButton_Curriculum>
-                        <ModalButton_apply onClick={_handleApplyModal}> 2기 지원하기 > </ModalButton_apply>
+                        <ModalButton_Curriculum onClick={() => setOpenCurriModal(true)}> EFUB Curriculum > </ModalButton_Curriculum>
+                        <ModalButton_apply onClick={() => setOpenApplyModal(true)}> 2기 지원하기 > </ModalButton_apply>
                         <Img_main_blue src={main_blue}></Img_main_blue>
                         <Img_main_circle src={main_circle}></Img_main_circle>
                         <Img_main_green src={main_green}></Img_main_green>
