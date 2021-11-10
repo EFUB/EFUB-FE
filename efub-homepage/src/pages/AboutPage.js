@@ -146,7 +146,7 @@ const ModalButton_Career = styled.button`
     border: 0;
     outline: 0;
     position: absolute;
-    top: 100px; left: 80px;
+    top: 60px; left: 30px;
     font-size:  ${props => props.size || 24}px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
@@ -170,7 +170,7 @@ const ModalButton_apply = styled.button`
     border: 0;
     outline: 0;
     position: absolute;
-    top: 100px; left: 350px;
+    top: 80px; left: 370px;
     font-size:  ${props => props.size || 24}px;
     transform: rotate( -15deg );
     font-family: 'Roboto', sans-serif;
@@ -182,27 +182,80 @@ const ModalButton_allmember = styled.button`
     border: 0;
     outline: 0;
     position: absolute;
-    top:80px; left: 20px;
+    top:70px; left: 30px;
     font-size:  ${props => props.size || 24}px;
     transform: rotate( -15deg );
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
 `
-const ModalButton = styled.button`
-    background: black;
-    color:white;
-    border: 0;
-    outline: 0;
-    font-size:  ${props => props.size || 24}px;
-    font-family: 'Roboto', sans-serif;
-    ${props =>
-        props.eng &&
-        css`
-            font-family: 'Montserrat', sans-serif;
-    `}
-    font-weight: bold;
+// 이펍 소개 옆 네온 디자인
 
+// main_blue, main_circle, main_green, main_long_tri, main_pink, main_tri 
+
+const Img_main_blue = styled.img`
+    width: 350px; height: 130px;
+    position: absolute;
+    top: 150px; left: 100px;
+    transform: rotate( 10deg );
 `
+
+const Img_main_circle = styled.img`
+    width: 80px; height: 80px;
+    position: absolute;
+    top: 180px; left: 20px;
+    transform: rotate( 10deg );
+`
+const Img_main_green = styled.img`
+    width: 280px; height: 120px;
+    position: absolute;
+    top: 38px; left: 300px;
+    transform: rotate( -6deg );
+`
+
+const Img_main_long_tri = styled.img`
+    width: 200px; height: 120px;
+    position: absolute;
+    top: 180px; left: 420px;
+    transform: rotate( 5deg );
+`
+
+const Img_main_pink = styled.img`
+    width: 280px; height: 120px;
+    position: absolute;
+    top: 15px; left: -15px;
+    transform: rotate( -2deg );
+`
+
+const Img_main_tri = styled.img`
+    width: 80px; height: 80px;
+    position: absolute;
+    top: 20px; left: 270px;
+    transform: rotate( 5deg );
+`
+//Organizer 밑 네온사인
+// organ_green, organ_pub, organ_sun 
+
+const Img_organ_green = styled.img`
+    width: 260px; height: 120px;
+    position: absolute;
+    top: 25px; left: -20px;
+    transform: rotate( -5deg );
+`
+const Img_organ_sun = styled.img`
+    width: 150px; height: 150px;
+    position: absolute;
+    top: -180px; left: 0px;
+    transform: rotate( -5deg );
+`
+const Img_organ_pub = styled.img`
+    width: 290px; height: 370px;
+    position: absolute;
+    top: -220px; left: 180px;
+    transform: rotate( 0deg );
+`
+
+
+
 
 const AboutPage = () => {
     const [openCareerModal, setOpenCareerModal] = useState(false);
@@ -241,6 +294,12 @@ const AboutPage = () => {
                         <ModalButton_Career onClick={() => setOpenCareerModal(true)}> EFUB Career > </ModalButton_Career>
                         <ModalButton_Curriculum onClick={_handleCurriModal}> EFUB Curriculum > </ModalButton_Curriculum>
                         <ModalButton_apply onClick={_handleApplyModal}> 2기 지원하기 > </ModalButton_apply>
+                        <Img_main_blue src={main_blue}></Img_main_blue>
+                        <Img_main_circle src={main_circle}></Img_main_circle>
+                        <Img_main_green src={main_green}></Img_main_green>
+                        <Img_main_pink src={main_pink}></Img_main_pink>
+                        <Img_main_long_tri src={main_long_tri}></Img_main_long_tri>
+                        <Img_main_tri src={main_tri}></Img_main_tri>
                     </RotateButton>
                 </MainWrapper>
 
@@ -299,6 +358,10 @@ const AboutPage = () => {
                     </MemberBlock>
                     <AllMemberWrapper>
                         <ModalButton_allmember> 전체 임원 보기 > </ModalButton_allmember>
+                        <Img_organ_green src={organ_green}></Img_organ_green>
+                        <Img_organ_sun src={organ_sun}></Img_organ_sun>
+                        <Img_organ_pub src={organ_pub}></Img_organ_pub>
+
 
                     </AllMemberWrapper>
                 </OrganizerWrapper>
