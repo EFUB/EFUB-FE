@@ -4,7 +4,18 @@ import logo from '../assets/about/efub_logo.gif';
 import mvp1 from '../assets/about/mvp1.png';
 import mvp2 from '../assets/about/mvp2.png';
 import mvp3 from '../assets/about/mvp3.png';
-import pro1 from '../assets/project/project1.png';
+
+import main_blue from '../assets/about/main_blue.png';
+import main_circle from '../assets/about/main_circle.png';
+import main_green from '../assets/about/main_green.png';
+import main_long_tri from '../assets/about/main_long_tri.png';
+import main_pink from '../assets/about/main_pink.png';
+import main_tri from '../assets/about/main_tri.png';
+
+import organ_green from '../assets/about/organ_green.png';
+import organ_pub from '../assets/about/organ_pub.png';
+import organ_sun from '../assets/about/organ_sun.png';
+
 import Review1 from '../components/about/Review1';
 import Review2 from '../components/about/Review2';
 import Member_Green from '../components/about/Member_Green';
