@@ -13,7 +13,6 @@ const Container = styled.div`
     bottom: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 `;
 
@@ -35,21 +34,20 @@ const Background = styled.div`
 `;
 
 const ModalBlock = styled.div`
-    position: absolute !important;
+    position: absolute;
     top: 6.5rem;
-    padding: 0 auto;
-    margin-bottom: 6.5rem;
     border-radius: 10px;
+    padding: 4rem;
     background-color: black;
-    text-align: center;
     width: 60rem;
-    /* 브라우저 크기에 따라 가로 크기 변경 */
     @media (max-width: 1120px) {
         width: 50rem;
     }
+    @media (max-width: 50rem) {
+        width: 80%;
+    }
     min-height: 35rem;
     animation: modal-show 1s;
-
     @keyframes modal-show {
         from {
             opacity: 0;
@@ -66,13 +64,15 @@ const Close = styled.img.attrs({
     src: close,
 })`
     position: absolute;
-    right: 1.5rem;
-    top: 1.5rem;
+    right: 4rem;
+    top: 4rem;
     cursor: pointer;
 `;
 
 const Contents = styled.div`
-    margin: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 const ModalFrame = ({ _handleModal, children, ...rest }) => {

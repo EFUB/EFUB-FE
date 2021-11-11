@@ -11,22 +11,22 @@ import palette from "../../lib/styles/palette";
  * - eng: Roboto -> Montserrat 폰트 변경
  */
 
-const StyledButton = styled.button`
-  border: 2px solid ${palette.green};
-  color: ${palette.green};
-  border-radius: 0.625rem;
-  font-size: 1rem;
-  font-weight: bold;
-  font-family: "Roboto", sans-serif;
-  outline: none;
-  cursor: pointer;
-  background: transparent;
-  padding: 0.7rem 2.5rem;
+const StyledButton = styled.a`
+    border: 2px solid ${palette.green};
+    color: ${palette.green};
+    border-radius: 0.625rem;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+    cursor: pointer;
+    background: transparent;
+    padding: 0.7rem 2.5rem;
 
-  ${(props) =>
-    props.eng &&
-    css`
-      font-family: "Montserrat", sans-serif;
+    ${props =>
+        props.eng &&
+        css`
+            font-family: 'Montserrat', sans-serif;
     `}
 
   ${(props) =>
