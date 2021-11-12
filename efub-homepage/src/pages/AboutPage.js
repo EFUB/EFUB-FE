@@ -20,8 +20,12 @@ import Review1 from '../components/about/Review1';
 import Review2 from '../components/about/Review2';
 import Member_Green from '../components/about/Member_Green';
 import Member_Blue from '../components/about/Member_Blue';
-import FixedModalFrame from '../components/common/FixedModalFrame';
+
+//Modal창
 import CareerModal from '../components/about/CareerModal';
+import CurriModal from '../components/about/CurriModal';
+import ApplyModal from '../components/about/ApplyModal';
+
 // 한글은 font-family: 'Roboto', sans-serif;
 // 영어는 font-family: 'Montserrat', sans-serif;
 const Wrapper = styled.div`
@@ -365,16 +369,16 @@ const AboutPage = () => {
 
                     </AllMemberWrapper>
                 </OrganizerWrapper>
-                {openCareerModal && (
-                    <CareerModal _handleModal={_handleCareerModal} />
-                )}
-                {/* {openModal && (
-                    <ProjectModal card={card} _handleModal={_handleModal} />
-                )}
-                {openModal && (
-                    <ProjectModal card={card} _handleModal={_handleModal} />
-                )} */}
             </Wrapper>
+            {openCareerModal && (
+                    <CareerModal _handleModal={_handleCareerModal} />
+            )}
+            {openCurriModal && (
+                    <CurriModal _handleModal={_handleCurriModal} />
+            )}
+            {openApplyModal && (
+                    <ApplyModal _handleModal={_handleApplyModal} />
+            )}
         </>
     );
 };
