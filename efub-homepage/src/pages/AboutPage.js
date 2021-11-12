@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
+import { Link } from "react-router-dom";
+
 import logo from '../assets/about/efub_logo.gif';
 import mvp1 from '../assets/about/mvp1.png';
 import mvp2 from '../assets/about/mvp2.png';
@@ -24,7 +26,7 @@ import Member_Blue from '../components/about/Member_Blue';
 //Modal창
 import CareerModal from '../components/about/CareerModal';
 import CurriModal from '../components/about/CurriModal';
-import ApplyModal from '../components/about/ApplyModal';
+import MemberModal from '../components/about/MemberModal';
 
 // 한글은 font-family: 'Roboto', sans-serif;
 // 영어는 font-family: 'Montserrat', sans-serif;
@@ -159,6 +161,7 @@ const ModalButton_Career = styled.button`
     transform: rotate( -10deg );
 `
 const ModalButton_Curriculum = styled.button`
+    z-index: 99;
     background: black;
     color:white;
     border: 0;
@@ -168,9 +171,11 @@ const ModalButton_Curriculum = styled.button`
     font-size:  ${props => props.size || 24}px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
+    cursor: pointer;
     transform: rotate( 15deg );
 `
 const ModalButton_apply = styled.button`
+z-index: 99;
     background: black;
     color:white;
     border: 0;
@@ -181,8 +186,10 @@ const ModalButton_apply = styled.button`
     transform: rotate( -15deg );
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
+    cursor: pointer;    
 `
 const ModalButton_allmember = styled.button`
+    z-index: 99;
     background: black;
     color:white;
     border: 0;
@@ -192,6 +199,7 @@ const ModalButton_allmember = styled.button`
     font-size:  ${props => props.size || 24}px;
     transform: rotate( -15deg );
     font-family: 'Roboto', sans-serif;
+    cursor: pointer;
     font-weight: bold;
 `
 // 이펍 소개 옆 네온 디자인
@@ -274,9 +282,9 @@ const AboutPage = () => {
         setOpenCurriModal(!openCurriModal);
         document.body.style.overflow = "unset";
     }
-    const [openApplyModal, setOpenApplyModal] = useState(false);
-    const _handleApplyModal = () => {
-        setOpenApplyModal(!openApplyModal);
+    const [openMemberModal, setOpenMemberModal] = useState(false);
+    const _handleMemberModal = () => {
+        setOpenMemberModal(!openMemberModal);
         document.body.style.overflow = "unset";
     }
 
@@ -299,7 +307,9 @@ const AboutPage = () => {
                     <RotateButton>
                         <ModalButton_Career onClick={() => setOpenCareerModal(true)}> EFUB Career  </ModalButton_Career>
                         <ModalButton_Curriculum onClick={() => setOpenCurriModal(true)}> EFUB Curriculum  </ModalButton_Curriculum>
-                        <ModalButton_apply onClick={() => setOpenApplyModal(true)}> 2기 지원하기  </ModalButton_apply>
+                        
+                        <ModalButton_apply> 
+                            <Link to='/recruitment'> 2기 지원하기 </Link> </ModalButton_apply>
                         <Img_main_blue src={main_blue}></Img_main_blue>
                         <Img_main_circle src={main_circle}></Img_main_circle>
                         <Img_main_green src={main_green}></Img_main_green>
@@ -363,7 +373,7 @@ const AboutPage = () => {
                         </SubMemberBlock>
                     </MemberBlock>
                     <AllMemberWrapper>
-                        <ModalButton_allmember> 전체 임원 보기  </ModalButton_allmember>
+                        <ModalButton_allmember onClick={() => setOpenMemberModal(true)}> 전체 임원 보기  </ModalButton_allmember>
                         <Img_organ_green src={organ_green}></Img_organ_green>
                         <Img_organ_sun src={organ_sun}></Img_organ_sun>
                         <Img_organ_pub src={organ_pub}></Img_organ_pub>
@@ -378,8 +388,8 @@ const AboutPage = () => {
             {openCurriModal && (
                 <CurriModal _handleModal={_handleCurriModal} />
             )}
-            {openApplyModal && (
-                <ApplyModal _handleModal={_handleApplyModal} />
+            {openMemberModal && (
+                <MemberModal _handleModal={_handleMemberModal} />
             )}
         </>
     );
