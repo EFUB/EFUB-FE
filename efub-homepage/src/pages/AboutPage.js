@@ -295,9 +295,9 @@ const AboutPage = () => {
                         </SubIntroWrapper>
                     </IntroWrapper>
                     <RotateButton>
-                        <ModalButton_Career onClick={() => setOpenCareerModal(true)}> EFUB Career > </ModalButton_Career>
-                        <ModalButton_Curriculum onClick={() => setOpenCurriModal(true)}> EFUB Curriculum > </ModalButton_Curriculum>
-                        <ModalButton_apply onClick={() => setOpenApplyModal(true)}> 2기 지원하기 > </ModalButton_apply>
+                        <ModalButton_Career onClick={() => setOpenCareerModal(true)}> EFUB Career  </ModalButton_Career>
+                        <ModalButton_Curriculum onClick={() => setOpenCurriModal(true)}> EFUB Curriculum  </ModalButton_Curriculum>
+                        <ModalButton_apply onClick={() => setOpenApplyModal(true)}> 2기 지원하기  </ModalButton_apply>
                         <Img_main_blue src={main_blue}></Img_main_blue>
                         <Img_main_circle src={main_circle}></Img_main_circle>
                         <Img_main_green src={main_green}></Img_main_green>
@@ -361,7 +361,7 @@ const AboutPage = () => {
                         </SubMemberBlock>
                     </MemberBlock>
                     <AllMemberWrapper>
-                        <ModalButton_allmember> 전체 임원 보기 > </ModalButton_allmember>
+                        <ModalButton_allmember> 전체 임원 보기  </ModalButton_allmember>
                         <Img_organ_green src={organ_green}></Img_organ_green>
                         <Img_organ_sun src={organ_sun}></Img_organ_sun>
                         <Img_organ_pub src={organ_pub}></Img_organ_pub>
