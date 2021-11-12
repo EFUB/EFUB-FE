@@ -145,6 +145,7 @@ const SubTitle = styled.div`
 `
 
 const ModalButton_Career = styled.button`
+    z-index: 99;
     background: black;
     color:white;
     border: 0;
@@ -154,6 +155,7 @@ const ModalButton_Career = styled.button`
     font-size:  ${props => props.size || 24}px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
+    cursor: pointer;
     transform: rotate( -10deg );
 `
 const ModalButton_Curriculum = styled.button`
@@ -371,13 +373,13 @@ const AboutPage = () => {
                 </OrganizerWrapper>
             </Wrapper>
             {openCareerModal && (
-                    <CareerModal _handleModal={_handleCareerModal} />
+                <CareerModal _handleModal={_handleCareerModal} />
             )}
             {openCurriModal && (
-                    <CurriModal _handleModal={_handleCurriModal} />
+                <CurriModal _handleModal={_handleCurriModal} />
             )}
             {openApplyModal && (
-                    <ApplyModal _handleModal={_handleApplyModal} />
+                <ApplyModal _handleModal={_handleApplyModal} />
             )}
         </>
     );
