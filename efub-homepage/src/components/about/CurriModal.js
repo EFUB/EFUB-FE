@@ -1,7 +1,10 @@
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import FixedModalFrame from '../common/FixedModalFrame';
+
 import CurriButtonList from './CurriButtonList';
+import CurriContent from './CurriContent'
+
 import ScrollDiv from './ScrollDiv';
 
 const Title = styled.div`
@@ -12,13 +15,15 @@ const Title = styled.div`
 `;
 
 const CurriModal = ({ _handleModal }) => {
-    const [select, setSelect] = useState('win');
+    const [select, setSelect] = useState('BE');
     const onSelect = useCallback(select => setSelect(select), []);
     return (
         <FixedModalFrame _handleModal={_handleModal}>
             <Title>EFUB Curriculum</Title>
             <CurriButtonList select={select} onSelect={onSelect} ></CurriButtonList>
-            <ScrollDiv />
+            <ScrollDiv>
+            <CurriContent select={select}/>
+            </ScrollDiv>
         </FixedModalFrame>
     );
 };

@@ -13,7 +13,7 @@ const buttons = [
     },
     {
         name: 'Design',
-        text: 'design'
+        text: 'Design'
     },
 ];
 
