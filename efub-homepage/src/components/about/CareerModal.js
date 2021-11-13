@@ -1,7 +1,10 @@
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import FixedModalFrame from '../common/FixedModalFrame';
+
 import CareerButtonList from './CareerButtonList';
+import CareerContent from './CareerContent'
+
 import ScrollDiv from './ScrollDiv';
 
 const Title = styled.div`
@@ -18,7 +21,9 @@ const CareerModal = ({ _handleModal }) => {
         <FixedModalFrame _handleModal={_handleModal}>
             <Title>EFUB Career</Title>
             <CareerButtonList select={select} onSelect={onSelect} ></CareerButtonList>
-            <ScrollDiv />
+            <ScrollDiv>
+            <CareerContent select={select}/>
+            </ScrollDiv>
         </FixedModalFrame>
     );
 };
