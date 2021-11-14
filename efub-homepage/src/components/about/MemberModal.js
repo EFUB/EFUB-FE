@@ -1,14 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import FixedModalFrame from '../common/BlackModalFrame';
-import ScrollDiv from './ScrollDiv';
-
-import P_ay from '../../assets/about/profile_ay.png';
-import P_cr from '../../assets/about/profile_cr.png';
-import P_hj from '../../assets/about/profile_hj.png';
-import P_hr from '../../assets/about/profile_hr.png';
-import P_je from '../../assets/about/profile_je.png';
-import P_yj from '../../assets/about/profile_yj.png';
+import ScrollDiv from './ScrollDiv_Black';
+import MemberList from './MemberList';
 
 const Title = styled.div`
     width: 100%;
@@ -20,8 +14,10 @@ const Title = styled.div`
 const MemberModal = ({ _handleModal }) => {
     return (
         <FixedModalFrame _handleModal={_handleModal}>
-            <Title>EFUB Organizer</Title>
-            <ScrollDiv />
+            <Title>EFUB organizers</Title>
+            <ScrollDiv>
+            <MemberList> </MemberList>
+            </ScrollDiv>
         </FixedModalFrame>
     );
 };
