@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import Input from "../components/common/Input";
 import Button from "../components/common/Button";
 
-const InfoBox = styled.div``;
+const InfoBox = styled.div`
+  margin-bottom: 5rem;
+`;
 
 const ContactPage = () => {
   return (
