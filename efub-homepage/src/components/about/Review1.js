@@ -24,10 +24,16 @@ const TextBox=styled.div`
     border-radius: 10px;
     color:white;
     font-size: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: left;
+
     margin-left: 2rem;
     line-height:160%;
     width:80%;
+    height: 100%;
 `
 const Text=styled.div`
     color:white;
@@ -38,11 +44,16 @@ const Text=styled.div`
         css`
             font-family: 'Montserrat', sans-serif;
     `}
+
+    display: flex;
     text-align: left;
     align-items: center;
     justify-content: center;
+
     line-height:160%;
     width:90%;
+    height:80%;
+    white-space: pre-wrap;
 `
 
 function Review1({profile, text}) {
