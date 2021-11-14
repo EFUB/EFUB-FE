@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import palette from "../lib/styles/palette";
 import Button from "../components/common/Button";
 import { RadioButton } from "../components/common/RadioButton";
@@ -116,7 +117,9 @@ const DeveloperRecruitIntern = () => {
           <Text2>3/3 페이지</Text2>
           <FootSub>
             <Button blue>저장</Button>
-            <Button filled>제출하기</Button>
+            <Link to="/thankyou">
+              <Button filled>제출하기</Button>
+            </Link>
           </FootSub>
         </Foot>
       </Main>
