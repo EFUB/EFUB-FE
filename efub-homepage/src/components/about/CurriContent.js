@@ -10,6 +10,49 @@ const CurriBlock = styled.div`
     width:100%;
 `
 
+const Sub = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(256, 256, 256, 0.15);
+`;
+const Sub_Week = styled.div`
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 55%;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+`;
+
+const Sub_Date = styled.div`
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+`;
+
+const Sub_Option = styled.div`
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+`;
+
 const OneCurri = styled.div`
     margin-top:1rem;
     display: flex;
@@ -32,7 +75,7 @@ const Week = styled.div`
 
 const Date = styled.div`
     color:white;
-    text-align:left;
+    text-align:center;
     margin-left: 1rem;
     font-size:  ${props => props.size || 18}px;
     font-family: 'Roboto', sans-serif;
@@ -49,6 +92,8 @@ const Option = styled.div`
     line-height:180%;
     width: 20%;
 `;
+
+
 
 const Curris = {
     FE: [
@@ -85,6 +130,11 @@ const CurriContent = ({ select }) => {
 
     return (
         <CurriBlock>
+            <Sub>
+                    <Sub_Week> 주차 </Sub_Week>
+                    <Sub_Date> 일자 </Sub_Date>
+                    <Sub_Option> 비고 </Sub_Option>
+            </Sub>
             {selectedCurris.map(s => (
                 <OneCurri>
                 <Week key={s.id}> {s.week} </Week>

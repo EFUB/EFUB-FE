@@ -209,7 +209,7 @@ const ModalButton_allmember = styled.button`
 const Img_main_blue = styled.img`
     width: 350px; height: 130px;
     position: absolute;
-    top: 150px; left: 100px;
+    top: 155px; left: 90px;
     transform: rotate( 10deg );
 `
 
@@ -236,7 +236,7 @@ const Img_main_long_tri = styled.img`
 const Img_main_pink = styled.img`
     width: 280px; height: 120px;
     position: absolute;
-    top: 15px; left: -15px;
+    top: 18px; left: -20px;
     transform: rotate( -2deg );
 `
 

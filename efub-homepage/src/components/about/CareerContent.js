@@ -12,7 +12,7 @@ const CareerBlock = styled.div`
 
 const Career = styled.div`
     color:white;
-    font-size:  ${props => props.size || 25}px;
+    font-size:  ${props => props.size || 22}px;
     font-family: 'Roboto', sans-serif;
     line-height:180%;
 `;
