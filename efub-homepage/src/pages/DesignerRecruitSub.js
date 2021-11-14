@@ -4,6 +4,7 @@ import palette from "../lib/styles/palette"
 import Button from "../components/common/Button";
 import { RadioButton } from "../components/common/RadioButton";
 import CheckBox from "../components/common/CheckBox";
+import DesignerTool, { designerTool } from "../components/button/designerTool";
 
 const Banner = styled.div`
     height: 15rem;
@@ -94,13 +95,29 @@ const LabelText = styled.div`
     line-height: 1.725rem; //28px
 `
 const DesignerRecruitSub= () => {
-    //checkbox 1 
-    const [checked, setChecked] = useState(false);
-    const handleCheckboxChange = (e) => {
-        setChecked(e.target.checked);
-     };
-       
-   
+    //체크박스 여러개 
+    const [checkedState, setCheckedState] = useState(
+        new Array(6).fill(false)
+    );
+    
+    const handleOnChange = (position) => {
+        const updatedCheckedState = checkedState.map((item, index) =>
+          index === position ? !item : item
+        );
+        setCheckedState(updatedCheckedState);
+        console.log("I checked. \n");
+    }
+    // 8번 체크박스 
+     const [checked, setChecked] = useState(false);
+     const handleCheckboxChange = (e) => {
+         setChecked(e.target.checked);
+      };
+    // 9번 체크박스 
+    const [checked2, setChecked2] = useState(false);
+     const handleCheckboxChange2 = (e) => {
+         setChecked2(e.target.checked);
+      };
+
     return <div>
       <Banner>
         <h1 style = {{height: '3.5rem', marginBottom: '0.01rem'}} >UI/UX DESIGNER</h1>
@@ -122,9 +139,22 @@ const DesignerRecruitSub= () => {
                 <RadioButton/>
             </Row>
        <Text1>3. 사용할 수 있는 디자인 툴을 모두 선택해주세요.</Text1>
+       {/* {DesignerTool.map(({toolname,price},index) => {
+           return (
+               <Row>
+                   <Label1>
+                       <CheckBox
+                        checked= {checkedState[index]}
+                        onChange= {() => handleOnChange(index)}
+                       />
+                       <LabelText>{toolname}</LabelText>
+                   </Label1>
+                </Row>
+           );
+       })} */}
        <Row>
            <Label1>
-                <CheckBox/>
+                <CheckBox id = {0} checked = {checkedState[0]} onChange = {() =>handleOnChange(0)}/>
                 <LabelText>피그마</LabelText>
             </Label1>
             <Label1>
@@ -172,13 +202,13 @@ const DesignerRecruitSub= () => {
        <Input/>
        <Text1>8. 면접은 9월 9일(금) 저녁 7시부터 10시에 진행됩니다. 참여 가능하십니까?</Text1>
        <label style = {{marginBottom: "2rem", marginTop: "1rem"}}>
-          <CheckBox id = {1} checked = {checked} onChange = {handleCheckboxChange}/>
+          <CheckBox checked = {checked} onChange = {handleCheckboxChange}/>
           <span>&ensp;&ensp;&ensp;&ensp;네 가능합니다.</span>
         </label>
        <Text1>9. 오티는 9월 11일 토요일 09시 30분에 진행됩니다.
               오티를 참석하지 않으실 경우, 합격은 취소됩니다. 확인하셨습니까?</Text1>
         <label style = {{marginBottom: "2rem", marginTop: "1rem"}}>
-          <CheckBox id = {1} onChange/>
+          <CheckBox checked = {checked2} onChange = {handleCheckboxChange2}/>
           <span>&ensp;&ensp;&ensp;&ensp;네 확인했습니다.</span>
         </label>
        <Foot>
