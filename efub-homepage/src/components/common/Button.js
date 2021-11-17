@@ -17,16 +17,17 @@ const StyledButton = styled.a`
   border-radius: 0.625rem;
   font-size: 1rem;
   font-weight: bold;
+  text-align: center;
   font-family: "Roboto", sans-serif;
   outline: none;
   cursor: pointer;
   background: transparent;
   padding: 0.7rem 2.5rem;
 
-  ${(props) =>
+    ${props =>
     props.eng &&
     css`
-      font-family: "Montserrat", sans-serif;
+      font-family: 'Montserrat', sans-serif;
     `}
 
   ${(props) =>
@@ -56,6 +57,8 @@ const StyledButton = styled.a`
       background-color: ${palette.blue};
       color: ${palette.black};
     `}
+
+    width: ${(props) => (`${props.width}rem`)};
 `;
 
 const Button = (props) => <StyledButton {...props} />;

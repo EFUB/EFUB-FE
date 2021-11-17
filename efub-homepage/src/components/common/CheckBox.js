@@ -32,6 +32,7 @@ const StyledCheckbox = styled.div`
   height: 16px;
   background: ${(props) => (props.checked ? "#C3F474" : "white")};
   border-radius: 3px;
+  border-color: white;
   transition: all 150ms;
 
   ${HiddenCheckbox}:focus + & {
@@ -56,3 +57,4 @@ const Checkbox = ({ className, checked, ...props }) => (
 );
 
 export default Checkbox;
+
