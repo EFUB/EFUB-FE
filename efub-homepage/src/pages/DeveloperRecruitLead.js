@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import palette from "../lib/styles/palette";
 import Button from "../components/common/Button";
 import { RadioButton } from "../components/common/RadioButton";
-import { CheckBox } from "../components/common/CheckBox";
+import Checkbox from "../components/common/CheckBox";
 
 
 const Banner = styled.div`

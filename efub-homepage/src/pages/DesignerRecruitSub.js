@@ -223,7 +223,6 @@ const DesignerRecruitSub = () => {
       </Foot>
     </Main>
   </div>
-  );
 };
 
 export default DesignerRecruitSub;

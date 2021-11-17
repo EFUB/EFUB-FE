@@ -141,8 +141,6 @@ const RecruitmentPage = () => {
           </ButtonItems>
         </ButtonBox>
       </RecruitBox>
-      <BackgroundImg src={Left} alt="leftImg" left="0" />
-      <BackgroundImg src={Right} alt="rightImg" right="0" />
       <BackgroundImg src={Lines} top="44rem" left="6rem" />
       <TextBox marginTop="4rem" alignItems="center" style={{ width: "80%" }}>
         <h2>이화여대 교내 유일 웹 개발 커리어 클럽 EFUB 모집</h2>
