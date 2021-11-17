@@ -17,6 +17,7 @@ import ListPage from "./pages/ListPage";
 import FirstList from "./pages/FirstList";
 import FinalList from "./pages/FinalList";
 import DesignerRecruitSub from "./pages/DesignerRecruitSub";
+import ThankYou from "./pages/ThankYou";
 
 const Main = styled(Responsive)`
   min-height: calc(100vh - 14rem);
@@ -43,11 +44,18 @@ const App = () => {
           <Route component={FinalList} path="/finalList" />
           <Route component={DeveloperRecruit} path="/developerRecruit" />
           <Route component={DeveloperRecruitSub} path="/developerRecruitSub" />
-          <Route component={DeveloperRecruitLead} path="/developerRecruitLead" />
-          <Route component={DeveloperRecruitIntern} path="/developerRecruitIntern" />
+          <Route
+            component={DeveloperRecruitLead}
+            path="/developerRecruitLead"
+          />
+          <Route
+            component={DeveloperRecruitIntern}
+            path="/developerRecruitIntern"
+          />
           <Route component={DesignerRecruit} path="/designerRecruit" />
           <Route component={DesignerRecruitSub} path="/designerRecruitSub" />
           <Route component={ContactPage} path="/contact" />
+          <Route component={ThankYou} path="/thankyou" />
         </Switch>
       </Main>
       <Footer />

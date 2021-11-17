@@ -6,9 +6,9 @@ import CardList from '../components/project/CardList';
 import ProjectModal from '../components/project/ProjectModal';
 
 const Main = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 const ProjectPage = () => {

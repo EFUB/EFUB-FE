@@ -43,7 +43,6 @@ const ButtonItems = styled.div`
 
 const TextBox = styled.div`
   display: flex;
-  flex-direction: column;
   flex-direction: ${(props) => props.flexDirection || "column"};
   margin-top: ${(props) => props.marginTop || "0px"};
   align-items: ${(props) => props.alignItems || "flex-start"};
@@ -72,7 +71,6 @@ const ImgBox = styled.img`
   width: 3rem;
   height: 3rem;
 `;
-
 
 const BackgroundImg = styled.img`
   position: fixed;
@@ -143,6 +141,8 @@ const RecruitmentPage = () => {
           </ButtonItems>
         </ButtonBox>
       </RecruitBox>
+      <BackgroundImg src={Left} alt="leftImg" left="0" />
+      <BackgroundImg src={Right} alt="rightImg" right="0" />
       <BackgroundImg src={Lines} top="44rem" left="6rem" />
       <TextBox marginTop="4rem" alignItems="center" style={{ width: "80%" }}>
         <h2>이화여대 교내 유일 웹 개발 커리어 클럽 EFUB 모집</h2>

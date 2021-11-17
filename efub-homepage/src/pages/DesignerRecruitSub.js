@@ -1,76 +1,77 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import palette from "../lib/styles/palette"
+import { Link } from "react-router-dom";
+import palette from "../lib/styles/palette";
 import Button from "../components/common/Button";
 import { RadioButton } from "../components/common/RadioButton";
 import CheckBox from "../components/common/CheckBox";
 import DesignerTool, { designerTool } from "../components/button/designerTool";
 
 const Banner = styled.div`
-    height: 15rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Main = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    //justify-content: center;
-    width: 35rem;
-    height: 100rem;
-`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  //justify-content: center;
+  width: 35rem;
+  height: 100rem;
+`;
 const Foot = styled.div`
-    width: 35rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 2rem;
-    justify-content: space-between;
-`
+  width: 35rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 2rem;
+  justify-content: space-between;
+`;
 const FootSub = styled.div`
-    width: 47%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-`
+  width: 47%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
 const TextBox = styled.div`
-    width: 100%;
-    height: 9rem;
-    border-radius: 14px;
-    background-color: rgba(225, 225, 225, 0.15);
-    margin-bottom: 2.5rem;
+  width: 100%;
+  height: 9rem;
+  border-radius: 14px;
+  background-color: rgba(225, 225, 225, 0.15);
+  margin-bottom: 2.5rem;
 `;
 const Text1 = styled.div`
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    line-height: 1.725rem; //28px
-`
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.725rem; //28px
+`;
 const Text2 = styled.div`
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 0.8rem;
-    line-height: 1.725rem; //28px
-`
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.8rem;
+  line-height: 1.725rem; //28px
+`;
 const Input = styled.input`
-    font-size: 1rem;
-    font-weight: 300;
-    border: none;
-    background: black;
-    border-bottom: 2px solid ${palette.white};
-    color: ${palette.white};
-    outline: none;
-    padding-bottom: 0.5rem;
-    margin-bottom: 2rem;
-    width: 100%; 
-`
+  font-size: 1rem;
+  font-weight: 300;
+  border: none;
+  background: black;
+  border-bottom: 2px solid ${palette.white};
+  color: ${palette.white};
+  outline: none;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+`;
 const Row = styled.div`
     display: flex;
     flex-direction: row;
@@ -215,12 +216,14 @@ const DesignerRecruitSub= () => {
         <Text2>2/2 페이지</Text2>  
           <FootSub>
             <Button blue>저장</Button>
-            <Button filled>제출하기</Button>
+            <Link to="/thankyou">
+              <Button filled>제출하기</Button>
+            </Link>
           </FootSub>
-       </Foot>
-     </Main>
+        </Foot>
+      </Main>
     </div>
-  };
-  
-  export default DesignerRecruitSub;
-  
+  );
+};
+
+export default DesignerRecruitSub;

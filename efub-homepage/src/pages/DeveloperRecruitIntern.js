@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import palette from "../lib/styles/palette";
 import Button from "../components/common/Button";
 import { RadioButton } from "../components/common/RadioButton";
-import Checkbox from "../components/common/CheckBox";
-
+import CheckBox from "../components/common/CheckBox";
 
 const Banner = styled.div`
   height: 15rem;
@@ -20,7 +20,7 @@ const Main = styled.div`
   align-items: flex-start;
   //justify-content: center;
   width: 35rem;
-  height: 70rem;
+  height: 50rem;
 `;
 const Foot = styled.div`
   width: 35rem;
@@ -100,7 +100,6 @@ const LabelText = styled.div`
     margin-left: 1.3rem;
     line-height: 1.2rem; 
 `
-
 const DeveloperRecruitIntern = () => {
   const [checked, setChecked] = useState(false);
   const handleCheckboxChange = (e) => {
@@ -192,7 +191,9 @@ const DeveloperRecruitIntern = () => {
           <Text2>3/3 페이지</Text2>
           <FootSub>
             <Button blue>저장</Button>
-            <Button filled>제출하기</Button>
+            <Link to="/thankyou">
+              <Button filled>제출하기</Button>
+            </Link>
           </FootSub>
         </Foot>
       </Main>
