@@ -1,6 +1,6 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import palette from '../../lib/styles/palette';
+import React from "react";
+import styled, { css } from "styled-components";
+import palette from "../../lib/styles/palette";
 
 /**
  * 기본값: 빈 녹색 사각형 한글 버튼
@@ -29,34 +29,35 @@ const StyledButton = styled.a`
             font-family: 'Montserrat', sans-serif;
     `}
 
-    ${props =>
-        props.round &&
-        css`
-            border-radius: 1.5rem;
+  ${(props) =>
+    props.round &&
+    css`
+      border-radius: 1.5rem;
     `}
 
-    ${props =>
-        props.filled &&
-        css`
-            background-color: ${palette.green};
-            color: ${palette.black};
+    ${(props) =>
+    props.filled &&
+    css`
+      background-color: ${palette.green};
+      color: ${palette.black};
     `}
 
-    ${props =>
-        props.blue &&
-        css`
-            border: 2px solid ${palette.blue};
-            color: ${palette.blue};
+    ${(props) =>
+    props.blue &&
+    css`
+      border: 2px solid ${palette.blue};
+      color: ${palette.blue};
     `}
 
-    ${props =>
-        props.filled && props.blue &&
-        css`
-            background-color: ${palette.blue};
-            color: ${palette.black};
+    ${(props) =>
+    props.filled &&
+    props.blue &&
+    css`
+      background-color: ${palette.blue};
+      color: ${palette.black};
     `}
 `;
 
-const Button = props => <StyledButton {...props} />;
+const Button = (props) => <StyledButton {...props} />;
 
 export default Button;
