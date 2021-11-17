@@ -12,20 +12,20 @@ import palette from "../../lib/styles/palette";
  */
 
 const StyledButton = styled.a`
-    border: 2px solid ${palette.green};
-    color: ${palette.green};
-    border-radius: 0.625rem;
-    font-size: 1rem;
-    font-weight: bold;
-    font-family: 'Roboto', sans-serif;
-    outline: none;
-    cursor: pointer;
-    background: transparent;
-    padding: 0.7rem 2.5rem;
+  border: 2px solid ${palette.green};
+  color: ${palette.green};
+  border-radius: 0.625rem;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  padding: 0.7rem 2.5rem;
 
     ${props =>
-        props.eng &&
-        css`
+    props.eng &&
+    css`
             font-family: 'Montserrat', sans-serif;
     `}
 
@@ -56,6 +56,9 @@ const StyledButton = styled.a`
       background-color: ${palette.blue};
       color: ${palette.black};
     `}
+
+    width: ${(props) => (`${props.width}rem`)}
+
 `;
 
 const Button = (props) => <StyledButton {...props} />;
