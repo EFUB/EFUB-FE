@@ -1,19 +1,19 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 const CheckboxContainer = styled.div`
   display: inline-block;
   vertical-align: middle;
-`
+`;
 
 const Icon = styled.svg`
   fill: none;
   stroke: black;
   stroke-width: 2px;
-`
+`;
 // Hide checkbox visually but remain accessible to screen readers.
 // Source: https://polished.js.org/docs/#hidevisually
-const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
+const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
   border: 0;
   clip: rect(0 0 0 0);
   clippath: inset(50%);
@@ -24,24 +24,26 @@ const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
   position: absolute;
   white-space: nowrap;
   width: 1px;
-`
+`;
 
 const StyledCheckbox = styled.div`
   display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: ${(props) => (props.checked ? '#C3F474' : 'black')};
+  width: 1rem;
+  height: 1rem;
+  background: ${(props) => (props.checked ? "#C3F474" : "white")};
   border-radius: 3px;
+  border-color: white;
   transition: all 150ms;
 
   ${HiddenCheckbox}:focus + & {
-    box-shadow: 0 0 0 3px ${(props) => (props.checked ? '#C3F474' : 'white')};
+    box-shadow: 0 0 0 1px ${(props) => (props.checked ? "white" : "white")};
   }
 
   ${Icon} {
-    visibility: ${(props) => (props.checked ? 'visible' : 'hidden')};
+    //visibility: ${(props) => (props.checked ? "visible" : "hidden")};
+    visibility: visible;
   }
-`
+`;
 
 const Checkbox = ({ className, checked, ...props }) => (
   <CheckboxContainer className={className}>
@@ -52,6 +54,6 @@ const Checkbox = ({ className, checked, ...props }) => (
       </Icon>
     </StyledCheckbox>
   </CheckboxContainer>
-)
+);
 
-export default Checkbox
+export default Checkbox; 

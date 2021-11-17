@@ -3,7 +3,8 @@ import styled from "styled-components";
 import palette from "../lib/styles/palette"
 import Button from "../components/common/Button";
 import { RadioButton } from "../components/common/RadioButton";
-import {CheckBox} from "../components/common/CheckBox";
+import CheckBox from "../components/common/CheckBox";
+import DesignerTool, { designerTool } from "../components/button/designerTool";
 
 const Banner = styled.div`
     height: 15rem;
@@ -78,9 +79,45 @@ const Row = styled.div`
     width: 100%;
     height: 2rem;
 `
+const Label1 = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 33.3%;
+`
+const LabelText = styled.div`
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-left: 1rem;
+    line-height: 1.725rem; //28px
+`
 const DesignerRecruitSub= () => {
-    const [select, setSelect] = useState("all");
+    //체크박스 여러개 
+    const [checkedState, setCheckedState] = useState(
+        new Array(6).fill(false)
+    );
     
+    const handleOnChange = (position) => {
+        const updatedCheckedState = checkedState.map((item, index) =>
+          index === position ? !item : item
+        );
+        setCheckedState(updatedCheckedState);
+        console.log("I checked. \n");
+    }
+    // 8번 체크박스 
+     const [checked, setChecked] = useState(false);
+     const handleCheckboxChange = (e) => {
+         setChecked(e.target.checked);
+      };
+    // 9번 체크박스 
+    const [checked2, setChecked2] = useState(false);
+     const handleCheckboxChange2 = (e) => {
+         setChecked2(e.target.checked);
+      };
+
     return <div>
       <Banner>
         <h1 style = {{height: '3.5rem', marginBottom: '0.01rem'}} >UI/UX DESIGNER</h1>
@@ -102,7 +139,47 @@ const DesignerRecruitSub= () => {
                 <RadioButton/>
             </Row>
        <Text1>3. 사용할 수 있는 디자인 툴을 모두 선택해주세요.</Text1>
-        
+       {/* {DesignerTool.map(({toolname,price},index) => {
+           return (
+               <Row>
+                   <Label1>
+                       <CheckBox
+                        checked= {checkedState[index]}
+                        onChange= {() => handleOnChange(index)}
+                       />
+                       <LabelText>{toolname}</LabelText>
+                   </Label1>
+                </Row>
+           );
+       })} */}
+       <Row>
+           <Label1>
+                <CheckBox id = {0} checked = {checkedState[0]} onChange = {() =>handleOnChange(0)}/>
+                <LabelText>피그마</LabelText>
+            </Label1>
+            <Label1>
+                <CheckBox/>
+                <LabelText>어도비XD</LabelText>
+            </Label1>
+            <Label1>
+                <CheckBox/>
+                <LabelText>일러스트</LabelText>
+            </Label1>
+       </Row>
+       <Row style = {{marginTop: '1rem', marginBottom: '2rem'}}>
+           <Label1>
+                <CheckBox/>
+                <LabelText>채플린</LabelText>
+            </Label1>
+            <Label1>
+                <CheckBox/>
+                <LabelText>포토샵</LabelText>
+            </Label1>
+            <Label1>
+                <CheckBox/>
+                <LabelText>기타(직접입력)</LabelText>
+            </Label1>
+       </Row>
        <Text1>3-1. 선택하신 툴에 대한 능숙도를 5점 만점으로 평가해주세요.</Text1>
            <Row style = {{width: "42%", marginLeft: "54%"}}>
                 <Text1>1</Text1>
@@ -124,8 +201,16 @@ const DesignerRecruitSub= () => {
        <Text1>7. 포트플리오 링크를 제출해주세요.</Text1>
        <Input/>
        <Text1>8. 면접은 9월 9일(금) 저녁 7시부터 10시에 진행됩니다. 참여 가능하십니까?</Text1>
+       <label style = {{marginBottom: "2rem", marginTop: "1rem"}}>
+          <CheckBox checked = {checked} onChange = {handleCheckboxChange}/>
+          <span>&ensp;&ensp;&ensp;&ensp;네 가능합니다.</span>
+        </label>
        <Text1>9. 오티는 9월 11일 토요일 09시 30분에 진행됩니다.
               오티를 참석하지 않으실 경우, 합격은 취소됩니다. 확인하셨습니까?</Text1>
+        <label style = {{marginBottom: "2rem", marginTop: "1rem"}}>
+          <CheckBox checked = {checked2} onChange = {handleCheckboxChange2}/>
+          <span>&ensp;&ensp;&ensp;&ensp;네 확인했습니다.</span>
+        </label>
        <Foot>
         <Text2>2/2 페이지</Text2>  
           <FootSub>
