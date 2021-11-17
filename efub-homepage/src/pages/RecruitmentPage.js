@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Banner from '../components/recruitment/Banner';
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
@@ -16,30 +18,6 @@ import Tag from "../assets/recruitment/tag.png";
 import Triangle from "../assets/recruitment/triangle.png";
 import Wave from "../assets/recruitment/wave.png";
 
-const RecruitBox = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 92%;
-  height: 30rem;
-  padding: 1rem 3rem 1rem 3rem;
-  background-color: rgba(225, 225, 225, 0.15);
-`;
-
-const ButtonBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 5rem;
-  height: 20rem;
-  justify-content: space-around;
-`;
-
-const ButtonItems = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 8rem;
-  justify-content: space-between;
-`;
 
 const TextBox = styled.div`
   display: flex;
@@ -57,19 +35,8 @@ const Row = styled.div`
   width: 100%;
 `;
 
-const ListBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-`;
-
 const DetailText = styled.p`
   width: 28rem;
-`;
-
-const ImgBox = styled.img`
-  width: 3rem;
-  height: 3rem;
 `;
 
 const BackgroundImg = styled.img`
@@ -84,64 +51,13 @@ const BackgroundImg = styled.img`
   position: absolute;
 `;
 
-const buttons = [
-  {
-    name: "developer",
-    text: "개발자로 지원하기",
-    link: "/developerRecruit",
-  },
-  {
-    name: "designer",
-    text: "디자이너로 지원하기",
-    link: "/designerRecruit",
-  },
-];
+
 
 const RecruitmentPage = () => {
-  const [select, setSelect] = useState("all");
   return (
     <>
-      <h1>RecruitmentPage</h1>
-      <RecruitBox>
-        <TextBox>
-          <h2>EFUB 1st Recruiting</h2>
-          <h1>
-            EWHA <br />
-            FRONT-END <br />
-            UI/UX <br />
-            BACK-END
-          </h1>
-          <p>
-            지원분야 | UI/UX 디자인, 프론트/백엔드 개발 <br />
-            모집기간 | 2021/09/01 ~ 09/07 23:59까지
-          </p>
-        </TextBox>
-        <ButtonBox>
-          <Link to="/list">
-            <ListBox>
-              <h2>
-                합격자 조회 <br />
-                바로가기
-              </h2>
-              <ImgBox src={Arrow} />
-            </ListBox>
-          </Link>
-          <ButtonItems>
-            {buttons.map((b) => (
-              <Link to={b.link}>
-                <Button
-                  filled={b.name !== select}
-                  onClick={() => setSelect(b.name)}
-                  style={{}}
-                >
-                  {b.text}
-                </Button>
-              </Link>
-            ))}
-          </ButtonItems>
-        </ButtonBox>
-      </RecruitBox>
-      <BackgroundImg src={Lines} top="44rem" left="6rem" />
+      <Banner />
+      {/* <BackgroundImg src={Lines} top="44rem" left="6rem" /> */}
       <TextBox marginTop="4rem" alignItems="center" style={{ width: "80%" }}>
         <h2>이화여대 교내 유일 웹 개발 커리어 클럽 EFUB 모집</h2>
         <TextBox>
@@ -189,13 +105,13 @@ const RecruitmentPage = () => {
             </p>
           </TextBox>
         </Row>
-        <BackgroundImg
+        {/* <BackgroundImg
           src={Like}
           width="10rem"
           height="10rem"
           top="80rem"
           left="0rem"
-        />
+        /> */}
         <TextBox marginTop="3rem" style={{ width: "100%" }}>
           <Row>
             <h3>모집 대상</h3>
