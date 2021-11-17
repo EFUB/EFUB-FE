@@ -5,6 +5,7 @@ const StyledDiv = styled.div`
   width: ${(props) => props.width || 40}rem;
   height: ${(props) => props.height || 4}rem;
   margin-top: ${(props) => props.marginTop || 0}px;
+  padding-top: 2.3%;
   background-color: rgb(25, 25, 25);
   border-radius: 10px;
   border: 1px solid ${(props) => props.borderColor || "none"};
@@ -14,16 +15,20 @@ const StyledDiv = styled.div`
   align-items: center;
 `;
 
-const StyledInput = styled.input`
+const StyledInput = styled.textarea`
+  resize: none;
   width: ${(props) => props.inputwidth || 90}%;
+  height: ${(props) => props.height || 100}%;
   border: none;
   color: white;
   background-color: rgb(25, 25, 25);
-  font-size: 20px;
+  font-family: "Roboto";
+  font-size: 1rem;
   &::placeholder {
-    font-family: "NotoSans";
+    font-family: "Roboto";
     color: #c4c4c4;
-    font-size: 20px;
+    font-size: 1rem;
+    font-weight: bold;
   }
   :focus {
     outline: none;
