@@ -102,7 +102,7 @@ const LabelText = styled.div`
     line-height: 1.2rem; 
 `
 
-const DeveloperRecruitIntern = () => {
+const DeveloperRecruitLead = () => {
   const [checked, setChecked] = useState(false);
   const handleCheckboxChange = (e) => {
     setChecked(e.target.checked);
@@ -210,4 +210,4 @@ const DeveloperRecruitIntern = () => {
   );
 };
 
-export default DeveloperRecruitIntern;
+export default DeveloperRecruitLead;

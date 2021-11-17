@@ -97,16 +97,6 @@ const LabelText = styled.div`
 `
 const DesignerRecruitSub= () => {
     //체크박스 여러개 
-    const [checkedInputs, setCheckedInputs] = useState([]);
-    const changeHandler = (checked, id) => {
-      if (checked) {
-        setCheckedInputs([...checkedInputs, id]);
-      } else {
-        // 체크 해제
-        setCheckedInputs(checkedInputs.filter((el) => el !== id));
-      }
-    };
-    //체크박스 여러개 
     const [checkedState, setCheckedState] = useState(
         new Array(6).fill(false)
     );
