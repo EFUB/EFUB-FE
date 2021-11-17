@@ -70,7 +70,7 @@ const Header = ({ menu, onSelect }) => {
                                 active={m.name === menu}
                                 onClick={() => onSelect(m.name)}
                             >
-                                <Link to={{ pathname: `${m.link}` }}>{m.name}</Link>
+                                <Link to={`${m.link}`}>{m.name}</Link>
                             </Menu>
                         ))}
                     </MenusBlock>

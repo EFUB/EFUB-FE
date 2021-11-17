@@ -5,8 +5,16 @@ import Button from "../components/common/Button";
 import palette from "../lib/styles/palette";
 
 import Arrow from "../assets/recruitment/arrow.png";
-import Left from "../assets/recruitment/Left.png";
-import Right from "../assets/recruitment/Right.png";
+import Beer from "../assets/recruitment/beer.png";
+import Bracket from "../assets/recruitment/bracket.png";
+import Circle from "../assets/recruitment/circle.png";
+import Ellipse from "../assets/recruitment/ellipse.png";
+import Like from "../assets/recruitment/like.png";
+import Lines from "../assets/recruitment/lines.png";
+import Sun from "../assets/recruitment/sun.png";
+import Tag from "../assets/recruitment/tag.png";
+import Triangle from "../assets/recruitment/triangle.png";
+import Wave from "../assets/recruitment/wave.png";
 
 const RecruitBox = styled.div`
   display: flex;
@@ -65,11 +73,14 @@ const ImgBox = styled.img`
 `;
 
 const BackgroundImg = styled.img`
-  width: 13rem;
-  top: 42rem;
-  left: ${(props) => props.left || "none"};
-  right: ${(props) => props.right || "none"};
-  z-index: 90;
+  position: fixed;
+  width: ${(props) => props.width || "3rem"};
+  height: ${(props) => props.height || "3rem"};
+  top: ${(props) => props.top || "0"};
+  left: ${(props) => props.left || "0"};
+  right: ${(props) => props.right || "0"};
+  bottom: ${(props) => props.bottom || "0"};
+  z-index: 999;
   position: absolute;
 `;
 
@@ -132,6 +143,7 @@ const RecruitmentPage = () => {
       </RecruitBox>
       <BackgroundImg src={Left} alt="leftImg" left="0" />
       <BackgroundImg src={Right} alt="rightImg" right="0" />
+      <BackgroundImg src={Lines} top="44rem" left="6rem" />
       <TextBox marginTop="4rem" alignItems="center" style={{ width: "80%" }}>
         <h2>이화여대 교내 유일 웹 개발 커리어 클럽 EFUB 모집</h2>
         <TextBox>
@@ -179,6 +191,13 @@ const RecruitmentPage = () => {
             </p>
           </TextBox>
         </Row>
+        <BackgroundImg
+          src={Like}
+          width="10rem"
+          height="10rem"
+          top="80rem"
+          left="0rem"
+        />
         <TextBox marginTop="3rem" style={{ width: "100%" }}>
           <Row>
             <h3>모집 대상</h3>

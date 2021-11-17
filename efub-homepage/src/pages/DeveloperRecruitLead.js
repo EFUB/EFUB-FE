@@ -6,6 +6,7 @@ import Button from "../components/common/Button";
 import { RadioButton } from "../components/common/RadioButton";
 import { CheckBox } from "../components/common/CheckBox";
 
+
 const Banner = styled.div`
   height: 15rem;
   display: flex;
@@ -77,10 +78,35 @@ const Row = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 2rem;
+  height: 4rem;
 `;
+const Label1 = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 50%;
+`
+const Labelsub = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: ;
+    justify-content: flex-start;
+`
+const LabelText = styled.div`
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-left: 1.3rem;
+    line-height: 1.2rem; 
+`
 
 const DeveloperRecruitLead = () => {
+  const [checked, setChecked] = useState(false);
+  const handleCheckboxChange = (e) => {
+    setChecked(e.target.checked);
+  };
   return (
     <div>
       <Banner>
@@ -98,10 +124,71 @@ const DeveloperRecruitLead = () => {
           3. 세미나와 프로젝트에 참가 가능한지, 공지사항에 있는 모든 일정을
           확인하셨습니까?
         </Text1>
-        <Text1>
-          4. 다음중 면접이 '불가능한' 시간을 선택해주세요. 불가능한 시간을 모두
-          선택해주시고, 모두 가능하다면 '모두 가능합니다'를 선택해주세요.{" "}
+        <label style = {{marginBottom: "2rem", marginTop: "1rem"}}>
+          <Checkbox checked={checked} onChange={handleCheckboxChange} />
+          <span>&ensp;&ensp;&ensp;&ensp;네 확인했습니다.</span>
+        </label>
+        <Text1 style={{ marginBottom: "0rem" }}>
+          4. 다음중 면접이 '불가능한' 시간을 선택해주세요.{" "}
         </Text1>
+        <Text2>
+          불가능한 시간을 모두 선택해주시고, 모두 가능하다면 '모두 가능합니다'를
+          선택해주세요.{" "}
+        </Text2>
+        <Row style = {{marginTop: '1.5rem'}}>
+          <Label1>
+           <Checkbox/>
+                <Labelsub>
+                  <LabelText>3월 13일 토요일 오전</LabelText>
+                  <LabelText>(9AM-12PM)</LabelText>
+                </Labelsub>
+           </Label1>  
+           <Label1>
+           <Checkbox/>
+                <Labelsub>
+                  <LabelText>3월 14일 토요일 오전</LabelText>
+                  <LabelText>(9AM-12PM)</LabelText>
+                </Labelsub>
+           </Label1>
+        </Row>
+        <Row>
+          <Label1>
+           <Checkbox/>
+                <Labelsub>
+                  <LabelText>3월 13일 토요일 오후</LabelText>
+                  <LabelText>(1PM-6PM)</LabelText>
+                </Labelsub>
+           </Label1>  
+           <Label1>
+           <Checkbox/>
+                <Labelsub>
+                  <LabelText>3월 14일 일요일 오후</LabelText>
+                  <LabelText>(1PM-6M)</LabelText>
+                </Labelsub>
+           </Label1>
+        </Row>
+        <Row>
+          <Label1>
+           <Checkbox/>
+                <Labelsub>
+                  <LabelText>3월 13일 토요일 저녁</LabelText>
+                  <LabelText>(7PM-10PM)</LabelText>
+                </Labelsub>
+           </Label1>  
+           <Label1>
+           <Checkbox/>
+                <Labelsub>
+                  <LabelText>3월 14일 일요일 저녁</LabelText>
+                  <LabelText>(7PM-10PM)</LabelText>
+                </Labelsub>
+           </Label1>
+        </Row>
+        <Row>
+          <Label1>
+           <Checkbox/>
+              <LabelText>모두 가능합니다!</LabelText>
+           </Label1>  
+        </Row>
         <Foot>
           <Text2>3/3 페이지</Text2>
           <FootSub>

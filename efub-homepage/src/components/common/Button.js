@@ -23,10 +23,10 @@ const StyledButton = styled.a`
   background: transparent;
   padding: 0.7rem 2.5rem;
 
-  ${(props) =>
-    props.eng &&
-    css`
-      font-family: "Montserrat", sans-serif;
+    ${props =>
+        props.eng &&
+        css`
+            font-family: 'Montserrat', sans-serif;
     `}
 
   ${(props) =>
@@ -56,6 +56,9 @@ const StyledButton = styled.a`
       background-color: ${palette.blue};
       color: ${palette.black};
     `}
+
+    width: ${(props) => (`${props.width}rem`)}
+
 `;
 
 const Button = (props) => <StyledButton {...props} />;
