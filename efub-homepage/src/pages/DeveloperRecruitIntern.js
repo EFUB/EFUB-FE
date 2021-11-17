@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import palette from "../lib/styles/palette";
 import Button from "../components/common/Button";
+import Input_box from "../components/common/Input";
 import { RadioButton } from "../components/common/RadioButton";
 import Checkbox from "../components/common/CheckBox";
 
@@ -116,8 +117,17 @@ const DeveloperRecruitIntern = () => {
       </Banner>
       <Main>
         <Text1>1. 지금까지의 프로젝트 경험를 서술해주세요. (500자 내외)</Text1>
-        <TextBox />
-        <Text1>2. 깃허브 또는 기술블로그 링크를 적어주세요.</Text1>
+        <Input_box
+              placeholder="내용을 입력해주세요."
+              name="project_experience"
+              width="35"
+              inputwidth = "95"
+              height="10"
+              marginTop="13"
+              validinput="true"
+            />
+        <Text1 style = {{marginTop: "3rem"}}
+        >2. 깃허브 또는 기술블로그 링크를 적어주세요.</Text1>
         <Input />
         <Text1>
           3. 세미나와 프로젝트에 참가 가능한지, 공지사항에 있는 모든 일정을
