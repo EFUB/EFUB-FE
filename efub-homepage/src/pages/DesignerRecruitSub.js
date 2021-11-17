@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import palette from "../lib/styles/palette"
 import Button from "../components/common/Button";
+import Input_box from "../components/common/Input";
 import { RadioButton } from "../components/common/RadioButton";
 import CheckBox from "../components/common/CheckBox";
 import DesignerTool, { designerTool } from "../components/button/designerTool";
@@ -20,7 +21,7 @@ const Main = styled.div`
     align-items: flex-start;
     //justify-content: center;
     width: 35rem;
-    height: 100rem;
+    height: 120rem;
 `
 const Foot = styled.div`
     width: 35rem;
@@ -96,10 +97,19 @@ const LabelText = styled.div`
 `
 const DesignerRecruitSub= () => {
     //체크박스 여러개 
+    const [checkedInputs, setCheckedInputs] = useState([]);
+    const changeHandler = (checked, id) => {
+      if (checked) {
+        setCheckedInputs([...checkedInputs, id]);
+      } else {
+        // 체크 해제
+        setCheckedInputs(checkedInputs.filter((el) => el !== id));
+      }
+    };
+    //체크박스 여러개 
     const [checkedState, setCheckedState] = useState(
         new Array(6).fill(false)
     );
-    
     const handleOnChange = (position) => {
         const updatedCheckedState = checkedState.map((item, index) =>
           index === position ? !item : item
@@ -125,8 +135,17 @@ const DesignerRecruitSub= () => {
      </Banner>
      <Main>
        <Text1>1. EFUB에 지원하게된 동기를 적어주세요 (300자 내외)</Text1>
-       <TextBox/>
-       <Text1>2. 웹디자인에 대한 자신감을 5점 만점으로 평가해주세요.</Text1>
+       <Input_box
+          placeholder="내용을 입력해주세요."
+          name="motivation"
+          width="35"
+          inputwidth = "95"
+          height="10"
+          marginTop="13"
+          validinput="true"
+        />
+       <Text1 style = {{marginTop: "3rem"}}
+       >2. 웹디자인에 대한 자신감을 5점 만점으로 평가해주세요.</Text1>
             <Row style = {{width: "42%", marginLeft: "54%"}}>
                 <Text1>1</Text1>
                 <Text1>2</Text1>
@@ -139,22 +158,12 @@ const DesignerRecruitSub= () => {
                 <RadioButton/>
             </Row>
        <Text1>3. 사용할 수 있는 디자인 툴을 모두 선택해주세요.</Text1>
-       {/* {DesignerTool.map(({toolname,price},index) => {
-           return (
-               <Row>
-                   <Label1>
-                       <CheckBox
-                        checked= {checkedState[index]}
-                        onChange= {() => handleOnChange(index)}
-                       />
-                       <LabelText>{toolname}</LabelText>
-                   </Label1>
-                </Row>
-           );
-       })} */}
        <Row>
            <Label1>
-                <CheckBox id = {0} checked = {checkedState[0]} onChange = {() =>handleOnChange(0)}/>
+                <CheckBox className = {0} 
+                    checked = {checkedState[0]} 
+                    onChange = {(className)=>handleOnChange(className)}
+                />
                 <LabelText>피그마</LabelText>
             </Label1>
             <Label1>
@@ -193,12 +202,39 @@ const DesignerRecruitSub= () => {
                 <RadioButton/>
             </Row>
        <Text1>4. 동아리에 들어온다면 하고 싶은 프로젝트에 대해서 간략히 설명해주세요.(100자 내외)</Text1>
-       <TextBox/>
-       <Text1>5. 개발자와의 협업 경험이 있다면, 프로젝트 경험에 대해 서술해주세요.</Text1>
-       <TextBox/>
-       <Text1>6. 디자이너와의 협업 경험이 있다면, 프로젝트 경험에 대해 서술해주세요.</Text1>
-       <TextBox/>
-       <Text1>7. 포트플리오 링크를 제출해주세요.</Text1>
+       <Input_box
+          placeholder="내용을 입력해주세요."
+          name="project"
+          width="35"
+          inputwidth = "95"
+          height="10"
+          marginTop="13"
+          validinput="true"
+        />
+       <Text1 style = {{marginTop: "3rem"}}
+       >5. 개발자와의 협업 경험이 있다면, 프로젝트 경험에 대해 서술해주세요.</Text1>
+       <Input_box
+          placeholder="내용을 입력해주세요."
+          name="project_experience"
+          width="35"
+          inputwidth = "95"
+          height="10"
+          marginTop="13"
+          validinput="true"
+        />
+       <Text1 style = {{marginTop: "3rem"}}
+       >6. 디자이너와의 협업 경험이 있다면, 프로젝트 경험에 대해 서술해주세요.</Text1>
+       <Input_box
+          placeholder="내용을 입력해주세요."
+          name="project_experience"
+          width="35"
+          inputwidth = "95"
+          height="10"
+          marginTop="13"
+          validinput="true"
+        />
+       <Text1 style = {{marginTop: "3rem"}}
+       >7. 포트플리오 링크를 제출해주세요.</Text1>
        <Input/>
        <Text1>8. 면접은 9월 9일(금) 저녁 7시부터 10시에 진행됩니다. 참여 가능하십니까?</Text1>
        <label style = {{marginBottom: "2rem", marginTop: "1rem"}}>
