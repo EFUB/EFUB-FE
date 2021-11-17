@@ -32,6 +32,7 @@ const ButtonList = ({ select, onSelect }) => {
             {buttons.map(b => (
                 <Button
                     round blue
+                    width="8"
                     filled={b.name === select}
                     onClick={() => onSelect(b.name)}
                     style={{ marginRight: 15 }}
