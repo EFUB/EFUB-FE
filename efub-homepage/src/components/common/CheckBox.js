@@ -28,15 +28,15 @@ const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
 
 const StyledCheckbox = styled.div`
   display: inline-block;
-  width: 1rem;
-  height: 1rem;
+  width: 16px;
+  height: 16px;
   background: ${(props) => (props.checked ? "#C3F474" : "white")};
   border-radius: 3px;
   border-color: white;
   transition: all 150ms;
 
   ${HiddenCheckbox}:focus + & {
-    box-shadow: 0 0 0 1px ${(props) => (props.checked ? "white" : "white")};
+    box-shadow: 0 0 0 3px ${(props) => (props.checked ? "#C3F474" : "white")};
   }
 
   ${Icon} {
@@ -56,4 +56,5 @@ const Checkbox = ({ className, checked, ...props }) => (
   </CheckboxContainer>
 );
 
-export default Checkbox; 
+export default Checkbox;
+

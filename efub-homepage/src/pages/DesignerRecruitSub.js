@@ -140,7 +140,19 @@ const DesignerRecruitSub = () => {
         <RadioButton />
       </Row>
       <Text1>3. 사용할 수 있는 디자인 툴을 모두 선택해주세요.</Text1>
-
+      {/* {DesignerTool.map(({toolname,price},index) => {
+           return (
+               <Row>
+                   <Label1>
+                       <CheckBox
+                        checked= {checkedState[index]}
+                        onChange= {() => handleOnChange(index)}
+                       />
+                       <LabelText>{toolname}</LabelText>
+                   </Label1>
+                </Row>
+           );
+       })} */}
       <Row>
         <Label1>
           <CheckBox id={0} checked={checkedState[0]} onChange={() => handleOnChange(0)} />
@@ -211,6 +223,7 @@ const DesignerRecruitSub = () => {
       </Foot>
     </Main>
   </div>
+  );
 };
 
 export default DesignerRecruitSub;
