@@ -20,7 +20,6 @@ const Card = styled.div`
 `;
 
 const CardImage = styled.img`
-    position: absolute;
     height: 16rem;
     width: 16rem;
 `;
@@ -29,14 +28,13 @@ const CardHover = styled.div`
     position: absolute;
     left: 0;
     top: 0;
+    z-index: 9;
     height: 16rem;
     width: 16rem;
-    z-index: 99;
     display: flex;
     flex-direction: column-reverse;
     font-size: 1.5rem;
     font-weight: bold;
-    font-family: 'Montserrat';
     padding-left: 1rem;
     padding-bottom: 1rem;
     background-color: black;
@@ -46,7 +44,7 @@ const CardHover = styled.div`
     }
 `
 
-const CardList = ({ select }) => {
+const CardList = ({ select, _handleClick }) => {
     const [selectedCards, setSelectedCards] = useState(cards.all);
 
     useEffect(() => {
@@ -56,7 +54,7 @@ const CardList = ({ select }) => {
     return (
         <CardBlock>
             {selectedCards.map(s => (
-                <Card>
+                <Card key={s.id} onClick={() => _handleClick(s.id)}>
                     <CardImage src={s.file} alt={s.file} />
                     <CardHover>{s.name}</CardHover>
                 </Card>

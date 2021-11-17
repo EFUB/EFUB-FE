@@ -11,7 +11,7 @@ import palette from '../../lib/styles/palette';
  * - eng: Roboto -> Montserrat 폰트 변경
  */
 
-const StyledButton = styled.button`
+const StyledButton = styled.a`
     border: 2px solid ${palette.green};
     color: ${palette.green};
     border-radius: 0.625rem;
