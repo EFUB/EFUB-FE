@@ -1,21 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
 import palette from "../lib/styles/palette";
 
+const Title = styled.div`
+  font-size: 3rem;
+  margin: 3rem;
+  font-family: Roboto;
+  font-weight: bold;
+`;
+
 const Text = styled.div`
   font-family: Roboto;
-  font-style: normal;
   font-weight: bold;
   font-size: 1rem;
-  margin-bottom: 1rem;
-  line-height: 1.725rem; //28px
 `;
 
 const Input = styled.input`
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 500;
   border: none;
   background: black;
   border-bottom: 2px solid ${palette.white};
@@ -23,22 +27,20 @@ const Input = styled.input`
   outline: none;
   padding-bottom: 0.5rem;
   margin-bottom: 2rem;
-  width: 100%;
+  width: 550px;
 `;
 
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 90%;
-  height: 27rem;
-  margin: 3rem 0rem 4rem 0rem;
+  height: 25rem;
 `;
 
 const ListPage = () => {
   return (
     <>
-      <h1>합격자 조회</h1>
+      <Title>합격자 조회</Title>
       <InfoBox>
         <Text>이름</Text>
         <Input placeholder="지원자 이름" />

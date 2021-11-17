@@ -5,7 +5,8 @@ const StyledDiv = styled.div`
   width: ${(props) => props.width || 40}rem;
   height: ${(props) => props.height || 4}rem;
   margin-top: ${(props) => props.marginTop || 0}px;
-  padding-top: 2.3%;
+  margin-bottom: 30px;
+  padding-top: 1.2rem;
   background-color: rgb(25, 25, 25);
   border-radius: 10px;
   border: 1px solid ${(props) => props.borderColor || "none"};
@@ -23,8 +24,8 @@ const StyledInput = styled.textarea`
   color: white;
   background-color: rgb(25, 25, 25);
   font-size: 20px;
+  font-family: "NotoSans";
   &::placeholder {
-    font-family: "NotoSans";
     color: #c4c4c4;
     font-size: 20px;
   }
