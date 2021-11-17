@@ -42,7 +42,6 @@ const Input = ({
   border,
   placeholder,
   marginTop,
-  validinput,
   borderColor,
   ...rest
 }) => {
@@ -56,15 +55,11 @@ const Input = ({
       borderColor={borderColor}
       {...rest}
     >
-      {validinput === "true" ? (
-        <StyledInput
-          placeholder={placeholder}
-          inputwidth={inputwidth}
-          {...rest}
-        />
-      ) : (
-        <div></div>
-      )}
+      <StyledInput
+        placeholder={placeholder}
+        inputwidth={inputwidth}
+        {...rest}
+      />
       {children}
     </StyledDiv>
   );
