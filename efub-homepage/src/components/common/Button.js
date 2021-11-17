@@ -56,6 +56,9 @@ const StyledButton = styled.a`
       background-color: ${palette.blue};
       color: ${palette.black};
     `}
+
+    width: ${(props) => (`${props.width}rem`)}
+
 `;
 
 const Button = (props) => <StyledButton {...props} />;

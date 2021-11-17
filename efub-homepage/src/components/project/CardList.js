@@ -43,7 +43,7 @@ const CardHover = styled.div`
         opacity: 0.45;
     }
 `
-
+// 버튼 select시 handleClick할 수 있는 카드 리스트가 나온다.
 const CardList = ({ select, _handleClick }) => {
     const [selectedCards, setSelectedCards] = useState(cards.all);
 

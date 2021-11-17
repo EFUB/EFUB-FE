@@ -43,6 +43,7 @@ const ButtonItems = styled.div`
 
 const TextBox = styled.div`
   display: flex;
+  flex-direction: column;
   flex-direction: ${(props) => props.flexDirection || "column"};
   margin-top: ${(props) => props.marginTop || "0px"};
   align-items: ${(props) => props.alignItems || "flex-start"};
@@ -71,6 +72,7 @@ const ImgBox = styled.img`
   width: 3rem;
   height: 3rem;
 `;
+
 
 const BackgroundImg = styled.img`
   position: fixed;
