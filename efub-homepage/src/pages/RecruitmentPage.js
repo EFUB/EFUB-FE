@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Banner from '../components/recruitment/Banner';
+import Banner from "../components/recruitment/Banner";
 
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -7,17 +7,34 @@ import Button from "../components/common/Button";
 import palette from "../lib/styles/palette";
 
 import Arrow from "../assets/recruitment/arrow.png";
-import Beer from "../assets/recruitment/beer.png";
-import Bracket from "../assets/recruitment/bracket.png";
-import Circle from "../assets/recruitment/circle.png";
-import Ellipse from "../assets/recruitment/ellipse.png";
-import Like from "../assets/recruitment/like.png";
-import Lines from "../assets/recruitment/lines.png";
-import Sun from "../assets/recruitment/sun.png";
-import Tag from "../assets/recruitment/tag.png";
-import Triangle from "../assets/recruitment/triangle.png";
-import Wave from "../assets/recruitment/wave.png";
+import Left from "../assets/recruitment/Left.png";
+import Right from "../assets/recruitment/Right.png";
 
+const RecruitBox = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 92%;
+  height: 30rem;
+  padding: 0rem 3rem 1.5rem 3rem;
+  background-color: rgba(225, 225, 225, 0.15);
+  border-radius: 10px;
+`;
+
+const ButtonBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+  height: 20rem;
+  justify-content: space-around;
+`;
+
+const ButtonItems = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 8rem;
+  justify-content: space-between;
+`;
 
 const TextBox = styled.div`
   display: flex;
@@ -35,29 +52,106 @@ const Row = styled.div`
   width: 100%;
 `;
 
+const ListBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
 const DetailText = styled.p`
   width: 28rem;
 `;
 
+const ImgBox = styled.img`
+  width: 3rem;
+  height: 3rem;
+`;
+
 const BackgroundImg = styled.img`
-  position: fixed;
-  width: ${(props) => props.width || "3rem"};
-  height: ${(props) => props.height || "3rem"};
-  top: ${(props) => props.top || "0"};
-  left: ${(props) => props.left || "0"};
-  right: ${(props) => props.right || "0"};
-  bottom: ${(props) => props.bottom || "0"};
-  z-index: 999;
+  width: 13rem;
+  top: 42rem;
+  left: ${(props) => props.left || "none"};
+  right: ${(props) => props.right || "none"};
+  z-index: 90;
   position: absolute;
 `;
 
+const Title = styled.div`
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+`;
 
+const BannerBlock = styled.div`
+  width: 100%;
+  position: relative;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const buttons = [
+  {
+    name: "developer",
+    text: "개발자로 지원하기",
+    link: "/developerRecruit",
+  },
+  {
+    name: "designer",
+    text: "디자이너로 지원하기",
+    link: "/designerRecruit",
+  },
+];
 
 const RecruitmentPage = () => {
+  const [select, setSelect] = useState("all");
   return (
     <>
-      <Banner />
-      {/* <BackgroundImg src={Lines} top="44rem" left="6rem" /> */}
+      <BannerBlock>
+        <Title>RECRUITMENT</Title>
+      </BannerBlock>
+      <RecruitBox>
+        <TextBox>
+          <h2>EFUB 1st Recruiting</h2>
+          <h1>
+            EWHA <br />
+            FRONT-END <br />
+            UI/UX <br />
+            BACK-END
+          </h1>
+          <p>
+            지원분야 | UI/UX 디자인, 프론트/백엔드 개발 <br />
+            모집기간 | 2021/09/01 ~ 09/07 23:59까지
+          </p>
+        </TextBox>
+        <ButtonBox>
+          <Link to="/list">
+            <ListBox>
+              <h2>
+                합격자 조회 <br />
+                바로가기
+              </h2>
+              <ImgBox src={Arrow} />
+            </ListBox>
+          </Link>
+          <ButtonItems>
+            {buttons.map((b) => (
+              <Link to={b.link}>
+                <Button
+                  filled={b.name !== select}
+                  onClick={() => setSelect(b.name)}
+                  style={{}}
+                >
+                  {b.text}
+                </Button>
+              </Link>
+            ))}
+          </ButtonItems>
+        </ButtonBox>
+      </RecruitBox>
+      <BackgroundImg src={Left} alt="leftImg" left="0" />
+      <BackgroundImg src={Right} alt="rightImg" right="0" />
       <TextBox marginTop="4rem" alignItems="center" style={{ width: "80%" }}>
         <h2>이화여대 교내 유일 웹 개발 커리어 클럽 EFUB 모집</h2>
         <TextBox>
@@ -105,13 +199,6 @@ const RecruitmentPage = () => {
             </p>
           </TextBox>
         </Row>
-        {/* <BackgroundImg
-          src={Like}
-          width="10rem"
-          height="10rem"
-          top="80rem"
-          left="0rem"
-        /> */}
         <TextBox marginTop="3rem" style={{ width: "100%" }}>
           <Row>
             <h3>모집 대상</h3>
