@@ -62,11 +62,13 @@ const ProjectModal = ({ card, _handleModal }) => {
             <ButtonBlock>
                 <Button
                     round
+                    width="8"
                     href={projects[card].links["website"]}
                     style={{ marginRight: 20 }}
                 >WebSite</Button>
                 <Button
                     round
+                    width="8"
                     href={projects[card].links["github"]}
                 >GitHub</Button>
             </ButtonBlock>

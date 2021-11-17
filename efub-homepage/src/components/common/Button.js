@@ -11,18 +11,20 @@ import palette from "../../lib/styles/palette";
  * - eng: Roboto -> Montserrat 폰트 변경
  */
 
-const StyledButton = styled.a`
+const StyledButton = styled.button`
   border: 2px solid ${palette.green};
   color: ${palette.green};
   border-radius: 0.625rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
   font-family: "Roboto", sans-serif;
   outline: none;
   cursor: pointer;
   background: transparent;
-  padding: 0.7rem 2.5rem;
+  padding: 0.7rem 1rem;
+  width: ${(props) => props.width || "6"}rem;
+  height: ${(props) => props.height || "3"}rem;
 
     ${props =>
     props.eng &&
@@ -58,7 +60,6 @@ const StyledButton = styled.a`
       color: ${palette.black};
     `}
 
-    width: ${(props) => (`${props.width}rem`)};
 `;
 
 const Button = (props) => <StyledButton {...props} />;

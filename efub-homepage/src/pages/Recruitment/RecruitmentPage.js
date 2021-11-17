@@ -1,22 +1,18 @@
-import React, { useState } from "react";
-import Banner from '../components/recruitment/Banner';
+import React, { useState, useEffect } from "react";
+import Banner from '../../components/recruitment/Banner';
 
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import Button from "../components/common/Button";
-import palette from "../lib/styles/palette";
 
-import Arrow from "../assets/recruitment/arrow.png";
-import Beer from "../assets/recruitment/beer.png";
-import Bracket from "../assets/recruitment/bracket.png";
-import Circle from "../assets/recruitment/circle.png";
-import Ellipse from "../assets/recruitment/ellipse.png";
-import Like from "../assets/recruitment/like.png";
-import Lines from "../assets/recruitment/lines.png";
-import Sun from "../assets/recruitment/sun.png";
-import Tag from "../assets/recruitment/tag.png";
-import Triangle from "../assets/recruitment/triangle.png";
-import Wave from "../assets/recruitment/wave.png";
+// import Beer from "../assets/recruitment/beer.png";
+// import Bracket from "../assets/recruitment/bracket.png";
+// import Circle from "../assets/recruitment/circle.png";
+// import Ellipse from "../assets/recruitment/ellipse.png";
+// import Like from "../assets/recruitment/like.png";
+// import Lines from "../assets/recruitment/lines.png";
+// import Sun from "../assets/recruitment/sun.png";
+// import Tag from "../assets/recruitment/tag.png";
+// import Triangle from "../assets/recruitment/triangle.png";
+// import Wave from "../assets/recruitment/wave.png";
 
 
 const TextBox = styled.div`
@@ -54,6 +50,9 @@ const BackgroundImg = styled.img`
 
 
 const RecruitmentPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Banner />
