@@ -24,8 +24,8 @@ const StyledButton = styled.a`
   padding: 0.7rem 2.5rem;
 
     ${props =>
-        props.eng &&
-        css`
+    props.eng &&
+    css`
             font-family: 'Montserrat', sans-serif;
     `}
 
