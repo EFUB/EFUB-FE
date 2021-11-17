@@ -27,7 +27,8 @@ const StyledInput = styled.textarea`
   font-family: "NotoSans";
   &::placeholder {
     color: #c4c4c4;
-    font-size: 20px;
+    font-size: 1rem;
+    font-weight: bold;
   }
   :focus {
     outline: none;
