@@ -224,6 +224,13 @@ const ModalButton_allmember = styled.button`
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
     font-weight: bold;
+
+    @media (min-width: 420px) and (max-width: 1440px) {
+        // between
+        width: 160px; height: 30px;
+        top: 50px; left: 100px;
+        ${props => props.size || 24}px;
+      }
 `
 // 이펍 소개 옆 네온 디자인
 
@@ -277,18 +284,35 @@ const Img_organ_green = styled.img`
     position: absolute;
     top: 25px; left: -20px;
     transform: rotate( -5deg );
+
+    @media (min-width: 420px) and (max-width: 1440px) {
+        // between
+        width: 250px; height: 100px;
+        top: 17px; left: 60px;
+      }
 `
 const Img_organ_sun = styled.img`
     width: 150px; height: 150px;
     position: absolute;
     top: -180px; left: 0px;
     transform: rotate( -5deg );
+
+    @media (min-width: 420px) and (max-width: 1440px) {
+        width: 150px; height: 150px;
+        top: -180px; left: 50px;
+      }
 `
 const Img_organ_pub = styled.img`
     width: 290px; height: 370px;
     position: absolute;
     top: -220px; left: 180px;
     transform: rotate( 0deg );
+
+    @media (min-width: 420px) and (max-width: 1440px) {
+        // between
+        width: 260px; height: 350px;
+        top: -210px; left: 260px;
+      }
 `
 
 

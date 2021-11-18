@@ -22,6 +22,11 @@ const MemberBox=styled.div`
     align-items: center;
     text-align: center;
     line-height:160%;
+
+    @media (min-width: 420px) and (max-width: 1440px) {
+        height: 8rem;
+        width: 8rem;
+      }
 `
 const PositionText=styled.div`
     color:#52F4FF;
