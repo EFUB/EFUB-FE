@@ -54,6 +54,8 @@ const Text=styled.div`
     width:90%;
     height:80%;
     white-space: pre-wrap;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 `
 
 function Review1({profile, text}) {

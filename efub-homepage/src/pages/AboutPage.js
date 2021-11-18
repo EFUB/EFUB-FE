@@ -138,7 +138,7 @@ const SubTitle = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 10rem;
+    
 `
 
 const SubTitleWhite = styled.div`
@@ -151,6 +151,7 @@ const SubTitleWhite = styled.div`
             font-family: 'Montserrat', sans-serif;
     `}
     font-weight: bold;
+    margin-top: 10rem;
 `
 const SubTitleGreen = styled.div`
     color:#C3F474;
@@ -162,6 +163,7 @@ const SubTitleGreen = styled.div`
             font-family: 'Montserrat', sans-serif;
     `}
     font-weight: bold;
+    margin-top: 10rem;
 `
 
 const ModalButton_Career = styled.button`
@@ -204,7 +206,10 @@ z-index: 99;
     transform: rotate( -15deg );
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    cursor: pointer;    
+    cursor: pointer;   
+    @media(max-width:750px){
+        font-size:  ${props => props.size || 24}px;
+    } 
 `
 const ModalButton_allmember = styled.button`
     z-index: 99;
@@ -360,7 +365,7 @@ const AboutPage = () => {
                     />
                 </ReviewWrapper>
 
-                <SubTitle>EFUB ORGANIZER</SubTitle>
+                <SubTitleWhite>EFUB ORGANIZER</SubTitleWhite>
 
                 <OrganizerWrapper>
                     <MemberBlock>
