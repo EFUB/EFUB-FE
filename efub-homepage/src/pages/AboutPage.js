@@ -135,6 +135,13 @@ const SubIntroText = styled.div`
     line-height:180%;
 `
 const SubTitle = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10rem;
+`
+
+const SubTitleWhite = styled.div`
     color:white;
     font-size:  ${props => props.size || 40}px;
     font-family: 'Roboto', sans-serif;
@@ -144,7 +151,17 @@ const SubTitle = styled.div`
             font-family: 'Montserrat', sans-serif;
     `}
     font-weight: bold;
-    margin-top: 10rem;
+`
+const SubTitleGreen = styled.div`
+    color:#C3F474;
+    font-size:  ${props => props.size || 40}px;
+    font-family: 'Roboto', sans-serif;
+    ${props =>
+        props.eng &&
+        css`
+            font-family: 'Montserrat', sans-serif;
+    `}
+    font-weight: bold;
 `
 
 const ModalButton_Career = styled.button`
@@ -320,7 +337,11 @@ const AboutPage = () => {
                     </RotateButton>
                 </MainWrapper>
 
-                <SubTitle>1기 우수 활동 퍼비의 활동 후기</SubTitle>
+                <SubTitle>
+                    <SubTitleWhite>1기&nbsp; </SubTitleWhite>
+                    <SubTitleGreen>우수 활동 퍼비</SubTitleGreen>
+                    <SubTitleWhite>의 활동 후기</SubTitleWhite>
+                </SubTitle>
 
                 <ReviewWrapper>
                     <Review1
