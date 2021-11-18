@@ -61,6 +61,22 @@ const DeveloperApplyLeadPage = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    const [inputs, setInputs] = useState({
+        first: '',
+        second: '',
+    });
+
+    const { first, second } = inputs;
+
+    const onChange = (e) => {
+        const { value, name } = e.target;
+        setInputs({
+            ...inputs,
+            [name]: value
+        });
+    };
+
     const [timeList, setTimeList] = useState([
         { id: 0, label: "3월 13일 토요일 오전 (9AM~12PM)", checked: false },
         { id: 1, label: "3월 14일 일요일 오전 (9AM~12PM)", checked: false },
@@ -93,9 +109,9 @@ const DeveloperApplyLeadPage = () => {
             </BannerBlock>
             <Main>
                 <Question>1. 지금까지의 프로젝트 경험을 서술해주세요. (500자 내외)</Question>
-                <InputBox />
+                <InputBox name="first" value={first} onChange={onChange} />
                 <Question>2. 깃허브 또는 기술블로그 링크를 적어주세요.</Question>
-                <InputLine />
+                <InputLine name="second" value={second} onChange={onChange} />
                 <Question>3. 세미나와 프로젝트에 참가 가능한지, 공지사항에 있는 모든 일정을 확인하셨습니까?</Question>
                 <Checkbox onToggle={() => { onToggleCheck() }} label="네, 확인했습니다." checked={check} />
                 <Question style={{ marginTop: "10rem", marginBottom: "5px" }}>4. 다음 중 면접이 '불가능한' 시간을 선택해주세요.</Question>
@@ -105,6 +121,7 @@ const DeveloperApplyLeadPage = () => {
                     <Text>3/3 페이지</Text>
                     <div>
                         <Button blue style={{ marginRight: 15 }}>저장</Button>
+                        {/* <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second}`) }}>다음</Button> */}
                         <Link to="/thankyou">
                             <Button width="8" filled>
                                 제출하기

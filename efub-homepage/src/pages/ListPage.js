@@ -46,7 +46,11 @@ const ListPage = () => {
         {/* <Button>
           <Link to="/firstList">조회하기</Link>
         </Button> */}
-        <Button width="8" onClick={() => { alert(`이름 : ${name} / 전화번호 : ${phone} / 비밀번호 : ${code}`) }}>조회하기</Button>
+        <Button
+          width="8"
+          onClick={() => { alert(`이름 : ${name} / 전화번호 : ${phone} / 비밀번호 : ${code}`) }}
+          style={{ marginBottom: "10rem" }}
+        >조회하기</Button>
       </Container>
 
     </>

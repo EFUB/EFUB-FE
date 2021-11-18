@@ -31,7 +31,6 @@ const Checkbox = ({ label, checked, onToggle }) => (
     }
     <Label>{label}</Label>
   </Wrapper>
-
 );
 
 export default Checkbox;

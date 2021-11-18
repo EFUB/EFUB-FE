@@ -31,17 +31,10 @@ const StyledInput = styled.textarea`
   }
 `;
 
-const Input = ({
-  placeholder,
-  height
-}) => {
+const Input = ({ name, value, placeholder, onChange, height }) => {
   return (
-    <StyledDiv
-      height={height}
-    >
-      <StyledInput
-        placeholder={placeholder || "내용을 입력해주세요."}
-      />
+    <StyledDiv height={height} >
+      <StyledInput name={name} value={value} onChange={onChange} placeholder={placeholder || "내용을 입력해주세요."} />
     </StyledDiv>
   );
 };

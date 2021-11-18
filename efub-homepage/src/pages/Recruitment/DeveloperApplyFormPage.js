@@ -67,6 +67,21 @@ const DeveloperApplyFormPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const [inputs, setInputs] = useState({
+    first: '',
+    second: '',
+    lang: '',
+  });
+
+  const { first, second, lang } = inputs;
+
+  const onChange = (e) => {
+    const { value, name } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value
+    });
+  };
 
   const [stackList, setStackList] = useState([
     { id: 0, label: "C", checked: false },
@@ -110,14 +125,14 @@ const DeveloperApplyFormPage = () => {
       </BannerBlock>
       <Main>
         <Question>1. EFUB에 지원하게 된 동기를 적어주세요. (300자 내외)</Question>
-        <InputBox />
+        <InputBox name="first" value={first} onChange={onChange} />
         <Question>2. 동아리에 들어온다면 하고 싶은 프로젝트에 대해서 간략히 설명해주세요. (100자 내외)</Question>
-        <InputBox />
+        <InputBox name="second" value={second} onChange={onChange} />
         <Question>3. 지원 분야를 선택해주세요.</Question>
         <DeveloperPart part={part} onClickPart={onClickPart} />
         <Text style={{ marginBottom: 25 }}>3번 문항의 답변에 따라 인턴 지원서 혹은 리드 지원서 페이지로 넘어가게 되니 신중히 체크해 주세요!</Text>
         <Question>4. 자신 있는 프로그래밍 언어를 적어주세요.</Question>
-        <InputLine placeholder="ex. 파이썬" />
+        <InputLine name="lang" value={lang} placeholder="ex. 파이썬" onChange={onChange} />
         <Question>4-1. 위에서 답한 언어에 대한 자신감을 5점 만점으로 평가해주세요.</Question>
         <Wrapper>
           <Question style={{ marginTop: '0' }}>내 자신감은...</Question>
@@ -129,6 +144,7 @@ const DeveloperApplyFormPage = () => {
           <Text>2/3 페이지</Text>
           <div>
             <Button blue style={{ marginRight: 15 }}>저장</Button>
+            {/* <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second} / 3번 : ${part} / 4번 : ${lang} / 4-1번 : ${score}`) }}>다음</Button> */}
             {
               (part % 2) === 1 ? (
                 <Link to="/developer-apply/intern">
@@ -144,7 +160,6 @@ const DeveloperApplyFormPage = () => {
                 </Link>
               )
             }
-
           </div>
         </Bottom>
       </Main>

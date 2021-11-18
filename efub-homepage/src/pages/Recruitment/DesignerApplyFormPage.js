@@ -68,6 +68,23 @@ const DesignerApplyFormPage = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    const [inputs, setInputs] = useState({
+        first: '',
+        second: '',
+        third: '',
+        fourth: '',
+        portfolio: ''
+    });
+
+    const { first, second, third, fourth, portfolio } = inputs;
+
+    const onChange = (e) => {
+        const { value, name } = e.target;
+        setInputs({
+            ...inputs,
+            [name]: value
+        });
+    };
 
     const [stackList, setStackList] = useState([
         { id: 0, label: "피그마", checked: false },
@@ -114,7 +131,7 @@ const DesignerApplyFormPage = () => {
             </BannerBlock>
             <Main>
                 <Question>1. EFUB에 지원하게 된 동기를 적어주세요. (300자 내외)</Question>
-                <InputBox />
+                <InputBox name="first" value={first} onChange={onChange} />
                 <Question>2. 웹디자인에 대한 자신감을 5점 만점으로 평가해주세요.</Question>
                 <Wrapper>
                     <Question style={{ marginTop: '0' }}>내 자신감은...</Question>
@@ -128,13 +145,13 @@ const DesignerApplyFormPage = () => {
                     <Confident score={skill} onClickScore={onClickSkill} />
                 </Wrapper>
                 <Question>4. 동아리에 들어온다면 하고 싶은 프로젝트에 대해서 간략히 설명해주세요. (100자 내외)</Question>
-                <InputBox />
+                <InputBox name="second" value={second} onChange={onChange} />
                 <Question>5. 개발자와의 협업 경험이 있다면, 프로젝트 경험에 대해 서술해주세요.</Question>
-                <InputBox />
+                <InputBox name="third" value={third} onChange={onChange} />
                 <Question>6. 디자이너와의 협업 경험이 있다면, 프로젝트 경험에 대해 서술해주세요.</Question>
-                <InputBox />
+                <InputBox name="fourth" value={fourth} onChange={onChange} />
                 <Question>7. 포트플리오 링크를 제출해주세요.</Question>
-                <InputLine />
+                <InputLine name="portfolio" value={portfolio} onChange={onChange} />
                 <Question>8. 면접은 9월 9일(금) 저녁 7시부터 10시에 진행됩니다. 참여 가능하십니까?</Question>
                 <Checkbox onToggle={() => { onToggleAvailable() }} label="네, 가능합니다." checked={available} />
                 <Question style={{ marginBottom: '5px' }}>9. 오티는 9월 11일 토요일 09시 30분에 진행됩니다.</Question>
@@ -142,6 +159,8 @@ const DesignerApplyFormPage = () => {
                 <Checkbox onToggle={() => { onToggleCheck() }} label="네, 확인했습니다." checked={check} />
                 <Bottom>
                     <Text>2/2 페이지</Text>
+                    {/* <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second} / 3번 : ${third} / 4번 : ${fourth} / 포폴 : ${portfolio}`) }}>다음</Button> */}
+
                     <div>
                         <Button blue style={{ marginRight: 15 }}>저장</Button>
                         <Link to="/thankyou">
