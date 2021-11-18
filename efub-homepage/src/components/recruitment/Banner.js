@@ -29,6 +29,9 @@ const RecruitBox = styled.div`
     padding: 1rem 5rem 1rem 5rem;
     background-color: rgba(225, 225, 225, 0.15);
     border-radius: 10px;
+    @media (max-width: 1120px) {
+        width: 768px;
+    }
 `;
 
 const TextBox = styled.div`
@@ -44,6 +47,9 @@ const ButtonBox = styled.div`
     margin-top: 5rem;
     height: 20rem;
     justify-content: space-between;
+    @media (max-width: 1120px) {
+        margin-top: 2rem;
+    }
 `;
 
 const ButtonItems = styled.div`
@@ -52,6 +58,7 @@ const ButtonItems = styled.div`
     height: 9rem;
     justify-content: space-between;
     align-items: center;
+
 `;
 
 const ListBox = styled.div`
@@ -68,6 +75,9 @@ const Text = styled.div`
     font-family: ${(props) => props.font || "Montserrat"};
     margin-bottom: ${(props) => props.margin || "0px"};
     font-weight: bold;
+    @media (max-width: 1120px) {
+        font-size: ${(props) => props.small || "20px"};
+    }
 `;
 
 const buttons = [
@@ -90,12 +100,12 @@ const Banner = () => {
             <RecruitBox>
                 <TextBox>
                     <Text margin="30px">EFUB 1st Recruiting</Text>
-                    <Text size="60px">EWHA</Text>
-                    <Text size="60px">FRONT-END</Text>
-                    <Text size="60px">UI/UX</Text>
-                    <Text size="60px" margin="30px">BACK-END</Text>
-                    <Text size="20px" font="Roboto" margin="15px">지원분야 | UI/UX 디자인, 프론트/백엔드 개발</Text>
-                    <Text size="20px" font="Roboto">모집기간 | 2021/09/01 ~ 09/07 23:59까지</Text>
+                    <Text size="60px" small="40px">EWHA</Text>
+                    <Text size="60px" small="40px">FRONT-END</Text>
+                    <Text size="60px" small="40px">UI/UX</Text>
+                    <Text size="60px" small="40px" margin="30px">BACK-END</Text>
+                    <Text size="20px" small="15px" font="Roboto" margin="15px">지원분야 | UI/UX 디자인, 프론트/백엔드 개발</Text>
+                    <Text size="20px" small="15px" font="Roboto">모집기간 | 2021/09/01 ~ 09/07 23:59까지</Text>
                 </TextBox>
                 <ButtonBox>
                     <Link to="/list">
