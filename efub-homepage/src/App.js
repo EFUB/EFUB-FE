@@ -4,20 +4,20 @@ import { Switch, Route } from "react-router-dom";
 import Header from "./components/common/Header";
 import AboutPage from "./pages/AboutPage";
 import ProjectPage from "./pages/ProjectPage";
-import RecruitmentPage from "./pages/RecruitmentPage";
+import RecruitmentPage from "./pages/Recruitment/RecruitmentPage";
 import ContactPage from "./pages/ContactPage";
 import Footer from "./components/common/Footer";
 import Responsive from "./components/common/Responsive";
-import DeveloperRecruit from "./pages/DeveloperRecruit";
-import DeveloperRecruitSub from "./pages/DeveloperRecruitSub";
-import DeveloperRecruitLead from "./pages/DeveloperRecruitLead";
-import DeveloperRecruitIntern from "./pages/DeveloperRecruitIntern";
-import DesignerRecruit from "./pages/DesignerRecruit";
+import DeveloperApplyMainPage from "./pages/Recruitment/DeveloperApplyMainPage";
+import DeveloperApplyFormPage from "./pages/Recruitment/DeveloperApplyFormPage";
 import ListPage from "./pages/ListPage";
 import FirstList from "./pages/FirstList";
 import FinalList from "./pages/FinalList";
-import DesignerRecruitSub from "./pages/DesignerRecruitSub";
 import ThankYou from "./pages/ThankYou";
+import DeveloperApplyInternPage from "./pages/Recruitment/DeveloperApplyInternPage";
+import DeveloperApplyLeadPage from "./pages/Recruitment/DeveloperApplyLeadPage";
+import DesignerApplyMainPage from "./pages/Recruitment/DesignerApplyMainPage";
+import DesignerApplyFormPage from "./pages/Recruitment/DesignerApplyFormPage";
 
 const Main = styled(Responsive)`
   min-height: calc(100vh - 14rem);
@@ -42,18 +42,12 @@ const App = () => {
           <Route component={ListPage} path="/list" />
           <Route component={FirstList} path="/firstList" />
           <Route component={FinalList} path="/finalList" />
-          <Route component={DeveloperRecruit} path="/developerRecruit" />
-          <Route component={DeveloperRecruitSub} path="/developerRecruitSub" />
-          <Route
-            component={DeveloperRecruitLead}
-            path="/developerRecruitLead"
-          />
-          <Route
-            component={DeveloperRecruitIntern}
-            path="/developerRecruitIntern"
-          />
-          <Route component={DesignerRecruit} path="/designerRecruit" />
-          <Route component={DesignerRecruitSub} path="/designerRecruitSub" />
+          <Route component={DeveloperApplyMainPage} path="/developer-apply" exact />
+          <Route component={DeveloperApplyFormPage} path="/developer-apply/form" />
+          <Route component={DeveloperApplyInternPage} path="/developer-apply/intern" />
+          <Route component={DeveloperApplyLeadPage} path="/developer-apply/lead" />
+          <Route component={DesignerApplyMainPage} path="/designer-apply" exact />
+          <Route component={DesignerApplyFormPage} path="/designer-apply/form" />
           <Route component={ContactPage} path="/contact" />
           <Route component={ThankYou} path="/thankyou" />
         </Switch>

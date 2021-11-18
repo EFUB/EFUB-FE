@@ -8,22 +8,32 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  height: 73vh;
 `;
 
-const ButtonBox = styled.div`
-  margin-top: 5rem;
+const Title = styled.div`
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 3rem;
+  margin-bottom: 1rem;
 `;
+
+const Subtitle = styled.div`
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 1.7rem;
+  margin-bottom: 4rem;
+
+`;
+
 
 const ThankYou = () => {
   return (
     <Wrapper>
-      <h1>지원해주셔서 감사합니다.</h1>
-      <h3>EFUB에서 함께할 당신의 앞날을 응원합니다!</h3>
+      <Title>지원해주셔서 감사합니다.</Title>
+      <Subtitle>EFUB에서 함께할 당신의 앞날을 응원합니다!</Subtitle>
       <Link to="/">
-        <ButtonBox>
-          <Button>처음으로 돌아가기</Button>
-        </ButtonBox>
+        <Button width="14">처음으로 돌아가기</Button>
       </Link>
     </Wrapper>
   );
