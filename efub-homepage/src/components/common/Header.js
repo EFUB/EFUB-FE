@@ -73,6 +73,10 @@ const Wrapper = styled(Responsive)`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 767px) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
 `;
 
 const MenusBlock = styled.div`

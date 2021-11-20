@@ -1,4 +1,5 @@
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 import vector1 from '../../assets/project/vector1.png';
 import vector2 from '../../assets/project/vector2.png';
@@ -31,13 +32,27 @@ const Subtitle = styled.div`
 `;
 
 const Banner = () => {
+    const isMobile = useMediaQuery({
+        query: "(max-width: 767px)"
+    });
     return (
-        <BannerBlock>
-            <img src={vector1} alt="vector`" style={{ left: -100 }} />
-            <img src={vector2} alt="vector2`" style={{ right: -100 }} />
-            <Title>PROJECT</Title>
-            <Subtitle>개발자와 디자이너가 협업을 통해 만들어나갑니다.</Subtitle>
-        </BannerBlock>
+        <>
+            {
+                isMobile ? (
+                    <BannerBlock style={{ height: "12rem" }}>
+                        <Title style={{ fontSize: "2rem" }}>PROJECT</Title>
+                        <Subtitle style={{ fontSize: "1rem" }}>개발자와 디자이너가 협업을 통해 만들어나갑니다.</Subtitle>
+                    </BannerBlock>
+                ) : (
+                    <BannerBlock>
+                        <img src={vector1} alt="vector`" style={{ left: -100 }} />
+                        <img src={vector2} alt="vector2`" style={{ right: -100 }} />
+                        <Title>PROJECT</Title>
+                        <Subtitle>개발자와 디자이너가 협업을 통해 만들어나갑니다.</Subtitle>
+                    </BannerBlock>
+                )
+            }
+        </>
     );
 };
 
