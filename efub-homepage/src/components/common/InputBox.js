@@ -11,6 +11,9 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
+  @media (max-width: 767px) {
+    height: ${(props) => props.height || "10rem"};
+  }
 `;
 
 const StyledInput = styled.textarea`
@@ -24,10 +27,14 @@ const StyledInput = styled.textarea`
   color: white;
   background-color: transparent;
   font-size: 1.25rem;
-  font-family: "NotoSans";
+  font-family: "Roboto";
   &::placeholder {
     color: #c4c4c4;
     font-weight: bold;
+  }
+  @media (max-width: 767px) {
+    font-size: 12px;
+    padding: 1rem;
   }
 `;
 
