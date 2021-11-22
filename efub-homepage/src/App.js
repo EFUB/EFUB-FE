@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { Switch, Route } from "react-router-dom";
+import ScrollToTop from "./components/common/ScrollToTop";
 import Header from "./components/common/Header";
 import AboutPage from "./pages/AboutPage";
 import ProjectPage from "./pages/ProjectPage";
@@ -35,6 +36,7 @@ const App = () => {
     <>
       <Header menu={menu} onSelect={onSelect} />
       <Main>
+        <ScrollToTop />
         <Switch>
           <Route component={AboutPage} path="/" exact />
           <Route component={ProjectPage} path="/project" />

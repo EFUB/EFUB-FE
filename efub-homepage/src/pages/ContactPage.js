@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import styled from "styled-components";
 import InputBox from "../components/common/InputBox";
@@ -27,10 +27,6 @@ const ContactPage = () => {
   const isMobile = useMediaQuery({
     query: "(max-width: 767px)"
   });
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   const [inputs, setInputs] = useState({
     email: '',
