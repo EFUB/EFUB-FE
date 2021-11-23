@@ -7,6 +7,8 @@ const Wrapper=styled.div`
     align-items: center;
     width:100%;
     overflow:auto; 
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 `
 const Logo = styled.img`
     width: 20%;
@@ -53,6 +55,8 @@ const Text=styled.div`
     width:90%;
     height:80%;
     white-space: pre-wrap;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 `
 
 function Review1({profile, text}) {
