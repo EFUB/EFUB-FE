@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import Banner from '../../components/recruitment/Banner';
 import Left from '../../assets/recruitment/Left.png'
@@ -18,10 +18,6 @@ const BackgroundImg = styled.img`
 `;
 
 const RecruitmentPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
       <Banner />
