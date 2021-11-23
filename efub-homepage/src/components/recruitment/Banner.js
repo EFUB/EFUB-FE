@@ -42,15 +42,16 @@ const ButtonBox = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 5rem;
-    height: 15rem;
+    height: 20rem;
     justify-content: space-between;
 `;
 
 const ButtonItems = styled.div`
     display: flex;
     flex-direction: column;
-    height: 5rem;
+    height: 9rem;
     justify-content: space-between;
+    align-items: center;
 `;
 
 const ListBox = styled.div`
@@ -58,6 +59,8 @@ const ListBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 5rem;
+    text-align: end;
 `;
 
 const Text = styled.div`
@@ -71,12 +74,12 @@ const buttons = [
     {
         name: "developer",
         text: "개발자로 지원하기",
-        link: "/developerRecruit",
+        link: "/developer-apply",
     },
     {
         name: "designer",
         text: "디자이너로 지원하기",
-        link: "/designerRecruit",
+        link: "/designer-apply",
     },
 ];
 
@@ -86,12 +89,12 @@ const Banner = () => {
             <Title>RECRUITMENT</Title>
             <RecruitBox>
                 <TextBox>
-                    <Text margin="20px">EFUB 1st Recruiting</Text>
+                    <Text margin="30px">EFUB 1st Recruiting</Text>
                     <Text size="60px">EWHA</Text>
                     <Text size="60px">FRONT-END</Text>
                     <Text size="60px">UI/UX</Text>
-                    <Text size="60px" margin="20px">BACK-END</Text>
-                    <Text size="20px" font="Roboto" margin="10px">지원분야 | UI/UX 디자인, 프론트/백엔드 개발</Text>
+                    <Text size="60px" margin="30px">BACK-END</Text>
+                    <Text size="20px" font="Roboto" margin="15px">지원분야 | UI/UX 디자인, 프론트/백엔드 개발</Text>
                     <Text size="20px" font="Roboto">모집기간 | 2021/09/01 ~ 09/07 23:59까지</Text>
                 </TextBox>
                 <ButtonBox>
@@ -106,15 +109,16 @@ const Banner = () => {
                     </Link>
                     <ButtonItems>
                         {buttons.map((b) => (
-                            <Button
-                                width="14"
-                                filled
-                                style={{ marginBottom: 15 }}
-                            >
-                                <Link to={b.link}>{b.text}</Link>
-                            </Button>
+                            <Link to={b.link}>
+                                <Button
+                                    width="15"
+                                    height="4"
+                                    filled
+                                >
+                                    {b.text}
+                                </Button>
+                            </Link>
                         ))}
-
                     </ButtonItems>
                 </ButtonBox>
             </RecruitBox>

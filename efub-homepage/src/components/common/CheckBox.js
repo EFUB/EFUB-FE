@@ -1,59 +1,36 @@
 import React from "react";
 import styled from "styled-components";
+import checkboxTrue from "../../assets/recruitment/checkbox/checkbox-true.png";
+import checkboxFalse from "../../assets/recruitment/checkbox/checkbox-false.png";
 
-const CheckboxContainer = styled.div`
-  display: inline-block;
-  vertical-align: middle;
+const Wrapper = styled.div`
+  width: 16rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 
-const Icon = styled.svg`
-  fill: none;
-  stroke: black;
-  stroke-width: 2px;
-`;
-// Hide checkbox visually but remain accessible to screen readers.
-// Source: https://polished.js.org/docs/#hidevisually
-const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
-  border: 0;
-  clip: rect(0 0 0 0);
-  clippath: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
+const Label = styled.div`
+  font-size: 1.25rem;
+  margin-left: 2.5rem;
+  font-family: Roboto;
+  font-weight: bold;
 `;
 
-const StyledCheckbox = styled.div`
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: ${(props) => (props.checked ? "#C3F474" : "white")};
-  border-radius: 3px;
-  border-color: white;
-  transition: all 150ms;
-
-  ${HiddenCheckbox}:focus + & {
-    box-shadow: 0 0 0 3px ${(props) => (props.checked ? "#C3F474" : "white")};
-  }
-
-  ${Icon} {
-    //visibility: ${(props) => (props.checked ? "visible" : "hidden")};
-    visibility: visible;
-  }
+const Image = styled.img`
+  width: 2rem;
+  height: 2rem;
 `;
 
-const Checkbox = ({ className, checked, ...props }) => (
-  <CheckboxContainer className={className}>
-    <HiddenCheckbox checked={checked} {...props} />
-    <StyledCheckbox checked={checked}>
-      <Icon viewBox="0 0 24 24">
-        <polyline points="20 6 9 17 4 12" />
-      </Icon>
-    </StyledCheckbox>
-  </CheckboxContainer>
+const Checkbox = ({ label, checked, onToggle }) => (
+  <Wrapper>
+    {
+      checked ?
+        <Image onClick={onToggle} src={checkboxTrue} alt="checkboxTrue" /> :
+        <Image onClick={onToggle} src={checkboxFalse} alt="checkboxFalse" />
+    }
+    <Label>{label}</Label>
+  </Wrapper>
 );
 
 export default Checkbox;
