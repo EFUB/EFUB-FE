@@ -12,6 +12,9 @@ const BackgroundImg = styled.img`
   right: ${(props) => props.right || "none"};
   z-index: 90;
   position: absolute;
+  @media (max-width: 767px) {
+    display: none;
+  }
 `;
 
 const RecruitmentPage = () => {
