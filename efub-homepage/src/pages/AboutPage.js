@@ -98,7 +98,7 @@ const RotateButton = styled.div` // 회전버튼
     height:100%;
     @media (max-width: 768px) {
         // phone
-        width:auto;
+        width:100%;
         margin-top: 5rem;
         height: auto;
        }
@@ -285,7 +285,7 @@ const ModalButton_Career = styled.button`
 
     @media (max-width: 768px) {
         // phone
-        top: 100px; left: 100px;
+        top: 100px; left: 150px;
        }
 `
 const ModalButton_Curriculum = styled.button`
@@ -308,7 +308,7 @@ const ModalButton_Curriculum = styled.button`
 
     @media (max-width: 768px) {
         // phone
-        top: 230px; left: 200px;
+        top: 230px; left: 250px;
        }
 `
 const ModalButton_apply = styled.button`
@@ -330,7 +330,7 @@ const ModalButton_apply = styled.button`
    }
     @media (max-width: 768px) {
      // phone
-     top: 100px; left: 369px;
+     top: 100px; left: 419px;
     }
 `
 const ModalButton_allmember = styled.button`
@@ -374,7 +374,7 @@ const Img_main_blue = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        top: 180px; left: 140px;
+        top: 180px; left: 190px;
        }
 `
 
@@ -390,7 +390,7 @@ const Img_main_circle = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        top: 200px; left: 80px;
+        top: 200px; left: 130px;
        }
 `
 const Img_main_green = styled.img`
@@ -406,7 +406,7 @@ const Img_main_green = styled.img`
     @media (max-width: 768px) {
         // phone
         width: 230px; height: 120px;
-        top: 55px; left: 330px;
+        top: 55px; left: 380px;
        }
 `
 
@@ -423,7 +423,7 @@ const Img_main_long_tri = styled.img`
     @media (max-width: 768px) {
         // phone
         width: 150px; height: 90px;
-        top: 200px; left: 450px;
+        top: 200px; left: 500px;
        }
 `
 
@@ -439,7 +439,7 @@ const Img_main_pink = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        top: 55px; left: 50px;
+        top: 55px; left: 100px;
        }
 `
 
@@ -455,7 +455,7 @@ const Img_main_tri = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        top: 20px; left: 310px;
+        top: 20px; left: 360px;
        }
 `
 //Organizer 밑 네온사인
