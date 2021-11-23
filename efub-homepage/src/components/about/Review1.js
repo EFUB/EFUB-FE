@@ -9,10 +9,14 @@ const Wrapper=styled.div`
     height:auto;
     margin-bottom: 2rem;
     margin-top: 2rem;
+    @media (max-width: 768px) {
+        // phone
+        flex-direction: column;
+    }
 `
 const Logo = styled.img`
-    width: 20%;
-    height: 20%;
+    width: 40%;
+    height: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
