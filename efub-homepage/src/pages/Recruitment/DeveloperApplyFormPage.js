@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Button from '../../components/common/Button'
 import InputBox from '../../components/common/InputBox'
@@ -64,9 +64,6 @@ const Text = styled.div`
 `
 
 const DeveloperApplyFormPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   const [inputs, setInputs] = useState({
     first: '',
     second: '',

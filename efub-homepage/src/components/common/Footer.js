@@ -17,12 +17,18 @@ const Wrapper = styled(Responsive)`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 767px) {
+        padding: 2rem;
+    }
 `;
 
 const Copyright = styled.div`
     font-size: 0.938rem;
     font-family: 'Roboto', sans-serif;
     color: ${palette.gray};
+    @media (max-width: 767px) {
+        font-size: 0.7rem;
+    }
 `;
 
 const IconsBlock = styled.nav`

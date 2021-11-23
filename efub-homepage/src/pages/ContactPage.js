@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import styled from "styled-components";
 import InputBox from "../components/common/InputBox";
 import Button from "../components/common/Button";
@@ -7,18 +8,25 @@ import Banner from '../components/contact/Banner';
 const FormBox = styled.div`
   margin-bottom: 5rem;
   width: 70%;
+  @media (max-width: 767px) {
+    width: 90%;
+    margin-bottom: 0rem;
+  }
 `;
 
 const Label = styled.div`
   font-size: 20px;
   font-family: Roboto;
   margin-bottom: 1rem;
+  @media (max-width: 767px) {
+    font-size: 15px;
+  }
 `;
 
 const ContactPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const isMobile = useMediaQuery({
+    query: "(max-width: 767px)"
+  });
 
   const [inputs, setInputs] = useState({
     email: '',
@@ -38,28 +46,59 @@ const ContactPage = () => {
   return (
     <>
       <Banner />
-      <FormBox>
-        <Label>Email</Label>
-        <InputBox
-          name="email"
-          value={email}
-          onChange={onChange}
-          placeholder="답변 받을 이메일 주소 입력"
-          height="5.5rem"
-        />
-        <Label>문의 내용</Label>
-        <InputBox
-          name="message"
-          value={message}
-          onChange={onChange}
-          placeholder="EFUB과 협업하고 싶어요! / 지원 기준이 어떻게 되나요?"
-        />
-      </FormBox>
-      <Button
-        width="10"
-        style={{ marginBottom: "10rem" }}
-        onClick={() => { alert(`email : ${email} / message: ${message}`) }}
-      >전송하기</Button>
+      {
+        isMobile ? (
+          <>
+            <FormBox>
+              <Label>Email</Label>
+              <InputBox
+                name="email"
+                value={email}
+                onChange={onChange}
+                placeholder="답변 받을 이메일 주소 입력"
+                height="3rem"
+              />
+              <Label>문의 내용</Label>
+              <InputBox
+                name="message"
+                value={message}
+                onChange={onChange}
+                placeholder="EFUB과 협업하고 싶어요! / 지원 기준이 어떻게 되나요?"
+              />
+            </FormBox >
+            <Button
+              style={{ width: "90%" }}
+              onClick={() => { alert(`email : ${email} / message: ${message}`) }}
+            >전송하기</Button>
+          </>
+        ) : (
+          <>
+            <FormBox>
+              <Label>Email</Label>
+              <InputBox
+                name="email"
+                value={email}
+                onChange={onChange}
+                placeholder="답변 받을 이메일 주소 입력"
+                height="5.5rem"
+              />
+              <Label>문의 내용</Label>
+              <InputBox
+                name="message"
+                value={message}
+                onChange={onChange}
+                placeholder="EFUB과 협업하고 싶어요! / 지원 기준이 어떻게 되나요?"
+              />
+            </FormBox >
+            <Button
+              width="10"
+              style={{ marginBottom: "10rem" }}
+              onClick={() => { alert(`email : ${email} / message: ${message}`) }}
+            >전송하기</Button>
+          </>
+        )
+      }
+
     </>
   );
 };
