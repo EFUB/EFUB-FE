@@ -95,11 +95,19 @@ const Message = styled.div`
   }
 `;
 
+// const Hide = styled.css`
+//   @media (max-width: 767px) {
+//     display: none;
+//   }
+// `;
+
 const ToggleImg = styled.img.attrs({ src: Toggle })`
   width: 0.7rem;
   height: 0.4rem;
   transition: 0.2s all ease-in;
-  ${(props) => (props.change ? ToggleStyle : "")}
+  &:hover {
+    ${(props) => (props.change ? ToggleStyle : "")}
+  }
 `;
 
 const ToggleStyle = css`
@@ -111,6 +119,7 @@ const Detail = () => {
 
   const onClickToggle = () => {
     setChange(!change);
+    console.log(change);
   };
 
   return (
@@ -124,23 +133,24 @@ const Detail = () => {
         지원 분야
         <ToggleImg change={change} onClick={onClickToggle} />
       </Label>
-
-      <Text margin="2rem">
-        웹 개발 분야는 크게 프론트엔드와 백엔드, 그리고 디자인으로 나뉩니다.
-        EFUB은 각 분야의 리드 개발자와 인턴 개발자를 구분없이 모집하여 이번
-        학기에는 인턴 또한 포지션을 정하고, 동아리원 전체가 섞여 개발합니다.
-      </Text>
-      <Text margin="8rem" marginXS="4rem">
-        리드는 곧장 프로젝트 착수가 가능하고 세미나 주최가 가능한 인원이며,
-        인턴은 양쪽 분야의 리드를 보고 학습을 진행해 자신이 어느 쪽의 직무가
-        적성에 맞는지 탐색할 수 있습니다. 디자이너 포지션의 경우, 리드
-        포지션만을 선발하여 곧장 프로젝트에 착수 가능한 인원을 선발합니다.
-      </Text>
+      <div className={change ? "off" : ""}>
+        <Text margin="2rem">
+          웹 개발 분야는 크게 프론트엔드와 백엔드, 그리고 디자인으로 나뉩니다.
+          EFUB은 각 분야의 리드 개발자와 인턴 개발자를 구분없이 모집하여 이번
+          학기에는 인턴 또한 포지션을 정하고, 동아리원 전체가 섞여 개발합니다.
+        </Text>
+        <Text margin="8rem" marginXS="4rem">
+          리드는 곧장 프로젝트 착수가 가능하고 세미나 주최가 가능한 인원이며,
+          인턴은 양쪽 분야의 리드를 보고 학습을 진행해 자신이 어느 쪽의 직무가
+          적성에 맞는지 탐색할 수 있습니다. 디자이너 포지션의 경우, 리드
+          포지션만을 선발하여 곧장 프로젝트에 착수 가능한 인원을 선발합니다.
+        </Text>
+      </div>
       <Line>
         <Textbox margin="8rem">
           <Label margin="1rem">
             활동 안내
-            <ToggleImg />
+            <ToggleImg change={change} onClick={onClickToggle} />
           </Label>
           <Text>학기 중 세미나 및 스터디</Text>
           <Text>디자인 | 매주 금요일 20시</Text>
@@ -150,7 +160,7 @@ const Detail = () => {
         <Textbox margin="8rem">
           <Label margin="1rem">
             활동 혜택
-            <ToggleImg />
+            <ToggleImg change={change} onClick={onClickToggle} />
           </Label>
           <Text>인재개발원 공식 수료증</Text>
           <Text>디자이너, 개발자와의 협업 경험</Text>
@@ -161,7 +171,7 @@ const Detail = () => {
       <Line margin="3rem">
         <Label margin="1rem">
           지원 자격
-          <ToggleImg />
+          <ToggleImg change={change} onClick={onClickToggle} />
         </Label>
         <Textbox width="30rem">
           <Text>학번, 나이, 전공 불문 웹디자인 및 웹 개발에</Text>
@@ -171,7 +181,7 @@ const Detail = () => {
       <Line margin="3rem">
         <Label margin="1rem">
           지원 방법
-          <ToggleImg />
+          <ToggleImg change={change} onClick={onClickToggle} />
         </Label>
         <Textbox width="30rem">
           <Text>상단 지원하기 버튼 클릭 후, 지원서 작성</Text>
@@ -180,7 +190,7 @@ const Detail = () => {
       <Line margin="3rem">
         <Label margin="1rem">
           우대 사항
-          <ToggleImg />
+          <ToggleImg change={change} onClick={onClickToggle} />
         </Label>
         <Textbox width="30rem">
           <Text>프로젝트 경험이 있거나 기본적인 리액트 지식이 있는 개발자</Text>
@@ -191,7 +201,7 @@ const Detail = () => {
       <Line margin="3rem">
         <Label margin="1rem">
           모집 일정
-          <ToggleImg />
+          <ToggleImg change={change} onClick={onClickToggle} />
         </Label>
         <Textbox width="30rem">
           <Text>9월 1일 ~ 9월 7일 23시 59분까지</Text>
@@ -204,7 +214,7 @@ const Detail = () => {
       <Line margin="12rem">
         <Label margin="1rem">
           문의
-          <ToggleImg />
+          <ToggleImg change={change} onClick={onClickToggle} />
         </Label>
         <Textbox width="30rem">
           <Text>웹페이지 상단 CONTACT에서 문의</Text>
