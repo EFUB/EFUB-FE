@@ -19,13 +19,25 @@ const First = styled.div`
     margin-left: 2rem;
 `;
 
+const Content = styled.div` 
+    display: flex;
+    position: relative;
+    width:100%;
+    @media (max-width: 768px) {
+        // phone
+       }
+`
+
 const MemberModal = ({ _handleModal }) => {
     return (
         <FixedModalFrame _handleModal={_handleModal}>
             <Title>EFUB organizers</Title>
             <ScrollDiv>
                 <First> 1기 </First>
+            <Content>
             <MemberList> </MemberList>
+            </Content>
+
             </ScrollDiv>
         </FixedModalFrame>
     );
