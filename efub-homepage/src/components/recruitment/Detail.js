@@ -99,7 +99,11 @@ const ToggleImg = styled.img.attrs({ src: Toggle })`
   width: 0.7rem;
   height: 0.4rem;
   transition: 0.2s all ease-in;
-  transform: ${(props) => (props.change ? "rotate(90deg)" : "rotate(180deg)")};
+  ${(props) => (props.change ? ToggleStyle : "")}
+`;
+
+const ToggleStyle = css`
+  transform: rotate(180deg);
 `;
 
 const Detail = () => {
@@ -107,7 +111,6 @@ const Detail = () => {
 
   const onClickToggle = () => {
     setChange(!change);
-    console.log(change);
   };
 
   return (
