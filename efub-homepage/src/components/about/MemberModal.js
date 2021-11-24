@@ -52,10 +52,14 @@ const Ay_neon = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
+        width: 150px; height: 130px;
+        top: -10px; left: -10px;
       }
 
     @media (max-width: 768px) {
         // phone
+        width: 150px; height: 130px;
+        top: -10px; left: -10px;
        }
 `
 
@@ -67,10 +71,12 @@ const Hr_neon = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
+        top: -10px; left: 200px;
       }
 
     @media (max-width: 768px) {
         // phone
+        top: -10px; left: 200px;
        }
 `
 const Hj_neon = styled.img`
@@ -81,10 +87,12 @@ const Hj_neon = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
+        top: -10px; left: 530px;
       }
 
     @media (max-width: 768px) {
         // phone
+        top: -10px; left: 530px;
        }
 `
 const Yj_neon = styled.img`
@@ -95,10 +103,13 @@ const Yj_neon = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
+        width: 150px; height: 150px;
+        top: 230px; left: -30px;
       }
 
     @media (max-width: 768px) {
         // phone
+        top: 230px; left: -20px;
        }
 `
 
@@ -110,10 +121,12 @@ const Je_neon = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
+        top: 250px; left: 350px;
       }
 
     @media (max-width: 768px) {
         // phone
+        top: 250px; left: 350px;
        }
 `
 const Cr_neon = styled.img`
@@ -124,10 +137,12 @@ const Cr_neon = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
+        top: 280px; left: 460px;
       }
 
     @media (max-width: 768px) {
         // phone
+        top: 280px; left: 450px;
        }
 `
 
@@ -146,7 +161,6 @@ const MemberModal = ({ _handleModal }) => {
                     <Yj_neon src={yj_neon}></Yj_neon>
                     <Je_neon src={je_neon}></Je_neon>
                     <Cr_neon src={cr_neon}></Cr_neon>
-
                 </SubContent>
 
                 <SubContent>
