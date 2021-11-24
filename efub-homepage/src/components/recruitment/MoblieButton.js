@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import Moblie from "../../assets/recruitment/moblie.png";
 
 const ButtonImg = styled.img`
@@ -12,11 +13,13 @@ const ButtonImg = styled.img`
 
 const MoblieButton = () => {
   return (
-    <ButtonImg
-      alt="모바일버튼"
-      src={Moblie}
-      onClick={() => alert("지원서는 PC에서만 작성 가능합니다.")}
-    />
+    <Link to="/list">
+      <ButtonImg
+        alt="모바일버튼"
+        src={Moblie}
+        // onClick={() => alert("지원서는 PC에서만 작성 가능합니다.")}
+      />
+    </Link>
   );
 };
 
