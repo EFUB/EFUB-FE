@@ -173,7 +173,7 @@ const Detail = () => {
       ) : (
         ""
       )}
-      <Line>
+      <Line marginXS="0rem">
         <Textbox margin="8rem">
           <Label margin="1rem">
             활동 안내
@@ -204,12 +204,12 @@ const Detail = () => {
             />
           </Label>
           {toggleState.benefit ? (
-            <>
+            <MarginBottom margin="2rem">
               <Text>인재개발원 공식 수료증</Text>
               <Text>디자이너, 개발자와의 협업 경험</Text>
               <Text>우수 활동자 선정 시 상품 제공</Text>
               <Text>커리어에 도움이 되는 세미나 참여 기회</Text>
-            </>
+            </MarginBottom>
           ) : (
             ""
           )}
@@ -300,7 +300,7 @@ const Detail = () => {
           ""
         )}
       </Line>
-      <Line margin="12rem">
+      <Line margin="12rem" marginXS="5rem">
         <Label margin="1rem">
           문의
           <ToggleImg
