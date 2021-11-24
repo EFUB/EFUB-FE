@@ -28,6 +28,8 @@ import CareerModal from '../components/about/CareerModal';
 import CurriModal from '../components/about/CurriModal';
 import MemberModal from '../components/about/MemberModal';
 
+
+
 // 한글은 font-family: 'Roboto', sans-serif;
 // 영어는 font-family: 'Montserrat', sans-serif;
 
