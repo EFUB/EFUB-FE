@@ -351,7 +351,7 @@ const ModalButton_allmember = styled.button`
 
     @media (min-width: 768px) and (max-width: 1440px) {
         // between
-        top: 70px; left: 25px;
+        top: 50px; left: 100px;
         font-size:24px;
       }
 
