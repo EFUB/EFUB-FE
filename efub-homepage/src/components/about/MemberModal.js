@@ -37,11 +37,19 @@ const Content = styled.div`
 `
 const SubContent = styled.div` 
     display: flex;
-    position: relative;
     width:100%;
     @media (max-width: 768px) {
         // phone
        }
+`
+const SubContent_member = styled.div` 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @media (max-width: 768px) {
+    // phone
+    }
 `
 
 const Ay_neon = styled.img`
@@ -137,7 +145,7 @@ const Cr_neon = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
-        top: 280px; left: 460px;
+        top: 0px; left: 460px;
       }
 
     @media (max-width: 768px) {
