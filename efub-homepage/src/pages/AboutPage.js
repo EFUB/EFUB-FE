@@ -357,8 +357,8 @@ const ModalButton_allmember = styled.button`
 
     @media (min-width: 768px) and (max-width: 1440px) {
         // between
-        transform: rotate( -23deg );
-        top: 60px; left: 40px;
+        transform: rotate( -18deg );
+        top: 45px; left: 40px;
         font-size:20px;
       }
 
@@ -478,7 +478,7 @@ const Img_organ_green = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
-        width: 200px; height: 120px;
+        width: 200px; height: 100px;
         top: 10px; left: 10px;
       }
       @media (max-width: 768px) {
