@@ -145,7 +145,7 @@ const Cr_neon = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
-        top: 0px; left: 460px;
+        top: 280px; left: 460px;
       }
 
     @media (max-width: 768px) {

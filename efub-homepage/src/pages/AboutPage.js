@@ -161,6 +161,10 @@ const MemberBlock = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    @media (min-width: 768px) and (max-width: 1024px) {
+        // between
+        width: 50%;
+    }
     @media (max-width: 768px) {
         // phone
         width: 100%;

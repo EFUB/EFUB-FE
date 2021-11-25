@@ -26,8 +26,10 @@ const MemberBox=styled.div`
     line-height:160%;
 
     @media (min-width: 768px) and (max-width: 1024px) {
-        height: 8rem;
-        width: 8rem;
+        height: 7rem;
+        width: 7rem;
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
       }
       @media (max-width: 768px){
         height: 13rem;
@@ -41,7 +43,7 @@ const PositionText=styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 30%;
+    margin-top: 20%;
     width:100%;
     @media (max-width: 768px){
         font-size: 25px;
