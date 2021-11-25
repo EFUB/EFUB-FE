@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Banner from '../../components/recruitment/Banner';
-import Left from '../../assets/recruitment/Left.png'
-import Right from '../../assets/recruitment/Right.png'
+import Banner from "../../components/recruitment/Banner";
+import Left from "../../assets/recruitment/Left.png";
+import Right from "../../assets/recruitment/Right.png";
 import Detail from "../../components/recruitment/Detail";
 
 const BackgroundImg = styled.img`
@@ -12,9 +12,12 @@ const BackgroundImg = styled.img`
   right: ${(props) => props.right || "none"};
   z-index: 1;
   position: absolute;
+  @media (max-width: 767px) {
+    display: none;
+  }
   @media (max-width: 1120px) {
     width: 0px;
-    }
+  }
 `;
 
 const RecruitmentPage = () => {

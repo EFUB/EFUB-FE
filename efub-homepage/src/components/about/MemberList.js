@@ -38,7 +38,7 @@ const MemberText = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    align-text: center;
+    text-align: center;
     margin-top: 1rem;
 `;
 
