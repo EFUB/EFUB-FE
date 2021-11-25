@@ -28,7 +28,7 @@ const Main = styled(Responsive)`
 `;
 
 const App = () => {
-  const [menu, setMenu] = useState("About");
+  const [menu, setMenu] = useState("ABOUT");
   const onSelect = useCallback((menu) => setMenu(menu), []);
 
   return (

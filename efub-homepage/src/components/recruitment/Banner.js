@@ -36,6 +36,9 @@ const RecruitBox = styled.div`
   padding: 1rem 5rem 1rem 5rem;
   background-color: rgba(225, 225, 225, 0.15);
   border-radius: 10px;
+  /* @media (max-width: 1120px) {
+    width: 768px;
+  } */
   @media (max-width: 767px) {
     height: 21rem;
     padding: 1rem;
@@ -58,6 +61,9 @@ const ButtonBox = styled.div`
   @media (max-width: 767px) {
     display: none;
   }
+  @media (max-width: 1120px) {
+    margin-top: 2rem;
+  }
 `;
 
 const ButtonItems = styled.div`
@@ -78,12 +84,12 @@ const ListBox = styled.div`
 `;
 
 const Text = styled.div`
-  font-size: ${(props) => props.lg || "30px"};
+  font-size: ${(props) => props.size || "30px"};
   font-family: ${(props) => props.font || "Montserrat"};
   margin-bottom: ${(props) => props.margin || "0px"};
   font-weight: bold;
-  @media (max-width: 767px) {
-    font-size: ${(props) => props.xs || "16px"};
+  @media (max-width: 1120px) {
+    font-size: ${(props) => props.small || "20px"};
   }
 `;
 
@@ -107,6 +113,27 @@ const Banner = () => {
       <RecruitBox>
         <TextBox>
           <Text margin="30px">EFUB 1st Recruiting</Text>
+          <Text size="60px" small="35px">
+            EWHA
+          </Text>
+          <Text size="60px" small="35px">
+            FRONT-END
+          </Text>
+          <Text size="60px" small="35px">
+            UI/UX
+          </Text>
+          <Text size="60px" small="35px" margin="30px">
+            BACK-END
+          </Text>
+          <Text size="20px" small="12px" font="Roboto" margin="15px">
+            지원분야 | UI/UX 디자인, 프론트/백엔드 개발
+          </Text>
+          <Text size="20px" small="12px" font="Roboto">
+            모집기간 | 2021/09/01 ~ 09/07 23:59까지
+          </Text>
+        </TextBox>
+        {/* <TextBox>
+          <Text margin="30px">EFUB 1st Recruiting</Text>
           <Text lg="60px" xs="30px">
             EWHA
           </Text>
@@ -125,7 +152,7 @@ const Banner = () => {
           <Text lg="20px" xs="12px" font="Roboto">
             모집기간 | 2021/09/01 ~ 09/07 23:59까지
           </Text>
-        </TextBox>
+        </TextBox> */}
         <ButtonBox>
           <Link to="/list">
             <ListBox>

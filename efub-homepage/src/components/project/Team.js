@@ -12,6 +12,11 @@ const Position = styled.div`
     font-size: 1.25rem;
     font-weight: 500;
     margin: 0.625rem 0rem;
+    @media (max-width: 767px) {
+        font-size: 0.8rem;
+        width: 13rem;
+        margin: 0.2rem 0;
+    }
 `;
 
 const Names = styled.div`
@@ -19,6 +24,11 @@ const Names = styled.div`
     font-size: 1.125rem;
     font-weight: 400;
     margin: 0.625rem 0rem;
+    @media (max-width: 767px) {
+        font-size: 0.8rem;
+        width: 100%;
+        margin: 0.2rem 0;
+    }
 `;
 
 const Team = ({ team }) => {

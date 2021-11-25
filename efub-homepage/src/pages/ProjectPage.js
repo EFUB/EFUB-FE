@@ -9,9 +9,16 @@ const Main = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    @media (max-width: 767px) {
+        width: auto;
+        justify-content: center;
+        align-items: center;
+    }
 `;
 
 const ProjectPage = () => {
+
+
     const [select, setSelect] = useState('all');
     const onSelect = useCallback(select => setSelect(select), []);
 

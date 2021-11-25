@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useMediaQuery } from "react-responsive";
 import styled, { css } from "styled-components";
 import Toggle from "../../assets/recruitment/toggle.png";
 
@@ -9,6 +8,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 5;
   @media (max-width: 767px) {
     width: 100%;
     align-items: flex-start;
