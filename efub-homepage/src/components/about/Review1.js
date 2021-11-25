@@ -15,14 +15,15 @@ const Wrapper=styled.div`
     }
 `
 const Logo = styled.img`
-    width: 40%;
-    height: 40%;
+    width: 20rem;
+    height: 20rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 1.5rem;
 `;
+
 const TextBox=styled.div`
     background-color: #1C1C1C;
     border-radius: 10px;

@@ -11,8 +11,8 @@ const Wrapper=styled.div`
     margin-bottom: 1rem;
 `
 const Logo = styled.img`
-    width: 20%;
-    height: 20%;
+    width: 20rem;
+    height: 20rem;
     display: flex;
     align-items: center;
     justify-content: center;
