@@ -214,7 +214,7 @@ const MainIntroText = styled.div`
     line-height:120%;
     @media (max-width: 768px) {
         // phone
-        font-size:  ${props => props.size || 38}px;
+        font-size:  ${props => props.size || 35}px;
         line-height:160%
        }
 `
@@ -225,7 +225,7 @@ const SubIntroText = styled.div`
     line-height:180%;
     @media (max-width: 768px) {
         // phone
-        font-size:  ${props => props.size || 22}px;
+        font-size:  ${props => props.size || 20}px;
        }
 `
 const SubTitle = styled.div`
@@ -252,7 +252,9 @@ const SubTitleWhite = styled.div`
     margin-top: 10rem;
     @media (max-width: 768px) {
         // phone
-        margin-bottom: 2rem;
+        margin-top: 5rem;
+        margin-bottom: 1rem;
+        font-size:  ${props => props.size || 30}px;
        }
 `
 const SubTitleGreen = styled.div`
@@ -268,7 +270,9 @@ const SubTitleGreen = styled.div`
     margin-top: 10rem;
     @media (max-width: 768px) {
         // phone
-        margin-bottom: 2rem;
+        margin-top: 5rem;
+        font-size:  ${props => props.size || 30}px;
+        margin-bottom: 1rem;
        }
 `
 
@@ -546,7 +550,7 @@ const ToggleImg = styled.img.attrs({ src: Toggle })`
   width: 1rem;
   height: 1rem;
   transition: 0.2s all ease-in;
-  margin-top: 8rem;
+  margin-top: 4rem;
   margin-left : 1rem;
   &:hover {
     ${(props) => (props.change ? ToggleStyle : "")}
