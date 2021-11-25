@@ -18,6 +18,8 @@ import organ_green from '../assets/about/organ_green.png';
 import organ_pub from '../assets/about/organ_pub.png';
 import organ_sun from '../assets/about/organ_sun.png';
 
+import Toggle from '../assets/about/toggle.png';
+
 import Review1 from '../components/about/Review1';
 import Review2 from '../components/about/Review2';
 import Member_Green from '../components/about/Member_Green';
@@ -515,6 +517,22 @@ const Img_organ_pub = styled.img`
        }
 `
 
+//토글 시작
+
+const ToggleImg = styled.img.attrs({ src: Toggle })`
+  width: 1rem;
+  height: 1rem;
+  transition: 0.2s all ease-in;
+  margin-top: 8rem;
+  margin-left : 1rem;
+  &:hover {
+    ${(props) => (props.change ? ToggleStyle : "")}
+  }
+`;
+
+const ToggleStyle = css`
+  transform: rotate(180deg);
+`;
 
 
 
@@ -534,6 +552,31 @@ const AboutPage = () => {
         setOpenMemberModal(!openMemberModal);
         document.body.style.overflow = "unset";
     }
+
+    const [change, setChange] = useState(false);
+    const [toggleState, setToggleState] = useState({
+        field: false,
+        guide: false,
+        benefit: false,
+        who: false,
+        method: false,
+        prefer: false,
+        plan: false,
+        ask: false,
+    });
+
+    const toggleHandler = (e) => {
+        const newToggleState = { ...toggleState };
+        const active = e.currentTarget.id;
+        for (let key in newToggleState) {
+        if (key === active) {
+            newToggleState[key] = !toggleState[key];
+        }
+        }
+        setToggleState(newToggleState);
+        setChange(!change);
+        console.log(newToggleState);
+    };
 
     return (
         <>
@@ -666,8 +709,14 @@ const AboutPage = () => {
                     <SubTitleWhite>1기&nbsp; </SubTitleWhite>
                     <SubTitleGreen>우수 활동 퍼비</SubTitleGreen>
                     <SubTitleWhite>의 활동 후기</SubTitleWhite>
+                    <ToggleImg
+                        change={change}
+                        id="field"
+                        onClick={(e) => toggleHandler(e)}
+                        />
                 </SubTitle>
-
+                {toggleState.field ? (
+                    <>
                     <Review1
                         profile={mvp1}
                         text={["안녕하세요! ☺ 저는 처음부터 우수개발자를 목표했던 것은 아니지만, 이펍에서 많이 배워야겠다는 마음으로 부족한 실력이지만 여기저기 열심히 참여하고 다녔더니 우수개발자라는 영광스러운 타이틀을 받을 수 있었던 것 같습니다! 우수 개발자라고 해서 실력순으로 선발되는 것은 아니니, 새로운 퍼비분들 마구 참여하면서 우수개발자 한 번 도전해보세요! 이번 기수의 우수개발자는 ✨아주 멋진 이펍 각인이 들어간 버티컬 마우스✨를 받았답니다…🥺 정말 잘 쓰고 있어요! 실력을 키울 수 있는 이펍에서 많이 배워가시고 활동하시길 바랄게요!", <br/>, "(이로움, Front-end 인턴 개발자)"]}
@@ -682,6 +731,10 @@ const AboutPage = () => {
                         profile={mvp3}
                         text={["웹개발에 대해 하나도 모르는 초보 개발자였는데,  EFUB에서 열리는 다양한 세미나와 프로젝트 덕분에 많이 성장하게 된 것 같습니다. 그리고 기초부터 심화까지 알려주는 커리큘럼과 리드/인턴에 맞는 토이 프로젝트 배치 덕분에 프로젝트에 대한 부담 없이 재미있게 개발할 수 있었습니다. 정말 EFUB은 올해 최고의 선택이었던 것 같습니다☺ ",<br/>,"(강민지, 인턴 개발자)"]}
                     />
+                    </>
+                ) : (
+                    ""
+                )}
             </ReviewWrapper>
 
             <SubTitleWhite>EFUB ORGANIZER</SubTitleWhite>
