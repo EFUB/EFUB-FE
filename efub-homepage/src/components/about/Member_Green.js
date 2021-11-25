@@ -46,6 +46,7 @@ const PositionText=styled.div`
     margin-top: 20%;
     width:100%;
     @media (max-width: 768px){
+        margin-top: 30%;
         font-size: 25px;
       }
 `
