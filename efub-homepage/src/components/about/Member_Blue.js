@@ -33,8 +33,10 @@ const MemberBox=styled.div`
         margin-left: 0.5rem;
       }
       @media (max-width: 768px){
-        height: 13rem;
-        width: 13rem;
+        height: 10rem;
+        width: 10rem;
+        margin-right: 0.3rem;
+        margin-left: 0.3rem;
       }
 `
 const PositionText=styled.div`
@@ -44,8 +46,11 @@ const PositionText=styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 20%;
+    margin-top: 30%;
     width:100%;
+    @media (min-width: 768px) and (max-width: 1024px) {
+        margin-top: 20%;
+      }
     @media (max-width: 768px){
         margin-top: 30%;
         font-size: 25px;
