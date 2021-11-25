@@ -289,6 +289,9 @@ const ModalButton_Career = styled.button`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
+        top: 55px; left: 30px;
+        font-size:  22px;
+        transform: rotate( -9deg );
       }
 
     @media (max-width: 768px) {
@@ -312,6 +315,8 @@ const ModalButton_Curriculum = styled.button`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
+        font-size:  22px;
+        top: 180px; left: 100px;
       }
 
     @media (max-width: 768px) {
@@ -335,6 +340,8 @@ const ModalButton_apply = styled.button`
     cursor: pointer;   
     @media (min-width: 768px) and (max-width: 1024px) {
      // between
+     font-size:  22px;
+     top: 75px; left: 310px;
    }
     @media (max-width: 768px) {
      // phone
@@ -379,6 +386,8 @@ const Img_main_blue = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
+        width: 300px; height: 100px;
+        top: 140px; left: 60px;
       }
 
     @media (max-width: 768px) {
@@ -395,6 +404,8 @@ const Img_main_circle = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
+        width: 60px; height: 60px;
+        top: 180px; left: 10px;
       }
 
     @media (max-width: 768px) {
@@ -410,6 +421,8 @@ const Img_main_green = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
+        width: 250px; height: 100px;
+        top: 40px; left: 260px;
       }
 
     @media (max-width: 768px) {
@@ -427,6 +440,8 @@ const Img_main_long_tri = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
+        width: 170px; height: 90px;
+        top: 160px; left: 340px;
       }
 
     @media (max-width: 768px) {
@@ -444,6 +459,8 @@ const Img_main_pink = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
+        width: 250px; height: 100px;
+        top: 18px; left: 0px;
       }
 
     @media (max-width: 768px) {
@@ -460,6 +477,8 @@ const Img_main_tri = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
+        width: 60px; height: 60px;
+        top: 20px; left: 270px;
       }
 
     @media (max-width: 768px) {
