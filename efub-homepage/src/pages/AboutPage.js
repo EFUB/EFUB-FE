@@ -357,8 +357,9 @@ const ModalButton_allmember = styled.button`
 
     @media (min-width: 768px) and (max-width: 1440px) {
         // between
-        top: 50px; left: 100px;
-        font-size:24px;
+        transform: rotate( -23deg );
+        top: 60px; left: 40px;
+        font-size:20px;
       }
 
       @media (max-width: 768px) {
@@ -477,8 +478,8 @@ const Img_organ_green = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
-        width: 250px; height: 100px;
-        top: 17px; left: 60px;
+        width: 200px; height: 120px;
+        top: 10px; left: 10px;
       }
       @media (max-width: 768px) {
         // phone
@@ -492,8 +493,8 @@ const Img_organ_sun = styled.img`
     transform: rotate( -5deg );
 
     @media (min-width: 768px) and (max-width: 1024px) {
-        width: 150px; height: 150px;
-        top: -180px; left: 50px;
+        width: 100px; height: 100px;
+        top: -150px; left: 30px;
       }
 
       @media (max-width: 768px) {
@@ -510,8 +511,8 @@ const Img_organ_pub = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
-        width: 260px; height: 350px;
-        top: -210px; left: 260px;
+        width: 240px; height: 320px;
+        top: -200px; left: 150px;
       }
 
       @media (max-width: 768px) {
