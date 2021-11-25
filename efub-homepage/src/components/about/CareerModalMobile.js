@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
-import FixedModalFrame from '../common/ModalFrame';
 import ModalFrameMobile from '../common/ModalFrameMobile';
 
 
@@ -16,18 +15,18 @@ const Title = styled.div`
     margin-bottom: 4rem;
 `;
 
-const CareerModal = ({ _handleModal }) => {
+const CareerModalMobile = ({ _handleModal }) => {
     const [select, setSelect] = useState('win');
     const onSelect = useCallback(select => setSelect(select), []);
     return (
-        <FixedModalFrame _handleModal={_handleModal}>
+        <ModalFrameMobile _handleModal={_handleModal}>
             <Title>EFUB Career</Title>
             <CareerButtonList select={select} onSelect={onSelect} ></CareerButtonList>
             <ScrollDiv>
             <CareerContent select={select}/>
             </ScrollDiv>
-        </FixedModalFrame>
+        </ModalFrameMobile>
     );
 };
 
-export default CareerModal;
+export default CareerModalMobile;
