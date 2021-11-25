@@ -204,8 +204,8 @@ const Logo = styled.div`
     justify-content: center;
     @media (max-width: 768px) {
         // phone
-        width: 100px;
-       }
+
+    }
 `;
 
 const MainIntroText = styled.div`
@@ -296,7 +296,7 @@ const ModalButton_Career = styled.button`
 
     @media (max-width: 768px) {
         // phone
-        top: 100px; left: 150px;
+        top: 100px; left: 50px;
        }
 `
 const ModalButton_Curriculum = styled.button`
@@ -321,7 +321,7 @@ const ModalButton_Curriculum = styled.button`
 
     @media (max-width: 768px) {
         // phone
-        top: 230px; left: 250px;
+        top: 230px; left: 130px;
        }
 `
 const ModalButton_apply = styled.button`
@@ -345,7 +345,7 @@ const ModalButton_apply = styled.button`
    }
     @media (max-width: 768px) {
      // phone
-     top: 100px; left: 419px;
+     top: 100px; left: 340px;
     }
 `
 const ModalButton_allmember = styled.button`
@@ -371,7 +371,7 @@ const ModalButton_allmember = styled.button`
 
       @media (max-width: 768px) {
         // phone
-        top:305px; left: 110px;
+        top:305px; left:50px;
        }
 `
 // 이펍 소개 옆 네온 디자인
@@ -392,7 +392,7 @@ const Img_main_blue = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        top: 180px; left: 190px;
+        top: 180px; left: 70px;
        }
 `
 
@@ -410,7 +410,7 @@ const Img_main_circle = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        top: 200px; left: 130px;
+        top: 200px; left: 0px;
        }
 `
 const Img_main_green = styled.img`
@@ -428,7 +428,7 @@ const Img_main_green = styled.img`
     @media (max-width: 768px) {
         // phone
         width: 230px; height: 120px;
-        top: 55px; left: 380px;
+        top: 55px; left: 300px;
        }
 `
 
@@ -447,7 +447,7 @@ const Img_main_long_tri = styled.img`
     @media (max-width: 768px) {
         // phone
         width: 150px; height: 90px;
-        top: 200px; left: 500px;
+        top: 200px; left: 350px;
        }
 `
 
@@ -465,7 +465,7 @@ const Img_main_pink = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        top: 55px; left: 100px;
+        top: 55px; left: 0px;
        }
 `
 
@@ -483,7 +483,7 @@ const Img_main_tri = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        top: 20px; left: 360px;
+        top: 20px; left: 280px;
        }
 `
 //Organizer 밑 네온사인
@@ -502,7 +502,7 @@ const Img_organ_green = styled.img`
       }
       @media (max-width: 768px) {
         // phone
-        top: 260px; left: 60px;
+        top: 260px; left: 0px;
        }
 `
 const Img_organ_sun = styled.img`
@@ -519,7 +519,7 @@ const Img_organ_sun = styled.img`
       @media (max-width: 768px) {
         // phone
         width: 200x; height: 150px;
-        top: 50px; left: 130px;
+        top: 50px; left: 20px;
        }
 `
 const Img_organ_pub = styled.img`
@@ -537,7 +537,7 @@ const Img_organ_pub = styled.img`
       @media (max-width: 768px) {
         // phone
         width: 320px; height: 400px;
-        top: 0px; left: 300px;
+        top: 0px; left: 200px;
        }
 `
 
@@ -700,9 +700,7 @@ const AboutPage = () => {
             </Wrapper>
 
             <WrapperMobile>
-
-            <Logo> <img src={logo} alt="loading..." /> </Logo>
-
+                <Logo> <img src={logo} alt="loading..." /> </Logo>
             <MainWrapper>
                 <IntroWrapper>
                     <MainIntroText> EVERYONE'S FUTURE </MainIntroText>
