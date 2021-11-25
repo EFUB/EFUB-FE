@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import FixedModalFrame from '../common/BlackModalFrame';
+import FixedModalFrame from './ModalFrame';
+
 import ScrollDiv from './ScrollDiv_Black';
 import MemberList from './MemberList';
 
@@ -37,6 +38,7 @@ const Content = styled.div`
 `
 const SubContent = styled.div` 
     display: flex;
+    position: relative;
     width:100%;
     @media (max-width: 768px) {
         // phone
@@ -100,7 +102,7 @@ const Hj_neon = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        top: -10px; left: 530px;
+        top: 260px; left: 20px;
        }
 `
 const Yj_neon = styled.img`
@@ -117,7 +119,7 @@ const Yj_neon = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        top: 230px; left: -20px;
+        top: 250px; left: 220px;
        }
 `
 
@@ -134,7 +136,7 @@ const Je_neon = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        top: 250px; left: 350px;
+        top: 550px; left: 150px;
        }
 `
 const Cr_neon = styled.img`
@@ -150,7 +152,7 @@ const Cr_neon = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        top: 280px; left: 450px;
+        top: 550px; left: 250px;
        }
 `
 
@@ -171,9 +173,9 @@ const MemberModal = ({ _handleModal }) => {
                     <Cr_neon src={cr_neon}></Cr_neon>
                 </SubContent>
 
-                <SubContent>
+                <SubContent_member>
                     <MemberList> </MemberList>
-                </SubContent>
+                </SubContent_member>
             </Content>
 
             </ScrollDiv>

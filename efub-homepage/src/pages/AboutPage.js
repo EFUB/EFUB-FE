@@ -27,11 +27,8 @@ import Member_Blue from '../components/about/Member_Blue';
 
 //Modal창
 import CareerModal from '../components/about/CareerModal';
-import CareerModalMobile from '../components/about/CareerModalMobile';
 import CurriModal from '../components/about/CurriModal';
-import CurriModalMobile from '../components/about/CurriModalMobile';
 import MemberModal from '../components/about/MemberModal';
-import MemberModalMobile from '../components/about/MemberModalMobile';
 
 
 // 한글은 font-family: 'Roboto', sans-serif;
@@ -578,21 +575,6 @@ const AboutPage = () => {
         setOpenMemberModal(!openMemberModal);
         document.body.style.overflow = "unset";
     }
-    const [openCareerModalMobile, setOpenCareerModalMobile] = useState(false);
-    const _handleCareerModalMobile = () => {
-        setOpenCareerModalMobile(!openCareerModalMobile);
-        document.body.style.overflow = "unset";
-    }
-    const [openCurriModalMobile, setOpenCurriModalMobile] = useState(false);
-    const _handleCurriModalMobile = () => {
-        setOpenCurriModalMobile(!openCurriModalMobile);
-        document.body.style.overflow = "unset";
-    }
-    const [openMemberModalMobile, setOpenMemberModalMobile] = useState(false);
-    const _handleMemberModalMobile = () => {
-        setOpenMemberModalMobile(!openMemberModalMobile);
-        document.body.style.overflow = "unset";
-    }
 
     const [change, setChange] = useState(false);
     const [toggleState, setToggleState] = useState({
@@ -729,8 +711,8 @@ const AboutPage = () => {
                 </IntroWrapper>
 
                 <RotateButton>
-                    <ModalButton_Career onClick={() => setOpenCareerModalMobile(true)}> EFUB Career >  </ModalButton_Career>
-                    <ModalButton_Curriculum onClick={() => setOpenCurriModalMobile(true)}> EFUB Curriculum >  </ModalButton_Curriculum>
+                    <ModalButton_Career onClick={() => setOpenCareerModal(true)}> EFUB Career >  </ModalButton_Career>
+                    <ModalButton_Curriculum onClick={() => setOpenCurriModal(true)}> EFUB Curriculum >  </ModalButton_Curriculum>
                     
                     <ModalButton_apply> 
                         <Link to='/recruitment'> 2기 지원하기 > </Link> </ModalButton_apply>
@@ -814,7 +796,7 @@ const AboutPage = () => {
 
                     <AllMemberWrapper>
                         
-                        <ModalButton_allmember onClick={() => setOpenMemberModalMobile(true)}> 전체 임원 보기 >  </ModalButton_allmember>
+                        <ModalButton_allmember onClick={() => setOpenMemberModal(true)}> 전체 임원 보기 >  </ModalButton_allmember>
                         <Img_organ_green src={organ_green}></Img_organ_green>
                         <Img_organ_sun src={organ_sun}></Img_organ_sun>
                         <Img_organ_pub src={organ_pub}></Img_organ_pub>
@@ -837,15 +819,6 @@ const AboutPage = () => {
             )}
             {openMemberModal && (
                 <MemberModal _handleModal={_handleMemberModal} />
-            )}
-            {openCareerModalMobile && (
-                <CareerModalMobile _handleModal={_handleCareerModalMobile} />
-            )}
-            {openCurriModalMobile && (
-                <CurriModalMobile _handleModal={_handleCurriModalMobile} />
-            )}
-            {openMemberModalMobile && (
-                <MemberModalMobile _handleModal={_handleMemberModalMobile} />
             )}
         </>
     );

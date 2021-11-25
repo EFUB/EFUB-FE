@@ -24,6 +24,10 @@ const ButtonBlock = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 768px){
+        width: 100%;
+      }
 `;
 
 const CurriButtonList = ({ select, onSelect }) => {

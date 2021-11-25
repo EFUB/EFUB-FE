@@ -20,6 +20,10 @@ const ButtonBlock = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    @media (max-width: 768px){
+        font-size: 15px;
+        padding-left: 0.5rem;
+    }
 `;
 
 const CareerButtonList = ({ select, onSelect }) => {

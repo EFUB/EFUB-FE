@@ -8,7 +8,7 @@ const MemberBlock = styled.div`
     grid-template-columns: 0.3fr 0.3fr 0.3fr;
     grid-row-gap: 50px;
     @media (max-width: 768px) {
-        // grid-template-columns: 0.3fr 0.3fr;
+        grid-template-columns: 0.3fr 0.3fr;
     }
 `;
 
