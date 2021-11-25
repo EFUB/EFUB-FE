@@ -9,16 +9,21 @@ const Wrapper=styled.div`
     height:auto;
     margin-bottom: 2rem;
     margin-top: 2rem;
+    @media (max-width: 768px) {
+        // phone
+        flex-direction: column;
+    }
 `
 const Logo = styled.img`
-    width: 20%;
-    height: 20%;
+    width: 20rem;
+    height: 20rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 1.5rem;
 `;
+
 const TextBox=styled.div`
     background-color: #1C1C1C;
     border-radius: 10px;
@@ -54,6 +59,8 @@ const Text=styled.div`
     width:90%;
     height:80%;
     white-space: pre-wrap;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 `
 
 function Review1({profile, text}) {

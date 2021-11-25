@@ -7,6 +7,9 @@ const MemberBlock = styled.div`
     display: grid;
     grid-template-columns: 0.3fr 0.3fr 0.3fr;
     grid-row-gap: 50px;
+    @media (max-width: 768px) {
+        // grid-template-columns: 0.3fr 0.3fr;
+    }
 `;
 
 const Member = styled.div`
@@ -25,7 +28,7 @@ const MemberImage = styled.img`
     border-radius:70%;
     height: 13rem;
     width: 13rem;
-    @media (max-width: 1120px) {
+    @media (max-width: 1024px) {
         height: 12rem;
         width:  12rem;
     }
