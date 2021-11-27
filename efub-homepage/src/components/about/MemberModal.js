@@ -60,7 +60,9 @@ const Ay_neon = styled.img`
     top: -10px; left: 0px;
     // transform: rotate( 10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    
+
+    @media (min-width: 768px) and (max-width: 1440px) {
         // between
         width: 150px; height: 130px;
         top: -10px; left: -10px;
@@ -79,7 +81,12 @@ const Hr_neon = styled.img`
     top: -10px; left: 280px;
     // transform: rotate( 10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (min-width: 1121px) and (max-width: 1440px) {
+        // between
+        top: -10px; left: 220px;
+      }
+
+      @media (min-width: 768px) and (max-width: 1120px) {
         // between
         top: -10px; left: 200px;
       }
@@ -95,7 +102,12 @@ const Hj_neon = styled.img`
     top: -10px; left: 680px;
     // transform: rotate( 10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (min-width: 1121px) and (max-width: 1440px) {
+        // between
+        top: -10px; left: 680px;
+      }
+
+      @media (min-width: 768px) and (max-width: 1120px) {
         // between
         top: -10px; left: 530px;
       }
@@ -111,7 +123,13 @@ const Yj_neon = styled.img`
     top: 300px; left: -20px;
     // transform: rotate( 10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (min-width: 1121px) and (max-width: 1440px) {
+        // between
+        width: 170px; height: 150px;
+        top: 290px; left: -50px;
+      }
+
+      @media (min-width: 768px) and (max-width: 1120px) {
         // between
         width: 150px; height: 150px;
         top: 230px; left: -30px;
@@ -129,7 +147,13 @@ const Je_neon = styled.img`
     top: 300px; left: 430px;
     // transform: rotate( 10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (min-width: 1121px) and (max-width: 1440px) {
+        // between
+        width: 120px; height: 120px;
+        top: 310px; left: 420px;
+      }
+
+      @media (min-width: 768px) and (max-width: 1120px) {
         // between
         top: 250px; left: 350px;
       }
@@ -145,7 +169,12 @@ const Cr_neon = styled.img`
     top: 330px; left: 600px;
     // transform: rotate( 10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (min-width: 1121px) and (max-width: 1440px) {
+        // between
+        top: 330px; left: 580px;
+      }
+
+      @media (min-width: 768px) and (max-width: 1120px) {
         // between
         top: 280px; left: 460px;
       }
