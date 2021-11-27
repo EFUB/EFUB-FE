@@ -9,6 +9,7 @@ const MemberBlock = styled.div`
     grid-row-gap: 50px;
     @media (max-width: 768px) {
         grid-template-columns: 0.3fr 0.3fr;
+        align-items: center;
     }
 `;
 
@@ -20,10 +21,12 @@ const Member = styled.div`
         height: 13.4rem;
         width: 13.4rem;
     }
+    
     margin-bottom: 1rem;
 `;
 
 const MemberImage = styled.img`
+    z-index: 99;
     background-color: rgba(255, 255, 255, 0.15);
     border-radius:70%;
     height: 13rem;

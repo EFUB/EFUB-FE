@@ -37,18 +37,23 @@ const Content = styled.div`
        }
 `
 const SubContent = styled.div` 
+    z-index: 0;
+
     display: flex;
-    position: relative;
     width:100%;
+    
     @media (max-width: 768px) {
         // phone
        }
 `
 const SubContent_member = styled.div` 
+    z-index: 10;
+
     display: flex;
+    position: relative;
+    width:100%;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     @media (max-width: 768px) {
     // phone
     }
@@ -58,6 +63,7 @@ const Ay_neon = styled.img`
     width: 130px; height: 120px;
     position: absolute;
     top: -10px; left: 0px;
+    z-index: 0;
     // transform: rotate( 10deg );
 
     
@@ -78,7 +84,7 @@ const Ay_neon = styled.img`
 const Hr_neon = styled.img`
     width: 140px; height: 120px;
     position: absolute;
-    top: -10px; left: 280px;
+    top: -10px; left: 230px;
     // transform: rotate( 10deg );
 
     @media (min-width: 1121px) and (max-width: 1440px) {
@@ -193,6 +199,9 @@ const MemberModal = ({ _handleModal }) => {
             <ScrollDiv>
                 <First> 1기 </First>
             <Content>
+                <SubContent_member>
+                    <MemberList> </MemberList>
+                </SubContent_member>
                 <SubContent>
                     <Ay_neon src={ay_neon}></Ay_neon>
                     <Hr_neon src={hr_neon}></Hr_neon>
@@ -201,10 +210,6 @@ const MemberModal = ({ _handleModal }) => {
                     <Je_neon src={je_neon}></Je_neon>
                     <Cr_neon src={cr_neon}></Cr_neon>
                 </SubContent>
-
-                <SubContent_member>
-                    <MemberList> </MemberList>
-                </SubContent_member>
             </Content>
 
             </ScrollDiv>
