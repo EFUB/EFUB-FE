@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "../../components/common/Button";
@@ -6,7 +6,7 @@ import InputLine from "../../components/common/InputLine";
 
 //상태관리, userInfo 함수 가져옴
 import { useDispatch } from "react-redux";
-import { userInfo } from '../_actions/user_actions' ;
+import { userInfo } from '../../_actions/user_actions' ;
 
 const BannerBlock = styled.div`
     width: 100%;
@@ -80,17 +80,7 @@ const DesignerApplyMainPage = () => {
 
     useEffect(() => {
         dispatch(userInfo(name, studentId, major, phone, code, 2)).then((response) => {
-          if (response.payload) {
-            setIsMember(true);
-            const userdetail = {
-              warning: response.payload.warning,
-              date: response.payload.joinDate.slice(0, 10),
-              participation: "참여중",
-            };
-            setMember(userdetail);
-          } else {
-            setIsMember(false);
-          }
+          
         });
     }, []);
 
