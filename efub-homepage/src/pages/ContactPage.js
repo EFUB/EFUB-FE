@@ -5,7 +5,9 @@ import InputBox from "../components/common/InputBox";
 import Button from "../components/common/Button";
 import Banner from '../components/contact/Banner';
 
-import { user } from '../_actions/user_actions'
+import { useDispatch } from 'react-redux' ;
+
+import { contact } from '../_actions/user_actions' ;
 
 const FormBox = styled.div`
   margin-bottom: 5rem;
@@ -26,22 +28,24 @@ const Label = styled.div`
 `;
 
 const ContactPage = () => {
+
   const isMobile = useMediaQuery({
     query: "(max-width: 767px)"
   });
 
+  // https://react.vlpt.us/basic/09-multiple-inputs.html 에서 코드 설명함.
   const [inputs, setInputs] = useState({
     email: '',
     message: '',
   });
 
-  const { email, message } = inputs;
+  const { email, message } = inputs; // 비구조화 할당을 통해 값 추출
 
   const onChange = (e) => {
-    const { value, name } = e.target;
+    const { value, name } = e.target; // 우선 e.target 에서 name과 value를 추출
     setInputs({
-      ...inputs,
-      [name]: value
+      ...inputs, // 기존의 input 객체를 복사한 뒤
+      [name]: value // name 키를 가진 값을 value로 설정
     });
   };
 
