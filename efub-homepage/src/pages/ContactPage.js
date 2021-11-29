@@ -5,6 +5,8 @@ import InputBox from "../components/common/InputBox";
 import Button from "../components/common/Button";
 import Banner from '../components/contact/Banner';
 
+import { user } from '../_actions/user_actions'
+
 const FormBox = styled.div`
   margin-bottom: 5rem;
   width: 70%;

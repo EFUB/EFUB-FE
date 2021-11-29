@@ -1,3 +1,5 @@
+//연결해야하는부분
+
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
