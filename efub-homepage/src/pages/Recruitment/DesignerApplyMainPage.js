@@ -5,7 +5,7 @@ import Button from "../../components/common/Button";
 import InputLine from "../../components/common/InputLine";
 
 //상태관리, userInfo 함수 가져옴
-import { useDispatch } from "react-redux";
+
 import { userInfo } from '../../_actions/user_actions' ;
 
 const BannerBlock = styled.div`
@@ -78,15 +78,6 @@ const DesignerApplyMainPage = () => {
 
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(userInfo(name, studentId, major, phone, code, 2)).then((response) => {
-          
-        });
-    }, []);
-
-
-
-
     return (
         <>
             <BannerBlock>
@@ -104,7 +95,10 @@ const DesignerApplyMainPage = () => {
                 <Bottom>
                     <Text>1/2 페이지</Text>
                     <Link to="/designer-apply/form">
-                        <Button filled onClick={() => { alert(`이름 : ${name} / 학번: ${studentId} / 전공 : ${major} / 전화번호 : ${phone} / 비밀번호 : ${code}`) }}>다음</Button>
+                        <Button filled onClick={() => { 
+                            alert(`이름 : ${name} / 학번: ${studentId} / 전공 : ${major} / 전화번호 : ${phone} / 비밀번호 : ${code}`)
+
+                            }}>다음</Button>
                     </Link>
                     {/* <Button filled onClick={() => { alert(`이름 : ${name} / 학번: ${studentId} / 전공 : ${major} / 전화번호 : ${phone} / 비밀번호 : ${code}`) }}>다음</Button> */}
                 </Bottom>

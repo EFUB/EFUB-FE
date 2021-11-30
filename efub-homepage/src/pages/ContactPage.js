@@ -5,9 +5,6 @@ import InputBox from "../components/common/InputBox";
 import Button from "../components/common/Button";
 import Banner from '../components/contact/Banner';
 
-//import { useDispatch } from "react-redux";
-//import { useHistory } from "react-router";
-
 import { contact } from '../_actions/user_actions' ;
 
 const FormBox = styled.div`
@@ -36,8 +33,6 @@ const ContactPage = () => {
 
   // https://react.vlpt.us/basic/09-multiple-inputs.html 에서 코드 설명함.
   
-  //const dispatch = useDispatch();
-  //const history = useHistory();
   const [inputs, setInputs] = useState({
     email: '',
     message: '',
