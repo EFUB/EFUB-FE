@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "../../components/common/Button";
 import InputLine from "../../components/common/InputLine";
-
-//userInfo 함수 가져옴
+import AppContext from "../../components/common/AppContext";
 
 import { userInfo } from '../../_actions/user_actions' ;
 
@@ -52,6 +51,7 @@ const Text = styled.div`
 `
 
 const DesignerApplyMainPage = () => {
+    //null 방지를 위해 가상값 넣어줌
     const [inputs, setInputs] = useState({
         name: '',
         studentId: '',
@@ -61,6 +61,7 @@ const DesignerApplyMainPage = () => {
     });
 
     const { name, studentId, major, phone, code } = inputs;
+    const position = 2;
 
     const onChange = (e) => {
         const { value, name } = e.target;
@@ -76,18 +77,9 @@ const DesignerApplyMainPage = () => {
         save_final : false
     });
 
-    useEffect(() => {
-        userInfo( name, studentId, major, phone, code, 2 )
-        .then(response => {
-            setIsMember({ status: 'pending' })
-            const data = response.payload
-            setTimeout(() => setIsMember({ status: 'resolved', member: data }), 600)
-            console.log(data)
-        })
-      }, [])
-
     return (
         <>
+        <AppContext.Provider value={isMember}> </AppContext.Provider>
             <BannerBlock>
                 <Title>UI/UX DESIGNER</Title>
                 <Subtitle>지원서 작성</Subtitle>
@@ -102,16 +94,22 @@ const DesignerApplyMainPage = () => {
                 <Text>여러분의 소중한 개인정보는 이펍 모집 일정이 끝난 직후 바로 폐기됩니다.</Text>
                 <Bottom>
                     <Text>1/2 페이지</Text>
-                    <Link to="/designer-apply/form">
+                    
                         <Button filled onClick={() => { 
+                            fetch(userInfo( name, studentId, major, phone, code, position))
+                            .then(response => {
+                                setIsMember({ status: 'pending' })
+                                const data = response.payload
+                                setTimeout(() => setIsMember({ status: 'resolved', member: data }), 600)
+                                console.log(data)
+                            });
                                 if (isMember?.save_final){
                                     alert(`이미 지원하셨습니다.`)
                                 } else{
-                                    alert(`이름 : ${name} / 학번: ${studentId} / 전공 : ${major} / 전화번호 : ${phone} / 비밀번호 : ${code}`)
+                                    alert(` 다음 페이지로 진행합니다.`)
+                                    window.location.replace ("/designer-apply/form")
                                 }
-                            }}>다음</Button>
-                    </Link>
-                    {/* <Button filled onClick={() => { alert(`이름 : ${name} / 학번: ${studentId} / 전공 : ${major} / 전화번호 : ${phone} / 비밀번호 : ${code}`) }}>다음</Button> */}
+                            }}> 다음</Button>
                 </Bottom>
             </Main>
         </>

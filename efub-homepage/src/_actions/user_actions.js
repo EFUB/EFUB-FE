@@ -9,9 +9,10 @@ import { USER_INFO, CONTACT, SAVED_INFO_DES, SAVED_INFO_DEV } from './type'
     const request = axios
       .get(`${USER_SERVER}/api/recruitment/apply/user/${name}/${student_id}/${department}/${phone_no}/${password}/${position}`)
       .then(response => response.data)
+      .catch((error) => {});
     return {
       type: USER_INFO,
-      payload: request,
+      payload: request
     }
 }
 
