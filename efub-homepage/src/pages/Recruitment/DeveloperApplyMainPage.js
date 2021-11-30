@@ -89,7 +89,6 @@ const DeveloperApplyMainPage = () => {
           <Link to="/developer-apply/form">
             <Button filled>다음</Button>
           </Link>
-          {/* <Button filled onClick={() => { alert(`이름 : ${name} / 학번: ${studentId} / 전공 : ${major} / 전화번호 : ${phone} / 비밀번호 : ${code}`) }}>다음</Button> */}
         </Bottom>
       </Main>
     </>

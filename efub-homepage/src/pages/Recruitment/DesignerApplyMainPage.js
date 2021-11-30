@@ -52,15 +52,17 @@ const Text = styled.div`
 `
 
 const DesignerApplyMainPage = () => {
+    //null 방지를 위해 가상값 넣어줌
     const [inputs, setInputs] = useState({
-        name: '',
-        studentId: '',
-        major: '',
-        phone: '',
-        code: ''
+        name: '이퍼비',
+        studentId: '1886123',
+        major: '소속',
+        phone: '010-1234-5678',
+        code: 'efub'
     });
 
     const { name, studentId, major, phone, code } = inputs;
+    const position = 2;
 
     const onChange = (e) => {
         const { value, name } = e.target;
@@ -77,14 +79,14 @@ const DesignerApplyMainPage = () => {
     });
 
     useEffect(() => {
-        userInfo( name, studentId, major, phone, code, 2 )
+        userInfo( name, studentId, major, phone, code, position)
         .then(response => {
             setIsMember({ status: 'pending' })
             const data = response.payload
             setTimeout(() => setIsMember({ status: 'resolved', member: data }), 600)
             console.log(data)
         })
-      }, [])
+      }, [code])
 
     return (
         <>
@@ -102,16 +104,15 @@ const DesignerApplyMainPage = () => {
                 <Text>여러분의 소중한 개인정보는 이펍 모집 일정이 끝난 직후 바로 폐기됩니다.</Text>
                 <Bottom>
                     <Text>1/2 페이지</Text>
-                    <Link to="/designer-apply/form">
+                    
                         <Button filled onClick={() => { 
                                 if (isMember?.save_final){
                                     alert(`이미 지원하셨습니다.`)
                                 } else{
-                                    alert(`이름 : ${name} / 학번: ${studentId} / 전공 : ${major} / 전화번호 : ${phone} / 비밀번호 : ${code}`)
+                                    alert(` 다음 페이지로 진행합니다.`)
+                                    window.location.replace ("/designer-apply/form")
                                 }
-                            }}>다음</Button>
-                    </Link>
-                    {/* <Button filled onClick={() => { alert(`이름 : ${name} / 학번: ${studentId} / 전공 : ${major} / 전화번호 : ${phone} / 비밀번호 : ${code}`) }}>다음</Button> */}
+                            }}> 다음</Button>
                 </Bottom>
             </Main>
         </>
