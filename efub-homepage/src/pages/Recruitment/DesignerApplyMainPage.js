@@ -4,9 +4,6 @@ import { Link } from "react-router-dom";
 import Button from "../../components/common/Button";
 import InputLine from "../../components/common/InputLine";
 
-//상태관리, userInfo 함수 가져옴
-import { useDispatch } from "react-redux";
-import { userInfo } from '../../_actions/user_actions' ;
 
 const BannerBlock = styled.div`
     width: 100%;
@@ -75,17 +72,6 @@ const DesignerApplyMainPage = () => {
         "user_id" : "",
         "save_final" : false
     });
-
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(userInfo(name, studentId, major, phone, code, 2)).then((response) => {
-          
-        });
-    }, []);
-
-
-
 
     return (
         <>
