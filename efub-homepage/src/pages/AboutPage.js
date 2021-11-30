@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { Link } from "react-router-dom";
 
 import logo from '../assets/about/efub_logo.gif';
+import logoMobile from '../assets/about/efub_logoMobile.gif';
 import mvp1 from '../assets/about/mvp1.png';
 import mvp2 from '../assets/about/mvp2.png';
 import mvp3 from '../assets/about/mvp3.png';
@@ -27,11 +28,8 @@ import Member_Blue from '../components/about/Member_Blue';
 
 //Modal창
 import CareerModal from '../components/about/CareerModal';
-import CareerModalMobile from '../components/about/CareerModalMobile';
 import CurriModal from '../components/about/CurriModal';
-import CurriModalMobile from '../components/about/CurriModalMobile';
 import MemberModal from '../components/about/MemberModal';
-import MemberModalMobile from '../components/about/MemberModalMobile';
 
 
 // 한글은 font-family: 'Roboto', sans-serif;
@@ -74,7 +72,7 @@ const MainWrapper = styled.div` // 이펍소개+버튼들
     height:300px;
     @media (max-width: 768px) {
         // phone
-        margin-top: 10rem;
+        margin-top: -5rem;
         margin-bottom: 5rem;
         flex-direction: column;
         height:600px;
@@ -151,6 +149,7 @@ const OrganizerWrapper = styled.div` // 이퍼비들 소개
 
     @media (max-width: 768px) {
         // phone
+        margin-top: 5rem;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -206,7 +205,7 @@ const Logo = styled.div`
     justify-content: center;
     @media (max-width: 768px) {
         // phone
-
+        margin-top: 1rem;
     }
 `;
 
@@ -217,7 +216,7 @@ const MainIntroText = styled.div`
     line-height:120%;
     @media (max-width: 768px) {
         // phone
-        font-size:  ${props => props.size || 38}px;
+        font-size:  ${props => props.size || 35}px;
         line-height:160%
        }
 `
@@ -228,13 +227,14 @@ const SubIntroText = styled.div`
     line-height:180%;
     @media (max-width: 768px) {
         // phone
-        font-size:  ${props => props.size || 22}px;
+        font-size:  ${props => props.size || 20}px;
        }
 `
 const SubTitle = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: auto;
     @media (max-width: 768px) {
         // phone
         margin-top: 1rem;
@@ -255,7 +255,9 @@ const SubTitleWhite = styled.div`
     margin-top: 10rem;
     @media (max-width: 768px) {
         // phone
-        margin-bottom: 2rem;
+        margin-top: 5rem;
+        margin-bottom: 1rem;
+        font-size:  ${props => props.size || 30}px;
        }
 `
 const SubTitleGreen = styled.div`
@@ -271,7 +273,9 @@ const SubTitleGreen = styled.div`
     margin-top: 10rem;
     @media (max-width: 768px) {
         // phone
-        margin-bottom: 2rem;
+        margin-top: 5rem;
+        font-size:  ${props => props.size || 30}px;
+        margin-bottom: 1rem;
        }
 `
 
@@ -291,14 +295,15 @@ const ModalButton_Career = styled.button`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
-        top: 55px; left: 30px;
+        top: 55px; left: 32px;
         font-size:  22px;
         transform: rotate( -9deg );
       }
 
     @media (max-width: 768px) {
         // phone
-        top: 100px; left: 50px;
+        top: 90px; left: 50px;
+        font-size:18px;
        }
 `
 const ModalButton_Curriculum = styled.button`
@@ -323,7 +328,8 @@ const ModalButton_Curriculum = styled.button`
 
     @media (max-width: 768px) {
         // phone
-        top: 230px; left: 130px;
+        top: 195px; left: 135px;
+        font-size:18px;
        }
 `
 const ModalButton_apply = styled.button`
@@ -333,21 +339,23 @@ const ModalButton_apply = styled.button`
     border: 0;
     outline: 0;
     position: absolute;
-    top: 80px; left: 370px;
-    width: 160px;
+    top: 80px; left: 350px;
     font-size:  ${props => props.size || 24}px;
-    transform: rotate( -20deg );
+    transform: rotate( -18deg );
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     cursor: pointer;   
     @media (min-width: 768px) and (max-width: 1024px) {
      // between
      font-size:  22px;
-     top: 75px; left: 310px;
+     transform: rotate( -16deg );
+     top: 70px; left: 307px;
    }
     @media (max-width: 768px) {
      // phone
-     top: 100px; left: 340px;
+     top: 90px; left: 310px;
+     transform: rotate( -18deg );
+     font-size:18px;
     }
 `
 const ModalButton_allmember = styled.button`
@@ -358,22 +366,29 @@ const ModalButton_allmember = styled.button`
     outline: 0;
     position: absolute;
     top:70px; left: 30px;
-    font-size:  24px;
-    transform: rotate( -15deg );
+    font-size:  20px;
+    transform: rotate( -17deg );
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
     font-weight: bold;
 
-    @media (min-width: 768px) and (max-width: 1440px) {
+    @media (min-width: 1025px) and (max-width: 1440px) {
         // between
-        transform: rotate( -18deg );
-        top: 45px; left: 40px;
+        transform: rotate( -15deg );
+        top: 65px; left: 35px;
         font-size:20px;
+      }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        // between
+        transform: rotate( -15deg );
+        top: 43px; left: 45px;
+        font-size:18px;
       }
 
       @media (max-width: 768px) {
         // phone
-        top:305px; left:50px;
+        top:240px; left: 60px;
        }
 `
 // 이펍 소개 옆 네온 디자인
@@ -394,7 +409,8 @@ const Img_main_blue = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        top: 180px; left: 70px;
+        width: 300px; height: 100px;
+        top: 160px; left: 80px;
        }
 `
 
@@ -412,13 +428,14 @@ const Img_main_circle = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        top: 200px; left: 0px;
+        width: 60px; height: 60px;
+        top: 170px; left: 20px;
        }
 `
 const Img_main_green = styled.img`
     width: 280px; height: 120px;
     position: absolute;
-    top: 38px; left: 310px;
+    top: 38px; left: 300px;
     transform: rotate( -6deg );
 
     @media (min-width: 768px) and (max-width: 1024px) {
@@ -429,8 +446,8 @@ const Img_main_green = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        width: 230px; height: 120px;
-        top: 55px; left: 300px;
+        width: 220px; height: 100px;
+        top: 55px; left: 270px;
        }
 `
 
@@ -448,8 +465,8 @@ const Img_main_long_tri = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        width: 150px; height: 90px;
-        top: 200px; left: 350px;
+        width: 130px; height: 70px;
+        top: 170px; left: 350px;
        }
 `
 
@@ -467,6 +484,7 @@ const Img_main_pink = styled.img`
 
     @media (max-width: 768px) {
         // phone
+        width: 250px; height: 100px;
         top: 55px; left: 0px;
        }
 `
@@ -485,7 +503,8 @@ const Img_main_tri = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        top: 20px; left: 280px;
+        width: 60px; height: 60px;
+        top: 30px; left: 250px;
        }
 `
 //Organizer 밑 네온사인
@@ -499,12 +518,13 @@ const Img_organ_green = styled.img`
 
     @media (min-width: 768px) and (max-width: 1024px) {
         // between
-        width: 200px; height: 100px;
+        width: 220px; height: 100px;
         top: 10px; left: 10px;
       }
       @media (max-width: 768px) {
         // phone
-        top: 260px; left: 0px;
+        width: 240px; height: 120px;
+        top: 200px; left: 20px;
        }
 `
 const Img_organ_sun = styled.img`
@@ -521,7 +541,7 @@ const Img_organ_sun = styled.img`
       @media (max-width: 768px) {
         // phone
         width: 200x; height: 150px;
-        top: 50px; left: 20px;
+        top: 30px; left: 20px;
        }
 `
 const Img_organ_pub = styled.img`
@@ -538,7 +558,7 @@ const Img_organ_pub = styled.img`
 
       @media (max-width: 768px) {
         // phone
-        width: 320px; height: 400px;
+        width: 260px; height: 330px;
         top: 0px; left: 200px;
        }
 `
@@ -549,7 +569,7 @@ const ToggleImg = styled.img.attrs({ src: Toggle })`
   width: 1rem;
   height: 1rem;
   transition: 0.2s all ease-in;
-  margin-top: 8rem;
+  margin-top: 4rem;
   margin-left : 1rem;
   &:hover {
     ${(props) => (props.change ? ToggleStyle : "")}
@@ -576,21 +596,6 @@ const AboutPage = () => {
     const [openMemberModal, setOpenMemberModal] = useState(false);
     const _handleMemberModal = () => {
         setOpenMemberModal(!openMemberModal);
-        document.body.style.overflow = "unset";
-    }
-    const [openCareerModalMobile, setOpenCareerModalMobile] = useState(false);
-    const _handleCareerModalMobile = () => {
-        setOpenCareerModalMobile(!openCareerModalMobile);
-        document.body.style.overflow = "unset";
-    }
-    const [openCurriModalMobile, setOpenCurriModalMobile] = useState(false);
-    const _handleCurriModalMobile = () => {
-        setOpenCurriModalMobile(!openCurriModalMobile);
-        document.body.style.overflow = "unset";
-    }
-    const [openMemberModalMobile, setOpenMemberModalMobile] = useState(false);
-    const _handleMemberModalMobile = () => {
-        setOpenMemberModalMobile(!openMemberModalMobile);
         document.body.style.overflow = "unset";
     }
 
@@ -717,7 +722,7 @@ const AboutPage = () => {
             </Wrapper>
 
             <WrapperMobile>
-                <Logo> <img src={logo} alt="loading..." /> </Logo>
+                <Logo> <img src={logoMobile} alt="loading..." /> </Logo>
             <MainWrapper>
                 <IntroWrapper>
                     <MainIntroText> EVERYONE'S FUTURE </MainIntroText>
@@ -729,8 +734,8 @@ const AboutPage = () => {
                 </IntroWrapper>
 
                 <RotateButton>
-                    <ModalButton_Career onClick={() => setOpenCareerModalMobile(true)}> EFUB Career >  </ModalButton_Career>
-                    <ModalButton_Curriculum onClick={() => setOpenCurriModalMobile(true)}> EFUB Curriculum >  </ModalButton_Curriculum>
+                    <ModalButton_Career onClick={() => setOpenCareerModal(true)}> EFUB Career >  </ModalButton_Career>
+                    <ModalButton_Curriculum onClick={() => setOpenCurriModal(true)}> EFUB Curriculum >  </ModalButton_Curriculum>
                     
                     <ModalButton_apply> 
                         <Link to='/recruitment'> 2기 지원하기 > </Link> </ModalButton_apply>
@@ -748,6 +753,7 @@ const AboutPage = () => {
                     <SubTitleWhite>1기&nbsp; </SubTitleWhite>
                     <SubTitleGreen>우수 활동 퍼비</SubTitleGreen>
                     <SubTitleWhite>의 활동 후기</SubTitleWhite>
+                    
                     <ToggleImg
                         change={change}
                         id="field"
@@ -814,7 +820,7 @@ const AboutPage = () => {
 
                     <AllMemberWrapper>
                         
-                        <ModalButton_allmember onClick={() => setOpenMemberModalMobile(true)}> 전체 임원 보기 >  </ModalButton_allmember>
+                        <ModalButton_allmember onClick={() => setOpenMemberModal(true)}> 전체 임원 보기 >  </ModalButton_allmember>
                         <Img_organ_green src={organ_green}></Img_organ_green>
                         <Img_organ_sun src={organ_sun}></Img_organ_sun>
                         <Img_organ_pub src={organ_pub}></Img_organ_pub>
@@ -837,15 +843,6 @@ const AboutPage = () => {
             )}
             {openMemberModal && (
                 <MemberModal _handleModal={_handleMemberModal} />
-            )}
-            {openCareerModalMobile && (
-                <CareerModalMobile _handleModal={_handleCareerModalMobile} />
-            )}
-            {openCurriModalMobile && (
-                <CurriModalMobile _handleModal={_handleCurriModalMobile} />
-            )}
-            {openMemberModalMobile && (
-                <MemberModalMobile _handleModal={_handleMemberModalMobile} />
             )}
         </>
     );

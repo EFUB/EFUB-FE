@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import FixedModalFrame from '../common/BlackModalFrame';
+import FixedModalFrame from './ModalFrame';
+
 import ScrollDiv from './ScrollDiv_Black';
 import MemberList from './MemberList';
 
@@ -36,17 +37,23 @@ const Content = styled.div`
        }
 `
 const SubContent = styled.div` 
+    z-index: 0;
+
     display: flex;
     width:100%;
+    
     @media (max-width: 768px) {
         // phone
        }
 `
 const SubContent_member = styled.div` 
+    z-index: 10;
+
     display: flex;
+    position: relative;
+    width:100%;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     @media (max-width: 768px) {
     // phone
     }
@@ -56,9 +63,12 @@ const Ay_neon = styled.img`
     width: 130px; height: 120px;
     position: absolute;
     top: -10px; left: 0px;
+    z-index: 0;
     // transform: rotate( 10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    
+
+    @media (min-width: 768px) and (max-width: 1440px) {
         // between
         width: 150px; height: 130px;
         top: -10px; left: -10px;
@@ -74,10 +84,15 @@ const Ay_neon = styled.img`
 const Hr_neon = styled.img`
     width: 140px; height: 120px;
     position: absolute;
-    top: -10px; left: 280px;
+    top: -10px; left: 230px;
     // transform: rotate( 10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (min-width: 1121px) and (max-width: 1440px) {
+        // between
+        top: -10px; left: 220px;
+      }
+
+      @media (min-width: 768px) and (max-width: 1120px) {
         // between
         top: -10px; left: 200px;
       }
@@ -93,14 +108,19 @@ const Hj_neon = styled.img`
     top: -10px; left: 680px;
     // transform: rotate( 10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (min-width: 1121px) and (max-width: 1440px) {
+        // between
+        top: -10px; left: 680px;
+      }
+
+      @media (min-width: 768px) and (max-width: 1120px) {
         // between
         top: -10px; left: 530px;
       }
 
     @media (max-width: 768px) {
         // phone
-        top: -10px; left: 530px;
+        top: 260px; left: 20px;
        }
 `
 const Yj_neon = styled.img`
@@ -109,7 +129,13 @@ const Yj_neon = styled.img`
     top: 300px; left: -20px;
     // transform: rotate( 10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (min-width: 1121px) and (max-width: 1440px) {
+        // between
+        width: 170px; height: 150px;
+        top: 290px; left: -50px;
+      }
+
+      @media (min-width: 768px) and (max-width: 1120px) {
         // between
         width: 150px; height: 150px;
         top: 230px; left: -30px;
@@ -117,7 +143,7 @@ const Yj_neon = styled.img`
 
     @media (max-width: 768px) {
         // phone
-        top: 230px; left: -20px;
+        top: 250px; left: 220px;
        }
 `
 
@@ -127,14 +153,20 @@ const Je_neon = styled.img`
     top: 300px; left: 430px;
     // transform: rotate( 10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (min-width: 1121px) and (max-width: 1440px) {
+        // between
+        width: 120px; height: 120px;
+        top: 310px; left: 420px;
+      }
+
+      @media (min-width: 768px) and (max-width: 1120px) {
         // between
         top: 250px; left: 350px;
       }
 
     @media (max-width: 768px) {
         // phone
-        top: 250px; left: 350px;
+        top: 550px; left: 150px;
        }
 `
 const Cr_neon = styled.img`
@@ -143,14 +175,19 @@ const Cr_neon = styled.img`
     top: 330px; left: 600px;
     // transform: rotate( 10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (min-width: 1121px) and (max-width: 1440px) {
+        // between
+        top: 330px; left: 580px;
+      }
+
+      @media (min-width: 768px) and (max-width: 1120px) {
         // between
         top: 280px; left: 460px;
       }
 
     @media (max-width: 768px) {
         // phone
-        top: 280px; left: 450px;
+        top: 550px; left: 250px;
        }
 `
 
@@ -162,6 +199,9 @@ const MemberModal = ({ _handleModal }) => {
             <ScrollDiv>
                 <First> 1기 </First>
             <Content>
+                <SubContent_member>
+                    <MemberList> </MemberList>
+                </SubContent_member>
                 <SubContent>
                     <Ay_neon src={ay_neon}></Ay_neon>
                     <Hr_neon src={hr_neon}></Hr_neon>
@@ -169,10 +209,6 @@ const MemberModal = ({ _handleModal }) => {
                     <Yj_neon src={yj_neon}></Yj_neon>
                     <Je_neon src={je_neon}></Je_neon>
                     <Cr_neon src={cr_neon}></Cr_neon>
-                </SubContent>
-
-                <SubContent>
-                    <MemberList> </MemberList>
                 </SubContent>
             </Content>
 

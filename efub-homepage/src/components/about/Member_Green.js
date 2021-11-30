@@ -33,8 +33,8 @@ const MemberBox=styled.div`
         margin-left: 0.5rem;
       }
       @media (max-width: 768px){
-        height: 10rem;
-        width: 10rem;
+        height: 8rem;
+        width: 8rem;
         margin-right: 0.3rem;
         margin-left: 0.3rem;
       }
@@ -52,8 +52,8 @@ const PositionText=styled.div`
         margin-top: 20%;
       }
     @media (max-width: 768px){
-        margin-top: 30%;
-        font-size: 25px;
+        margin-top: 25%;
+        font-size: 18px;
       }
 `
 
@@ -67,7 +67,7 @@ const NameText=styled.div`
     margin-bottom: 25%;
     width:100%;
     @media (max-width: 768px){
-        font-size: 35px;
+        font-size: 25px;
       }
 `
 

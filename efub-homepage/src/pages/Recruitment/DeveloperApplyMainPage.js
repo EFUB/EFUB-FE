@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+//연결해야하는부분
+
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "../../components/common/Button";
 import InputLine from "../../components/common/InputLine";
+
+import { userInfo } from '../../_actions/user_actions' ;
 
 const BannerBlock = styled.div`
     width: 100%;
