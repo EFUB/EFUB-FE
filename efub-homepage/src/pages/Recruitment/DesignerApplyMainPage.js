@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Button from "../../components/common/Button";
 import InputLine from "../../components/common/InputLine";
 
-//상태관리, userInfo 함수 가져옴
+//userInfo 함수 가져옴
 
 import { userInfo } from '../../_actions/user_actions' ;
 
@@ -72,11 +72,19 @@ const DesignerApplyMainPage = () => {
 
     // 이 사람이 등록을 한 적이 있는가?
     const [isMember, setIsMember] = useState({
-        "user_id" : "",
-        "save_final" : false
+        user_id : "",
+        save_final : false
     });
 
-    const dispatch = useDispatch();
+    useEffect(() => {
+        userInfo( name, studentId, major, phone, code, 2 )
+        .then(response => {
+            setIsMember({ status: 'pending' })
+            const data = response.payload
+            setTimeout(() => setIsMember({ status: 'resolved', member: data }), 600)
+            console.log(data)
+        })
+      }, [])
 
     return (
         <>
@@ -96,8 +104,11 @@ const DesignerApplyMainPage = () => {
                     <Text>1/2 페이지</Text>
                     <Link to="/designer-apply/form">
                         <Button filled onClick={() => { 
-                            alert(`이름 : ${name} / 학번: ${studentId} / 전공 : ${major} / 전화번호 : ${phone} / 비밀번호 : ${code}`)
-
+                                if (isMember?.save_final){
+                                    alert(`이미 지원하셨습니다.`)
+                                } else{
+                                    alert(`이름 : ${name} / 학번: ${studentId} / 전공 : ${major} / 전화번호 : ${phone} / 비밀번호 : ${code}`)
+                                }
                             }}>다음</Button>
                     </Link>
                     {/* <Button filled onClick={() => { alert(`이름 : ${name} / 학번: ${studentId} / 전공 : ${major} / 전화번호 : ${phone} / 비밀번호 : ${code}`) }}>다음</Button> */}

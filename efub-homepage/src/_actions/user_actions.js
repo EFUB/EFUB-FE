@@ -4,24 +4,15 @@ import { USER_SERVER } from '../config'
 
 import { USER_INFO, CONTACT, SAVED_INFO_DES, SAVED_INFO_DEV } from './type'
 
-//getIsMember 스터디 가입여부 확인
-export const userInfo = (
-  name,
-  student_id,
-  department,
-  phone_no,
-  password,
-  position
-) => {
-  const request = axios
-    .get(
-      `${USER_SERVER}/api/recruitment/apply/user/${name}/${student_id}/${department}/${phone_no}/${password}/${position}`
-    )
-    .then(response => response.data)
-  return {
-    type: USER_INFO,
-    payload: request,
-  }
+  //유저 존재하는지 확인
+  export const userInfo = (name, student_id, department, phone_no, password, position) => {
+    const request = axios
+      .get(`${USER_SERVER}/api/recruitment/apply/user/${name}/${student_id}/${department}/${phone_no}/${password}/${position}`)
+      .then(response => response.data)
+    return {
+      type: USER_INFO,
+      payload: request,
+    }
 }
 
 // contact 페이지에서 이메일 보내기
