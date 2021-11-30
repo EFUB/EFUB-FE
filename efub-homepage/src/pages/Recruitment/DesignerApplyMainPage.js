@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import Button from "../../components/common/Button";
 import InputLine from "../../components/common/InputLine";
 
-//userInfo 함수 가져옴
-
 import { userInfo } from '../../_actions/user_actions' ;
 
 const BannerBlock = styled.div`
@@ -54,11 +52,11 @@ const Text = styled.div`
 const DesignerApplyMainPage = () => {
     //null 방지를 위해 가상값 넣어줌
     const [inputs, setInputs] = useState({
-        name: '이퍼비',
-        studentId: '1886123',
-        major: '소속',
-        phone: '010-1234-5678',
-        code: 'efub'
+        name: '',
+        studentId: '',
+        major: '',
+        phone: '',
+        code: ''
     });
 
     const { name, studentId, major, phone, code } = inputs;
@@ -78,16 +76,6 @@ const DesignerApplyMainPage = () => {
         save_final : false
     });
 
-    useEffect(() => {
-        userInfo( name, studentId, major, phone, code, position)
-        .then(response => {
-            setIsMember({ status: 'pending' })
-            const data = response.payload
-            setTimeout(() => setIsMember({ status: 'resolved', member: data }), 600)
-            console.log(data)
-        })
-      }, [code])
-
     return (
         <>
             <BannerBlock>
@@ -106,6 +94,13 @@ const DesignerApplyMainPage = () => {
                     <Text>1/2 페이지</Text>
                     
                         <Button filled onClick={() => { 
+                            fetch(userInfo( name, studentId, major, phone, code, position))
+                            .then(response => {
+                                setIsMember({ status: 'pending' })
+                                const data = response.payload
+                                setTimeout(() => setIsMember({ status: 'resolved', member: data }), 600)
+                                console.log(data)
+                            });
                                 if (isMember?.save_final){
                                     alert(`이미 지원하셨습니다.`)
                                 } else{
