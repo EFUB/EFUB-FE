@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Button from '../../components/common/Button'
 import InputBox from '../../components/common/InputBox'
@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import DeveloperStack from '../../components/recruitment/DeveloperStack'
 import Confident from '../../components/common/Confident'
 import Checkbox from '../../components/common/CheckBox'
+import axios from "axios"
 
 const BannerBlock = styled.div`
     width: 100%;
@@ -72,9 +73,7 @@ const DesignerApplyFormPage = () => {
         fourth: '',
         portfolio: ''
     });
-
     const { first, second, third, fourth, portfolio } = inputs;
-
     const onChange = (e) => {
         const { value, name } = e.target;
         setInputs({
@@ -156,7 +155,7 @@ const DesignerApplyFormPage = () => {
                 <Checkbox onToggle={() => { onToggleCheck() }} label="네, 확인했습니다." checked={check} />
                 <Bottom>
                     <Text>2/2 페이지</Text>
-                    {/* <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second} / 3번 : ${third} / 4번 : ${fourth} / 포폴 : ${portfolio}`) }}>다음</Button> */}
+                    <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second} / 3번 : ${third} / 4번 : ${fourth} / 포폴 : ${portfolio}`) }}>다음</Button>
 
                     <div>
                         <Button blue style={{ marginRight: 15 }}>저장</Button>
