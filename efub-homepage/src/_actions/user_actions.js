@@ -7,7 +7,7 @@ import {
     CONTACT
   } from './type'
 
-  //getIsMember 스터디 가입여부 확인
+  //유저 존재하는지 확인
   export const userInfo = (name, student_id, department, phone_no, password, position) => {
     const request = axios
       .get(`${USER_SERVER}/api/recruitment/apply/user/${name}/${student_id}/${department}/${phone_no}/${password}/${position}`)
@@ -17,7 +17,6 @@ import {
       payload: request,
     }
 }
-
 
 // contact 페이지에서 이메일 보내기
 export const contact = (Writer_email, Content) => {
