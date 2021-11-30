@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 import DeveloperStack from '../../components/recruitment/DeveloperStack'
 import Confident from '../../components/common/Confident'
 import Checkbox from '../../components/common/CheckBox'
-import axios from "axios"
 
 const BannerBlock = styled.div`
     width: 100%;
