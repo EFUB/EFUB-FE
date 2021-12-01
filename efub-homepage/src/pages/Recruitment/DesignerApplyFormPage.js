@@ -97,8 +97,6 @@ const DesignerApplyFormPage = () => {
     const [available, setAvailable] = useState(false);
     const [check, setCheck] = useState(false);
     
-    //전역변수 받아오기 
-    const myContext = useContext(AppContext);
 
     const onToggle = (id) => {
         setStackList(
@@ -123,6 +121,9 @@ const DesignerApplyFormPage = () => {
     const onToggleCheck = () => {
         setCheck(!check);
     };
+    
+    //전역변수 받아오기 
+    const myContext = useContext(AppContext);
 
     fetch(savedInfoDes(myContext.user_id))
     .then(response => {
