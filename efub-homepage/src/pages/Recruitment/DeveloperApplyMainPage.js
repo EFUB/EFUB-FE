@@ -96,7 +96,6 @@ const DeveloperApplyMainPage = () => {
         <Bottom>
           <Text>1/3 페이지</Text>
           <Button filled onClick={() => { 
-
                             // fetch(userInfo(name, studentId, major, phone, code, position))
                             axios
                             .get(`${USER_SERVER}/api/recruitment/apply/user?
@@ -106,12 +105,20 @@ const DeveloperApplyMainPage = () => {
                                 // setIsMember({ status: 'pending' })
                                 // const data = response.payload
                                 // setTimeout(() => setIsMember({ status: 'resolved', member: data }), 600)
-                                isMember.userId = response.data.userId;
                                 isMember.saveFinal = response.data.saveFinal;
+                                if(isMember.saveFinal!=true){
+                                    axios
+                                    .post(`${USER_SERVER}/api/recruitment/apply/user`, {
+                                    name: name,
+                                    studentId: studentId,
+                                    major: major,
+                                    phone: phone,
+                                    code: code,
+                                    position: position
+                                    })
+                                }
+                                isMember.userId = response.data.userId
                             });
-
-                            console.log(isMember?.saveFinal);
-                            console.log(isMember?.userId);
 
                                 if (isMember?.saveFinal){
                                     alert(`이미 지원하셨습니다.`)
