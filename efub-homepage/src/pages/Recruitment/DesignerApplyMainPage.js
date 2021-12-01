@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "../../components/common/Button";
 import InputLine from "../../components/common/InputLine";
-import AppContext from "../../components/common/AppContext";
+import SaveUserID from "../../components/common/SaveUserID";
 
 import { userInfo } from "../../_actions/user_actions";
 
@@ -71,15 +71,11 @@ const DesignerApplyMainPage = () => {
     });
   };
 
-  // 이 사람이 등록을 한 적이 있는가?
-  const [isMember, setIsMember] = useState({
-    user_id: "",
-    save_final: false,
-  });
+  // 이 사람이 등록을 한 적이 있는가? : save_final, user_id
+  const [isMember, setIsMember] = useState({ status: "idle", member: null });
 
   return (
     <>
-      <AppContext.Provider value={isMember}> </AppContext.Provider>
       <BannerBlock>
         <Title>UI/UX DESIGNER</Title>
         <Subtitle>지원서 작성</Subtitle>
@@ -143,10 +139,11 @@ const DesignerApplyMainPage = () => {
                 );
                 console.log(data);
               });
-              if (isMember?.save_final) {
+              if (isMember?.member?.save_final) {
                 alert(`이미 지원하셨습니다.`);
               } else {
-                alert(` 다음 페이지로 진행합니다.`);
+                SaveUserID(isMember?.member?.user_id);
+                alert(` 다음 페이지로 진행합니다.${isMember?.member?.user_id}`);
                 window.location.replace("/designer-apply/form");
               }
             }}

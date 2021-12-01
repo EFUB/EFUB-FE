@@ -11,6 +11,9 @@ import AppContext from "../../components/common/AppContext";
 
 import axios from "axios";
 
+import SaveUserID from "../../components/common/SaveUserID";
+import { savedInfoDes } from "../../_actions/user_actions";
+
 const BannerBlock = styled.div`
   width: 100%;
   position: relative;
@@ -68,17 +71,17 @@ const Text = styled.div`
 `;
 
 const DesignerApplyFormPage = () => {
-  const myContext = useContext(AppContext);
-
+  //const myContext = useContext(AppContext);
+  //const { user_id } = props;
   const [inputs, setInputs] = useState({
-    motive: "",
-    project_topic: "",
-    exp_dev: "",
-    exp_des: "",
-    link: "",
+    first: "",
+    second: "",
+    third: "",
+    fourth: "",
+    portfolio: "",
   });
 
-  const { motive, project_topic, exp_dev, exp_des, link } = inputs;
+  const { first, second, third, fourth, portfolio } = inputs;
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -88,7 +91,7 @@ const DesignerApplyFormPage = () => {
   //         {
   //           user_id: 100030000,
   //           save_final: false,
-  //           motive: inputs.motive,
+  //           motive: inputs.first,
   //           confidence_des: score,
   //           tool: [
   //             {
@@ -103,10 +106,10 @@ const DesignerApplyFormPage = () => {
   //             },
   //           ],
   //           confidence_tool: skill,
-  //           project_topic: inputs.project_topic,
-  //           exp_dev: inputs.exp_dev,
-  //           exp_des: inputs.exp_des,
-  //           link: inputs.link,
+  //           project_topic: inputs.second,
+  //           exp_dev: inputs.third,
+  //           exp_des: inputs.fourth,
+  //           link: inputs.portfolio,
   //           interview: interview,
   //           orientation: orientation,
   //         }
@@ -123,31 +126,80 @@ const DesignerApplyFormPage = () => {
   const submitSaveDes = () => {
     try {
       const post = {
-        user_id: 100011,
+        user_id: 100013,
         save_final: false,
-        motive: inputs.motive,
+        motive: inputs.first,
         confidence_des: score,
         tool: [
           {
-            tool_name: stackList.filter((check) => check.checked === true)[0]
-              .label,
+            tool_name:
+              stackList.filter((check) => check.checked === true)[0].label ||
+              "",
           },
           {
-            tool_name: stackList.filter((check) => check.checked === true)[1]
-              .label,
+            tool_name:
+              stackList.filter((check) => check.checked === true)[1].label ||
+              "",
           },
         ],
         confidence_tool: skill,
-        project_topic: inputs.project_topic,
-        exp_dev: inputs.exp_dev,
-        exp_des: inputs.exp_des,
-        link: inputs.link,
+        project_topic: inputs.second,
+        exp_dev: inputs.third,
+        exp_des: inputs.fourth,
+        link: inputs.portfolio,
         interview: interview,
         orientation: orientation,
       };
       console.log(post);
 
       fetch("http://3.34.222.176:8080/api/recruitment/apply/save/des", {
+        method: "post", // 통신방법
+        headers: {
+          "content-type": "application/json",
+        }, // API응답 정보 담기
+        body: JSON.stringify(post), //전달 내용
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //이전에 저장한적 있는 함수
+  const submitUpdateDes = () => {
+    try {
+      const post = {
+        user_id: 100013,
+        des_id: 3,
+        save_final: false,
+        motive: inputs.first,
+        confidence_des: score,
+        tool: [
+          {
+            tool_name:
+              stackList.filter((check) => check.checked === true)[0].label ||
+              "",
+          },
+          {
+            tool_name:
+              stackList.filter((check) => check.checked === true)[1].label ||
+              "",
+          },
+        ],
+        confidence_tool: skill,
+        project_topic: inputs.second,
+        exp_dev: inputs.third,
+        exp_des: inputs.fourth,
+        link: inputs.portfolio,
+        interview: interview,
+        orientation: orientation,
+      };
+      console.log(post);
+
+      fetch("http://3.34.222.176:8080/api/recruitment/apply/update/des", {
         method: "post", // 통신방법
         headers: {
           "content-type": "application/json",
@@ -218,7 +270,7 @@ const DesignerApplyFormPage = () => {
         <Question>
           1. EFUB에 지원하게 된 동기를 적어주세요. (300자 내외)
         </Question>
-        <InputBox name="motive" value={motive} onChange={onChange} />
+        <InputBox name="first" value={first} onChange={onChange} />
         <Question>
           2. 웹디자인에 대한 자신감을 5점 만점으로 평가해주세요.
         </Question>
@@ -239,21 +291,17 @@ const DesignerApplyFormPage = () => {
           4. 동아리에 들어온다면 하고 싶은 프로젝트에 대해서 간략히
           설명해주세요. (100자 내외)
         </Question>
-        <InputBox
-          name="project_topic"
-          value={project_topic}
-          onChange={onChange}
-        />
+        <InputBox name="second" value={second} onChange={onChange} />
         <Question>
           5. 개발자와의 협업 경험이 있다면, 프로젝트 경험에 대해 서술해주세요.
         </Question>
-        <InputBox name="exp_dev" value={exp_dev} onChange={onChange} />
+        <InputBox name="third" value={third} onChange={onChange} />
         <Question>
           6. 디자이너와의 협업 경험이 있다면, 프로젝트 경험에 대해 서술해주세요.
         </Question>
-        <InputBox name="exp_des" value={exp_des} onChange={onChange} />
+        <InputBox name="fourth" value={fourth} onChange={onChange} />
         <Question>7. 포트플리오 링크를 제출해주세요.</Question>
-        <InputLine name="link" value={link} onChange={onChange} />
+        <InputLine name="portfolio" value={portfolio} onChange={onChange} />
         <Question>
           8. 면접은 9월 9일(금) 저녁 7시부터 10시에 진행됩니다. 참여
           가능하십니까?
@@ -280,13 +328,13 @@ const DesignerApplyFormPage = () => {
         />
         <Bottom>
           <Text>2/2 페이지</Text>
-          {/* <Button filled onClick={() => { alert(`1번 : ${motive} / 2번: ${project_topic} / 3번 : ${exp_dev} / 4번 : ${exp_des} / 포폴 : ${link}`) }}>다음</Button> */}
+          {/* <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second} / 3번 : ${third} / 4번 : ${fourth} / 포폴 : ${portfolio}`) }}>다음</Button> */}
 
           <div>
             <Button
               blue
               style={{ marginRight: 15 }}
-              onClick={() => submitSaveDes()}
+              onClick={() => submitUpdateDes()}
             >
               저장
             </Button>
