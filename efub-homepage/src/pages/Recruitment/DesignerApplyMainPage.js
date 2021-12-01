@@ -125,6 +125,7 @@ const DesignerApplyMainPage = () => {
                                 } else{
                                     SaveUserID(isMember?.userId);
                                     alert(` 다음 페이지로 진행합니다.${isMember?.userId}`)
+                                    console.log(isMember.userId)
                                     window.location.replace ("/designer-apply/form")
                                 }
                             }}> 다음</Button>
