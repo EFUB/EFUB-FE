@@ -31,7 +31,7 @@ export const contact = (Writer_email, Content) => {
 }
 
 //디자이너 기존 정보 불러오기
-export const savedInfoDes = User_id => {
+export const savedInfoDes = (User_id) => {
   const request = axios
     .post(`${USER_SERVER}/api/recruitment/apply/get/des`, {
       user_id: User_id,
@@ -44,7 +44,7 @@ export const savedInfoDes = User_id => {
 }
 
 //개발자 기존 정보 불러오기
-export const savedInfoDev = User_id => {
+export const savedInfoDev = (User_id) => {
   const request = axios
     .post(`${USER_SERVER}/api/recruitment/apply/get/dev`, {
       user_id: User_id,
