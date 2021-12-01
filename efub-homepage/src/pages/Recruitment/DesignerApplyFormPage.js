@@ -8,7 +8,6 @@ import DeveloperStack from '../../components/recruitment/DeveloperStack'
 import Confident from '../../components/common/Confident'
 import Checkbox from '../../components/common/CheckBox'
 
-import SaveUserID from "../../components/common/SaveUserID";
 import {savedInfoDes } from '../../_actions/user_actions' ;
 
 const BannerBlock = styled.div`
@@ -68,7 +67,7 @@ const Text = styled.div`
 `
 
 const DesignerApplyFormPage = (props) => {
-    const {user_id} = props;
+    const {user_id: userId} = props;
     const [inputs, setInputs] = useState({
         first: '',
         second: '',
@@ -123,7 +122,7 @@ const DesignerApplyFormPage = (props) => {
         setCheck(!check);
     };
 
-    fetch(savedInfoDes(user_id))
+    fetch(savedInfoDes(userId))
     .then(response => {
         const data = response.payload
         console.log(data)
@@ -133,7 +132,7 @@ const DesignerApplyFormPage = (props) => {
 
     return (
         <>
-        <Text> {user_id} </Text>
+        <Text> {userId} </Text>
             <BannerBlock>
                 <Title>UI/UX DESIGNER</Title>
                 <Subtitle>지원서 작성</Subtitle>

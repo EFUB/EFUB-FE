@@ -5,9 +5,11 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "../../components/common/Button";
 import InputLine from "../../components/common/InputLine";
-
 import SaveUserID from "../../components/common/SaveUserID";
 
+import axios from 'axios'
+import { USER_SERVER } from '../../config'
+import { USER_INFO, CONTACT, SAVED_INFO_DES, SAVED_INFO_DEV } from '../../_actions/type'
 import { userInfo } from '../../_actions/user_actions' ;
 
 const BannerBlock = styled.div`
@@ -74,7 +76,7 @@ const DeveloperApplyMainPage = () => {
   };
 
   // 이 사람이 등록을 한 적이 있는가?
-  const [isMember, setIsMember]  = useState({ status: 'idle', member: null });
+  const [isMember, setIsMember]  = useState({ status: 'idle', userId: "", saveFinal: "" });
 
 
   return (
@@ -94,18 +96,28 @@ const DeveloperApplyMainPage = () => {
         <Bottom>
           <Text>1/3 페이지</Text>
           <Button filled onClick={() => { 
-                            fetch(userInfo( name, studentId, major, phone, code, position))
+
+                            // fetch(userInfo(name, studentId, major, phone, code, position))
+                            axios
+                            .get(`${USER_SERVER}/api/recruitment/apply/user?
+                              name=${name}&student_id=${studentId}&department=${major}
+                              &phone_no=${phone}&password=${code}&position=${position}`)
                             .then(response => {
-                                setIsMember({ status: 'pending' })
-                                const data = response.payload
-                                setTimeout(() => setIsMember({ status: 'resolved', member: data }), 600)
-                                console.log(data)
+                                // setIsMember({ status: 'pending' })
+                                // const data = response.payload
+                                // setTimeout(() => setIsMember({ status: 'resolved', member: data }), 600)
+                                isMember.userId = response.data.userId;
+                                isMember.saveFinal = response.data.saveFinal;
                             });
-                                if (isMember?.member?.save_final){
+
+                            console.log(isMember?.saveFinal);
+                            console.log(isMember?.userId);
+
+                                if (isMember?.saveFinal){
                                     alert(`이미 지원하셨습니다.`)
                                 } else{
-                                    SaveUserID(isMember?.member?.user_id);
-                                    alert(` 다음 페이지로 진행합니다.${isMember?.member?.user_id}`)
+                                    SaveUserID(isMember?.userId);
+                                    alert(` 다음 페이지로 진행합니다.${isMember?.userId}`)
                                     window.location.replace ("/developer-apply/form")
                                 }
                             }}> 다음</Button>
