@@ -72,7 +72,7 @@ const DesignerApplyMainPage = () => {
     };
 
     // 이 사람이 등록을 한 적이 있는가? : save_final, user_id
-    const [isMember, setIsMember]  = useState({ status: 'idle', member: null })
+    const [isMember, setIsMember]  = useState({ status: 'idle', member: null });
 
     return (
         <>
@@ -99,11 +99,11 @@ const DesignerApplyMainPage = () => {
                                 setTimeout(() => setIsMember({ status: 'resolved', member: data }), 600)
                                 console.log(data)
                             });
-                                if (isMember?.member.save_final){
+                                if (isMember?.member?.save_final){
                                     alert(`이미 지원하셨습니다.`)
                                 } else{
-                                    SaveUserID(isMember?.member.user_id);
-                                    alert(` 다음 페이지로 진행합니다.${isMember?.member.user_id}`)
+                                    SaveUserID(isMember?.member?.user_id);
+                                    alert(` 다음 페이지로 진행합니다.${isMember?.member?.user_id}`)
                                     window.location.replace ("/designer-apply/form")
                                 }
                             }}> 다음</Button>
