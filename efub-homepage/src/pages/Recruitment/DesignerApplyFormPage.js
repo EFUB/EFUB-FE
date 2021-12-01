@@ -11,7 +11,6 @@ import AppContext from "../../components/common/AppContext";
 
 import axios from "axios";
 
-import SaveUserID from "../../components/common/SaveUserID";
 import { savedInfoDes } from "../../_actions/user_actions";
 
 const BannerBlock = styled.div`
@@ -70,9 +69,10 @@ const Text = styled.div`
   font-size: 1rem;
 `;
 
-const DesignerApplyFormPage = () => {
-  //const myContext = useContext(AppContext);
-  //const { user_id } = props;
+const DesignerApplyFormPage = (props) => {
+  const myContext = useContext(AppContext);
+  const { userId } = props;
+  console.log("userId", userId);
   const [inputs, setInputs] = useState({
     first: "",
     second: "",
@@ -87,22 +87,23 @@ const DesignerApplyFormPage = () => {
   //   const fetchData = async () => {
   //     try {
   //       const response = await axios.post(
-  //         "http://3.34.222.176:8080/api/recruitment/apply/save/des",
+  //         "http://3.34.222.176:8080/api/recruitment/apply/update/des",
   //         {
-  //           user_id: 100030000,
+  //           user_id: 100013,
+  //           des_id: 3,
   //           save_final: false,
   //           motive: inputs.first,
   //           confidence_des: score,
   //           tool: [
   //             {
-  //               tool_name: stackList.filter(
-  //                 (check) => check.checked === true
-  //               )[0].label,
+  //               tool_name:
+  //                 stackList.filter((check) => check.checked === true)[0]
+  //                   .label || "",
   //             },
   //             {
-  //               tool_name: stackList.filter(
-  //                 (check) => check.checked === true
-  //               )[1].label,
+  //               tool_name:
+  //                 stackList.filter((check) => check.checked === true)[1]
+  //                   .label || "",
   //             },
   //           ],
   //           confidence_tool: skill,

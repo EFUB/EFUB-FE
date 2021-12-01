@@ -1,53 +1,53 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import Button from '../../components/common/Button'
-import InputBox from '../../components/common/InputBox'
-import InputLine from '../../components/common/InputLine'
-import { Link } from 'react-router-dom'
-import DeveloperStack from '../../components/recruitment/DeveloperStack'
-import DeveloperPart from '../../components/recruitment/DeveloperPart'
-import Confident from '../../components/common/Confident'
+import React, { useState } from "react";
+import styled from "styled-components";
+import Button from "../../components/common/Button";
+import InputBox from "../../components/common/InputBox";
+import InputLine from "../../components/common/InputLine";
+import { Link } from "react-router-dom";
+import DeveloperStack from "../../components/recruitment/DeveloperStack";
+import DeveloperPart from "../../components/recruitment/DeveloperPart";
+import Confident from "../../components/common/Confident";
 
 const BannerBlock = styled.div`
-    width: 100%;
-    position: relative;
-    height: 15rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  position: relative;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Title = styled.div`
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
 `;
 
 const Subtitle = styled.div`
-    font-size: 1.25rem;
-    font-family: Roboto;
+  font-size: 1.25rem;
+  font-family: Roboto;
 `;
 
 const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-`
+`;
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-`
+`;
 const Bottom = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 8rem;
-    margin-bottom: 5rem;
-    justify-content: space-between;
-`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 8rem;
+  margin-bottom: 5rem;
+  justify-content: space-between;
+`;
 
 const Question = styled.div`
   font-family: Roboto;
@@ -56,19 +56,19 @@ const Question = styled.div`
   font-size: 1.5rem;
   margin-bottom: 3rem;
   margin-top: 6rem;
-`
+`;
 const Text = styled.div`
   font-family: Roboto;
   font-weight: 500;
   font-size: 1rem;
-`
+`;
 
 const DeveloperApplyFormPage = (props) => {
-  const {user_id} = props;
+  const { userId } = props;
   const [inputs, setInputs] = useState({
-    first: '',
-    second: '',
-    lang: '',
+    first: "",
+    second: "",
+    lang: "",
   });
 
   const { first, second, lang } = inputs;
@@ -77,7 +77,7 @@ const DeveloperApplyFormPage = (props) => {
     const { value, name } = e.target;
     setInputs({
       ...inputs,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -101,7 +101,7 @@ const DeveloperApplyFormPage = (props) => {
 
   const onToggle = (id) => {
     setStackList(
-      stackList.map(stack =>
+      stackList.map((stack) =>
         stack.id === id ? { ...stack, checked: !stack.checked } : stack
       )
     );
@@ -115,6 +115,63 @@ const DeveloperApplyFormPage = (props) => {
     setScore(id);
   };
 
+  const application_list = [
+    "인턴개발자 - 프론트엔드",
+    "리드개발자 - 프론트엔드",
+    "인턴개발자 - 백엔드",
+    "리드개발자 - 백엔드",
+    "인턴개발자 - 프론트 & 백",
+  ];
+
+  //처음 저장
+  const submitSaveDev = () => {
+    try {
+      const post = {
+        user_id: 6934343434,
+        save_final: false,
+        motive: inputs.first,
+        project_topic: inputs.second,
+        application_field: application_list[part],
+        language: lang,
+        confidence_lang: score,
+        tool: [
+          {
+            tool_name:
+              stackList.filter((check) => check.checked === true)[0].label ||
+              "",
+          },
+          {
+            tool_name:
+              stackList.filter((check) => check.checked === true)[1].label ||
+              "",
+          },
+        ],
+        exp: "프로젝트 경험",
+        link: "https://github.com/efubefub",
+        orientation: true,
+        interview: [
+          { date: "3월 13일 토요일 오전(9AM-12PM)" },
+          { date: "3월 14일 일요일 저녁(7PM-10PM)" },
+        ],
+      };
+      console.log(post);
+
+      fetch("http://3.34.222.176:8080/api/recruitment/apply/save/dev", {
+        method: "post", // 통신방법
+        headers: {
+          "content-type": "application/json",
+        }, // API응답 정보 담기
+        body: JSON.stringify(post), //전달 내용
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <BannerBlock>
@@ -122,18 +179,33 @@ const DeveloperApplyFormPage = (props) => {
         <Subtitle>지원서 작성</Subtitle>
       </BannerBlock>
       <Main>
-        <Question>1. EFUB에 지원하게 된 동기를 적어주세요. (300자 내외)</Question>
+        <Question>
+          1. EFUB에 지원하게 된 동기를 적어주세요. (300자 내외)
+        </Question>
         <InputBox name="first" value={first} onChange={onChange} />
-        <Question>2. 동아리에 들어온다면 하고 싶은 프로젝트에 대해서 간략히 설명해주세요. (100자 내외)</Question>
+        <Question>
+          2. 동아리에 들어온다면 하고 싶은 프로젝트에 대해서 간략히
+          설명해주세요. (100자 내외)
+        </Question>
         <InputBox name="second" value={second} onChange={onChange} />
         <Question>3. 지원 분야를 선택해주세요.</Question>
         <DeveloperPart part={part} onClickPart={onClickPart} />
-        <Text style={{ marginBottom: 25 }}>3번 문항의 답변에 따라 인턴 지원서 혹은 리드 지원서 페이지로 넘어가게 되니 신중히 체크해 주세요!</Text>
+        <Text style={{ marginBottom: 25 }}>
+          3번 문항의 답변에 따라 인턴 지원서 혹은 리드 지원서 페이지로 넘어가게
+          되니 신중히 체크해 주세요!
+        </Text>
         <Question>4. 자신 있는 프로그래밍 언어를 적어주세요.</Question>
-        <InputLine name="lang" value={lang} placeholder="ex. 파이썬" onChange={onChange} />
-        <Question>4-1. 위에서 답한 언어에 대한 자신감을 5점 만점으로 평가해주세요.</Question>
+        <InputLine
+          name="lang"
+          value={lang}
+          placeholder="ex. 파이썬"
+          onChange={onChange}
+        />
+        <Question>
+          4-1. 위에서 답한 언어에 대한 자신감을 5점 만점으로 평가해주세요.
+        </Question>
         <Wrapper>
-          <Question style={{ marginTop: '0' }}>내 자신감은...</Question>
+          <Question style={{ marginTop: "0" }}>내 자신감은...</Question>
           <Confident score={score} onClickScore={onClickScore} />
         </Wrapper>
         <Question>5. 사용할 수 있는 기술을 모두 선택해주세요.</Question>
@@ -141,28 +213,24 @@ const DeveloperApplyFormPage = (props) => {
         <Bottom>
           <Text>2/3 페이지</Text>
           <div>
-            <Button blue style={{ marginRight: 15 }}>저장</Button>
+            <Button blue style={{ marginRight: 15 }} onClick={submitSaveDev()}>
+              저장
+            </Button>
             {/* <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second} / 3번 : ${part} / 4번 : ${lang} / 4-1번 : ${score}`) }}>다음</Button> */}
-            {
-              (part % 2) === 1 ? (
-                <Link to="/developer-apply/intern">
-                  <Button filled>
-                    다음
-                  </Button>
-                </Link>
-              ) : (
-                <Link to="/developer-apply/lead">
-                  <Button filled>
-                    다음
-                  </Button>
-                </Link>
-              )
-            }
+            {part % 2 === 1 ? (
+              <Link to="/developer-apply/intern">
+                <Button filled>다음</Button>
+              </Link>
+            ) : (
+              <Link to="/developer-apply/lead">
+                <Button filled>다음</Button>
+              </Link>
+            )}
           </div>
         </Bottom>
       </Main>
     </>
-  )
-}
+  );
+};
 
 export default DeveloperApplyFormPage;
