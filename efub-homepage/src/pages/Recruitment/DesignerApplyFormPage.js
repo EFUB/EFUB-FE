@@ -8,6 +8,8 @@ import DeveloperStack from '../../components/recruitment/DeveloperStack'
 import Confident from '../../components/common/Confident'
 import Checkbox from '../../components/common/CheckBox'
 
+import AppContext from "../../components/common/AppContext";
+
 import {savedInfoDes } from '../../_actions/user_actions' ;
 
 const BannerBlock = styled.div`
@@ -122,7 +124,9 @@ const DesignerApplyFormPage = (props) => {
         setCheck(!check);
     };
 
-    fetch(savedInfoDes(userId))
+    const myContext = useContext(AppContext);
+
+    fetch(savedInfoDes(myContext.userId))
     .then(response => {
         const data = response.payload
         console.log(data)
@@ -132,7 +136,7 @@ const DesignerApplyFormPage = (props) => {
 
     return (
         <>
-        <Text> {userId} </Text>
+        <Text> {myContext.userId} </Text>
             <BannerBlock>
                 <Title>UI/UX DESIGNER</Title>
                 <Subtitle>지원서 작성</Subtitle>
@@ -172,7 +176,9 @@ const DesignerApplyFormPage = (props) => {
                     <div>
                         <Button blue style={{ marginRight: 15 }}>저장</Button>
                         <Link to="/thankyou">
-                            <Button width="8" filled>
+                            <Button width="8" filled onClick={() => { 
+                                
+                            }}>
                                 제출하기
                             </Button>
                         </Link>
