@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect} from 'react'
 import styled from 'styled-components'
 import Button from '../../components/common/Button'
 import InputBox from '../../components/common/InputBox'
@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import DeveloperStack from '../../components/recruitment/DeveloperStack'
 import DeveloperPart from '../../components/recruitment/DeveloperPart'
 import Confident from '../../components/common/Confident'
+import axios from 'axios'
 
 const BannerBlock = styled.div`
     width: 100%;
@@ -114,6 +115,31 @@ const DeveloperApplyFormPage = (props) => {
   const onClickScore = (id) => {
     setScore(id);
   };
+
+  // 기존 정보 불러오기  
+  useEffect(()=> {
+    console.log("hi");
+    console.log(userId);
+    axios
+    .post('http://3.34.222.176:8080/api/recruitment/apply/get/dev',{user_id: userId})
+    .then((response) => {
+      console.log(response);
+      //text box 값 할당하기 
+      setInputs(inputs.first = response.data.motive);
+      setInputs(inputs.second = response.data.project_topic);
+      setInputs(inputs.lang = response.data.language);
+      //지원분야
+      setPart(part = response.data.application_field);
+      //자신감 
+      setScore(score = response.data.confidence_des);
+      //사용 가능 기술
+      setStackList(
+        stackList.map(stack =>
+          stack.id === response.data.tool.tool_id ? { ...stack, checked: !stack.checked } : stack
+        )
+      );
+    });   
+  }, []);   
 
   return (
     <>
