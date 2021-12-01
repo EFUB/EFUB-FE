@@ -19,6 +19,8 @@ import DeveloperApplyLeadPage from "./pages/Recruitment/DeveloperApplyLeadPage";
 import DesignerApplyMainPage from "./pages/Recruitment/DesignerApplyMainPage";
 import DesignerApplyFormPage from "./pages/Recruitment/DesignerApplyFormPage";
 
+import AppContext from "./components/common/AppContext";
+
 const Main = styled(Responsive)`
   min-height: calc(100vh - 14rem);
   display: flex;
@@ -30,9 +32,14 @@ const Main = styled(Responsive)`
 const App = () => {
   const [menu, setMenu] = useState("ABOUT");
   const onSelect = useCallback((menu) => setMenu(menu), []);
+  const isMember = {
+    userId: "",
+    saveFinal: ""
+  }
 
   return (
     <>
+    <AppContext.Provider value={isMember}>
       <Header menu={menu} onSelect={onSelect} />
       <Main>
         <Switch>
@@ -50,9 +57,15 @@ const App = () => {
           <Route component={DesignerApplyFormPage} path="/designer-apply/form" />
           <Route component={ContactPage} path="/contact" />
           <Route component={ThankYou} path="/thankyou" />
+          <DeveloperApplyMainPage/>
+          <DeveloperApplyFormPage/>
+          <DesignerApplyMainPage/>
+          <DesignerApplyFormPage/>
         </Switch>
       </Main>
+      
       <Footer />
+      </AppContext.Provider>
     </>
   );
 };

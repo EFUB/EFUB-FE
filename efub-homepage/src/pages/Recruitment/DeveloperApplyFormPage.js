@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from 'react'
+import React, { useState , useEffect, useContext} from 'react'
 import styled from 'styled-components'
 import Button from '../../components/common/Button'
 import InputBox from '../../components/common/InputBox'
@@ -8,6 +8,8 @@ import DeveloperStack from '../../components/recruitment/DeveloperStack'
 import DeveloperPart from '../../components/recruitment/DeveloperPart'
 import Confident from '../../components/common/Confident'
 import axios from 'axios'
+
+import AppContext from "../../components/common/AppContext";
 
 const BannerBlock = styled.div`
     width: 100%;
@@ -140,9 +142,11 @@ const DeveloperApplyFormPage = (props) => {
       );
     });   
   }, []);   
-
+  
+  const myContext = useContext(AppContext);
   return (
     <>
+    
       <BannerBlock>
         <Title>DEVELOPER</Title>
         <Subtitle>지원서 작성</Subtitle>
@@ -167,7 +171,11 @@ const DeveloperApplyFormPage = (props) => {
         <Bottom>
           <Text>2/3 페이지</Text>
           <div>
-            <Button blue style={{ marginRight: 15 }}>저장</Button>
+            <Button blue style={{ marginRight: 15 }}
+              onClick={() => { 
+                console.log(myContext);
+              }}
+            >저장</Button>
             {/* <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second} / 3번 : ${part} / 4번 : ${lang} / 4-1번 : ${score}`) }}>다음</Button> */}
             {
               (part % 2) === 1 ? (
