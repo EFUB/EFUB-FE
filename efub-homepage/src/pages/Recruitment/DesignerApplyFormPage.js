@@ -123,42 +123,60 @@ const DesignerApplyFormPage = (props) => {
         setCheck(!check);
     };
 
-    // fetch(savedInfoDes(userId))
-    // .then(response => {
-    //     const data = response.payload
-    //     console.log(userId)
-    //     console.log("hi")
-    // })
+    // const [info, setInfo] = useState(null);
+    // useEffect(() => {
+    //     console.log("flag");
+    //     console.log(userId);
+    //     const getInfoDes = async (userId) => {
+    //         try{
+    //             const request = {
+    //                 user_id: userId
+    //             };
+    //             console.log(request);
+    //             fetch("http://3.34.222.176:8080/api/recruitment/apply/get/des", {
+    //                 method: "post", // 통신방법
+    //                 headers: {
+    //                     "content-type": "application/json",
+    //                 }, // API응답 정보 담기
+    //                 body: JSON.stringify(request.user_id), //전달 내용
+    //             })
+    //             .then((response) => response.json())
+    //             .then((json) => {
+    //               console.log(json);
+    //             }
+    //             );
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     };
+    //     getInfoDes();
+    // }, []);
 
     // 기존 정보 불러오기 
-    const [info, setInfo] = useState(null);
-    useEffect(() => {
-        console.log("flag");
+    useEffect(()=> {
+        console.log("hi");
         console.log(userId);
-        const getInfoDes = async (userId) => {
-            try{
-                const request = {
-                    user_id: userId
-                };
-                console.log(request);
-                fetch("http://3.34.222.176:8080/api/recruitment/apply/get/des", {
-                    method: "post", // 통신방법
-                    headers: {
-                        "content-type": "application/json",
-                    }, // API응답 정보 담기
-                    body: JSON.stringify(request.user_id), //전달 내용
-                })
-                .then((res) => res.json())
-                .then((json) => {
-                  console.log(json);
-                });
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        getInfoDes();
-    }, []);
-        
+        axios
+        .post('http://3.34.222.176:8080/api/recruitment/apply/get/des',{user_id: userId})
+        .then((response) => {
+          console.log(response);
+          //text box 값 할당하기 
+          setInputs(inputs.first = response.data.motive);
+          setInputs(inputs.second = response.data.project_topic);
+          setInputs(inputs.third = response.data.exp_dev);
+          setInputs(inputs.fourth = response.data.exp_des);
+          setInputs(inputs.portfolio = response.data.link);
+          //자신감 
+          setScore(score = response.data.confidence_des);
+          //디자인 툴
+          //능숙도
+          setSkill(skill = response.data.confidence_tool);
+          //참여
+          setAvailable(available = response.data.interview);
+          //오티
+          setCheck(available = response.data.orientation);
+        });   
+      }, []);     
     
  
     return (
