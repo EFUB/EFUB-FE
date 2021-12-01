@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import styled from 'styled-components'
 import Button from '../../components/common/Button'
 import InputBox from '../../components/common/InputBox'
@@ -6,6 +6,7 @@ import InputLine from '../../components/common/InputLine'
 import { Link } from 'react-router-dom'
 import Checkbox from '../../components/common/CheckBox'
 import MeetingTime from '../../components/recruitment/MeetingTime'
+import axios from 'axios'
 
 const BannerBlock = styled.div`
     width: 100%;
@@ -57,7 +58,8 @@ const Text = styled.div`
     font-size: 1rem;
 `
 
-const DeveloperApplyLeadPage = () => {
+const DeveloperApplyLeadPage = (props) => {
+    const {userId} = props;
     const [inputs, setInputs] = useState({
         first: '',
         second: '',
@@ -96,6 +98,66 @@ const DeveloperApplyLeadPage = () => {
     const onToggleCheck = () => {
         setCheck(!check);
     };
+
+    useEffect(()=> {
+        console.log("hi");
+        console.log(userId);
+        axios
+        .post('http://3.34.222.176:8080/api/recruitment/apply/get/dev',{user_id: userId})
+        .then((response) => {
+          console.log(response);
+          //text box 값 할당하기 
+          setInputs(inputs.first = response.data.exp);
+          setInputs(inputs.second = response.data.Link);
+          //참가
+          setCheck(check = response.data.orientation);
+          //면접 
+          setTimeList(
+            timeList.map(time =>
+                time.id === response.data.interview.interview_id? { ...time, checked: !time.checked } : time
+            ));
+        });   
+      }, []);   
+
+    //   {
+// 		"user_id": 32,
+// 		"dev_id": 17,
+// 		"created_at": "2021-11-17 00:12:38",
+// 		"modified_at": "2021-11-20 16:58:59",
+// 		"motive": "이펍 지원 동기(500자 이내)",
+// 		"project_topic": "프로젝트 주제",
+// 		"application_field": "리드개발자-백엔드",
+// 		"language": "Java, python, C++",
+// 		"confidence_lang": 5,
+// 			"tool": {
+// 			{
+// 				"user_id": 32,
+// 				"tool_id": 1,
+// 				"tool_name": "C언어"
+// 			},
+// 			{
+// 				"user_id": 32,
+// 				"tool_id": 10,
+// 				"tool_name": "스프링"
+// 			}
+// 		}
+// 		"exp": "지금까지의 프로젝트 경험(500자 내외)",
+// 		"link": "https://github.com/efubefub, https://dev-EFUB.tistory.com/",
+// 		"orietation": true
+// 		"interview": {
+// 				{
+// 					"interview_id": 1,
+// 					"user_id": 32,
+// 					"date": "3월 13일 토요일 오전(9AM-12PM)" 
+// 				},
+// 				{
+// 					"interview_id": 5,
+// 					"user_id": 32,
+// 					"date": "3월 14일 일요일 저녁(7PM-10PM)" 
+// 				}
+// 		}
+// }
+
 
     return (
         <>
