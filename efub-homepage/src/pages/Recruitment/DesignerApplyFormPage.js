@@ -8,7 +8,7 @@ import DeveloperStack from '../../components/recruitment/DeveloperStack'
 import Confident from '../../components/common/Confident'
 import Checkbox from '../../components/common/CheckBox'
 
-import AppContext from "../../components/common/AppContext";
+import SaveUserID from "../../components/common/SaveUserID";
 import {savedInfoDes } from '../../_actions/user_actions' ;
 
 const BannerBlock = styled.div`
@@ -67,7 +67,8 @@ const Text = styled.div`
     font-size: 1rem;
 `
 
-const DesignerApplyFormPage = () => {
+const DesignerApplyFormPage = (props) => {
+    const {user_id} = props;
     const [inputs, setInputs] = useState({
         first: '',
         second: '',
@@ -121,11 +122,8 @@ const DesignerApplyFormPage = () => {
     const onToggleCheck = () => {
         setCheck(!check);
     };
-    
-    //전역변수 받아오기 
-    const myContext = useContext(AppContext);
 
-    fetch(savedInfoDes(myContext.user_id))
+    fetch(savedInfoDes(user_id))
     .then(response => {
         const data = response.payload
         console.log(data)

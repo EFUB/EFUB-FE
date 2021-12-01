@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "../../components/common/Button";
 import InputLine from "../../components/common/InputLine";
-import AppContext from "../../components/common/AppContext";
+import SaveUserID from "../../components/common/SaveUserID";
 
 import { userInfo } from '../../_actions/user_actions' ;
 
@@ -79,7 +79,6 @@ const DesignerApplyMainPage = () => {
 
     return (
         <>
-        <AppContext.Provider value={isMember}> </AppContext.Provider>
             <BannerBlock>
                 <Title>UI/UX DESIGNER</Title>
                 <Subtitle>지원서 작성</Subtitle>
@@ -107,6 +106,7 @@ const DesignerApplyMainPage = () => {
                                     alert(`이미 지원하셨습니다.`)
                                 } else{
                                     alert(` 다음 페이지로 진행합니다.`)
+                                    SaveUserID(isMember);
                                     window.location.replace ("/designer-apply/form")
                                 }
                             }}> 다음</Button>
