@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext} from 'react'
 import styled from 'styled-components'
 import Button from '../../components/common/Button'
 import InputBox from '../../components/common/InputBox'
@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom'
 import DeveloperStack from '../../components/recruitment/DeveloperStack'
 import Confident from '../../components/common/Confident'
 import Checkbox from '../../components/common/CheckBox'
+
+import AppContext from "../../components/common/AppContext";
+import {savedInfoDes } from '../../_actions/user_actions' ;
 
 const BannerBlock = styled.div`
     width: 100%;
@@ -93,6 +96,9 @@ const DesignerApplyFormPage = () => {
     const [skill, setSkill] = useState(1);
     const [available, setAvailable] = useState(false);
     const [check, setCheck] = useState(false);
+    
+    //전역변수 받아오기 
+    const myContext = useContext(AppContext);
 
     const onToggle = (id) => {
         setStackList(
@@ -117,6 +123,12 @@ const DesignerApplyFormPage = () => {
     const onToggleCheck = () => {
         setCheck(!check);
     };
+
+    fetch(savedInfoDes(myContext.user_id))
+    .then(response => {
+        const data = response.payload
+        console.log(data)
+    })
 
     return (
         <>
