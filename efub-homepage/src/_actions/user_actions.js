@@ -7,7 +7,8 @@ import { USER_INFO, CONTACT, SAVED_INFO_DES, SAVED_INFO_DEV } from './type'
   //유저 존재하는지 확인
   export const userInfo = (name, student_id, department, phone_no, password, position) => {
     const request = axios
-      .get(`${USER_SERVER}/api/recruitment/apply/user/${name}/${student_id}/${department}/${phone_no}/${password}/${position}`)
+      .get(`${USER_SERVER}/api/recruitment/apply/user?
+        name=${name}&student_id=${student_id}&department=${department}&phone_no=${phone_no}&password=${password}&position=${position}`)
       .then(response => response.data)
       .catch((error) => {});
     return {

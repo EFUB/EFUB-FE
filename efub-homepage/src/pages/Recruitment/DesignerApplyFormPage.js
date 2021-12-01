@@ -129,8 +129,11 @@ const DesignerApplyFormPage = (props) => {
         console.log(data)
     })
 
+    //user_id 잘 받아오는지 <Text> {user_id} </Text> 추가함.
+
     return (
         <>
+        <Text> {user_id} </Text>
             <BannerBlock>
                 <Title>UI/UX DESIGNER</Title>
                 <Subtitle>지원서 작성</Subtitle>

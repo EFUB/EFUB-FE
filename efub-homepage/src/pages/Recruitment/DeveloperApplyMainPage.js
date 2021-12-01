@@ -5,7 +5,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "../../components/common/Button";
 import InputLine from "../../components/common/InputLine";
-import AppContext from "../../components/common/AppContext";
+
+import SaveUserID from "../../components/common/SaveUserID";
 
 import { userInfo } from '../../_actions/user_actions' ;
 
@@ -81,7 +82,6 @@ const DeveloperApplyMainPage = () => {
 
   return (
     <>
-    <AppContext.Provider value={isMember}> </AppContext.Provider>
       <BannerBlock>
         <Title>DEVELOPER</Title>
         <Subtitle>지원서 작성</Subtitle>
@@ -107,6 +107,7 @@ const DeveloperApplyMainPage = () => {
                                 if (isMember?.save_final){
                                     alert(`이미 지원하셨습니다.`)
                                 } else{
+                                    SaveUserID(isMember);
                                     alert(` 다음 페이지로 진행합니다.`)
                                     window.location.replace ("/developer-apply/form")
                                 }

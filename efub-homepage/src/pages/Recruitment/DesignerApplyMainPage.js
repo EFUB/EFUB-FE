@@ -105,8 +105,8 @@ const DesignerApplyMainPage = () => {
                                 if (isMember?.save_final){
                                     alert(`이미 지원하셨습니다.`)
                                 } else{
-                                    alert(` 다음 페이지로 진행합니다.`)
                                     SaveUserID(isMember);
+                                    alert(` 다음 페이지로 진행합니다.`)
                                     window.location.replace ("/designer-apply/form")
                                 }
                             }}> 다음</Button>
