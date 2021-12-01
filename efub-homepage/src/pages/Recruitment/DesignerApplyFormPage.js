@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import Button from "../../components/common/Button";
 import InputBox from "../../components/common/InputBox";
@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import DeveloperStack from "../../components/recruitment/DeveloperStack";
 import Confident from "../../components/common/Confident";
 import Checkbox from "../../components/common/CheckBox";
+import AppContext from "../../components/common/AppContext";
 
 import axios from "axios";
 
@@ -67,6 +68,8 @@ const Text = styled.div`
 `;
 
 const DesignerApplyFormPage = () => {
+  const myContext = useContext(AppContext);
+
   const [inputs, setInputs] = useState({
     motive: "",
     project_topic: "",
@@ -116,6 +119,7 @@ const DesignerApplyFormPage = () => {
   //   fetchData();
   // }, []);
 
+  //처음 저장
   const submitSaveDes = () => {
     try {
       const post = {
