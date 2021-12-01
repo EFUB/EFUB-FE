@@ -1,4 +1,4 @@
-import React, { useState, useContext} from 'react'
+import React, { useState, useContext, useEffect} from 'react'
 import styled from 'styled-components'
 import Button from '../../components/common/Button'
 import InputBox from '../../components/common/InputBox'
@@ -9,6 +9,7 @@ import Confident from '../../components/common/Confident'
 import Checkbox from '../../components/common/CheckBox'
 
 import {savedInfoDes } from '../../_actions/user_actions' ;
+import axios from 'axios'
 
 const BannerBlock = styled.div`
     width: 100%;
@@ -122,14 +123,44 @@ const DesignerApplyFormPage = (props) => {
         setCheck(!check);
     };
 
-    fetch(savedInfoDes(userId))
-    .then(response => {
-        const data = response.payload
-        console.log(data)
-    })
+    // fetch(savedInfoDes(userId))
+    // .then(response => {
+    //     const data = response.payload
+    //     console.log(userId)
+    //     console.log("hi")
+    // })
 
-    //user_id 잘 받아오는지 <Text> {user_id} </Text> 추가함.
-
+    // 기존 정보 불러오기 
+    const [info, setInfo] = useState(null);
+    useEffect(() => {
+        console.log("flag");
+        console.log(userId);
+        const getInfoDes = async (userId) => {
+            try{
+                const request = {
+                    user_id: userId
+                };
+                console.log(request);
+                fetch("http://3.34.222.176:8080/api/recruitment/apply/get/des", {
+                    method: "post", // 통신방법
+                    headers: {
+                        "content-type": "application/json",
+                    }, // API응답 정보 담기
+                    body: JSON.stringify(request.user_id), //전달 내용
+                })
+                .then((res) => res.json())
+                .then((json) => {
+                  console.log(json);
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getInfoDes();
+    }, []);
+        
+    
+ 
     return (
         <>
         <Text> {userId} </Text>
