@@ -63,7 +63,8 @@ const Text = styled.div`
   font-size: 1rem;
 `
 
-const DeveloperApplyFormPage = () => {
+const DeveloperApplyFormPage = (props) => {
+  const {user_id} = props;
   const [inputs, setInputs] = useState({
     first: '',
     second: '',
