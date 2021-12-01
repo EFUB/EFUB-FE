@@ -5,6 +5,9 @@ import InputBox from "../components/common/InputBox";
 import Button from "../components/common/Button";
 import Banner from '../components/contact/Banner';
 
+import axios from 'axios'
+import { USER_SERVER } from '../config'
+
 import { contact } from '../_actions/user_actions' ;
 
 const FormBox = styled.div`
@@ -101,7 +104,14 @@ const ContactPage = () => {
               style={{ marginBottom: "10rem" }}
               onClick={() => { 
                 alert(`email : ${email} / message: ${message}`);
-                contact ({email},{message});
+                axios
+                .post(`${USER_SERVER}/api/contact`, {
+                  writer_email: email,
+                  content: message
+                })
+                .then(response => {
+                    console.log(response.data);
+                });
               }}
             >전송하기</Button>
           </>

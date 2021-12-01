@@ -72,7 +72,7 @@ const Text = styled.div`
 const DesignerApplyFormPage = (props) => {
   const myContext = useContext(AppContext);
   const { userId } = props;
-  console.log("userId", userId);
+
   const [inputs, setInputs] = useState({
     first: "",
     second: "",
@@ -266,6 +266,7 @@ const DesignerApplyFormPage = (props) => {
       <BannerBlock>
         <Title>UI/UX DESIGNER</Title>
         <Subtitle>지원서 작성</Subtitle>
+        <p>{userId}</p>
       </BannerBlock>
       <Main>
         <Question>
