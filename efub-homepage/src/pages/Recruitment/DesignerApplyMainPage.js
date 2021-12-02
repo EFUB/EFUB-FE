@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import Button from "../../components/common/Button";
 import InputLine from "../../components/common/InputLine";
 import SaveUserID from "../../components/common/SaveUserID";
@@ -55,6 +56,7 @@ const Text = styled.div`
 
 const DesignerApplyMainPage = () => {
     //null 방지를 위해 가상값 넣어줌
+    const history=useHistory();
     const [inputs, setInputs] = useState({
         name: '',
         studentId: '',
@@ -113,21 +115,21 @@ const DesignerApplyMainPage = () => {
                                  isMember.userId = response.data.userId
                                  console.log(isMember.saveFinal);
                                  console.log(isMember.userId);
-                            });
-                            // .then(function (response) {
-                            //   isMember.saveFinal = response.data.saveFinal;
-                            //   isMember.userId = response.data.userId;
-                            //   console.log(isMember.saveFinal);
-                            //   console.log(isMember.userId);
-                            // })
-                                if (isMember?.saveFinal){
+                                 if (isMember.saveFinal){
                                     alert(`이미 지원하셨습니다.`)
                                 } else{
-                                    SaveUserID(isMember?.userId);
-                                    alert(` 다음 페이지로 진행합니다.${isMember?.userId}`)
-                                    console.log(isMember.userId)
-                                    window.location.replace ("/designer-apply/form")
+                                    // SaveUserID(myContext.userId);
+                                    alert(` 확인되었습니다. `)
+                                    console.log(isMember.saveFinal);
+                                    console.log(isMember.userId);
+                                    history.push({
+                                      pathname: "/designer-apply/form",
+                                      state: isMember.userId
+                                    });
+  
+                                    // window.location.replace ("/developer-apply/form")
                                 }
+                            });
                             }}> 다음</Button>
                 </Bottom>
             </Main>
