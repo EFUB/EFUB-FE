@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import Button from "../../components/common/Button";
 import InputBox from "../../components/common/InputBox";
 import InputLine from "../../components/common/InputLine";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
 import DeveloperStack from "../../components/recruitment/DeveloperStack";
 import Confident from "../../components/common/Confident";
 import Checkbox from "../../components/common/CheckBox";
+
 import AppContext from "../../components/common/AppContext";
 import SaveUserID from "../../components/common/SaveUserID";
 
@@ -71,8 +73,11 @@ const Text = styled.div`
 `;
 
 const DesignerApplyFormPage = () => {
-  const myContext = useContext(AppContext);
-  const [tempId, setTempId] = useState(0);
+  const location = useLocation();
+  const userId = location.state;
+
+  //const myContext = useContext(AppContext);
+  //const [tempId, setTempId] = useState(0);
 
   const [inputs, setInputs] = useState({
     first: "",
@@ -86,10 +91,10 @@ const DesignerApplyFormPage = () => {
 
   //처음 저장
   const submitSaveDes = () => {
-    setTempId(myContext.userId);
+    console.log(userId);
     try {
       const post = {
-        user_id: tempId,
+        user_id: userId,
         save_final: false,
         motive: inputs.first,
         confidence_des: score,
@@ -135,11 +140,11 @@ const DesignerApplyFormPage = () => {
 
   //이전에 저장한적 있는 함수
   const submitUpdateDes = () => {
-    setTempId(myContext.userId);
+    //console.log(userId);
 
     try {
       const post = {
-        user_id: tempId,
+        user_id: userId,
         des_id: 3,
         save_final: false,
         motive: inputs.first,
@@ -229,8 +234,18 @@ const DesignerApplyFormPage = () => {
     setOrientation(!orientation);
   };
 
+  const myContext = useContext(AppContext);
+
+  // fetch(savedInfoDes(myContext.userId)).then((response) => {
+  //   const data = response.payload;
+  //   console.log(data);
+  // });
+
+  //user_id 잘 받아오는지 <Text> {user_id} </Text> 추가함.
+
   return (
     <>
+      <Text> {myContext.userId} </Text>
       <BannerBlock>
         <Title>UI/UX DESIGNER</Title>
         <Subtitle>지원서 작성</Subtitle>
@@ -303,7 +318,7 @@ const DesignerApplyFormPage = () => {
             <Button
               blue
               style={{ marginRight: 15 }}
-              onClick={() => submitUpdateDes()}
+              onClick={() => submitSaveDes()}
             >
               저장
             </Button>

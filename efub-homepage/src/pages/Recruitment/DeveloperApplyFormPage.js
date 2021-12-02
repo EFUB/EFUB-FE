@@ -12,7 +12,10 @@ import Confident from "../../components/common/Confident";
 import axios from "axios";
 import { USER_SERVER } from "../../config";
 
+import { useLocation } from "react-router";
+
 import AppContext from "../../components/common/AppContext";
+import App from "../../App";
 
 const BannerBlock = styled.div`
   width: 100%;
@@ -70,7 +73,8 @@ const Text = styled.div`
 `;
 
 const DeveloperApplyFormPage = () => {
-  const myContext = useContext(AppContext);
+  const location = useLocation();
+  const userId = location.state;
 
   const [inputs, setInputs] = useState({
     first: "",
@@ -148,6 +152,7 @@ const DeveloperApplyFormPage = () => {
 
   //처음 저장
   const submitSaveDev = () => {
+    console.log(userId);
     try {
       const post = {
         user_id: 6934343434623,
