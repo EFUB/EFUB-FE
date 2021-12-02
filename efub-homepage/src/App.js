@@ -54,7 +54,7 @@ const App = () => {
   return (
     <>
     <AppContext.Provider value={isMember}>
-      <Header menu={menu} />
+      <Header menu={menu} onSelect={onSelect} />
       <Main>
         <Switch>
           <Route component={AboutPage} path="/" exact />
