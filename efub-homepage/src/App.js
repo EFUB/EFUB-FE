@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRe } from "react";
 import styled from "styled-components";
 import { Switch, Route } from "react-router-dom";
 import Header from "./components/common/Header";
@@ -20,6 +20,7 @@ import DesignerApplyMainPage from "./pages/Recruitment/DesignerApplyMainPage";
 import DesignerApplyFormPage from "./pages/Recruitment/DesignerApplyFormPage";
 
 import AppContext from "./components/common/AppContext";
+import AppContextUpdate from "./components/common/AppContextUpdate";
 
 const Main = styled(Responsive)`
   min-height: calc(100vh - 14rem);
@@ -32,15 +33,28 @@ const Main = styled(Responsive)`
 const App = () => {
   const [menu, setMenu] = useState("ABOUT");
   const onSelect = useCallback((menu) => setMenu(menu), []);
-  const isMember = {
-    userId: "",
-    saveFinal: ""
-  }
+
+  // const [isMember, setIsMember] = useState({
+  //   userId: "",
+  //   saveFinal: ""
+  // });
+
+  const [isMember, setIsMember] = useState({
+      userId :  "",
+      saveFinal : ""
+  });
+
+  // const changeMember = (newMember) =>{
+  //   setIsMember({
+  //     userId :  newMember.userId,
+  //     saveFinal : newMember.saveFinal
+  //   });
+  // };
 
   return (
     <>
     <AppContext.Provider value={isMember}>
-      <Header menu={menu} onSelect={onSelect} />
+      <Header menu={menu} />
       <Main>
         <Switch>
           <Route component={AboutPage} path="/" exact />
@@ -57,10 +71,19 @@ const App = () => {
           <Route component={DesignerApplyFormPage} path="/designer-apply/form" />
           <Route component={ContactPage} path="/contact" />
           <Route component={ThankYou} path="/thankyou" />
-          <DeveloperApplyMainPage/>
-          <DeveloperApplyFormPage/>
-          <DesignerApplyMainPage/>
-          <DesignerApplyFormPage/>
+
+            {/* <DeveloperApplyMainPage /> */}
+
+            <AppContext.Consumer>
+              {isMember => (
+                <DeveloperApplyMainPage isMember={isMember}  />
+              )}
+            </AppContext.Consumer>
+
+            <DeveloperApplyFormPage/>
+            <DesignerApplyMainPage />
+            <DesignerApplyFormPage/> 
+            {/* <Content/> */}
         </Switch>
       </Main>
       
@@ -69,5 +92,15 @@ const App = () => {
     </>
   );
 };
+
+// function Content() {
+//   return (
+//     <AppContext.Consumer>
+//       {isMember => (
+//         <DeveloperApplyMainPage isMember={isMember}  />
+//       )}
+//     </AppContext.Consumer>
+//   );
+// }
 
 export default App;

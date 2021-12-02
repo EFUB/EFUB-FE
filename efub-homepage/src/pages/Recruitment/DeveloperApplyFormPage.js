@@ -1,4 +1,7 @@
 import React, { useState , useEffect, useContext} from 'react'
+
+import { useLocation } from "react-router";
+
 import styled from 'styled-components'
 import Button from '../../components/common/Button'
 import InputBox from '../../components/common/InputBox'
@@ -10,6 +13,7 @@ import Confident from '../../components/common/Confident'
 import axios from 'axios'
 
 import AppContext from "../../components/common/AppContext";
+import App from '../../App'
 
 const BannerBlock = styled.div`
     width: 100%;
@@ -66,8 +70,10 @@ const Text = styled.div`
   font-size: 1rem;
 `
 
-const DeveloperApplyFormPage = (props) => {
-  const {userId} = props;
+const DeveloperApplyFormPage = () => {
+  const location = useLocation();
+  const userId = location.state;
+
   const [inputs, setInputs] = useState({
     first: '',
     second: '',
@@ -173,7 +179,7 @@ const DeveloperApplyFormPage = (props) => {
           <div>
             <Button blue style={{ marginRight: 15 }}
               onClick={() => { 
-                console.log(myContext);
+                console.log(userId);
               }}
             >저장</Button>
             {/* <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second} / 3번 : ${part} / 4번 : ${lang} / 4-1번 : ${score}`) }}>다음</Button> */}
@@ -195,6 +201,7 @@ const DeveloperApplyFormPage = (props) => {
           </div>
         </Bottom>
       </Main>
+      
     </>
   )
 }
