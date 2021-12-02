@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
@@ -8,18 +8,28 @@ const Listbox = styled.div`
   width: 90%;
   height: 30rem;
   margin: 2rem 0rem 3rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-const FirstList = () => {
+const Text = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+`;
+
+const FirstListPass = () => {
   return (
     <>
       <h1>1차 합격자 발표</h1>
-      <Listbox />
+      <Listbox>
+        <Text>합격</Text>
+      </Listbox>
       <Link to="/list">
-        <Button>돌아가기</Button>
+        <Button width="10">돌아가기</Button>
       </Link>
     </>
   );
 };
 
-export default FirstList;
+export default FirstListPass;
