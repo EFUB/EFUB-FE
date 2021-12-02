@@ -57,7 +57,9 @@ const Text = styled.div`
   font-size: 1rem;
 `;
 
-const DeveloperApplyInternPage = () => {
+const DeveloperApplyInternPage = ({ location }) => {
+  const posts = location.state.posts;
+
   const [inputs, setInputs] = useState({
     first: "",
     second: "",
@@ -82,8 +84,9 @@ const DeveloperApplyInternPage = () => {
     { id: 5, label: "3월 14일 일요일 저녁 (7PM~10PM)", checked: false },
     { id: 6, label: "모두 가능합니다!", checked: false },
   ]);
-
   const [check, setCheck] = useState(false);
+
+  const [checkedTimes, setCheckedTimes] = useState(new Set());
 
   const onToggle = (id) => {
     setTimeList(
@@ -91,10 +94,70 @@ const DeveloperApplyInternPage = () => {
         time.id === id ? { ...time, checked: !time.checked } : time
       )
     );
+    checkTimeHandler(id, timeList);
+    console.log([...checkedTimes]);
+  };
+
+  const checkTimeHandler = (id, timeList) => {
+    if (timeList[id].checked === false) {
+      checkedTimes.add(timeList[id].label);
+      setCheckedTimes(checkedTimes);
+    } else if (
+      timeList[id].checked === true &&
+      checkedTimes.has(timeList[id].label)
+    ) {
+      checkedTimes.delete(timeList[id].label);
+      setCheckedTimes(checkedTimes);
+    }
   };
 
   const onToggleCheck = () => {
     setCheck(!check);
+  };
+
+  //처음 저장
+  const submitSaveDev = () => {
+    try {
+      const post = {
+        user_id: posts.user_id,
+        save_final: posts.save_final,
+        motive: posts.motive,
+        project_topic: posts.project_topic,
+        application_field: posts.application_field,
+        language: posts.language,
+        confidence_lang: posts.confidence_lang,
+        tool: [
+          {
+            tool_name: posts.tool[0],
+          },
+          {
+            tool_name: posts.tool[1],
+          },
+          {
+            tool_name: posts.tool[2],
+          },
+        ],
+        exp: inputs.first,
+        link: inputs.second,
+        orientation: check,
+        interview: [{ date: "-" }, { date: "-" }],
+      };
+      console.log(post);
+
+      fetch("http://3.34.222.176:8080/api/recruitment/apply/save/dev", {
+        method: "post", // 통신방법
+        headers: {
+          "content-type": "application/json",
+        }, // API응답 정보 담기
+        body: JSON.stringify(post), //전달 내용
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json);
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

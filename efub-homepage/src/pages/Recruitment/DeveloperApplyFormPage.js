@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect, useCallback } from "react";
 import styled from "styled-components";
 import Button from "../../components/common/Button";
 import InputBox from "../../components/common/InputBox";
@@ -6,7 +6,13 @@ import InputLine from "../../components/common/InputLine";
 import { Link } from "react-router-dom";
 import DeveloperStack from "../../components/recruitment/DeveloperStack";
 import DeveloperPart from "../../components/recruitment/DeveloperPart";
+import { application_list } from "../../components/recruitment/DeveloperPart";
 import Confident from "../../components/common/Confident";
+
+import axios from "axios";
+import { USER_SERVER } from "../../config";
+
+import AppContext from "../../components/common/AppContext";
 
 const BannerBlock = styled.div`
   width: 100%;
@@ -63,8 +69,9 @@ const Text = styled.div`
   font-size: 1rem;
 `;
 
-const DeveloperApplyFormPage = (props) => {
-  const { userId } = props;
+const DeveloperApplyFormPage = () => {
+  const myContext = useContext(AppContext);
+
   const [inputs, setInputs] = useState({
     first: "",
     second: "",
@@ -98,6 +105,7 @@ const DeveloperApplyFormPage = (props) => {
   ]);
   const [part, setPart] = useState(1);
   const [score, setScore] = useState(1);
+  const [posts, setPosets] = useState({});
 
   const onToggle = (id) => {
     setStackList(
@@ -115,19 +123,34 @@ const DeveloperApplyFormPage = (props) => {
     setScore(id);
   };
 
-  const application_list = [
-    "인턴개발자 - 프론트엔드",
-    "리드개발자 - 프론트엔드",
-    "인턴개발자 - 백엔드",
-    "리드개발자 - 백엔드",
-    "인턴개발자 - 프론트 & 백",
-  ];
+  const [stacks, setStacks] = useState([]);
+
+  const onInsert = (stackItem) => {
+    let stack = {
+      tool_name: stackItem,
+    };
+    //console.log(stack);
+    console.log(stacks.push(stack));
+  };
+
+  useEffect(() => {
+    const list = stackList
+      .filter((check) => check.checked === true)
+      .map((item) => item.label);
+    console.log(list);
+
+    for (let i = 0; i < list.length; i++) {
+      console.log(list[i]);
+      onInsert(list[i]);
+      //return setStacks([]);
+    }
+  }, []);
 
   //처음 저장
   const submitSaveDev = () => {
     try {
       const post = {
-        user_id: 6934343434,
+        user_id: 6934343434623,
         save_final: false,
         motive: inputs.first,
         project_topic: inputs.second,
@@ -137,24 +160,30 @@ const DeveloperApplyFormPage = (props) => {
         tool: [
           {
             tool_name:
-              stackList.filter((check) => check.checked === true)[0].label ||
-              "",
+              stackList
+                .filter((check) => check.checked === true)
+                .map((item) => item.label)[0] || "",
           },
           {
             tool_name:
-              stackList.filter((check) => check.checked === true)[1].label ||
-              "",
+              stackList
+                .filter((check) => check.checked === true)
+                .map((item) => item.label)[1] || "",
+          },
+          {
+            tool_name:
+              stackList
+                .filter((check) => check.checked === true)
+                .map((item) => item.label)[2] || "",
           },
         ],
-        exp: "프로젝트 경험",
-        link: "https://github.com/efubefub",
+        exp: "-",
+        link: "-",
         orientation: true,
-        interview: [
-          { date: "3월 13일 토요일 오전(9AM-12PM)" },
-          { date: "3월 14일 일요일 저녁(7PM-10PM)" },
-        ],
+        interview: [{ date: "-" }, { date: "-" }],
       };
       console.log(post);
+      setPosets(post);
 
       fetch("http://3.34.222.176:8080/api/recruitment/apply/save/dev", {
         method: "post", // 통신방법
@@ -166,11 +195,15 @@ const DeveloperApplyFormPage = (props) => {
         .then((res) => res.json())
         .then((json) => {
           console.log(json);
+          alert("저장에 성공하였습니다.");
         });
     } catch (error) {
       console.log(error);
+      alert("저장에 실패하였습니다.");
     }
   };
+
+  // 수정 저장
 
   return (
     <>
@@ -213,12 +246,23 @@ const DeveloperApplyFormPage = (props) => {
         <Bottom>
           <Text>2/3 페이지</Text>
           <div>
-            <Button blue style={{ marginRight: 15 }} onClick={submitSaveDev()}>
+            <Button
+              blue
+              style={{ marginRight: 15 }}
+              onClick={() => submitSaveDev()}
+            >
               저장
             </Button>
             {/* <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second} / 3번 : ${part} / 4번 : ${lang} / 4-1번 : ${score}`) }}>다음</Button> */}
             {part % 2 === 1 ? (
-              <Link to="/developer-apply/intern">
+              <Link
+                to={{
+                  pathname: "/developer-apply/intern",
+                  state: {
+                    posts: posts,
+                  },
+                }}
+              >
                 <Button filled>다음</Button>
               </Link>
             ) : (

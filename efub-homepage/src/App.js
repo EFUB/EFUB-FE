@@ -34,37 +34,57 @@ const App = () => {
   const onSelect = useCallback((menu) => setMenu(menu), []);
   const isMember = {
     userId: "",
-    saveFinal: ""
-  }
+    saveFinal: "",
+  };
 
   return (
     <>
-    <AppContext.Provider value={isMember}>
-      <Header menu={menu} onSelect={onSelect} />
-      <Main>
-        <Switch>
-          <Route component={AboutPage} path="/" exact />
-          <Route component={ProjectPage} path="/project" />
-          <Route component={RecruitmentPage} path="/recruitment" />
-          <Route component={ListPage} path="/list" />
-          <Route component={FirstList} path="/firstList" />
-          <Route component={FinalList} path="/finalList" />
-          <Route component={DeveloperApplyMainPage} path="/developer-apply" exact />
-          <Route component={DeveloperApplyFormPage} path="/developer-apply/form" />
-          <Route component={DeveloperApplyInternPage} path="/developer-apply/intern" />
-          <Route component={DeveloperApplyLeadPage} path="/developer-apply/lead" />
-          <Route component={DesignerApplyMainPage} path="/designer-apply" exact />
-          <Route component={DesignerApplyFormPage} path="/designer-apply/form" />
-          <Route component={ContactPage} path="/contact" />
-          <Route component={ThankYou} path="/thankyou" />
-          <DeveloperApplyMainPage/>
-          <DeveloperApplyFormPage/>
-          <DesignerApplyMainPage/>
-          <DesignerApplyFormPage/>
-        </Switch>
-      </Main>
-      
-      <Footer />
+      <AppContext.Provider value={isMember}>
+        <Header menu={menu} onSelect={onSelect} />
+        <Main>
+          <Switch>
+            <Route component={AboutPage} path="/" exact />
+            <Route component={ProjectPage} path="/project" />
+            <Route component={RecruitmentPage} path="/recruitment" />
+            <Route component={ListPage} path="/list" />
+            <Route component={FirstList} path="/firstList" />
+            <Route component={FinalList} path="/finalList" />
+            <Route
+              component={DeveloperApplyMainPage}
+              path="/developer-apply"
+              exact
+            />
+            <Route
+              component={DeveloperApplyFormPage}
+              path="/developer-apply/form"
+            />
+            <Route
+              component={DeveloperApplyInternPage}
+              path="/developer-apply/intern"
+            />
+            <Route
+              component={DeveloperApplyLeadPage}
+              path="/developer-apply/lead"
+            />
+            <Route
+              component={DesignerApplyMainPage}
+              path="/designer-apply"
+              exact
+            />
+            <Route
+              component={DesignerApplyFormPage}
+              path="/designer-apply/form"
+            />
+            <Route component={ContactPage} path="/contact" />
+            <Route component={ThankYou} path="/thankyou" />
+            <DeveloperApplyMainPage />
+            <DeveloperApplyFormPage />
+            <DesignerApplyMainPage />
+            <DesignerApplyFormPage />
+          </Switch>
+        </Main>
+
+        <Footer />
       </AppContext.Provider>
     </>
   );

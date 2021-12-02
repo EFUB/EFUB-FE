@@ -8,6 +8,7 @@ import DeveloperStack from "../../components/recruitment/DeveloperStack";
 import Confident from "../../components/common/Confident";
 import Checkbox from "../../components/common/CheckBox";
 import AppContext from "../../components/common/AppContext";
+import SaveUserID from "../../components/common/SaveUserID";
 
 import axios from "axios";
 
@@ -69,9 +70,9 @@ const Text = styled.div`
   font-size: 1rem;
 `;
 
-const DesignerApplyFormPage = (props) => {
+const DesignerApplyFormPage = () => {
   const myContext = useContext(AppContext);
-  const { userId } = props;
+  const [tempId, setTempId] = useState(0);
 
   const [inputs, setInputs] = useState({
     first: "",
@@ -83,51 +84,12 @@ const DesignerApplyFormPage = (props) => {
 
   const { first, second, third, fourth, portfolio } = inputs;
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.post(
-  //         "http://3.34.222.176:8080/api/recruitment/apply/update/des",
-  //         {
-  //           user_id: 100013,
-  //           des_id: 3,
-  //           save_final: false,
-  //           motive: inputs.first,
-  //           confidence_des: score,
-  //           tool: [
-  //             {
-  //               tool_name:
-  //                 stackList.filter((check) => check.checked === true)[0]
-  //                   .label || "",
-  //             },
-  //             {
-  //               tool_name:
-  //                 stackList.filter((check) => check.checked === true)[1]
-  //                   .label || "",
-  //             },
-  //           ],
-  //           confidence_tool: skill,
-  //           project_topic: inputs.second,
-  //           exp_dev: inputs.third,
-  //           exp_des: inputs.fourth,
-  //           link: inputs.portfolio,
-  //           interview: interview,
-  //           orientation: orientation,
-  //         }
-  //       );
-  //       console.log(response.data);
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
-
   //처음 저장
   const submitSaveDes = () => {
+    setTempId(myContext.userId);
     try {
       const post = {
-        user_id: 100013,
+        user_id: tempId,
         save_final: false,
         motive: inputs.first,
         confidence_des: score,
@@ -163,17 +125,21 @@ const DesignerApplyFormPage = (props) => {
         .then((res) => res.json())
         .then((json) => {
           console.log(json);
+          alert("저장이 완료되었습니다.");
         });
     } catch (error) {
       console.log(error);
+      alert("저장에 실패하였습니다.");
     }
   };
 
   //이전에 저장한적 있는 함수
   const submitUpdateDes = () => {
+    setTempId(myContext.userId);
+
     try {
       const post = {
-        user_id: 100013,
+        user_id: tempId,
         des_id: 3,
         save_final: false,
         motive: inputs.first,
@@ -210,9 +176,11 @@ const DesignerApplyFormPage = (props) => {
         .then((res) => res.json())
         .then((json) => {
           console.log(json);
+          alert("저장이 완료되었습니다.");
         });
     } catch (error) {
       console.log(error);
+      alert("저장에 실패하였습니다.");
     }
   };
 
@@ -266,7 +234,6 @@ const DesignerApplyFormPage = (props) => {
       <BannerBlock>
         <Title>UI/UX DESIGNER</Title>
         <Subtitle>지원서 작성</Subtitle>
-        <p>{userId}</p>
       </BannerBlock>
       <Main>
         <Question>
