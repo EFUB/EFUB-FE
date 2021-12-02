@@ -4,6 +4,7 @@ import Button from '../../components/common/Button'
 import InputBox from '../../components/common/InputBox'
 import InputLine from '../../components/common/InputLine'
 import { Link } from 'react-router-dom'
+import { useLocation } from "react-router";
 import DeveloperStack from '../../components/recruitment/DeveloperStack'
 import Confident from '../../components/common/Confident'
 import Checkbox from '../../components/common/CheckBox'
@@ -68,8 +69,9 @@ const Text = styled.div`
     font-size: 1rem;
 `
 
-const DesignerApplyFormPage = (props) => {
-    const {user_id: userId} = props;
+const DesignerApplyFormPage = () => {
+    const location = useLocation();
+    const userId = location.state;
     const [inputs, setInputs] = useState({
         first: '',
         second: '',
@@ -174,7 +176,10 @@ const DesignerApplyFormPage = (props) => {
                     <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second} / 3번 : ${third} / 4번 : ${fourth} / 포폴 : ${portfolio}`) }}>다음</Button>
 
                     <div>
-                        <Button blue style={{ marginRight: 15 }}>저장</Button>
+                        <Button blue style={{ marginRight: 15 }}
+                          onClick={() => { 
+                            console.log(userId);
+                          }}>저장</Button>
                         <Link to="/thankyou">
                             <Button width="8" filled onClick={() => { 
                                 
