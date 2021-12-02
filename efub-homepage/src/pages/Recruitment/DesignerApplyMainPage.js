@@ -8,8 +8,7 @@ import SaveUserID from "../../components/common/SaveUserID";
 
 import axios from 'axios'
 import { USER_SERVER } from '../../config'
-import { USER_INFO, CONTACT, SAVED_INFO_DES, SAVED_INFO_DEV } from '../../_actions/type'
-import { userInfo } from '../../_actions/user_actions' ;
+
 
 const BannerBlock = styled.div`
     width: 100%;
