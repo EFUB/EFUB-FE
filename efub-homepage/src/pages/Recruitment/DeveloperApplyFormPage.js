@@ -133,19 +133,20 @@ const DeveloperApplyFormPage = () => {
     .then((response) => {
       console.log(response);
       //text box 값 할당하기 
-      setInputs(inputs.first = response.data.motive);
-      setInputs(inputs.second = response.data.project_topic);
-      setInputs(inputs.lang = response.data.language);
+      if(response.data.motive !== null) setInputs(inputs.first = response.data.motive);
+      if(response.data.project_topic !== null) setInputs(inputs.second = response.data.project_topic);
+      if(response.data.language !== null) setInputs(inputs.lang = response.data.language);
       //지원분야
-      setPart(part = response.data.application_field);
+      if(response.data.application_field !== null)setPart(part = response.data.application_field);
       //자신감 
-      setScore(score = response.data.confidence_des);
+      if(response.data.confidence_lang !== 0)setScore(score = response.data.confidence_lang);
       //사용 가능 기술
-      setStackList(
-        stackList.map(stack =>
-          stack.id === response.data.tool.tool_id ? { ...stack, checked: !stack.checked } : stack
-        )
-      );
+      // setStackList(
+      //   stackList.map(stack =>
+      //     stack.id === response.data.tool.tool_id ? { ...stack, checked: !stack.checked } : stack
+      //   )
+      // );
+      
     });   
   }, []);   
   
