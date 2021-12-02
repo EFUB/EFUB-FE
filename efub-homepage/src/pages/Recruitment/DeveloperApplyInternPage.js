@@ -95,7 +95,7 @@ const DeveloperApplyInternPage = ({ location }) => {
       )
     );
     checkTimeHandler(id, timeList);
-    console.log([...checkedTimes]);
+    // console.log([...checkedTimes]);
   };
 
   const checkTimeHandler = (id, timeList) => {
@@ -117,6 +117,14 @@ const DeveloperApplyInternPage = ({ location }) => {
 
   //처음 저장
   const submitSaveDev = () => {
+    // let dateList = [];
+    // for (let i = 0; i < [...checkedTimes].length; i++) {
+    //   let date_item = {
+    //     date: [...checkedTimes][i],
+    //   };
+    //   dateList.push(date_item);
+    // }
+    // console.log(dateList);
     try {
       const post = {
         user_id: posts.user_id,
@@ -140,7 +148,15 @@ const DeveloperApplyInternPage = ({ location }) => {
         exp: inputs.first,
         link: inputs.second,
         orientation: check,
-        interview: [{ date: "-" }, { date: "-" }],
+        interview: [
+          { date: [...checkedTimes][0] || "" },
+          { date: [...checkedTimes][1] || "" },
+          { date: [...checkedTimes][2] || "" },
+          { date: [...checkedTimes][3] || "" },
+          { date: [...checkedTimes][4] || "" },
+          { date: [...checkedTimes][5] || "" },
+          { date: [...checkedTimes][6] || "" },
+        ],
       };
       console.log(post);
 
@@ -195,7 +211,11 @@ const DeveloperApplyInternPage = ({ location }) => {
         <Bottom>
           <Text>3/3 페이지</Text>
           <div>
-            <Button blue style={{ marginRight: 15 }}>
+            <Button
+              blue
+              style={{ marginRight: 15 }}
+              onClick={() => submitSaveDev()}
+            >
               저장
             </Button>
             {/* <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second}`) }}>다음</Button> */}
