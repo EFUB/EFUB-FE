@@ -1,6 +1,7 @@
 //연결해야하는부분
 
 import React, { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Switch, Route } from "react-router-dom";
@@ -13,6 +14,8 @@ import axios from 'axios'
 import { USER_SERVER } from '../../config'
 
 import AppContext from "../../components/common/AppContext";
+
+import DeveloperApplyFormPage from "./DeveloperApplyFormPage";
 
 // import DeveloperApplyFormPage from "./DeveloperApplyFormPage";
 // import DeveloperApplyInternPage from "./DeveloperApplyInternPage";
@@ -64,8 +67,7 @@ const Text = styled.div`
 `
 
 const DeveloperApplyMainPage = () => {
-
-  const myContext = useContext(AppContext);
+  const history = useHistory();
 
   const [inputs, setInputs] = useState({
     name: '',
@@ -92,6 +94,11 @@ const DeveloperApplyMainPage = () => {
   //   userId: "",
   //   saveFinal: ""
   // }
+
+  const [isMember, setIsMember] = useState({
+        userId :  "",
+        saveFinal : ""
+    });
 
   return (
     <>
@@ -121,18 +128,25 @@ const DeveloperApplyMainPage = () => {
                                 position: position
                                 })
                             .then(response => {
-                                 myContext.saveFinal = response.data.saveFinal;
-                                 myContext.userId = response.data.userId
-                                 console.log(myContext.saveFinal);
-                                 console.log(myContext.userId);
+                                 isMember.saveFinal = response.data.saveFinal;
+                                 isMember.userId = response.data.userId;
+                                 console.log(isMember.saveFinal);
+                                 console.log(isMember.userId);
+                                 if (isMember.saveFinal){
+                                  alert(`이미 지원하셨습니다.`)
+                              } else{
+                                  // SaveUserID(myContext.userId);
+                                  alert(` 확인되었습니다. `)
+                                  console.log(isMember.saveFinal);
+                                  console.log(isMember.userId);
+                                  history.push({
+                                    pathname: "/developer-apply/form",
+                                    state: isMember.userId
+                                  });
+
+                                  // window.location.replace ("/developer-apply/form")
+                              }
                             });
-                                if (myContext.saveFinal){
-                                    alert(`이미 지원하셨습니다.`)
-                                } else{
-                                    SaveUserID(myContext.userId);
-                                    alert(` 확인되었습니다. `)
-                                    window.location.replace ("/developer-apply/form")
-                                }
                             }}> 다음</Button>
         </Bottom>
       </Main>
