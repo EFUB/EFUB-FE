@@ -241,10 +241,8 @@ const DeveloperApplyLeadPage = ({ location }) => {
   };
 
     useEffect(()=> {
-        console.log("hi");
-        console.log(posts.userId);
         axios
-        .post('http://3.34.222.176:8080/api/recruitment/apply/get/dev',{user_id: posts.userId})
+        .post('http://3.34.222.176:8080/api/recruitment/apply/get/dev',{user_id: posts.user_id})
         .then((response) => {
           console.log(response);
           //text box 값 할당하기 
