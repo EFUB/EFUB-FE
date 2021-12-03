@@ -143,7 +143,6 @@ const DeveloperApplyMainPage = () => {
                                     pathname: "/developer-apply/form",
                                     state: isMember.userId
                                   });
-
                                   // window.location.replace ("/developer-apply/form")
                               }
                             });
