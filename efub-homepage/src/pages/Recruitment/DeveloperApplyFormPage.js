@@ -75,6 +75,7 @@ const Text = styled.div`
 
 const DeveloperApplyFormPage = () => {
   const location = useLocation();
+  const history = useHistory();
   const userId = location.state;
 
   const [inputs, setInputs] = useState({
@@ -187,6 +188,34 @@ const DeveloperApplyFormPage = () => {
     console.log(post);
     setPosts(post);
   };
+  
+    // 기존 정보 불러오기  
+  useEffect(()=> {
+    console.log("hi");
+    console.log(userId);
+    axios
+    .post('http://3.34.222.176:8080/api/recruitment/apply/get/dev',{user_id: userId})
+    .then((response) => {
+      console.log(response);
+      //text box 값 할당하기 
+      if(response.data.motive !== null) setInputs(inputs.first = response.data.motive);
+      if(response.data.project_topic !== null) setInputs(inputs.second = response.data.project_topic);
+      if(response.data.language !== null) setInputs(inputs.lang = response.data.language);
+      //지원분야
+      if(response.data.application_field !== null)setPart(part = response.data.application_field);
+      //자신감 
+      if(response.data.confidence_lang !== 0)setScore(score = response.data.confidence_lang);
+      //사용 가능 기술
+      // setStackList(
+      //   stackList.map(stack =>
+      //     stack.id === response.data.tool.tool_id ? { ...stack, checked: !stack.checked } : stack
+      //   )
+      // );
+      
+    });   
+  }, []);   
+  
+  const myContext = useContext(AppContext);
 
   return (
     <>
@@ -237,6 +266,7 @@ const DeveloperApplyFormPage = () => {
               저장
             </Button>
             {/* <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second} / 3번 : ${part} / 4번 : ${lang} / 4-1번 : ${score}`) }}>다음</Button> */}
+
             {part % 2 === 1 ? (
               <Link
                 to={{

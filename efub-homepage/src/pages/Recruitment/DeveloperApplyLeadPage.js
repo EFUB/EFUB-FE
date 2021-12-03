@@ -1,12 +1,17 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import Button from "../../components/common/Button";
-import InputBox from "../../components/common/InputBox";
-import InputLine from "../../components/common/InputLine";
-import { Link } from "react-router-dom";
-import Checkbox from "../../components/common/CheckBox";
-import MeetingTime from "../../components/recruitment/MeetingTime";
+import React, { useState ,useEffect, useContext} from 'react'
+import { useLocation } from "react-router";
+
+import styled from 'styled-components'
+import Button from '../../components/common/Button'
+import InputBox from '../../components/common/InputBox'
+import InputLine from '../../components/common/InputLine'
+import { Link } from 'react-router-dom'
+import Checkbox from '../../components/common/CheckBox'
+import MeetingTime from '../../components/recruitment/MeetingTime'
+import axios from 'axios'
 import { USER_SERVER } from "../../config";
+import AppContext from "../../components/common/AppContext";
+
 
 const BannerBlock = styled.div`
   width: 100%;
@@ -234,6 +239,26 @@ const DeveloperApplyLeadPage = ({ location }) => {
       //alert("저장에 실패하였습니다.");
     }
   };
+
+    useEffect(()=> {
+        console.log("hi");
+        console.log(userId);
+        axios
+        .post('http://3.34.222.176:8080/api/recruitment/apply/get/dev',{user_id: posts.userId})
+        .then((response) => {
+          console.log(response);
+          //text box 값 할당하기 
+          if(response.data.exp !== null) setInputs(inputs.first = response.data.exp);
+          if(response.data.link !== null) setInputs(inputs.second = response.data.link);
+          //참가
+          if(response.data.orientation !== null) setCheck(check = response.data.orientation);
+          //면접 
+        //   setTimeList(
+        //     timeList.map(time =>
+        //         time.id === response.data.interview.interview_id? { ...time, checked: !time.checked } : time
+        //     ));
+        });   
+      }, []);  
 
   return (
     <>

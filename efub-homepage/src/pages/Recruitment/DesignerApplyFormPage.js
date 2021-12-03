@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
-import styled from "styled-components";
-import Button from "../../components/common/Button";
-import InputBox from "../../components/common/InputBox";
-import InputLine from "../../components/common/InputLine";
-import { Link } from "react-router-dom";
+import React, { useState, useContext, useEffect} from 'react'
+import styled from 'styled-components'
+import Button from '../../components/common/Button'
+import InputBox from '../../components/common/InputBox'
+import InputLine from '../../components/common/InputLine'
+import { Link } from 'react-router-dom'
 import { useLocation } from "react-router";
 import DeveloperStack from "../../components/recruitment/DeveloperStack";
 import Confident from "../../components/common/Confident";
@@ -234,15 +234,33 @@ const DesignerApplyFormPage = () => {
   const onToggleOrientation = () => {
     setOrientation(!orientation);
   };
+      // 기존 정보 불러오기 
+    useEffect(()=> {
+        console.log("hi");
+        console.log(userId);
+        axios
+        .post('http://3.34.222.176:8080/api/recruitment/apply/get/des',{user_id: userId})
+        .then((response) => {
+          console.log(response);
+          //text box 값 할당하기 
+          if(response.data.motive !== null) setInputs(inputs.first = response.data.motive);
+          if(response.data.project_topic !== null)setInputs(inputs.second = response.data.project_topic);
+          if(response.data.exp_dev !== null)setInputs(inputs.third = response.data.exp_dev);
+          if(response.data.exp_des!== null)setInputs(inputs.fourth = response.data.exp_des);
+          if(response.data.link !== null)setInputs(inputs.portfolio = response.data.link);
+          //자신감 
+          if(response.data.confidence_des!== 0)setScore(score = response.data.confidence_des);
+          //디자인 툴
+          //능숙도
+          if(response.data.confidence_tool!== 0) setSkill(skill = response.data.confidence_tool);
+          //참여
+          if(response.data.interview !== null)setAvailable(available = response.data.interview);
+          //오티
+          if(response.data.orientation !== null)setCheck(available = response.data.orientation);
+        });   
+      }, []);     
 
   const myContext = useContext(AppContext);
-
-  // fetch(savedInfoDes(myContext.userId)).then((response) => {
-  //   const data = response.payload;
-  //   console.log(data);
-  // });
-
-  //user_id 잘 받아오는지 <Text> {user_id} </Text> 추가함.
 
   return (
     <>
@@ -334,5 +352,6 @@ const DesignerApplyFormPage = () => {
     </>
   );
 };
+
 
 export default DesignerApplyFormPage;
