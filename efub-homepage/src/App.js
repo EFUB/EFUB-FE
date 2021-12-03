@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRe } from "react";
+import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { Switch, Route } from "react-router-dom";
 import Header from "./components/common/Header";
