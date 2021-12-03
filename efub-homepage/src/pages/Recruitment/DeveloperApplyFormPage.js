@@ -187,24 +187,17 @@ const DeveloperApplyFormPage = () => {
             {/* <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second} / 3번 : ${part} / 4번 : ${lang} / 4-1번 : ${score}`) }}>다음</Button> */}
             {
               (part % 2) === 1 ? (
-                // <Link to = "/developer-apply/intern">
-                //   <Button filled onClick={() => {history.push({
-                //     pathname: "/developer-apply/intern",
-                //     state: userId
-                //     })}} > 다음
-                //   </Button>
-                // </Link>
-                <Link to="/developer-apply/intern">
-                  <Button filled>
-                    다음
-                  </Button>
-                </Link>
+                <Button filled onClick={() => {history.push({
+                  pathname: "/developer-apply/intern",
+                  state: userId
+                  })}} > 다음
+                </Button>
               ) : (
-                <Link to="/developer-apply/lead">
-                  <Button filled>
-                    다음
-                  </Button>
-                </Link>
+                <Button filled onClick={() => {history.push({
+                  pathname: "/developer-apply/lead",
+                  state: userId
+                  })}} > 다음
+                </Button>
               )
             }
           </div>
