@@ -188,8 +188,6 @@ const DeveloperApplyFormPage = () => {
     setPosts(post);
   };
 
-  // 수정 저장
-
   return (
     <>
       <BannerBlock>
@@ -251,7 +249,14 @@ const DeveloperApplyFormPage = () => {
                 <Button filled>다음</Button>
               </Link>
             ) : (
-              <Link to="/developer-apply/lead">
+              <Link
+                to={{
+                  pathname: "/developer-apply/lead",
+                  state: {
+                    posts: posts,
+                  },
+                }}
+              >
                 <Button filled>다음</Button>
               </Link>
             )}

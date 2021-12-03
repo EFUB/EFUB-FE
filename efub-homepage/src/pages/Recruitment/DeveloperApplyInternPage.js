@@ -156,8 +156,8 @@ const DeveloperApplyInternPage = ({ location }) => {
         ],
       };
       console.log(post);
-      console.log();
 
+      //처음 저장 url: `${USER_SERVER}/api/recruitment/apply/save/dev`
       fetch(`${USER_SERVER}/api/recruitment/apply/save/dev`, {
         method: "post", // 통신방법
         headers: {
@@ -173,6 +173,66 @@ const DeveloperApplyInternPage = ({ location }) => {
     } catch (error) {
       console.log(error);
       alert("저장에 실패하였습니다.");
+    }
+  };
+
+  //수정 저장
+  const submitUpdateDev = () => {
+    // let dateList = [];
+    // for (let i = 0; i < [...checkedTimes].length; i++) {
+    //   let date_item = {
+    //     date: [...checkedTimes][i],
+    //   };
+    //   dateList.push(date_item);
+    // }
+    // console.log(dateList);
+    try {
+      const post = {
+        user_id: posts.user_id,
+        dev_id: 4,
+        save_final: posts.save_final,
+        motive: posts.motive,
+        project_topic: posts.project_topic,
+        application_field: posts.application_field,
+        language: posts.language,
+        confidence_lang: posts.confidence_lang,
+        tool: [
+          {
+            tool_name: posts.tool[0].tool_name,
+          },
+          {
+            tool_name: posts.tool[1].tool_name,
+          },
+          {
+            tool_name: posts.tool[2].tool_name,
+          },
+        ],
+        exp: inputs.first,
+        link: inputs.second,
+        orientation: check,
+        interview: [
+          { date: [...checkedTimes][0] || "-" },
+          { date: [...checkedTimes][1] || "-" },
+          { date: [...checkedTimes][2] || "-" },
+        ],
+      };
+      console.log(post);
+
+      fetch(`${USER_SERVER}/api/recruitment/apply/update/dev`, {
+        method: "post", // 통신방법
+        headers: {
+          "content-type": "application/json",
+        }, // API응답 정보 담기
+        body: JSON.stringify(post), //전달 내용
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json);
+          //alert("저장이 완료되었습니다.");
+        });
+    } catch (error) {
+      console.log(error);
+      //alert("저장에 실패하였습니다.");
     }
   };
 
@@ -214,7 +274,7 @@ const DeveloperApplyInternPage = ({ location }) => {
             <Button
               blue
               style={{ marginRight: 15 }}
-              onClick={() => submitSaveDev()}
+              onClick={() => submitUpdateDev()}
             >
               저장
             </Button>

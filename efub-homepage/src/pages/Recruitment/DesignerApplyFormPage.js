@@ -11,6 +11,7 @@ import Checkbox from "../../components/common/CheckBox";
 
 import AppContext from "../../components/common/AppContext";
 import SaveUserID from "../../components/common/SaveUserID";
+import { USER_SERVER } from "../../config";
 
 import axios from "axios";
 
@@ -120,7 +121,7 @@ const DesignerApplyFormPage = () => {
       };
       console.log(post);
 
-      fetch("http://3.34.222.176:8080/api/recruitment/apply/save/des", {
+      fetch(`${USER_SERVER}/api/recruitment/apply/save/des`, {
         method: "post", // 통신방법
         headers: {
           "content-type": "application/json",
