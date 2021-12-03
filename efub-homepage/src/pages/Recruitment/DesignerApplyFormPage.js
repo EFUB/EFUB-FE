@@ -254,9 +254,9 @@ const DesignerApplyFormPage = () => {
           //능숙도
           if(response.data.confidence_tool!== 0) setSkill(skill = response.data.confidence_tool);
           //참여
-          if(response.data.interview !== null)setAvailable(available = response.data.interview);
+          if(response.data.interview !== null)setInterview(interview = response.data.interview);
           //오티
-          if(response.data.orientation !== null)setCheck(available = response.data.orientation);
+          if(response.data.orientation !== null)setOrientation(orientation = response.data.orientation);
         });   
       }, []);     
 

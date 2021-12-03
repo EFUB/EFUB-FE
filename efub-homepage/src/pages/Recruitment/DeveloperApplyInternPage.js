@@ -242,7 +242,6 @@ const DeveloperApplyInternPage = ({ location }) => {
   };
      // 기존 정보 업데이트 
     useEffect(()=> {
-        console.log(userId);
         axios
         .post('http://3.34.222.176:8080/api/recruitment/apply/get/dev',{user_id: posts.userId})
         .then((response) => {
