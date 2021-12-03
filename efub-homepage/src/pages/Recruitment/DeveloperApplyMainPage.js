@@ -1,8 +1,27 @@
-import React, { useState } from "react";
+//연결해야하는부분
+
+import React, { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+
 import Button from "../../components/common/Button";
 import InputLine from "../../components/common/InputLine";
+import SaveUserID from "../../components/common/SaveUserID";
+
+import axios from 'axios'
+import { USER_SERVER } from '../../config'
+
+import AppContext from "../../components/common/AppContext";
+
+import DeveloperApplyFormPage from "./DeveloperApplyFormPage";
+
+// import DeveloperApplyFormPage from "./DeveloperApplyFormPage";
+// import DeveloperApplyInternPage from "./DeveloperApplyInternPage";
+// import DeveloperApplyLeadPage from "./DeveloperApplyLeadPage";
+// import DesignerApplyFormPage from "./DesignerApplyFormPage";
+
 
 const BannerBlock = styled.div`
     width: 100%;
@@ -48,6 +67,8 @@ const Text = styled.div`
 `
 
 const DeveloperApplyMainPage = () => {
+  const history = useHistory();
+
   const [inputs, setInputs] = useState({
     name: '',
     studentId: '',
@@ -57,6 +78,7 @@ const DeveloperApplyMainPage = () => {
   });
 
   const { name, studentId, major, phone, code } = inputs;
+  const position = 1;
 
   const onChange = (e) => {
     const { value, name } = e.target;
@@ -65,6 +87,18 @@ const DeveloperApplyMainPage = () => {
       [name]: value
     });
   };
+
+  // 이 사람이 등록을 한 적이 있는가?
+  // const [isMember, setIsMember]  = useState({ status: 'idle', userId: "", saveFinal: "" });
+  // const isMember = {
+  //   userId: "",
+  //   saveFinal: ""
+  // }
+
+  const [isMember, setIsMember] = useState({
+        userId :  "",
+        saveFinal : ""
+    });
 
   return (
     <>
@@ -82,10 +116,38 @@ const DeveloperApplyMainPage = () => {
         <Text>여러분의 소중한 개인정보는 이펍 모집 일정이 끝난 직후 바로 폐기됩니다.</Text>
         <Bottom>
           <Text>1/3 페이지</Text>
-          <Link to="/developer-apply/form">
-            <Button filled>다음</Button>
-          </Link>
-          {/* <Button filled onClick={() => { alert(`이름 : ${name} / 학번: ${studentId} / 전공 : ${major} / 전화번호 : ${phone} / 비밀번호 : ${code}`) }}>다음</Button> */}
+          <Button filled onClick={() => { 
+                            // fetch(userInfo(name, studentId, major, phone, code, position))
+                            axios
+                                .post(`${USER_SERVER}/api/recruitment/apply/user`, {
+                                name: name,
+                                student_id: studentId,
+                                department: major,
+                                phone_no: phone,
+                                password: code,
+                                position: position
+                                })
+                            .then(response => {
+                                 isMember.saveFinal = response.data.saveFinal;
+                                 isMember.userId = response.data.userId;
+                                 console.log(isMember.saveFinal);
+                                 console.log(isMember.userId);
+                                 if (isMember.saveFinal){
+                                  alert(`이미 지원하셨습니다.`)
+                              } else{
+                                  // SaveUserID(myContext.userId);
+                                  alert(` 확인되었습니다. `)
+                                  console.log(isMember.saveFinal);
+                                  console.log(isMember.userId);
+                                  history.push({
+                                    pathname: "/developer-apply/form",
+                                    state: isMember.userId
+                                  });
+
+                                  // window.location.replace ("/developer-apply/form")
+                              }
+                            });
+                            }}> 다음</Button>
         </Bottom>
       </Main>
     </>

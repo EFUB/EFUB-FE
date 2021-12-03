@@ -25,11 +25,11 @@ const StyledButton = styled.button`
   padding: 0.7rem 1rem;
   width: ${(props) => props.width || "6"}rem;
   height: ${(props) => props.height || "3"}rem;
-  
-    ${props =>
+
+  ${(props) =>
     props.eng &&
     css`
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
     `}
 
   ${(props) =>
@@ -60,6 +60,13 @@ const StyledButton = styled.button`
       color: ${palette.black};
     `}
 
+    @media (max-width: 767px) {
+    ${(props) =>
+      props.widthXS &&
+      css`
+        width: 99%;
+      `}
+  }
 `;
 
 const Button = (props) => <StyledButton {...props} />;

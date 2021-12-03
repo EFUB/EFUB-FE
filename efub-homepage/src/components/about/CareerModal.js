@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
-import FixedModalFrame from '../common/FixedModalFrame';
+import FixedModalFrame from './ModalFrame';
+
 
 import CareerButtonList from './CareerButtonList';
 import CareerContent from './CareerContent'

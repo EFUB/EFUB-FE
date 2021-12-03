@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../common/Button';
+import Button from './Button';
 
 const buttons = [
     {
@@ -20,6 +20,10 @@ const ButtonBlock = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    @media (max-width: 768px){
+        font-size: 13px;
+        padding-left: 0.5rem;
+    }
 `;
 
 const CareerButtonList = ({ select, onSelect }) => {

@@ -7,6 +7,10 @@ const MemberBlock = styled.div`
     display: grid;
     grid-template-columns: 0.3fr 0.3fr 0.3fr;
     grid-row-gap: 50px;
+    @media (max-width: 768px) {
+        grid-template-columns: 0.3fr 0.3fr;
+        align-items: center;
+    }
 `;
 
 const Member = styled.div`
@@ -17,15 +21,17 @@ const Member = styled.div`
         height: 13.4rem;
         width: 13.4rem;
     }
+    
     margin-bottom: 1rem;
 `;
 
 const MemberImage = styled.img`
+    z-index: 99;
     background-color: rgba(255, 255, 255, 0.15);
     border-radius:70%;
     height: 13rem;
     width: 13rem;
-    @media (max-width: 1120px) {
+    @media (max-width: 1024px) {
         height: 12rem;
         width:  12rem;
     }
@@ -35,7 +41,7 @@ const MemberText = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    align-text: center;
+    text-align: center;
     margin-top: 1rem;
 `;
 

@@ -15,6 +15,9 @@ const Career = styled.div`
     font-size:  ${props => props.size || 22}px;
     font-family: 'Roboto', sans-serif;
     line-height:180%;
+    @media (max-width: 768px){
+        font-size: 15px;
+    }
 `;
 
 const Careers = {

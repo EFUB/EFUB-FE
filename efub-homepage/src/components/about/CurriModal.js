@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
-import FixedModalFrame from '../common/FixedModalFrame';
+import FixedModalFrame from './ModalFrame';
 
 import CurriButtonList from './CurriButtonList';
 import CurriContent from './CurriContent'
