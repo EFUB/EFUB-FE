@@ -22,6 +22,9 @@ const Listbox = styled.div`
   height: 30rem;
   margin: 2rem 0rem 3rem 0rem;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   @media (max-width: 767px) {
     height: 20rem;
   }
