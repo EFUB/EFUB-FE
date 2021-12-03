@@ -61,7 +61,7 @@ const App = () => {
             <Route component={AboutPage} path="/" exact />
             <Route component={ProjectPage} path="/project" />
             <Route component={RecruitmentPage} path="/recruitment" />
-            <Route component={ListPage} path="/list" />
+            <Route component={ListPage} path="/list" exact />
             <Route component={FirstListPass} path="/list/firstlistpass" />
             <Route component={FirstListFail} path="/list/firstlistfail" />
             <Route component={FinalList} path="/finalList" />
