@@ -34,12 +34,18 @@ const BtnBox = styled.div`
     width: 90%;
   }
 `;
+const Text = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+`;
 
-const FirstList = () => {
+const FirstListPass = () => {
   return (
     <>
       <Title>1차 합격자 발표</Title>
-      <Listbox />
+      <Listbox>
+        <Text>합격</Text>
+      </Listbox>
       <BtnBox>
         <Link to="/list">
           <Button widthXS width="8" style={{ marginBottom: "10rem" }}>
@@ -51,4 +57,4 @@ const FirstList = () => {
   );
 };
 
-export default FirstList;
+export default FirstListPass;

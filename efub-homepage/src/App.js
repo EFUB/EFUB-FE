@@ -11,7 +11,8 @@ import Responsive from "./components/common/Responsive";
 import DeveloperApplyMainPage from "./pages/Recruitment/DeveloperApplyMainPage";
 import DeveloperApplyFormPage from "./pages/Recruitment/DeveloperApplyFormPage";
 import ListPage from "./pages/ListPage";
-import FirstList from "./pages/FirstList";
+import FirstListPass from "./pages/FirstListPass";
+import FirstListFail from "./pages/FirstListFail";
 import FinalList from "./pages/FinalList";
 import ThankYou from "./pages/ThankYou";
 import DeveloperApplyInternPage from "./pages/Recruitment/DeveloperApplyInternPage";
@@ -61,7 +62,8 @@ const App = () => {
             <Route component={ProjectPage} path="/project" />
             <Route component={RecruitmentPage} path="/recruitment" />
             <Route component={ListPage} path="/list" />
-            <Route component={FirstList} path="/firstList" />
+            <Route component={FirstListPass} path="/list/firstlistpass" />
+            <Route component={FirstListFail} path="/list/firstlistfail" />
             <Route component={FinalList} path="/finalList" />
             <Route
               component={DeveloperApplyMainPage}
