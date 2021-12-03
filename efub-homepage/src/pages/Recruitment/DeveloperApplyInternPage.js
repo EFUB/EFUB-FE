@@ -65,6 +65,7 @@ const Text = styled.div`
 
 const DeveloperApplyInternPage = ({ location }) => {
   const posts = location.state.posts;
+  console.log(posts);
 
   const [inputs, setInputs] = useState({
     first: "",
@@ -160,7 +161,6 @@ const DeveloperApplyInternPage = ({ location }) => {
           { date: [...checkedTimes][2] || "-" },
         ],
       };
-      console.log(post);
 
       //처음 저장 url: `${USER_SERVER}/api/recruitment/apply/save/dev`
       fetch(`${USER_SERVER}/api/recruitment/apply/save/dev`, {
@@ -243,7 +243,7 @@ const DeveloperApplyInternPage = ({ location }) => {
      // 기존 정보 업데이트 
     useEffect(()=> {
         axios
-        .post('http://3.34.222.176:8080/api/recruitment/apply/get/dev',{user_id: posts.userId})
+        .post('http://3.34.222.176:8080/api/recruitment/apply/get/dev',{user_id: posts.user_id})
         .then((response) => {
           console.log(response);
           //text box 값 할당하기 
