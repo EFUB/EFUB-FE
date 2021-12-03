@@ -4,6 +4,7 @@ import Button from "../../components/common/Button";
 import InputBox from "../../components/common/InputBox";
 import InputLine from "../../components/common/InputLine";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import DeveloperStack from "../../components/recruitment/DeveloperStack";
 import DeveloperPart from "../../components/recruitment/DeveloperPart";
 import { application_list } from "../../components/recruitment/DeveloperPart";
@@ -109,7 +110,7 @@ const DeveloperApplyFormPage = () => {
   ]);
   const [part, setPart] = useState(1);
   const [score, setScore] = useState(1);
-  const [posts, setPosets] = useState({});
+  const [posts, setPosts] = useState({});
 
   const onToggle = (id) => {
     setStackList(
@@ -127,85 +128,64 @@ const DeveloperApplyFormPage = () => {
     setScore(id);
   };
 
-  const [stacks, setStacks] = useState([]);
+  // const [stacks, setStacks] = useState([]);
 
-  const onInsert = (stackItem) => {
-    let stack = {
-      tool_name: stackItem,
-    };
-    //console.log(stack);
-    console.log(stacks.push(stack));
-  };
+  // const onInsert = (stackItem) => {
+  //   let stack = {
+  //     tool_name: stackItem,
+  //   };
+  //   console.log(stack);
+  //   console.log(stacks.push(stack));
+  // };
 
-  useEffect(() => {
-    const list = stackList
-      .filter((check) => check.checked === true)
-      .map((item) => item.label);
-    console.log(list);
+  // useEffect(() => {
+  //   const list = stackList
+  //     .filter((check) => check.checked === true)
+  //     .map((item) => item.label);
 
-    for (let i = 0; i < list.length; i++) {
-      console.log(list[i]);
-      onInsert(list[i]);
-      //return setStacks([]);
-    }
-  }, []);
+  //   for (let i = 0; i < list.length; i++) {
+  //     onInsert(list[i]);
+  //     return setStacks([]);
+  //   }
+  // }, []);
 
   //처음 저장
   const submitSaveDev = () => {
-    console.log(userId);
-    try {
-      const post = {
-        user_id: 6934343434623,
-        save_final: false,
-        motive: inputs.first,
-        project_topic: inputs.second,
-        application_field: application_list[part],
-        language: lang,
-        confidence_lang: score,
-        tool: [
-          {
-            tool_name:
-              stackList
-                .filter((check) => check.checked === true)
-                .map((item) => item.label)[0] || "",
-          },
-          {
-            tool_name:
-              stackList
-                .filter((check) => check.checked === true)
-                .map((item) => item.label)[1] || "",
-          },
-          {
-            tool_name:
-              stackList
-                .filter((check) => check.checked === true)
-                .map((item) => item.label)[2] || "",
-          },
-        ],
-        exp: "-",
-        link: "-",
-        orientation: true,
-        interview: [{ date: "-" }, { date: "-" }],
-      };
-      console.log(post);
-      setPosets(post);
-
-      fetch("http://3.34.222.176:8080/api/recruitment/apply/save/dev", {
-        method: "post", // 통신방법
-        headers: {
-          "content-type": "application/json",
-        }, // API응답 정보 담기
-        body: JSON.stringify(post), //전달 내용
-      })
-        .then((res) => res.json())
-        .then((json) => {
-          console.log(json);
-          alert("저장에 성공하였습니다.");
-        });
-    } catch (error) {
-      console.log(error);
-      alert("저장에 실패하였습니다.");
-    }
+    const post = {
+      user_id: userId,
+      save_final: false,
+      motive: inputs.first,
+      project_topic: inputs.second,
+      application_field: application_list[part],
+      language: lang,
+      confidence_lang: score,
+      tool: [
+        {
+          tool_name:
+            stackList
+              .filter((check) => check.checked === true)
+              .map((item) => item.label)[0] || "",
+        },
+        {
+          tool_name:
+            stackList
+              .filter((check) => check.checked === true)
+              .map((item) => item.label)[1] || "",
+        },
+        {
+          tool_name:
+            stackList
+              .filter((check) => check.checked === true)
+              .map((item) => item.label)[2] || "",
+        },
+      ],
+      exp: "-",
+      link: "-",
+      orientation: true,
+      interview: [{ date: "-" }, { date: "-" }],
+    };
+    console.log(post);
+    setPosts(post);
   };
 
   // 수정 저장

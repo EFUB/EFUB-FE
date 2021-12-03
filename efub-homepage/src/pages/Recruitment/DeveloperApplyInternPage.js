@@ -6,6 +6,7 @@ import InputLine from "../../components/common/InputLine";
 import { Link } from "react-router-dom";
 import Checkbox from "../../components/common/CheckBox";
 import MeetingTime from "../../components/recruitment/MeetingTime";
+import { USER_SERVER } from "../../config";
 
 const BannerBlock = styled.div`
   width: 100%;
@@ -136,31 +137,28 @@ const DeveloperApplyInternPage = ({ location }) => {
         confidence_lang: posts.confidence_lang,
         tool: [
           {
-            tool_name: posts.tool[0],
+            tool_name: posts.tool[0].tool_name,
           },
           {
-            tool_name: posts.tool[1],
+            tool_name: posts.tool[1].tool_name,
           },
           {
-            tool_name: posts.tool[2],
+            tool_name: posts.tool[2].tool_name,
           },
         ],
         exp: inputs.first,
         link: inputs.second,
         orientation: check,
         interview: [
-          { date: [...checkedTimes][0] || "" },
-          { date: [...checkedTimes][1] || "" },
-          { date: [...checkedTimes][2] || "" },
-          { date: [...checkedTimes][3] || "" },
-          { date: [...checkedTimes][4] || "" },
-          { date: [...checkedTimes][5] || "" },
-          { date: [...checkedTimes][6] || "" },
+          { date: [...checkedTimes][0] || "-" },
+          { date: [...checkedTimes][1] || "-" },
+          { date: [...checkedTimes][2] || "-" },
         ],
       };
       console.log(post);
+      console.log();
 
-      fetch("http://3.34.222.176:8080/api/recruitment/apply/save/dev", {
+      fetch(`${USER_SERVER}/api/recruitment/apply/save/dev`, {
         method: "post", // 통신방법
         headers: {
           "content-type": "application/json",
@@ -170,9 +168,11 @@ const DeveloperApplyInternPage = ({ location }) => {
         .then((res) => res.json())
         .then((json) => {
           console.log(json);
+          alert("저장이 완료되었습니다.");
         });
     } catch (error) {
       console.log(error);
+      alert("저장에 실패하였습니다.");
     }
   };
 
