@@ -1,4 +1,6 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect, useContext} from 'react'
+import { useLocation } from "react-router";
+
 import styled from 'styled-components'
 import Button from '../../components/common/Button'
 import InputBox from '../../components/common/InputBox'
@@ -7,6 +9,8 @@ import { Link } from 'react-router-dom'
 import Checkbox from '../../components/common/CheckBox'
 import MeetingTime from '../../components/recruitment/MeetingTime'
 import axios from 'axios'
+
+import AppContext from "../../components/common/AppContext";
 
 const BannerBlock = styled.div`
     width: 100%;
@@ -58,8 +62,10 @@ const Text = styled.div`
     font-size: 1rem;
 `
 
-const DeveloperApplyInternPage = (props) => {
-    const {userId} = props;
+const DeveloperApplyInternPage = () => {
+    const location = useLocation();
+    const userId = location.state;
+
     const [inputs, setInputs] = useState({
         first: '',
         second: '',
@@ -100,25 +106,28 @@ const DeveloperApplyInternPage = (props) => {
     };
     // 기존 정보 업데이트 
     useEffect(()=> {
-        console.log("hi");
         console.log(userId);
         axios
         .post('http://3.34.222.176:8080/api/recruitment/apply/get/dev',{user_id: userId})
         .then((response) => {
           console.log(response);
           //text box 값 할당하기 
-          setInputs(inputs.first = response.data.exp);
-          setInputs(inputs.second = response.data.Link);
+          console.log(inputs.first);
+          console.log(inputs.second);
+          if(response.data.exp !== null) setInputs(inputs.first = response.data.exp);
+          if(response.data.link !== null)setInputs(inputs.second = response.data.link);
           //참가
-          setCheck(check = response.data.orientation);
+          if(response.data.orientation !== null)setCheck(check = response.data.orientation);
           //면접 
-          setTimeList(
-            timeList.map(time =>
-                time.id === response.data.interview.interview_id? { ...time, checked: !time.checked } : time
-            ));
+        //   setTimeList(
+        //     timeList.map(time =>
+        //         time.id === response.data.interview.interview_id? { ...time, checked: !time.checked } : time
+        //     ));
         });   
       }, []);   
-
+    
+    const myContext = useContext(AppContext);
+    
     return (
         <>
             <BannerBlock>
