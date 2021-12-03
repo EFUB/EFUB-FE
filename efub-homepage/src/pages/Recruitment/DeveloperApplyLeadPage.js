@@ -242,7 +242,7 @@ const DeveloperApplyLeadPage = ({ location }) => {
 
     useEffect(()=> {
         console.log("hi");
-        console.log(userId);
+        console.log(posts.userId);
         axios
         .post('http://3.34.222.176:8080/api/recruitment/apply/get/dev',{user_id: posts.userId})
         .then((response) => {
