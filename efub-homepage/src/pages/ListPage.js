@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
 import InputLine from "../components/common/InputLine";
+import axios from "axios";
 
 const Container = styled.div`
   display: flex;
@@ -18,8 +20,9 @@ const Title = styled.div`
   font-weight: bold;
 `;
 
-
 const ListPage = () => {
+  let history = useHistory();
+
   const [inputs, setInputs] = useState({
     name: '',
     phone: '',
@@ -36,6 +39,26 @@ const ListPage = () => {
     });
   };
 
+  const onPress = async () => {
+    try {
+      const { data: { result: res } } = await axios.post("http://3.34.222.176:8080/api/recruitment/pass/mid",
+        {
+          "name": name,
+          "phone_no": phone,
+          "password": code
+        }
+      );
+      if (res === '합격')
+        history.push("/list/firstlistpass");
+      else if (res === '불합격')
+        history.push("/list/firstlistfail");
+      else
+        alert(res);
+    }
+    catch (e) {
+      console.log(e);
+    }
+  }
   return (
     <>
       <Title>합격자 조회</Title>
@@ -48,7 +71,7 @@ const ListPage = () => {
         </Button> */}
         <Button
           width="8"
-          onClick={() => { alert(`이름 : ${name} / 전화번호 : ${phone} / 비밀번호 : ${code}`) }}
+          onClick={() => onPress()}
           style={{ marginBottom: "10rem" }}
         >조회하기</Button>
       </Container>

@@ -12,8 +12,8 @@ const MemberBlock = styled.div`
 const Member = styled.div`
     position: relative;
     height: 16.8rem;
-     width: 16.8rem;
-     @media (max-width: 1120px) {
+    width: 16.8rem;
+    @media (max-width: 1120px) {
         height: 13.4rem;
         width: 13.4rem;
     }
@@ -60,10 +60,10 @@ const MemberList = () => {
             {members.first.map(s => (
                 <Member key={s.id}>
                     <MemberImage src={s.file} alt={s.file} />
-                    <MemberText> 
+                    <MemberText>
                         <MemberPosition> {s.position} </MemberPosition>
                         <MemberName> {s.name} </MemberName>
-                    </MemberText> 
+                    </MemberText>
                 </Member>
             ))}
         </MemberBlock>
