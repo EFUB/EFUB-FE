@@ -22,6 +22,9 @@ const Listbox = styled.div`
   height: 30rem;
   margin: 2rem 0rem 3rem 0rem;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   @media (max-width: 767px) {
     height: 20rem;
   }
@@ -34,12 +37,18 @@ const BtnBox = styled.div`
     width: 90%;
   }
 `;
+const Text = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+`;
 
-const FirstList = () => {
+const FirstListPass = () => {
   return (
     <>
       <Title>1차 합격자 발표</Title>
-      <Listbox />
+      <Listbox>
+        <Text>합격</Text>
+      </Listbox>
       <BtnBox>
         <Link to="/list">
           <Button widthXS width="8" style={{ marginBottom: "10rem" }}>
@@ -51,4 +60,4 @@ const FirstList = () => {
   );
 };
 
-export default FirstList;
+export default FirstListPass;

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRe } from "react";
+import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { Switch, Route } from "react-router-dom";
 import Header from "./components/common/Header";
@@ -11,7 +11,8 @@ import Responsive from "./components/common/Responsive";
 import DeveloperApplyMainPage from "./pages/Recruitment/DeveloperApplyMainPage";
 import DeveloperApplyFormPage from "./pages/Recruitment/DeveloperApplyFormPage";
 import ListPage from "./pages/ListPage";
-import FirstList from "./pages/FirstList";
+import FirstListPass from "./pages/FirstListPass";
+import FirstListFail from "./pages/FirstListFail";
 import FinalList from "./pages/FinalList";
 import ThankYou from "./pages/ThankYou";
 import DeveloperApplyInternPage from "./pages/Recruitment/DeveloperApplyInternPage";
@@ -40,8 +41,8 @@ const App = () => {
   // });
 
   const [isMember, setIsMember] = useState({
-      userId :  "",
-      saveFinal : ""
+    userId: "",
+    saveFinal: "",
   });
 
   // const changeMember = (newMember) =>{
@@ -53,41 +54,60 @@ const App = () => {
 
   return (
     <>
-    <AppContext.Provider value={isMember}>
-      <Header menu={menu} onSelect={onSelect} />
-      <Main>
-        <Switch>
-          <Route component={AboutPage} path="/" exact />
-          <Route component={ProjectPage} path="/project" />
-          <Route component={RecruitmentPage} path="/recruitment" />
-          <Route component={ListPage} path="/list" />
-          <Route component={FirstList} path="/firstList" />
-          <Route component={FinalList} path="/finalList" />
-          <Route component={DeveloperApplyMainPage} path="/developer-apply" exact />
-          <Route component={DeveloperApplyFormPage} path="/developer-apply/form" />
-          <Route component={DeveloperApplyInternPage} path="/developer-apply/intern" />
-          <Route component={DeveloperApplyLeadPage} path="/developer-apply/lead" />
-          <Route component={DesignerApplyMainPage} path="/designer-apply" exact />
-          <Route component={DesignerApplyFormPage} path="/designer-apply/form" />
-          <Route component={ContactPage} path="/contact" />
-          <Route component={ThankYou} path="/thankyou" />
+      <AppContext.Provider value={isMember}>
+        <Header menu={menu} onSelect={onSelect} />
+        <Main>
+          <Switch>
+            <Route component={AboutPage} path="/" exact />
+            <Route component={ProjectPage} path="/project" />
+            <Route component={RecruitmentPage} path="/recruitment" />
+            <Route component={ListPage} path="/list" />
+            <Route component={FirstListPass} path="/list/firstlistpass" />
+            <Route component={FirstListFail} path="/list/firstlistfail" />
+            <Route component={FinalList} path="/finalList" />
+            <Route
+              component={DeveloperApplyMainPage}
+              path="/developer-apply"
+              exact
+            />
+            <Route
+              component={DeveloperApplyFormPage}
+              path="/developer-apply/form"
+            />
+            <Route
+              component={DeveloperApplyInternPage}
+              path="/developer-apply/intern"
+            />
+            <Route
+              component={DeveloperApplyLeadPage}
+              path="/developer-apply/lead"
+            />
+            <Route
+              component={DesignerApplyMainPage}
+              path="/designer-apply"
+              exact
+            />
+            <Route
+              component={DesignerApplyFormPage}
+              path="/designer-apply/form"
+            />
+            <Route component={ContactPage} path="/contact" />
+            <Route component={ThankYou} path="/thankyou" />
 
             {/* <DeveloperApplyMainPage /> */}
 
             <AppContext.Consumer>
-              {isMember => (
-                <DeveloperApplyMainPage isMember={isMember}  />
-              )}
+              {(isMember) => <DeveloperApplyMainPage isMember={isMember} />}
             </AppContext.Consumer>
 
-            <DeveloperApplyFormPage/>
+            <DeveloperApplyFormPage />
             <DesignerApplyMainPage />
-            <DesignerApplyFormPage/> 
+            <DesignerApplyFormPage />
             {/* <Content/> */}
-        </Switch>
-      </Main>
-      
-      <Footer />
+          </Switch>
+        </Main>
+
+        <Footer />
       </AppContext.Provider>
     </>
   );

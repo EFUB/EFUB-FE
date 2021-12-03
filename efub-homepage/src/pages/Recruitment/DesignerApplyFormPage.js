@@ -5,127 +5,236 @@ import InputBox from '../../components/common/InputBox'
 import InputLine from '../../components/common/InputLine'
 import { Link } from 'react-router-dom'
 import { useLocation } from "react-router";
-import DeveloperStack from '../../components/recruitment/DeveloperStack'
-import Confident from '../../components/common/Confident'
-import Checkbox from '../../components/common/CheckBox'
+import DeveloperStack from "../../components/recruitment/DeveloperStack";
+import Confident from "../../components/common/Confident";
+import Checkbox from "../../components/common/CheckBox";
 
 import AppContext from "../../components/common/AppContext";
-import axios from 'axios'
+import SaveUserID from "../../components/common/SaveUserID";
+import { USER_SERVER } from "../../config";
+
+import axios from "axios";
+
+import { savedInfoDes } from "../../_actions/user_actions";
 
 const BannerBlock = styled.div`
-    width: 100%;
-    position: relative;
-    height: 15rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  position: relative;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Title = styled.div`
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
 `;
 
 const Subtitle = styled.div`
-    font-size: 1.25rem;
-    font-family: Roboto;
+  font-size: 1.25rem;
+  font-family: Roboto;
 `;
 
 const Main = styled.div`
-    width: 78%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-`
+  width: 78%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
 
 const Wrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
 const Bottom = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 8rem;
-    margin-bottom: 5rem;
-    justify-content: space-between;
-`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 8rem;
+  margin-bottom: 5rem;
+  justify-content: space-between;
+`;
 
 const Question = styled.div`
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin-bottom: 3rem;
-    margin-top: 6rem;
-`
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  margin-top: 6rem;
+`;
 const Text = styled.div`
-    font-family: Roboto;
-    font-weight: 500;
-    font-size: 1rem;
-`
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 1rem;
+`;
 
 const DesignerApplyFormPage = () => {
-    const location = useLocation();
-    const userId = location.state;
-    const [inputs, setInputs] = useState({
-        first: '',
-        second: '',
-        third: '',
-        fourth: '',
-        portfolio: ''
-    });
-    const { first, second, third, fourth, portfolio } = inputs;
-    const onChange = (e) => {
-        const { value, name } = e.target;
-        setInputs({
-            ...inputs,
-            [name]: value
+  const location = useLocation();
+  const userId = location.state;
+
+  //const myContext = useContext(AppContext);
+  //const [tempId, setTempId] = useState(0);
+
+  const [inputs, setInputs] = useState({
+    first: "",
+    second: "",
+    third: "",
+    fourth: "",
+    portfolio: "",
+  });
+
+  const { first, second, third, fourth, portfolio } = inputs;
+
+  //처음 저장
+  const submitSaveDes = () => {
+    console.log(userId);
+    try {
+      const post = {
+        user_id: userId,
+        save_final: false,
+        motive: inputs.first,
+        confidence_des: score,
+        tool: [
+          {
+            tool_name:
+              stackList.filter((check) => check.checked === true)[0].label ||
+              "",
+          },
+          {
+            tool_name:
+              stackList.filter((check) => check.checked === true)[1].label ||
+              "",
+          },
+        ],
+        confidence_tool: skill,
+        project_topic: inputs.second,
+        exp_dev: inputs.third,
+        exp_des: inputs.fourth,
+        link: inputs.portfolio,
+        interview: interview,
+        orientation: orientation,
+      };
+      console.log(post);
+
+      fetch(`${USER_SERVER}/api/recruitment/apply/save/des`, {
+        method: "post", // 통신방법
+        headers: {
+          "content-type": "application/json",
+        }, // API응답 정보 담기
+        body: JSON.stringify(post), //전달 내용
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json);
+          alert("저장이 완료되었습니다.");
         });
-    };
+    } catch (error) {
+      console.log(error);
+      alert("저장에 실패하였습니다.");
+    }
+  };
 
-    const [stackList, setStackList] = useState([
-        { id: 0, label: "피그마", checked: false },
-        { id: 1, label: "어도비 XD", checked: false },
-        { id: 2, label: "일러스트레이터", checked: false },
-        { id: 3, label: "제플린", checked: false },
-        { id: 4, label: "포토샵", checked: false },
-        { id: 5, label: "기타 (직접입력)", checked: false },
-    ]);
-    const [score, setScore] = useState(1);
-    const [skill, setSkill] = useState(1);
-    const [available, setAvailable] = useState(false);
-    const [check, setCheck] = useState(false);
-    
+  //이전에 저장한적 있는 함수
+  const submitUpdateDes = () => {
+    //console.log(userId);
 
-    const onToggle = (id) => {
-        setStackList(
-            stackList.map(stack =>
-                stack.id === id ? { ...stack, checked: !stack.checked } : stack
-            )
-        );
-    };
+    try {
+      const post = {
+        user_id: userId,
+        des_id: 3,
+        save_final: false,
+        motive: inputs.first,
+        confidence_des: score,
+        tool: [
+          {
+            tool_name:
+              stackList.filter((check) => check.checked === true)[0].label ||
+              "",
+          },
+          {
+            tool_name:
+              stackList.filter((check) => check.checked === true)[1].label ||
+              "",
+          },
+        ],
+        confidence_tool: skill,
+        project_topic: inputs.second,
+        exp_dev: inputs.third,
+        exp_des: inputs.fourth,
+        link: inputs.portfolio,
+        interview: interview,
+        orientation: orientation,
+      };
+      console.log(post);
 
-    const onClickScore = (id) => {
-        setScore(id);
-    };
+      fetch("http://3.34.222.176:8080/api/recruitment/apply/update/des", {
+        method: "post", // 통신방법
+        headers: {
+          "content-type": "application/json",
+        }, // API응답 정보 담기
+        body: JSON.stringify(post), //전달 내용
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json);
+          alert("저장이 완료되었습니다.");
+        });
+    } catch (error) {
+      console.log(error);
+      alert("저장에 실패하였습니다.");
+    }
+  };
 
-    const onClickSkill = (id) => {
-        setSkill(id);
-    };
+  const onChange = (e) => {
+    const { value, name } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
 
-    const onToggleAvailable = () => {
-        setAvailable(!available);
-    };
+  const [stackList, setStackList] = useState([
+    { id: 0, label: "피그마", checked: false },
+    { id: 1, label: "어도비 XD", checked: false },
+    { id: 2, label: "일러스트레이터", checked: false },
+    { id: 3, label: "제플린", checked: false },
+    { id: 4, label: "포토샵", checked: false },
+    { id: 5, label: "기타 (직접입력)", checked: false },
+  ]);
+  const [score, setScore] = useState(1);
+  const [skill, setSkill] = useState(1);
+  const [interview, setInterview] = useState(false);
+  const [orientation, setOrientation] = useState(false);
 
-    const onToggleCheck = () => {
-        setCheck(!check);
-    };
+  const onToggle = (id) => {
+    setStackList(
+      stackList.map((stack) =>
+        stack.id === id ? { ...stack, checked: !stack.checked } : stack
+      )
+    );
+  };
 
-    // 기존 정보 불러오기 
+  const onClickScore = (id) => {
+    setScore(id);
+  };
+
+  const onClickSkill = (id) => {
+    setSkill(id);
+  };
+
+  const onToggleInterview = () => {
+    setInterview(!interview);
+  };
+
+  const onToggleOrientation = () => {
+    setOrientation(!orientation);
+  };
+      // 기존 정보 불러오기 
     useEffect(()=> {
         console.log("hi");
         console.log(userId);
@@ -150,66 +259,99 @@ const DesignerApplyFormPage = () => {
           if(response.data.orientation !== null)setCheck(available = response.data.orientation);
         });   
       }, []);     
-    
- 
-    const myContext = useContext(AppContext);
 
-    return (
-        <>
-        <Text> {myContext.userId} </Text>
-            <BannerBlock>
-                <Title>UI/UX DESIGNER</Title>
-                <Subtitle>지원서 작성</Subtitle>
-            </BannerBlock>
-            <Main>
-                <Question>1. EFUB에 지원하게 된 동기를 적어주세요. (300자 내외)</Question>
-                <InputBox name="first" value={first} onChange={onChange} />
-                <Question>2. 웹디자인에 대한 자신감을 5점 만점으로 평가해주세요.</Question>
-                <Wrapper>
-                    <Question style={{ marginTop: '0' }}>내 자신감은...</Question>
-                    <Confident score={score} onClickScore={onClickScore} />
-                </Wrapper>
-                <Question>3. 사용할 수 있는 디자인 툴을 모두 선택해주세요.</Question>
-                <DeveloperStack stackList={stackList} onToggle={onToggle} />
-                <Question style={{ marginTop: '10rem' }}>3-1. 선택하신 툴에 대한 능숙도를 5점 만점으로 평가해주세요.</Question>
-                <Wrapper>
-                    <Question style={{ marginTop: '0' }}>내 자신감은...</Question>
-                    <Confident score={skill} onClickScore={onClickSkill} />
-                </Wrapper>
-                <Question>4. 동아리에 들어온다면 하고 싶은 프로젝트에 대해서 간략히 설명해주세요. (100자 내외)</Question>
-                <InputBox name="second" value={second} onChange={onChange} />
-                <Question>5. 개발자와의 협업 경험이 있다면, 프로젝트 경험에 대해 서술해주세요.</Question>
-                <InputBox name="third" value={third} onChange={onChange} />
-                <Question>6. 디자이너와의 협업 경험이 있다면, 프로젝트 경험에 대해 서술해주세요.</Question>
-                <InputBox name="fourth" value={fourth} onChange={onChange} />
-                <Question>7. 포트플리오 링크를 제출해주세요.</Question>
-                <InputLine name="portfolio" value={portfolio} onChange={onChange} />
-                <Question>8. 면접은 9월 9일(금) 저녁 7시부터 10시에 진행됩니다. 참여 가능하십니까?</Question>
-                <Checkbox onToggle={() => { onToggleAvailable() }} label="네, 가능합니다." checked={available} />
-                <Question style={{ marginBottom: '5px' }}>9. 오티는 9월 11일 토요일 09시 30분에 진행됩니다.</Question>
-                <Question style={{ marginTop: '0' }}>오티에 참석하지 않으실 경우, 합격은 취소됩니다. 확인하셨습니까?</Question>
-                <Checkbox onToggle={() => { onToggleCheck() }} label="네, 확인했습니다." checked={check} />
-                <Bottom>
-                    <Text>2/2 페이지</Text>
-                    <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second} / 3번 : ${third} / 4번 : ${fourth} / 포폴 : ${portfolio}`) }}>다음</Button>
+  const myContext = useContext(AppContext);
 
-                    <div>
-                        <Button blue style={{ marginRight: 15 }}
-                          onClick={() => { 
-                            console.log(userId);
-                          }}>저장</Button>
-                        <Link to="/thankyou">
-                            <Button width="8" filled onClick={() => { 
-                                
-                            }}>
-                                제출하기
-                            </Button>
-                        </Link>
-                    </div>
-                </Bottom>
-            </Main>
-        </>
-    )
-}
+  return (
+    <>
+      <Text> {myContext.userId} </Text>
+      <BannerBlock>
+        <Title>UI/UX DESIGNER</Title>
+        <Subtitle>지원서 작성</Subtitle>
+      </BannerBlock>
+      <Main>
+        <Question>
+          1. EFUB에 지원하게 된 동기를 적어주세요. (300자 내외)
+        </Question>
+        <InputBox name="first" value={first} onChange={onChange} />
+        <Question>
+          2. 웹디자인에 대한 자신감을 5점 만점으로 평가해주세요.
+        </Question>
+        <Wrapper>
+          <Question style={{ marginTop: "0" }}>내 자신감은...</Question>
+          <Confident score={score} onClickScore={onClickScore} />
+        </Wrapper>
+        <Question>3. 사용할 수 있는 디자인 툴을 모두 선택해주세요.</Question>
+        <DeveloperStack stackList={stackList} onToggle={onToggle} />
+        <Question style={{ marginTop: "10rem" }}>
+          3-1. 선택하신 툴에 대한 능숙도를 5점 만점으로 평가해주세요.
+        </Question>
+        <Wrapper>
+          <Question style={{ marginTop: "0" }}>내 자신감은...</Question>
+          <Confident score={skill} onClickScore={onClickSkill} />
+        </Wrapper>
+        <Question>
+          4. 동아리에 들어온다면 하고 싶은 프로젝트에 대해서 간략히
+          설명해주세요. (100자 내외)
+        </Question>
+        <InputBox name="second" value={second} onChange={onChange} />
+        <Question>
+          5. 개발자와의 협업 경험이 있다면, 프로젝트 경험에 대해 서술해주세요.
+        </Question>
+        <InputBox name="third" value={third} onChange={onChange} />
+        <Question>
+          6. 디자이너와의 협업 경험이 있다면, 프로젝트 경험에 대해 서술해주세요.
+        </Question>
+        <InputBox name="fourth" value={fourth} onChange={onChange} />
+        <Question>7. 포트플리오 링크를 제출해주세요.</Question>
+        <InputLine name="portfolio" value={portfolio} onChange={onChange} />
+        <Question>
+          8. 면접은 9월 9일(금) 저녁 7시부터 10시에 진행됩니다. 참여
+          가능하십니까?
+        </Question>
+        <Checkbox
+          onToggle={() => {
+            onToggleInterview();
+          }}
+          label="네, 가능합니다."
+          checked={interview}
+        />
+        <Question style={{ marginBottom: "5px" }}>
+          9. 오티는 9월 11일 토요일 09시 30분에 진행됩니다.
+        </Question>
+        <Question style={{ marginTop: "0" }}>
+          오티에 참석하지 않으실 경우, 합격은 취소됩니다. 확인하셨습니까?
+        </Question>
+        <Checkbox
+          onToggle={() => {
+            onToggleOrientation();
+          }}
+          label="네, 확인했습니다."
+          checked={orientation}
+        />
+        <Bottom>
+          <Text>2/2 페이지</Text>
+          {/* <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second} / 3번 : ${third} / 4번 : ${fourth} / 포폴 : ${portfolio}`) }}>다음</Button> */}
+
+          <div>
+            <Button
+              blue
+              style={{ marginRight: 15 }}
+              onClick={() => submitSaveDes()}
+            >
+              저장
+            </Button>
+            <Link to="/thankyou">
+              <Button width="8" filled>
+                제출하기
+              </Button>
+            </Link>
+          </div>
+        </Bottom>
+      </Main>
+    </>
+  );
+};
+
 
 export default DesignerApplyFormPage;

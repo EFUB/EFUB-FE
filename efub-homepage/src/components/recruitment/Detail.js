@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import Toggle from "../../assets/recruitment/toggle.png";
 
@@ -107,7 +107,10 @@ const ToggleImg = styled.img.attrs({ src: Toggle })`
   height: 0.4rem;
   transition: 0.2s all ease-in;
   &:hover {
-    ${(props) => (props.change ? ToggleStyle : "")}
+    ${(props) => (props.change ? "" : ToggleStyle)}
+  }
+  @media (min-width: 767px) {
+    display: none;
   }
 `;
 
@@ -118,14 +121,14 @@ const ToggleStyle = css`
 const Detail = () => {
   const [change, setChange] = useState(false);
   const [toggleState, setToggleState] = useState({
-    field: false,
-    guide: false,
-    benefit: false,
-    who: false,
-    method: false,
-    prefer: false,
-    plan: false,
-    ask: false,
+    field: true,
+    guide: true,
+    benefit: true,
+    who: true,
+    method: true,
+    prefer: true,
+    plan: true,
+    ask: true,
   });
 
   const toggleHandler = (e) => {
