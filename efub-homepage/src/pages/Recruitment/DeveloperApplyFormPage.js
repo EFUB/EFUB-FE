@@ -1,7 +1,8 @@
 import React, { useState , useEffect, useContext} from 'react'
-
+//전역변수 값 받기
 import { useLocation } from "react-router";
-
+//전역변수 값 보내기
+import { useHistory } from 'react-router';
 import styled from 'styled-components'
 import Button from '../../components/common/Button'
 import InputBox from '../../components/common/InputBox'
@@ -13,7 +14,6 @@ import Confident from '../../components/common/Confident'
 import axios from 'axios'
 
 import AppContext from "../../components/common/AppContext";
-import App from '../../App'
 
 const BannerBlock = styled.div`
     width: 100%;
@@ -72,6 +72,7 @@ const Text = styled.div`
 
 const DeveloperApplyFormPage = () => {
   const location = useLocation();
+  const history = useHistory();
   const userId = location.state;
 
   const [inputs, setInputs] = useState({
@@ -186,6 +187,13 @@ const DeveloperApplyFormPage = () => {
             {/* <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second} / 3번 : ${part} / 4번 : ${lang} / 4-1번 : ${score}`) }}>다음</Button> */}
             {
               (part % 2) === 1 ? (
+                // <Link to = "/developer-apply/intern">
+                //   <Button filled onClick={() => {history.push({
+                //     pathname: "/developer-apply/intern",
+                //     state: userId
+                //     })}} > 다음
+                //   </Button>
+                // </Link>
                 <Link to="/developer-apply/intern">
                   <Button filled>
                     다음
