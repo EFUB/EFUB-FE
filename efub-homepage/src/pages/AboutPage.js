@@ -295,8 +295,8 @@ const ModalButton_Career = styled.button`
 
     @media (max-width: 1023px) {
         // between
-        top: 55px; left: 32px;
-        font-size:  22px;
+        top: 55px; left: 42px;
+        font-size:  20px;
         transform: rotate( -9deg );
       }
 
@@ -313,17 +313,18 @@ const ModalButton_Curriculum = styled.button`
     border: 0;
     outline: 0;
     position: absolute;
-    top: 200px; left: 150px;
+    top: 205px; left: 145px;
     font-size:  ${props => props.size || 24}px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     cursor: pointer;
-    transform: rotate( 15deg );
+    transform: rotate( 17deg );
 
     @media (max-width: 1023px) {
         // between
-        font-size:  22px;
-        top: 180px; left: 100px;
+        font-size:  20px;
+        top: 177px; left: 110px;
+        transform: rotate( 15deg );
       }
 
     @media (max-width: 767px) {
@@ -339,7 +340,7 @@ const ModalButton_apply = styled.button`
     border: 0;
     outline: 0;
     position: absolute;
-    top: 80px; left: 350px;
+    top: 80px; left: 365px;
     font-size:  ${props => props.size || 24}px;
     transform: rotate( -18deg );
     font-family: 'Roboto', sans-serif;
@@ -347,9 +348,9 @@ const ModalButton_apply = styled.button`
     cursor: pointer;   
     @media (max-width: 1023px) {
      // between
-     font-size:  22px;
+     font-size:  20px;
      transform: rotate( -16deg );
-     top: 70px; left: 307px;
+     top: 85px; left: 310px;
    }
     @media (max-width: 767px) {
      // phone
@@ -434,7 +435,7 @@ const Img_main_green = styled.img`
     @media (max-width: 1023px) {
         // between
         width: 250px; height: 100px;
-        top: 40px; left: 260px;
+        top: 50px; left: 250px;
       }
 
     @media (max-width: 767px) {
