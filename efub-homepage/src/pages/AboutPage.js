@@ -366,24 +366,24 @@ const ModalButton_allmember = styled.button`
     border: 0;
     outline: 0;
     position: absolute;
-    top:70px; left: 30px;
-    font-size:  20px;
-    transform: rotate( -17deg );
+    top: 70px; left: 28px;
+    font-size:  ${props => props.size || 24}px;
+    transform: rotate( -18deg );
     font-family: 'Roboto', sans-serif;
-    cursor: pointer;
     font-weight: bold;
-
-    @media (max-width: 1023x) {
-        // between
-        transform: rotate( -15deg );
-        top: 65px; left: 35px;
-        font-size:20px;
-      }
-
-      @media (max-width: 767px) {
-        // phone
-        top:240px; left: 60px;
-       }
+    cursor: pointer;   
+    @media (max-width: 1023px) {
+    // between
+    font-size:  20px;
+    transform: rotate( -16deg );
+    top: 45px; left: 50px;
+    }
+    @media (max-width: 767px) {
+    // phone
+    top: 250px; left: 80px;
+    transform: rotate( -18deg );
+    font-size:18px;
+    }
 `
 // 이펍 소개 옆 네온 디자인
 
@@ -528,7 +528,7 @@ const Img_organ_sun = styled.img`
     transform: rotate( -5deg );
 
     @media (max-width: 1023px) {
-        width: 100px; height: 100px;
+        width: 130px; height: 130px;
         top: -150px; left: 30px;
       }
 
@@ -677,33 +677,15 @@ const AboutPage = () => {
                 <OrganizerWrapper>
                     <MemberBlock>
                         <SubMemberBlock>
-                            <Member_Green
-                                name={"정아연"}
-                                position={"회장"}
-                            />
-                            <Member_Green
-                                name={"김혜린"}
-                                position={"부회장"}
-                            />
-                            <Member_Green
-                                name={"윤효정"}
-                                position={"총무"}
-                            />
+                            <Member_Green name={"정아연"} position={"회장"} />
+                            <Member_Green name={"김혜린"} position={"부회장"} />
+                            <Member_Green name={"윤효정"} position={"총무"} />
                         </SubMemberBlock>
 
                         <SubMemberBlock>
-                            <Member_Blue
-                                name={"이윤지"}
-                                position={"프론트장"}
-                            />
-                            <Member_Blue
-                                name={"김정은"}
-                                position={"백엔드장"}
-                            />
-                            <Member_Blue
-                                name={"김채령"}
-                                position={"디자이너장"}
-                            />
+                            <Member_Blue name={"이윤지"} position={"프론트장"} />
+                            <Member_Blue name={"김정은"} position={"백엔드장"} />
+                            <Member_Blue name={"김채령"} position={"디자이너장"} />
                         </SubMemberBlock>
                     </MemberBlock>
                     <AllMemberWrapper>
@@ -780,35 +762,17 @@ const AboutPage = () => {
 
             <OrganizerWrapper>
 
-                    <MemberBlock>
+            <MemberBlock>
                         <SubMemberBlock>
-                            <Member_Green
-                                name={"정아연"}
-                                position={"회장"}
-                            />
-                            <Member_Green
-                                name={"김혜린"}
-                                position={"부회장"}
-                            />
-                            <Member_Green
-                                name={"윤효정"}
-                                position={"총무"}
-                            />
+                            <Member_Green name={"정아연"} position={"회장"} />
+                            <Member_Green name={"김혜린"} position={"부회장"} />
+                            <Member_Green name={"윤효정"} position={"총무"} />
                         </SubMemberBlock>
 
                         <SubMemberBlock>
-                            <Member_Blue
-                                name={"이윤지"}
-                                position={"프론트장"}
-                            />
-                            <Member_Blue
-                                name={"김정은"}
-                                position={"백엔드장"}
-                            />
-                            <Member_Blue
-                                name={"김채령"}
-                                position={"디자이너장"}
-                            />
+                            <Member_Blue name={"이윤지"} position={"프론트장"} />
+                            <Member_Blue name={"김정은"} position={"백엔드장"} />
+                            <Member_Blue name={"김채령"} position={"디자이너장"} />
                         </SubMemberBlock>
                     </MemberBlock>
 
@@ -821,7 +785,7 @@ const AboutPage = () => {
 
                     </AllMemberWrapper>
 
-                </OrganizerWrapper>
+            </OrganizerWrapper>
 
 
             </WrapperMobile>

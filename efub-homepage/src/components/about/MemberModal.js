@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import FixedModalFrame from './ModalFrame';
+import FixedModalFrame from './MemberModalFrame';
 
 import ScrollDiv from './ScrollDiv_Black';
 import MemberList from './MemberList';
