@@ -47,14 +47,14 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     // phone
     display:none;
    }
 `
 const WrapperMobile = styled.div`
    display: none;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     // phone
     display: flex;
     justify-content: center;
@@ -70,7 +70,7 @@ const MainWrapper = styled.div` // 이펍소개+버튼들
     margin-top: 20rem;
     width:100%;
     height:300px;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         margin-top: -5rem;
         margin-bottom: 5rem;
@@ -86,7 +86,7 @@ const IntroWrapper = styled.div` // 이펍소개
     align-items: left;
     width:40%;
     height:100%;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width:100%;
         align-items: center;
@@ -100,7 +100,7 @@ const RotateButton = styled.div` // 회전버튼
     position: relative;
     width:60%;
     height:100%;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width:100%;
         margin-top: 5rem;
@@ -133,7 +133,7 @@ const ReviewWrapper = styled.div` // 퍼비후기
     width:100%;
     height:auto;
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
        }
 `
@@ -147,7 +147,7 @@ const OrganizerWrapper = styled.div` // 이퍼비들 소개
     margin-top: 10rem;
     width:100%;
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         margin-top: 5rem;
         flex-direction: column;
@@ -162,11 +162,11 @@ const MemberBlock = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 50%;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width: 100%;
        }
@@ -179,7 +179,7 @@ const SubMemberBlock = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width: 100%;
        }
@@ -189,7 +189,7 @@ const AllMemberWrapper = styled.div` // 전체임원진소개
     display: flex;
     position:relative;
     width:40%;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width:100%;
         height: 400px;
@@ -203,7 +203,7 @@ const Logo = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         margin-top: 1rem;
     }
@@ -214,7 +214,7 @@ const MainIntroText = styled.div`
     font-size:  ${props => props.size || 48}px;
     font-family: 'Montserrat', sans-serif;
     line-height:120%;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         font-size:  ${props => props.size || 35}px;
         line-height:160%
@@ -225,7 +225,7 @@ const SubIntroText = styled.div`
     font-size:  ${props => props.size || 20}px;
     font-family: 'Roboto', sans-serif;
     line-height:180%;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         font-size:  ${props => props.size || 20}px;
        }
@@ -235,7 +235,7 @@ const SubTitle = styled.div`
     flex-direction: row;
     align-items: center;
     width: auto;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         margin-top: 1rem;
         margin-bottom: 2rem;
@@ -253,7 +253,7 @@ const SubTitleWhite = styled.div`
     `}
     font-weight: bold;
     margin-top: 10rem;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         margin-top: 5rem;
         margin-bottom: 1rem;
@@ -271,7 +271,7 @@ const SubTitleGreen = styled.div`
     `}
     font-weight: bold;
     margin-top: 10rem;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         margin-top: 5rem;
         font-size:  ${props => props.size || 30}px;
@@ -293,14 +293,14 @@ const ModalButton_Career = styled.button`
     cursor: pointer;
     transform: rotate( -10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         top: 55px; left: 32px;
         font-size:  22px;
         transform: rotate( -9deg );
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         top: 90px; left: 50px;
         font-size:18px;
@@ -320,13 +320,13 @@ const ModalButton_Curriculum = styled.button`
     cursor: pointer;
     transform: rotate( 15deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         font-size:  22px;
         top: 180px; left: 100px;
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         top: 195px; left: 135px;
         font-size:18px;
@@ -345,13 +345,13 @@ const ModalButton_apply = styled.button`
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     cursor: pointer;   
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
      // between
      font-size:  22px;
      transform: rotate( -16deg );
      top: 70px; left: 307px;
    }
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
      // phone
      top: 90px; left: 310px;
      transform: rotate( -18deg );
@@ -372,21 +372,14 @@ const ModalButton_allmember = styled.button`
     cursor: pointer;
     font-weight: bold;
 
-    @media (min-width: 1025px) and (max-width: 1440px) {
+    @media (max-width: 1023x) {
         // between
         transform: rotate( -15deg );
         top: 65px; left: 35px;
         font-size:20px;
       }
 
-    @media (min-width: 768px) and (max-width: 1024px) {
-        // between
-        transform: rotate( -15deg );
-        top: 43px; left: 45px;
-        font-size:18px;
-      }
-
-      @media (max-width: 768px) {
+      @media (max-width: 767px) {
         // phone
         top:240px; left: 60px;
        }
@@ -401,13 +394,13 @@ const Img_main_blue = styled.img`
     top: 155px; left: 90px;
     transform: rotate( 10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 300px; height: 100px;
         top: 140px; left: 60px;
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width: 300px; height: 100px;
         top: 160px; left: 80px;
@@ -420,13 +413,13 @@ const Img_main_circle = styled.img`
     top: 180px; left: 20px;
     transform: rotate( 10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 60px; height: 60px;
         top: 180px; left: 10px;
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width: 60px; height: 60px;
         top: 170px; left: 20px;
@@ -438,13 +431,13 @@ const Img_main_green = styled.img`
     top: 38px; left: 300px;
     transform: rotate( -6deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 250px; height: 100px;
         top: 40px; left: 260px;
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width: 220px; height: 100px;
         top: 55px; left: 270px;
@@ -457,13 +450,13 @@ const Img_main_long_tri = styled.img`
     top: 180px; left: 420px;
     transform: rotate( 5deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 170px; height: 90px;
         top: 160px; left: 340px;
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width: 130px; height: 70px;
         top: 170px; left: 350px;
@@ -476,13 +469,13 @@ const Img_main_pink = styled.img`
     top: 18px; left: -20px;
     transform: rotate( -2deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 250px; height: 100px;
         top: 18px; left: 0px;
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width: 250px; height: 100px;
         top: 55px; left: 0px;
@@ -495,13 +488,13 @@ const Img_main_tri = styled.img`
     top: 20px; left: 270px;
     transform: rotate( 5deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 60px; height: 60px;
         top: 20px; left: 270px;
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width: 60px; height: 60px;
         top: 30px; left: 250px;
@@ -516,12 +509,12 @@ const Img_organ_green = styled.img`
     top: 25px; left: -20px;
     transform: rotate( -5deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 220px; height: 100px;
         top: 10px; left: 10px;
       }
-      @media (max-width: 768px) {
+      @media (max-width: 767px) {
         // phone
         width: 240px; height: 120px;
         top: 200px; left: 20px;
@@ -533,12 +526,12 @@ const Img_organ_sun = styled.img`
     top: -180px; left: 0px;
     transform: rotate( -5deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         width: 100px; height: 100px;
         top: -150px; left: 30px;
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: 767px) {
         // phone
         width: 200x; height: 150px;
         top: 30px; left: 20px;
@@ -550,13 +543,13 @@ const Img_organ_pub = styled.img`
     top: -220px; left: 180px;
     transform: rotate( 0deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 240px; height: 320px;
         top: -200px; left: 150px;
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: 767px) {
         // phone
         width: 260px; height: 330px;
         top: 0px; left: 200px;
