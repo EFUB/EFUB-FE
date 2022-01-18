@@ -9,7 +9,7 @@ const Wrapper=styled.div`
     height:auto;
     margin-bottom: 2rem;
     margin-top: 2rem;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         flex-direction: column;
     }
