@@ -12,6 +12,10 @@ const Title = styled.div`
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 4rem;
+
+    @media (max-width: 767px){
+        font-size: 2rem;
+    }
 `;
 
 const CurriModal = ({ _handleModal }) => {

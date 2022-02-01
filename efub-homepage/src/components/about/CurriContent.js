@@ -86,6 +86,7 @@ const Date = styled.div`
     width: 25%;
     @media (max-width: 767px){
         font-size: 15px;
+        width: 30%;
     }
 `;
 
@@ -99,6 +100,7 @@ const Option = styled.div`
     width: 20%;
     @media (max-width: 767px){
         font-size: 15px;
+        width: 15%;
     }
 `;
 

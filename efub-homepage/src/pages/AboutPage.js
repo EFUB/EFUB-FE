@@ -349,6 +349,7 @@ const ModalButton_apply = styled.button`
     @media (max-width: 1023px) {
      // between
      font-size:  20px;
+     width: 140px;
      transform: rotate( -16deg );
      top: 85px; left: 310px;
    }
