@@ -25,7 +25,7 @@ const ButtonBlock = styled.div`
     align-items: center;
     justify-content: center;
 
-    @media (max-width: 768px){
+    @media (max-width: 767px){
         width: 100%;
       }
 `;

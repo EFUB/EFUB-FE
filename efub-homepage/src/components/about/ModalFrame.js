@@ -16,6 +16,7 @@ const Container = styled.div`
     align-items: center;
     @media (max-width: 767px) {
         // phone
+        width: 100%;
         animation: modal-show 1s;
         @keyframes modal-show {
             from {

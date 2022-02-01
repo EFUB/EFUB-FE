@@ -7,9 +7,11 @@ const MemberBlock = styled.div`
     display: grid;
     grid-template-columns: 0.3fr 0.3fr 0.3fr;
     grid-row-gap: 50px;
-    @media (max-width: 768px) {
-        grid-template-columns: 0.3fr 0.3fr;
-        align-items: center;
+    @media (max-width: 767px) {
+        gap: 1rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-row-gap: 50px;
     }
 `;
 
@@ -17,12 +19,18 @@ const Member = styled.div`
     position: relative;
     height: 16.8rem;
     width: 16.8rem;
-    @media (max-width: 1120px) {
+    @media (max-width: 1023px) {
         height: 13.4rem;
         width: 13.4rem;
     }
-    
     margin-bottom: 1rem;
+
+    @media (max-width: 767px){
+        height: 8rem;
+        width: 8rem;
+    }
+
+    
 `;
 
 const MemberImage = styled.img`
@@ -31,9 +39,13 @@ const MemberImage = styled.img`
     border-radius:70%;
     height: 13rem;
     width: 13rem;
-    @media (max-width: 1024px) {
+    @media (max-width: 1023px) {
         height: 12rem;
         width:  12rem;
+    }
+    @media (max-width: 767px){
+        height: 8rem;
+        width: 8rem;
     }
 `;
 const MemberText = styled.div`
@@ -51,6 +63,10 @@ const MemberPosition = styled.div`
     font-weight: bold;
     position: relative;
     margin-right: 1rem;
+
+    @media (max-width: 767px){
+        font-size: 15px;
+    }
 `;
 
 const MemberName = styled.div`
@@ -58,6 +74,10 @@ const MemberName = styled.div`
     font-size: 20px;
     font-weight: bold;
     position: relative;
+
+    @media (max-width: 767px){
+        font-size: 15px;
+    }
 `;
 
 const MemberList = () => {
