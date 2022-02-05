@@ -216,7 +216,7 @@ const MainIntroText = styled.div`
     line-height:120%;
     @media (max-width: 767px) {
         // phone
-        font-size:  ${props => props.size || 35}px;
+        font-size:  1.8rem;
         line-height:160%
        }
 `
@@ -227,7 +227,7 @@ const SubIntroText = styled.div`
     line-height:180%;
     @media (max-width: 767px) {
         // phone
-        font-size:  ${props => props.size || 20}px;
+        font-size:  1rem;
        }
 `
 const SubTitle = styled.div`
@@ -257,7 +257,7 @@ const SubTitleWhite = styled.div`
         // phone
         margin-top: 5rem;
         margin-bottom: 1rem;
-        font-size:  ${props => props.size || 30}px;
+        font-size:  1.5rem;
        }
 `
 const SubTitleGreen = styled.div`
@@ -274,7 +274,7 @@ const SubTitleGreen = styled.div`
     @media (max-width: 767px) {
         // phone
         margin-top: 5rem;
-        font-size:  ${props => props.size || 30}px;
+        font-size:  1.5rem;
         margin-bottom: 1rem;
        }
 `
