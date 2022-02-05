@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import RadioButton from "../common/RadioButton";
+import React from 'react';
+import styled from 'styled-components';
+import RadioButton from '../common/RadioButton';
 
 const Grid = styled.div`
-  gap: 3rem;
+  gap: 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-bottom: 3rem;
@@ -25,11 +25,11 @@ const Text = styled.div`
 `;
 
 export const application_list = [
-  "인턴개발자 - 프론트엔드",
-  "리드개발자 - 프론트엔드",
-  "인턴개발자 - 백엔드",
-  "리드개발자 - 백엔드",
-  "인턴개발자 - 프론트 & 백",
+  '인턴개발자 - 프론트엔드',
+  '리드개발자 - 프론트엔드',
+  '인턴개발자 - 백엔드',
+  '리드개발자 - 백엔드',
+  '인턴개발자 - 프론트 & 백',
 ];
 
 const DeveloperPart = ({ part, onClickPart }) => {

@@ -6,11 +6,9 @@ body {
   padding: 0;
   min-height: 100%;
   box-sizing: border-box;
-  font-family: 'Montserrat', 'Roboto', sans-serif;
+  font-family: 'Montserrat', 'Roboto';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
-  color: white;
   -ms-overflow-style: none;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -20,6 +18,8 @@ body {
   user-select: none;
   user-zoom: none;
   touch-action: pan-y;
+  background-color: black;
+  color: white;
 }
 
 ::-webkit-scrollbar {

@@ -12,12 +12,13 @@ const Box = styled.div`
   background-color: rgba(225, 225, 225, 0.15);
   border-radius: 10px;
   justify-content: space-between;
+  cursor: pointer;
 `;
 
 const Text = styled.div`
-    font-family: "Roboto";
-    font-size: 20px;
-    font-weight: bold;
+  font-family: 'Roboto';
+  font-size: 20px;
+  font-weight: bold;
 `;
 
 const Dropdown = ({ onClick, title, open }) => {
@@ -25,13 +26,7 @@ const Dropdown = ({ onClick, title, open }) => {
     <>
       <Box onClick={onClick}>
         <Text>{title}</Text>
-        {
-          open ? (
-            <img src={up} alt="up" />
-          ) : (
-            <img src={down} alt="down" />
-          )
-        }
+        {open ? <img src={up} alt="up" /> : <img src={down} alt="down" />}
       </Box>
     </>
   );

@@ -8,11 +8,6 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo150.png",
-      "type": "image/png",
-      "sizes": "150x150"
-    },
-    {
       "src": "logo310.png",
       "type": "image/png",
       "sizes": "310x310"

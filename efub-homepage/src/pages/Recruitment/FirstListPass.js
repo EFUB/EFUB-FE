@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import Button from "../components/common/Button";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import Button from '../../components/common/Button';
 
 const Title = styled.div`
   font-size: 3rem;
@@ -22,6 +22,9 @@ const Listbox = styled.div`
   height: 30rem;
   margin: 2rem 0rem 3rem 0rem;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   @media (max-width: 767px) {
     height: 20rem;
   }
@@ -34,15 +37,21 @@ const BtnBox = styled.div`
     width: 90%;
   }
 `;
+const Text = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+`;
 
-const FinalList = () => {
+const FirstListPass = () => {
   return (
     <>
-      <Title>최종 합격자 발표</Title>
-      <Listbox />
+      <Title>1차 합격자 발표</Title>
+      <Listbox>
+        <Text>합격</Text>
+      </Listbox>
       <BtnBox>
         <Link to="/list">
-          <Button widthXS width="8" style={{ marginBottom: "10rem" }}>
+          <Button widthXS width="8" style={{ marginBottom: '10rem' }}>
             돌아가기
           </Button>
         </Link>
@@ -51,4 +60,4 @@ const FinalList = () => {
   );
 };
 
-export default FinalList;
+export default FirstListPass;

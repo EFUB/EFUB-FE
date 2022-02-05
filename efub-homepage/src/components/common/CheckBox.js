@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import checkboxTrue from "../../assets/recruitment/checkbox/checkbox-true.png";
-import checkboxFalse from "../../assets/recruitment/checkbox/checkbox-false.png";
+import React from 'react';
+import styled from 'styled-components';
+import checkboxTrue from '../../assets/recruitment/checkbox/checkbox-true.png';
+import checkboxFalse from '../../assets/recruitment/checkbox/checkbox-false.png';
 
 const Wrapper = styled.div`
   width: 16rem;
@@ -24,14 +24,13 @@ const Image = styled.img`
 
 const Checkbox = ({ label, checked, onToggle }) => (
   <Wrapper>
-    {
-      checked ?
-        <Image onClick={onToggle} src={checkboxTrue} alt="checkboxTrue" /> :
-        <Image onClick={onToggle} src={checkboxFalse} alt="checkboxFalse" />
-    }
+    {checked ? (
+      <Image onClick={onToggle} src={checkboxTrue} alt="checkboxTrue" />
+    ) : (
+      <Image onClick={onToggle} src={checkboxFalse} alt="checkboxFalse" />
+    )}
     <Label>{label}</Label>
   </Wrapper>
 );
 
 export default Checkbox;
-

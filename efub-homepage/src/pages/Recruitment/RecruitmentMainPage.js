@@ -12,18 +12,18 @@ import Detail from '../../components/recruitment/Detail';
 const BackgroundImg = styled.img`
   width: 20rem;
   top: 60rem;
-  left: ${(props) => props.left || "none"};
-  right: ${(props) => props.right || "none"};
+  left: ${(props) => props.left || 'none'};
+  right: ${(props) => props.right || 'none'};
   z-index: 1;
   position: absolute;
   @media (max-width: 1023px) {
     width: 0px;
-  };
+  } ;
 `;
 
-const RecruitmentPage = () => {
+const RecruitmentMainPage = () => {
   const isMobile = useMediaQuery({
-    query: '(max-width: 767px)'
+    query: '(max-width: 767px)',
   });
   return (
     <>
@@ -35,14 +35,13 @@ const RecruitmentPage = () => {
       ) : (
         <>
           <Banner />
+          <Detail />
           <BackgroundImg src={Left} alt="leftImg" left="0" />
           <BackgroundImg src={Right} alt="rightImg" right="0" />
-          <Detail />
         </>
-      )
-      }
+      )}
     </>
   );
 };
 
-export default RecruitmentPage;
+export default RecruitmentMainPage;
