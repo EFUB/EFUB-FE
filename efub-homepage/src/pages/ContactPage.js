@@ -55,7 +55,7 @@ const ContactPage = () => {
   const sendContact = async () => {
     setLoading(true);
     try {
-      const { data: res } = await axios.post('http://3.34.222.176:8080/api/contact',
+      const res = await axios.post('http://3.34.222.176:8080/api/contact',
         {
           "writer_email": email,
           "content": message
