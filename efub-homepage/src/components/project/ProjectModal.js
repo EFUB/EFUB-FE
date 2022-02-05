@@ -65,7 +65,7 @@ const Image = styled.img`
 `;
 
 const ProjectModal = ({ position, card, _handleModal }) => {
-ㄹ    const isMobile = useMediaQuery({
+    const isMobile = useMediaQuery({
     query: "(max-width: 767px)"
 });
     return (

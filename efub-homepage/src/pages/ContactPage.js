@@ -67,9 +67,6 @@ const ContactPage = () => {
           background: palette.black,
           color: palette.white,
           confirmButtonColor: palette.black,
-          buttonsStyling: {
-
-          }
         })
       }
       else {

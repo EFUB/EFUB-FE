@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import {
-    useWindowSize,
-} from '@react-hook/window-size'
 import close from '../../assets/close-icon.png';
 
 
@@ -81,7 +78,6 @@ const Contents = styled.div`
 
 
 const ModalFrame = ({ position, _handleModal, children, ...rest }) => {
-
     // _handleModal로 modal open/close 되는 토글 함수 넣어 주면 됨
     /* style, className, onClick, onMouseMove 등의 props를 사용할 수 있도록 */
     /* ...rest를 사용하여 ModalFrame에게 전달 */

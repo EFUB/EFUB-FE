@@ -4,7 +4,7 @@ import up from '../../assets/recruitment/up.png';
 import down from '../../assets/recruitment/down.png';
 
 const Box = styled.div`
-margin-top: 1rem;
+  margin-top: 1rem;
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -16,9 +16,8 @@ margin-top: 1rem;
 
 const Text = styled.div`
     font-family: "Roboto";
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
-    line-height: 35px;
 `;
 
 const Dropdown = ({ onClick, title, open }) => {

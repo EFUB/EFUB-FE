@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-    width: 100%;
+    width: ${props => props.width || "100%"};
     display: flex;
     flex-direction: column;
 `;
@@ -27,11 +27,11 @@ const Input = styled.input`
     margin-bottom: 4rem;
 `;
 
-const InputLine = ({ name, value, label, placeholder, onChange }) => {
+const InputLine = ({ name, type, value, label, placeholder, onChange, width }) => {
     return (
-        <Wrapper autocomplete="off">
+        <Wrapper width={width} autocomplete="off">
             <Label>{label}</Label>
-            <Input name={name} value={value} onChange={onChange} placeholder={placeholder} />
+            <Input type={type} name={name} value={value} onChange={onChange} placeholder={placeholder} />
         </Wrapper>
     );
 };
