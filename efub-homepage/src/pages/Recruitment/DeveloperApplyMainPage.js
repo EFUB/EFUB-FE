@@ -1,21 +1,12 @@
 //연결해야하는부분
 
-import React, { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { Switch, Route } from "react-router-dom";
-
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/common/Button";
 import InputLine from "../../components/common/InputLine";
-import SaveUserID from "../../components/common/SaveUserID";
 
-import axios from 'axios'
-import { USER_SERVER } from '../../config'
-
-import AppContext from "../../components/common/AppContext";
-
-import DeveloperApplyFormPage from "./DeveloperApplyFormPage";
 
 // import DeveloperApplyFormPage from "./DeveloperApplyFormPage";
 // import DeveloperApplyInternPage from "./DeveloperApplyInternPage";
@@ -67,7 +58,7 @@ const Text = styled.div`
 `
 
 const DeveloperApplyMainPage = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [inputs, setInputs] = useState({
     name: '',
@@ -88,17 +79,28 @@ const DeveloperApplyMainPage = () => {
     });
   };
 
-  // 이 사람이 등록을 한 적이 있는가?
-  // const [isMember, setIsMember]  = useState({ status: 'idle', userId: "", saveFinal: "" });
-  // const isMember = {
-  //   userId: "",
-  //   saveFinal: ""
-  // }
-
-  const [isMember, setIsMember] = useState({
-        userId :  "",
-        saveFinal : ""
-    });
+  const onPress = async () => {
+    try {
+      const { data: res } = await axios.post("http://3.34.222.176:8080/api/recruitment/apply/user",
+        {
+          "name": name,
+          "student_id": studentId,
+          "department": major,
+          "phone_no": phone,
+          "password": code,
+          "position": 1
+        }
+      );
+      console.log(res)
+      if (res.saveFinal === 'true')
+        alert('이미 제출 완료')
+      else
+        navigate(`/developer-apply/form/${res.userId}`)
+    }
+    catch (e) {
+      console.log(e);
+    }
+  }
 
   return (
     <>
@@ -108,45 +110,15 @@ const DeveloperApplyMainPage = () => {
       </BannerBlock>
       <Main>
         <InputLine name="name" value={name} label="이름" placeholder="지원자 이름" onChange={onChange} />
-        <InputLine name="studentId" value={studentId} label="학번" placeholder="ex. 18862021" onChange={onChange} />
+        <InputLine name="studentId" value={studentId} label="학번" placeholder="ex. 1886123" onChange={onChange} />
         <InputLine name="major" value={major} label="단대 및 학과" placeholder="ex.엘텍공과대학 소프트웨어학부 컴퓨터공학과" onChange={onChange} />
-        <InputLine name="phone" value={phone} label="전화번호" placeholder="ex.010-1886-2021" onChange={onChange} />
+        <InputLine name="phone" value={phone} label="전화번호" placeholder="'-' 없이 입력" onChange={onChange} />
         <InputLine name="code" value={code} label="비밀번호 설정" placeholder="비밀번호 4자리" onChange={onChange} />
         <Text style={{ marginTop: "2rem" }}>인적사항은 추후 면접 일시와 합격 안내 시 이용됩니다.</Text>
         <Text>여러분의 소중한 개인정보는 이펍 모집 일정이 끝난 직후 바로 폐기됩니다.</Text>
         <Bottom>
           <Text>1/3 페이지</Text>
-          <Button filled onClick={() => { 
-                            // fetch(userInfo(name, studentId, major, phone, code, position))
-                            axios
-                                .post(`${USER_SERVER}/api/recruitment/apply/user`, {
-                                name: name,
-                                student_id: studentId,
-                                department: major,
-                                phone_no: phone,
-                                password: code,
-                                position: position
-                                })
-                            .then(response => {
-                                 isMember.saveFinal = response.data.saveFinal;
-                                 isMember.userId = response.data.userId;
-                                 console.log(isMember.saveFinal);
-                                 console.log(isMember.userId);
-                                 if (isMember.saveFinal){
-                                  alert(`이미 지원하셨습니다.`)
-                              } else{
-                                  // SaveUserID(myContext.userId);
-                                  alert(` 확인되었습니다. `)
-                                  console.log(isMember.saveFinal);
-                                  console.log(isMember.userId);
-                                  history.push({
-                                    pathname: "/developer-apply/form",
-                                    state: isMember.userId
-                                  });
-                                  // window.location.replace ("/developer-apply/form")
-                              }
-                            });
-                            }}> 다음</Button>
+          <Button filled onClick={() => onPress()} > 다음</Button>
         </Bottom>
       </Main>
     </>

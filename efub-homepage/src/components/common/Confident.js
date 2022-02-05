@@ -3,7 +3,6 @@ import styled from "styled-components";
 import RadioButton from "./RadioButton";
 
 const Wrapper = styled.div`
-    margin-left: 8rem;
     margin-bottom: 4rem;
     display: flex;
     flex-direction: row;

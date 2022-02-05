@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import Banner from '../components/project/Banner';
 import ButtonList from '../components/project/ButtonList';
@@ -17,13 +17,17 @@ const Main = styled.div`
 `;
 
 const ProjectPage = () => {
-
-
     const [select, setSelect] = useState('all');
     const onSelect = useCallback(select => setSelect(select), []);
 
     const [openModal, setOpenModal] = useState(false);
-    const _handleModal = () => setOpenModal(!openModal);
+    const [position, setPosition] = useState(0);
+
+    const _handleModal = () => {
+        setOpenModal(!openModal);
+        setPosition(window.pageYOffset);
+    };
+
 
     const [card, setCard] = useState(null);
     const _handleClick = (id) => { setCard(id); _handleModal(); };
@@ -36,7 +40,7 @@ const ProjectPage = () => {
                 <CardList select={select} _handleClick={_handleClick} />
             </Main>
             {openModal && (
-                <ProjectModal card={card} _handleModal={_handleModal} />
+                <ProjectModal position={position} card={card} _handleModal={_handleModal} />
             )}
         </>
     );

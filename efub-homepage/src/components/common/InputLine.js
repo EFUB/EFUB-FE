@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+    width: ${props => props.width || "100%"};
+    display: flex;
+    flex-direction: column;
 `;
 
 const Label = styled.div`
@@ -37,18 +37,13 @@ const Input = styled.input`
   }
 `;
 
-const InputLine = ({ name, value, label, placeholder, onChange }) => {
-  return (
-    <Wrapper>
-      <Label>{label}</Label>
-      <Input
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-      />
-    </Wrapper>
-  );
+const InputLine = ({ name, type, value, label, placeholder, onChange, width }) => {
+    return (
+        <Wrapper width={width} autocomplete="off">
+            <Label>{label}</Label>
+            <Input type={type} name={name} value={value} onChange={onChange} placeholder={placeholder} />
+        </Wrapper>
+    );
 };
 
 export default InputLine;

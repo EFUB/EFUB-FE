@@ -1,22 +1,13 @@
-import React, { useState, useContext, useEffect, useCallback } from "react";
-import styled from "styled-components";
-import Button from "../../components/common/Button";
-import InputBox from "../../components/common/InputBox";
-import InputLine from "../../components/common/InputLine";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
-import DeveloperStack from "../../components/recruitment/DeveloperStack";
-import DeveloperPart from "../../components/recruitment/DeveloperPart";
-import { application_list } from "../../components/recruitment/DeveloperPart";
-import Confident from "../../components/common/Confident";
-
-import axios from "axios";
-import { USER_SERVER } from "../../config";
-
-import { useLocation } from "react-router";
-
-import AppContext from "../../components/common/AppContext";
-import App from "../../App";
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import Button from '../../components/common/Button'
+import InputBox from '../../components/common/InputBox'
+import InputLine from '../../components/common/InputLine'
+import { Link, useParams } from 'react-router-dom'
+import DeveloperStack from '../../components/recruitment/DeveloperStack'
+import DeveloperPart from '../../components/recruitment/DeveloperPart'
+import Confident from '../../components/common/Confident'
+import axios from 'axios'
 
 const BannerBlock = styled.div`
   width: 100%;
@@ -94,6 +85,31 @@ const DeveloperApplyFormPage = () => {
     });
   };
 
+  const { userId } = useParams();
+
+  const getForm = async (userId) => {
+    console.log(userId)
+    try {
+      const { data: res } = await axios.post('http://3.34.222.176:8080/api/recruitment/apply/get/des',
+        {
+          "user_id": userId
+        })
+      setInputs({
+        first: res.motive,
+        second: res.project_topic,
+        lang: res.language
+      })
+    }
+    catch (e) {
+      console.log(e)
+    }
+  }
+
+  useEffect(() => {
+    getForm(userId);
+  }, [userId])
+
+
   const [stackList, setStackList] = useState([
     { id: 0, label: "C", checked: false },
     { id: 1, label: "Python", checked: false },
@@ -107,7 +123,7 @@ const DeveloperApplyFormPage = () => {
     { id: 9, label: "Spring", checked: false },
     { id: 10, label: "Django", checked: false },
     { id: 11, label: "Flask", checked: false },
-    { id: 12, label: "기타 (직접 입력)", checked: false },
+    { id: 12, label: "기타", checked: false },
   ]);
   const [part, setPart] = useState(1);
   const [score, setScore] = useState(1);
@@ -240,56 +256,33 @@ const DeveloperApplyFormPage = () => {
           되니 신중히 체크해 주세요!
         </Text>
         <Question>4. 자신 있는 프로그래밍 언어를 적어주세요.</Question>
-        <InputLine
-          name="lang"
-          value={lang}
-          placeholder="ex. 파이썬"
-          onChange={onChange}
-        />
-        <Question>
-          4-1. 위에서 답한 언어에 대한 자신감을 5점 만점으로 평가해주세요.
-        </Question>
+        <InputLine name="lang" value={lang} placeholder="ex. 파이썬" onChange={onChange} />
+        <Question>4-1. 위에서 답한 언어에 대한 숙련도를 5점 만점으로 평가해주세요.</Question>
         <Wrapper>
-          <Question style={{ marginTop: "0" }}>내 자신감은...</Question>
           <Confident score={score} onClickScore={onClickScore} />
         </Wrapper>
-        <Question>5. 사용할 수 있는 기술을 모두 선택해주세요.</Question>
+        <Question>5. 사용할 수 있는 언어 및 프레임워크를 모두 선택해주세요.</Question>
         <DeveloperStack stackList={stackList} onToggle={onToggle} />
         <Bottom>
           <Text>2/3 페이지</Text>
           <div>
-            <Button
-              blue
-              style={{ marginRight: 15 }}
-              onClick={() => submitSaveDev()}
-            >
-              저장
-            </Button>
-            {/* <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second} / 3번 : ${part} / 4번 : ${lang} / 4-1번 : ${score}`) }}>다음</Button> */}
-
-            {part % 2 === 1 ? (
-              <Link
-                to={{
-                  pathname: "/developer-apply/intern",
-                  state: {
-                    posts: posts,
-                  },
-                }}
-              >
-                <Button filled>다음</Button>
-              </Link>
-            ) : (
-              <Link
-                to={{
-                  pathname: "/developer-apply/lead",
-                  state: {
-                    posts: posts,
-                  },
-                }}
-              >
-                <Button filled>다음</Button>
-              </Link>
-            )}
+            <Button blue style={{ marginRight: 15 }}>저장</Button>
+            <Button filled onClick={() => { alert(`1번 : ${first} / 2번: ${second} / 3번 : ${part} / 4번 : ${lang} / 4-1번 : ${score}`) }}>다음</Button>
+            {
+              (part % 2) === 1 ? (
+                <Link to="/developer-apply/intern">
+                  <Button filled>
+                    다음
+                  </Button>
+                </Link>
+              ) : (
+                <Link to="/developer-apply/lead">
+                  <Button filled>
+                    다음
+                  </Button>
+                </Link>
+              )
+            }
           </div>
         </Bottom>
       </Main>

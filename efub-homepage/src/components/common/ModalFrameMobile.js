@@ -7,7 +7,7 @@ const Container = styled.div`
     width: 100%;
     height: 100%;
     z-index: 2000;
-    top: 0;
+    top: ${props => props.top || 0}px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -55,12 +55,12 @@ const Contents = styled.div`
     align-items: center;
 `;
 
-const ModalFrameMobile = ({ _handleModal, children, ...rest }) => {
+const ModalFrameMobile = ({ top, _handleModal, children, ...rest }) => {
     // _handleModal로 modal open/close 되는 토글 함수 넣어 주면 됨
     /* style, className, onClick, onMouseMove 등의 props를 사용할 수 있도록 */
     /* ...rest를 사용하여 ModalFrame에게 전달 */
     return (
-        <Container>
+        <Container top={top}>
             <ModalBlock {...rest}>
                 <Close onClick={_handleModal} />
                 <Contents>
