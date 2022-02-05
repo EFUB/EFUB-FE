@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+
 import Header from "./components/common/Header";
 import AboutPage from "./pages/AboutPage";
 import ProjectPage from "./pages/ProjectPage";
@@ -36,23 +37,23 @@ const App = () => {
     <>
       <Header menu={menu} onSelect={onSelect} />
       <Main>
-        <Switch>
-          <Route component={AboutPage} path="/" exact />
-          <Route component={ProjectPage} path="/project" />
-          <Route component={RecruitmentPage} path="/recruitment" />
-          <Route component={ListPage} path="/list" exact />
-          <Route component={FirstListPass} path="/list/firstlistpass" />
-          <Route component={FirstListFail} path="/list/firstlistfail" />
-          <Route component={FinalList} path="/list/finalresult" />
-          <Route component={DeveloperApplyMainPage} path="/developer-apply" exact />
-          <Route component={DeveloperApplyFormPage} path="/developer-apply/form" />
-          <Route component={DeveloperApplyInternPage} path="/developer-apply/intern" />
-          <Route component={DeveloperApplyLeadPage} path="/developer-apply/lead" />
-          <Route component={DesignerApplyMainPage} path="/designer-apply" exact />
-          <Route component={DesignerApplyFormPage} path="/designer-apply/form" />
-          <Route component={ContactPage} path="/contact" />
-          <Route component={ThankYou} path="/thankyou" />
-        </Switch>
+        <Routes>
+          <Route element={<AboutPage />} path="/" exact />
+          <Route element={<ProjectPage />} path="/project" />
+          <Route element={<RecruitmentPage />} path="/recruitment" />
+          <Route element={<ListPage />} path="/list" exact />
+          <Route element={<FirstListPass />} path="/list/firstlistpass" />
+          <Route element={<FirstListFail />} path="/list/firstlistfail" />
+          <Route element={<FinalList />} path="/list/finalresult" />
+          <Route element={<DeveloperApplyMainPage />} path="/developer-apply" exact />
+          <Route element={<DeveloperApplyFormPage />} path="/developer-apply/form/:userId" exact />
+          <Route element={<DeveloperApplyInternPage />} path="/developer-apply/intern" />
+          <Route element={<DeveloperApplyLeadPage />} path="/developer-apply/lead" />
+          <Route element={<DesignerApplyMainPage />} path="/designer-apply" exact />
+          <Route element={<DesignerApplyFormPage />} path="/designer-apply/form" />
+          <Route element={<ContactPage />} path="/contact" />
+          <Route element={<ThankYou />} path="/thankyou" />
+        </Routes>
       </Main>
       <Footer />
     </>

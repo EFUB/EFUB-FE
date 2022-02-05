@@ -64,15 +64,15 @@ const Image = styled.img`
     border-radius: 10px;
 `;
 
-const ProjectModal = ({ card, _handleModal }) => {
-    const isMobile = useMediaQuery({
-        query: "(max-width: 767px)"
-    });
+const ProjectModal = ({ position, card, _handleModal }) => {
+ㄹ    const isMobile = useMediaQuery({
+    query: "(max-width: 767px)"
+});
     return (
         <>
             {
                 isMobile ? (
-                    <ModalMobile _handleModal={_handleModal}>
+                    <ModalMobile top={position} _handleModal={_handleModal}>
                         <Title>{projects[card].name}</Title>
                         <About>{projects[card].about}</About>
                         <InfoBlock>

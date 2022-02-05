@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import {
+    useWindowSize,
+} from '@react-hook/window-size'
 import close from '../../assets/close-icon.png';
+
 
 const Container = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: 100;
-    top: 0;
+    font-size:  ${props => props.y || 0};
     left: 0;
     right: 0;
     bottom: 0;
@@ -75,12 +79,14 @@ const Contents = styled.div`
     align-items: center;
 `;
 
-const ModalFrame = ({ _handleModal, children, ...rest }) => {
+
+const ModalFrame = ({ position, _handleModal, children, ...rest }) => {
+
     // _handleModal로 modal open/close 되는 토글 함수 넣어 주면 됨
     /* style, className, onClick, onMouseMove 등의 props를 사용할 수 있도록 */
     /* ...rest를 사용하여 ModalFrame에게 전달 */
     return (
-        <Container>
+        <Container y={position}>
             <Background onClick={_handleModal} />
             <ModalBlock {...rest}>
                 <Close onClick={_handleModal} />

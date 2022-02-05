@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import swal from 'sweetalert2';
 import { useMediaQuery } from 'react-responsive';
 import styled from "styled-components";
+import palette from "../lib/styles/palette";
 import InputBox from "../components/common/InputBox";
 import Button from "../components/common/Button";
 import Banner from '../components/contact/Banner';
+import Loading from '../components/common/Loading';
 
 const FormBox = styled.div`
   margin-bottom: 5rem;
@@ -33,6 +37,8 @@ const ContactPage = () => {
     message: '',
   });
 
+  const [loading, setLoading] = useState(false);
+
   const { email, message } = inputs;
 
   const onChange = (e) => {
@@ -43,6 +49,37 @@ const ContactPage = () => {
     });
   };
 
+  const sendContact = async () => {
+    setLoading(true);
+    try {
+      const { data: res } = await axios.post('http://3.34.222.176:8080/api/contact',
+        {
+          "writer_email": email,
+          "content": message
+        })
+      if (res === 200) {
+        setLoading(false);
+        swal.fire({
+          title: '메일을 성공적으로 보냈습니다!',
+          text: '확인 후 입력하신 주소로 빠르게 답변드리겠습니다 :)',
+          icon: 'success',
+          confirmButtonText: '확인',
+          background: palette.black,
+          color: palette.white,
+          confirmButtonColor: palette.black,
+          buttonsStyling: {
+
+          }
+        })
+      }
+      else {
+        console.log(res)
+      }
+    }
+    catch (e) {
+      console.log(e)
+    }
+  }
   return (
     <>
       <Banner />
@@ -68,7 +105,7 @@ const ContactPage = () => {
             </FormBox >
             <Button
               style={{ width: "90%" }}
-              onClick={() => { alert(`email : ${email} / message: ${message}`) }}
+              onClick={() => sendContact()}
             >전송하기</Button>
           </>
         ) : (
@@ -93,10 +130,13 @@ const ContactPage = () => {
             <Button
               width="10"
               style={{ marginBottom: "10rem" }}
-              onClick={() => { alert(`email : ${email} / message: ${message}`) }}
+              onClick={() => sendContact()}
             >전송하기</Button>
           </>
         )
+      }
+      {
+        loading ? <Loading /> : <></>
       }
 
     </>

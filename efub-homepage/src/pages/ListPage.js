@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/common/Button";
 import InputLine from "../components/common/InputLine";
 import axios from "axios";
@@ -21,7 +20,7 @@ const Title = styled.div`
 `;
 
 const ListPage = () => {
-  let history = useHistory();
+  const navigate = useNavigate();
 
   const [inputs, setInputs] = useState({
     name: '',
@@ -49,9 +48,9 @@ const ListPage = () => {
         }
       );
       if (res === '합격')
-        history.push("/list/firstlistpass");
+        navigate("/list/firstlistpass");
       else if (res === '불합격')
-        history.push("/list/firstlistfail");
+        navigate("/list/firstlistfail");
       else
         alert(res);
     }
@@ -66,9 +65,6 @@ const ListPage = () => {
         <InputLine name="name" value={name} label="이름" placeholder="지원자 이름" onChange={onChange} />
         <InputLine name="phone" value={phone} label="전화번호" placeholder="'-' 없이 입력" onChange={onChange} />
         <InputLine name="code" value={code} label="비밀번호" placeholder="4자리 입력" onChange={onChange} />
-        {/* <Button>
-          <Link to="/firstList">조회하기</Link>
-        </Button> */}
         <Button
           width="8"
           onClick={() => onPress()}

@@ -29,7 +29,7 @@ const Input = styled.input`
 
 const InputLine = ({ name, value, label, placeholder, onChange }) => {
     return (
-        <Wrapper>
+        <Wrapper autocomplete="off">
             <Label>{label}</Label>
             <Input name={name} value={value} onChange={onChange} placeholder={placeholder} />
         </Wrapper>
