@@ -61,6 +61,7 @@ const RecruitmentPassPage = () => {
       if (res === '합격') navigate('/list/firstlistpass');
       else if (res === '불합격') navigate('/list/firstlistfail');
       else alert(res);
+      console.log(res);
     } catch (e) {
       console.log(e);
     }
