@@ -168,7 +168,7 @@ const MemberBlock = styled.div`
     }
     @media (max-width: 767px) {
         // phone
-        width: 100%;
+        width: 90%;
        }
 `;
 
@@ -302,7 +302,7 @@ const ModalButton_Career = styled.button`
 
     @media (max-width: 767px) {
         // phone
-        top: 90px; left: 50px;
+        top: 90px; left: 150px;
         font-size:18px;
        }
 `
@@ -329,7 +329,7 @@ const ModalButton_Curriculum = styled.button`
 
     @media (max-width: 767px) {
         // phone
-        top: 195px; left: 135px;
+        top: 195px; left: 235px;
         font-size:18px;
        }
 `
@@ -355,7 +355,7 @@ const ModalButton_apply = styled.button`
    }
     @media (max-width: 767px) {
      // phone
-     top: 90px; left: 310px;
+     top: 90px; left: 410px;
      transform: rotate( -18deg );
      font-size:18px;
     }
@@ -381,7 +381,7 @@ const ModalButton_allmember = styled.button`
     }
     @media (max-width: 767px) {
     // phone
-    top: 250px; left: 80px;
+    top: 250px; left: 180px;
     transform: rotate( -18deg );
     font-size:18px;
     }
@@ -405,7 +405,7 @@ const Img_main_blue = styled.img`
     @media (max-width: 767px) {
         // phone
         width: 300px; height: 100px;
-        top: 160px; left: 80px;
+        top: 160px; left: 180px;
        }
 `
 
@@ -424,7 +424,7 @@ const Img_main_circle = styled.img`
     @media (max-width: 767px) {
         // phone
         width: 60px; height: 60px;
-        top: 170px; left: 20px;
+        top: 170px; left: 120px;
        }
 `
 const Img_main_green = styled.img`
@@ -442,7 +442,7 @@ const Img_main_green = styled.img`
     @media (max-width: 767px) {
         // phone
         width: 220px; height: 100px;
-        top: 55px; left: 270px;
+        top: 55px; left: 370px;
        }
 `
 
@@ -461,7 +461,7 @@ const Img_main_long_tri = styled.img`
     @media (max-width: 767px) {
         // phone
         width: 130px; height: 70px;
-        top: 170px; left: 350px;
+        top: 170px; left: 450px;
        }
 `
 
@@ -480,7 +480,7 @@ const Img_main_pink = styled.img`
     @media (max-width: 767px) {
         // phone
         width: 250px; height: 100px;
-        top: 55px; left: 0px;
+        top: 55px; left: 100px;
        }
 `
 
@@ -499,7 +499,7 @@ const Img_main_tri = styled.img`
     @media (max-width: 767px) {
         // phone
         width: 60px; height: 60px;
-        top: 30px; left: 250px;
+        top: 30px; left: 350px;
        }
 `
 //Organizer 밑 네온사인
@@ -519,7 +519,7 @@ const Img_organ_green = styled.img`
       @media (max-width: 767px) {
         // phone
         width: 240px; height: 120px;
-        top: 200px; left: 20px;
+        top: 200px; left: 120px;
        }
 `
 const Img_organ_sun = styled.img`
@@ -536,7 +536,7 @@ const Img_organ_sun = styled.img`
       @media (max-width: 767px) {
         // phone
         width: 200x; height: 150px;
-        top: 30px; left: 20px;
+        top: 30px; left: 120px;
        }
 `
 const Img_organ_pub = styled.img`
@@ -554,7 +554,7 @@ const Img_organ_pub = styled.img`
       @media (max-width: 767px) {
         // phone
         width: 260px; height: 330px;
-        top: 0px; left: 200px;
+        top: 0px; left: 300px;
        }
 `
 
@@ -726,18 +726,21 @@ const AboutPage = () => {
             </MainWrapper>
 
             <ReviewWrapper>
+
                 <SubTitle>
                     <SubTitleWhite>1기&nbsp; </SubTitleWhite>
                     <SubTitleGreen>우수 활동 퍼비</SubTitleGreen>
                     <SubTitleWhite>의 활동 후기</SubTitleWhite>
                     
-                    <ToggleImg
+                    {/* <ToggleImg
                         change={change}
                         id="field"
                         onClick={(e) => toggleHandler(e)}
-                        />
+                        /> */}
                 </SubTitle>
-                {toggleState.field ? (
+
+                
+                {/* {toggleState.field ? ( */}
                     <>
                     <Review1
                         profile={mvp1}
@@ -754,38 +757,35 @@ const AboutPage = () => {
                         text={["웹개발에 대해 하나도 모르는 초보 개발자였는데,  EFUB에서 열리는 다양한 세미나와 프로젝트 덕분에 많이 성장하게 된 것 같습니다. 그리고 기초부터 심화까지 알려주는 커리큘럼과 리드/인턴에 맞는 토이 프로젝트 배치 덕분에 프로젝트에 대한 부담 없이 재미있게 개발할 수 있었습니다. 정말 EFUB은 올해 최고의 선택이었던 것 같습니다☺ ",<br/>,"(강민지, 인턴 개발자)"]}
                     />
                     </>
-                ) : (
+                {/* ) : (
                     ""
-                )}
+                )} */}
+            
             </ReviewWrapper>
 
             <SubTitleWhite>EFUB ORGANIZER</SubTitleWhite>
 
             <OrganizerWrapper>
+                <MemberBlock>
+                    <SubMemberBlock>
+                        <Member_Green name={"정아연"} position={"회장"} />
+                        <Member_Green name={"김혜린"} position={"부회장"} />
+                        <Member_Green name={"윤효정"} position={"총무"} />
+                    </SubMemberBlock>
 
-            <MemberBlock>
-                        <SubMemberBlock>
-                            <Member_Green name={"정아연"} position={"회장"} />
-                            <Member_Green name={"김혜린"} position={"부회장"} />
-                            <Member_Green name={"윤효정"} position={"총무"} />
-                        </SubMemberBlock>
+                    <SubMemberBlock>
+                        <Member_Blue name={"이윤지"} position={"프론트장"} />
+                        <Member_Blue name={"김정은"} position={"백엔드장"} />
+                        <Member_Blue name={"김채령"} position={"디자이너장"} />
+                    </SubMemberBlock>
+                </MemberBlock>
 
-                        <SubMemberBlock>
-                            <Member_Blue name={"이윤지"} position={"프론트장"} />
-                            <Member_Blue name={"김정은"} position={"백엔드장"} />
-                            <Member_Blue name={"김채령"} position={"디자이너장"} />
-                        </SubMemberBlock>
-                    </MemberBlock>
-
-                    <AllMemberWrapper>
-                        
-                        <ModalButton_allmember onClick={() => setOpenMemberModal(true)}> 전체 임원 보기 >  </ModalButton_allmember>
-                        <Img_organ_green src={organ_green}></Img_organ_green>
-                        <Img_organ_sun src={organ_sun}></Img_organ_sun>
-                        <Img_organ_pub src={organ_pub}></Img_organ_pub>
-
-                    </AllMemberWrapper>
-
+                <AllMemberWrapper>
+                    <ModalButton_allmember onClick={() => setOpenMemberModal(true)}> 전체 임원 보기 >  </ModalButton_allmember>
+                    <Img_organ_green src={organ_green}></Img_organ_green>
+                    <Img_organ_sun src={organ_sun}></Img_organ_sun>
+                    <Img_organ_pub src={organ_pub}></Img_organ_pub>
+                </AllMemberWrapper>
             </OrganizerWrapper>
 
 
