@@ -7,7 +7,7 @@ const Wrapper=styled.div`
     align-items: center;
     width:50%;
     height:auto;
-    @media (max-width: 768px){
+    @media (max-width: 767px){
         width: 100%;
       }
 `
@@ -26,13 +26,13 @@ const MemberBox=styled.div`
     text-align: center;
     line-height:160%;
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         height: 7rem;
         width: 7rem;
         margin-right: 0.5rem;
         margin-left: 0.5rem;
       }
-      @media (max-width: 768px){
+      @media (max-width: 767px){
         height: 8rem;
         width: 8rem;
         margin-right: 0.3rem;
@@ -48,10 +48,10 @@ const PositionText=styled.div`
     justify-content: center;
     margin-top: 30%;
     width:100%;
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         margin-top: 20%;
       }
-    @media (max-width: 768px){
+    @media (max-width: 767px){
         margin-top: 25%;
         font-size: 18px;
       }
@@ -66,7 +66,7 @@ const NameText=styled.div`
     justify-content: center;
     margin-bottom: 25%;
     width:100%;
-    @media (max-width: 768px){
+    @media (max-width: 767px){
         font-size: 25px;
       }
 `

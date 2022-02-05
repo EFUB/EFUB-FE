@@ -71,7 +71,7 @@ const Week = styled.div`
     font-family: 'Roboto', sans-serif;
     line-height:180%;
     width: 55%;
-    @media (max-width: 768px){
+    @media (max-width: 767px){
         font-size: 15px;
     }
 `;
@@ -84,8 +84,9 @@ const Date = styled.div`
     font-family: 'Roboto', sans-serif;
     line-height:180%;
     width: 25%;
-    @media (max-width: 768px){
+    @media (max-width: 767px){
         font-size: 15px;
+        width: 30%;
     }
 `;
 
@@ -97,8 +98,9 @@ const Option = styled.div`
     font-family: 'Roboto', sans-serif;
     line-height:180%;
     width: 20%;
-    @media (max-width: 768px){
+    @media (max-width: 767px){
         font-size: 15px;
+        width: 15%;
     }
 `;
 

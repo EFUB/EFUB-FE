@@ -20,7 +20,7 @@ const ButtonBlock = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    @media (max-width: 768px){
+    @media (max-width: 767px){
         font-size: 13px;
         padding-left: 0.5rem;
     }

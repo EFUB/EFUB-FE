@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import FixedModalFrame from './ModalFrame';
+import FixedModalFrame from './MemberModalFrame';
 
 import ScrollDiv from './ScrollDiv_Black';
 import MemberList from './MemberList';
@@ -18,6 +18,10 @@ const Title = styled.div`
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 4rem;
+
+    @media (max-width: 767px){
+        font-size: 2rem;
+    }
 `;
 const First = styled.div`
     width: 100%;
@@ -26,35 +30,38 @@ const First = styled.div`
     text-align: left;
     margin-bottom: 2rem;
     margin-left: 2rem;
+
+    @media (max-width: 767px){
+        font-size: 2rem;
+    }
 `;
 
 const Content = styled.div` 
     display: flex;
     position: relative;
     width:100%;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
        }
 `
 const SubContent = styled.div` 
     z-index: 0;
-
     display: flex;
     width:100%;
     
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
+        display:none;
        }
 `
 const SubContent_member = styled.div` 
     z-index: 10;
 
     display: flex;
-    position: relative;
     width:100%;
     justify-content: center;
     align-items: center;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
     // phone
     }
 `
@@ -66,18 +73,15 @@ const Ay_neon = styled.img`
     z-index: 0;
     // transform: rotate( 10deg );
 
-    
-
-    @media (min-width: 768px) and (max-width: 1440px) {
+    @media (max-width: 1023px) {
         // between
         width: 150px; height: 130px;
         top: -10px; left: -10px;
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
-        width: 150px; height: 130px;
-        top: -10px; left: -10px;
+        display:none;
        }
 `
 
@@ -87,19 +91,14 @@ const Hr_neon = styled.img`
     top: -10px; left: 230px;
     // transform: rotate( 10deg );
 
-    @media (min-width: 1121px) and (max-width: 1440px) {
-        // between
-        top: -10px; left: 220px;
-      }
-
-      @media (min-width: 768px) and (max-width: 1120px) {
+    @media (max-width: 1023px) {
         // between
         top: -10px; left: 200px;
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
-        top: -10px; left: 200px;
+        display:none;
        }
 `
 const Hj_neon = styled.img`
@@ -108,19 +107,14 @@ const Hj_neon = styled.img`
     top: -10px; left: 680px;
     // transform: rotate( 10deg );
 
-    @media (min-width: 1121px) and (max-width: 1440px) {
+    @media (max-width: 1023px) {
         // between
-        top: -10px; left: 680px;
+        top: -10px; left: 550px;
       }
 
-      @media (min-width: 768px) and (max-width: 1120px) {
-        // between
-        top: -10px; left: 530px;
-      }
-
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
-        top: 260px; left: 20px;
+        display:none;
        }
 `
 const Yj_neon = styled.img`
@@ -129,21 +123,15 @@ const Yj_neon = styled.img`
     top: 300px; left: -20px;
     // transform: rotate( 10deg );
 
-    @media (min-width: 1121px) and (max-width: 1440px) {
+    @media (max-width: 1023px) {
         // between
-        width: 170px; height: 150px;
-        top: 290px; left: -50px;
+        width: 190px; height: 170px;
+        top: 230px; left: -70px;
       }
 
-      @media (min-width: 768px) and (max-width: 1120px) {
-        // between
-        width: 150px; height: 150px;
-        top: 230px; left: -30px;
-      }
-
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
-        top: 250px; left: 220px;
+        display:none;
        }
 `
 
@@ -153,20 +141,15 @@ const Je_neon = styled.img`
     top: 300px; left: 430px;
     // transform: rotate( 10deg );
 
-    @media (min-width: 1121px) and (max-width: 1440px) {
+    @media (max-width: 1023px) {
         // between
         width: 120px; height: 120px;
-        top: 310px; left: 420px;
+        top: 250px; left: 330px;
       }
 
-      @media (min-width: 768px) and (max-width: 1120px) {
-        // between
-        top: 250px; left: 350px;
-      }
-
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
-        top: 550px; left: 150px;
+        display:none;
        }
 `
 const Cr_neon = styled.img`
@@ -175,19 +158,14 @@ const Cr_neon = styled.img`
     top: 330px; left: 600px;
     // transform: rotate( 10deg );
 
-    @media (min-width: 1121px) and (max-width: 1440px) {
+    @media (max-width: 1023px) {
         // between
-        top: 330px; left: 580px;
+        top: 300px; left: 450px;
       }
 
-      @media (min-width: 768px) and (max-width: 1120px) {
-        // between
-        top: 280px; left: 460px;
-      }
-
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
-        top: 550px; left: 250px;
+        display:none;
        }
 `
 

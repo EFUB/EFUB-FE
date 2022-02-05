@@ -47,14 +47,14 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     // phone
     display:none;
    }
 `
 const WrapperMobile = styled.div`
    display: none;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     // phone
     display: flex;
     justify-content: center;
@@ -70,7 +70,7 @@ const MainWrapper = styled.div` // 이펍소개+버튼들
     margin-top: 20rem;
     width:100%;
     height:300px;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         margin-top: -5rem;
         margin-bottom: 5rem;
@@ -86,7 +86,7 @@ const IntroWrapper = styled.div` // 이펍소개
     align-items: left;
     width:40%;
     height:100%;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width:100%;
         align-items: center;
@@ -100,7 +100,7 @@ const RotateButton = styled.div` // 회전버튼
     position: relative;
     width:60%;
     height:100%;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width:100%;
         margin-top: 5rem;
@@ -133,7 +133,7 @@ const ReviewWrapper = styled.div` // 퍼비후기
     width:100%;
     height:auto;
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
        }
 `
@@ -147,7 +147,7 @@ const OrganizerWrapper = styled.div` // 이퍼비들 소개
     margin-top: 10rem;
     width:100%;
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         margin-top: 5rem;
         flex-direction: column;
@@ -162,13 +162,13 @@ const MemberBlock = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 50%;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
-        width: 100%;
+        width: 90%;
        }
 `;
 
@@ -179,7 +179,7 @@ const SubMemberBlock = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width: 100%;
        }
@@ -189,7 +189,7 @@ const AllMemberWrapper = styled.div` // 전체임원진소개
     display: flex;
     position:relative;
     width:40%;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width:100%;
         height: 400px;
@@ -203,7 +203,7 @@ const Logo = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         margin-top: 1rem;
     }
@@ -214,7 +214,7 @@ const MainIntroText = styled.div`
     font-size:  ${props => props.size || 48}px;
     font-family: 'Montserrat', sans-serif;
     line-height:120%;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         font-size:  ${props => props.size || 35}px;
         line-height:160%
@@ -225,7 +225,7 @@ const SubIntroText = styled.div`
     font-size:  ${props => props.size || 20}px;
     font-family: 'Roboto', sans-serif;
     line-height:180%;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         font-size:  ${props => props.size || 20}px;
        }
@@ -235,7 +235,7 @@ const SubTitle = styled.div`
     flex-direction: row;
     align-items: center;
     width: auto;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         margin-top: 1rem;
         margin-bottom: 2rem;
@@ -253,7 +253,7 @@ const SubTitleWhite = styled.div`
     `}
     font-weight: bold;
     margin-top: 10rem;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         margin-top: 5rem;
         margin-bottom: 1rem;
@@ -271,7 +271,7 @@ const SubTitleGreen = styled.div`
     `}
     font-weight: bold;
     margin-top: 10rem;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         margin-top: 5rem;
         font-size:  ${props => props.size || 30}px;
@@ -293,16 +293,16 @@ const ModalButton_Career = styled.button`
     cursor: pointer;
     transform: rotate( -10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
-        top: 55px; left: 32px;
-        font-size:  22px;
+        top: 55px; left: 42px;
+        font-size:  20px;
         transform: rotate( -9deg );
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
-        top: 90px; left: 50px;
+        top: 90px; left: 150px;
         font-size:18px;
        }
 `
@@ -313,22 +313,23 @@ const ModalButton_Curriculum = styled.button`
     border: 0;
     outline: 0;
     position: absolute;
-    top: 200px; left: 150px;
+    top: 205px; left: 145px;
     font-size:  ${props => props.size || 24}px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     cursor: pointer;
-    transform: rotate( 15deg );
+    transform: rotate( 17deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
-        font-size:  22px;
-        top: 180px; left: 100px;
+        font-size:  20px;
+        top: 177px; left: 110px;
+        transform: rotate( 15deg );
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
-        top: 195px; left: 135px;
+        top: 195px; left: 235px;
         font-size:18px;
        }
 `
@@ -339,21 +340,22 @@ const ModalButton_apply = styled.button`
     border: 0;
     outline: 0;
     position: absolute;
-    top: 80px; left: 350px;
+    top: 80px; left: 365px;
     font-size:  ${props => props.size || 24}px;
     transform: rotate( -18deg );
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     cursor: pointer;   
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
      // between
-     font-size:  22px;
+     font-size:  20px;
+     width: 140px;
      transform: rotate( -16deg );
-     top: 70px; left: 307px;
+     top: 85px; left: 310px;
    }
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
      // phone
-     top: 90px; left: 310px;
+     top: 90px; left: 410px;
      transform: rotate( -18deg );
      font-size:18px;
     }
@@ -365,31 +367,24 @@ const ModalButton_allmember = styled.button`
     border: 0;
     outline: 0;
     position: absolute;
-    top:70px; left: 30px;
-    font-size:  20px;
-    transform: rotate( -17deg );
+    top: 70px; left: 28px;
+    font-size:  ${props => props.size || 24}px;
+    transform: rotate( -18deg );
     font-family: 'Roboto', sans-serif;
-    cursor: pointer;
     font-weight: bold;
-
-    @media (min-width: 1025px) and (max-width: 1440px) {
-        // between
-        transform: rotate( -15deg );
-        top: 65px; left: 35px;
-        font-size:20px;
-      }
-
-    @media (min-width: 768px) and (max-width: 1024px) {
-        // between
-        transform: rotate( -15deg );
-        top: 43px; left: 45px;
-        font-size:18px;
-      }
-
-      @media (max-width: 768px) {
-        // phone
-        top:240px; left: 60px;
-       }
+    cursor: pointer;   
+    @media (max-width: 1023px) {
+    // between
+    font-size:  20px;
+    transform: rotate( -16deg );
+    top: 45px; left: 50px;
+    }
+    @media (max-width: 767px) {
+    // phone
+    top: 250px; left: 180px;
+    transform: rotate( -18deg );
+    font-size:18px;
+    }
 `
 // 이펍 소개 옆 네온 디자인
 
@@ -401,16 +396,16 @@ const Img_main_blue = styled.img`
     top: 155px; left: 90px;
     transform: rotate( 10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 300px; height: 100px;
         top: 140px; left: 60px;
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width: 300px; height: 100px;
-        top: 160px; left: 80px;
+        top: 160px; left: 180px;
        }
 `
 
@@ -420,16 +415,16 @@ const Img_main_circle = styled.img`
     top: 180px; left: 20px;
     transform: rotate( 10deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 60px; height: 60px;
         top: 180px; left: 10px;
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width: 60px; height: 60px;
-        top: 170px; left: 20px;
+        top: 170px; left: 120px;
        }
 `
 const Img_main_green = styled.img`
@@ -438,16 +433,16 @@ const Img_main_green = styled.img`
     top: 38px; left: 300px;
     transform: rotate( -6deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 250px; height: 100px;
-        top: 40px; left: 260px;
+        top: 50px; left: 250px;
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width: 220px; height: 100px;
-        top: 55px; left: 270px;
+        top: 55px; left: 370px;
        }
 `
 
@@ -457,16 +452,16 @@ const Img_main_long_tri = styled.img`
     top: 180px; left: 420px;
     transform: rotate( 5deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 170px; height: 90px;
         top: 160px; left: 340px;
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width: 130px; height: 70px;
-        top: 170px; left: 350px;
+        top: 170px; left: 450px;
        }
 `
 
@@ -476,16 +471,16 @@ const Img_main_pink = styled.img`
     top: 18px; left: -20px;
     transform: rotate( -2deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 250px; height: 100px;
         top: 18px; left: 0px;
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width: 250px; height: 100px;
-        top: 55px; left: 0px;
+        top: 55px; left: 100px;
        }
 `
 
@@ -495,16 +490,16 @@ const Img_main_tri = styled.img`
     top: 20px; left: 270px;
     transform: rotate( 5deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 60px; height: 60px;
         top: 20px; left: 270px;
       }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
         // phone
         width: 60px; height: 60px;
-        top: 30px; left: 250px;
+        top: 30px; left: 350px;
        }
 `
 //Organizer 밑 네온사인
@@ -516,15 +511,15 @@ const Img_organ_green = styled.img`
     top: 25px; left: -20px;
     transform: rotate( -5deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 220px; height: 100px;
         top: 10px; left: 10px;
       }
-      @media (max-width: 768px) {
+      @media (max-width: 767px) {
         // phone
         width: 240px; height: 120px;
-        top: 200px; left: 20px;
+        top: 200px; left: 120px;
        }
 `
 const Img_organ_sun = styled.img`
@@ -533,15 +528,15 @@ const Img_organ_sun = styled.img`
     top: -180px; left: 0px;
     transform: rotate( -5deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
-        width: 100px; height: 100px;
+    @media (max-width: 1023px) {
+        width: 130px; height: 130px;
         top: -150px; left: 30px;
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: 767px) {
         // phone
         width: 200x; height: 150px;
-        top: 30px; left: 20px;
+        top: 30px; left: 120px;
        }
 `
 const Img_organ_pub = styled.img`
@@ -550,16 +545,16 @@ const Img_organ_pub = styled.img`
     top: -220px; left: 180px;
     transform: rotate( 0deg );
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+    @media (max-width: 1023px) {
         // between
         width: 240px; height: 320px;
         top: -200px; left: 150px;
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: 767px) {
         // phone
         width: 260px; height: 330px;
-        top: 0px; left: 200px;
+        top: 0px; left: 300px;
        }
 `
 
@@ -683,33 +678,15 @@ const AboutPage = () => {
                 <OrganizerWrapper>
                     <MemberBlock>
                         <SubMemberBlock>
-                            <Member_Green
-                                name={"정아연"}
-                                position={"회장"}
-                            />
-                            <Member_Green
-                                name={"김혜린"}
-                                position={"부회장"}
-                            />
-                            <Member_Green
-                                name={"윤효정"}
-                                position={"총무"}
-                            />
+                            <Member_Green name={"정아연"} position={"회장"} />
+                            <Member_Green name={"김혜린"} position={"부회장"} />
+                            <Member_Green name={"윤효정"} position={"총무"} />
                         </SubMemberBlock>
 
                         <SubMemberBlock>
-                            <Member_Blue
-                                name={"이윤지"}
-                                position={"프론트장"}
-                            />
-                            <Member_Blue
-                                name={"김정은"}
-                                position={"백엔드장"}
-                            />
-                            <Member_Blue
-                                name={"김채령"}
-                                position={"디자이너장"}
-                            />
+                            <Member_Blue name={"이윤지"} position={"프론트장"} />
+                            <Member_Blue name={"김정은"} position={"백엔드장"} />
+                            <Member_Blue name={"김채령"} position={"디자이너장"} />
                         </SubMemberBlock>
                     </MemberBlock>
                     <AllMemberWrapper>
@@ -749,18 +726,21 @@ const AboutPage = () => {
             </MainWrapper>
 
             <ReviewWrapper>
+
                 <SubTitle>
                     <SubTitleWhite>1기&nbsp; </SubTitleWhite>
                     <SubTitleGreen>우수 활동 퍼비</SubTitleGreen>
                     <SubTitleWhite>의 활동 후기</SubTitleWhite>
                     
-                    <ToggleImg
+                    {/* <ToggleImg
                         change={change}
                         id="field"
                         onClick={(e) => toggleHandler(e)}
-                        />
+                        /> */}
                 </SubTitle>
-                {toggleState.field ? (
+
+                
+                {/* {toggleState.field ? ( */}
                     <>
                     <Review1
                         profile={mvp1}
@@ -777,57 +757,36 @@ const AboutPage = () => {
                         text={["웹개발에 대해 하나도 모르는 초보 개발자였는데,  EFUB에서 열리는 다양한 세미나와 프로젝트 덕분에 많이 성장하게 된 것 같습니다. 그리고 기초부터 심화까지 알려주는 커리큘럼과 리드/인턴에 맞는 토이 프로젝트 배치 덕분에 프로젝트에 대한 부담 없이 재미있게 개발할 수 있었습니다. 정말 EFUB은 올해 최고의 선택이었던 것 같습니다☺ ",<br/>,"(강민지, 인턴 개발자)"]}
                     />
                     </>
-                ) : (
+                {/* ) : (
                     ""
-                )}
+                )} */}
+            
             </ReviewWrapper>
 
             <SubTitleWhite>EFUB ORGANIZER</SubTitleWhite>
 
             <OrganizerWrapper>
+                <MemberBlock>
+                    <SubMemberBlock>
+                        <Member_Green name={"정아연"} position={"회장"} />
+                        <Member_Green name={"김혜린"} position={"부회장"} />
+                        <Member_Green name={"윤효정"} position={"총무"} />
+                    </SubMemberBlock>
 
-                    <MemberBlock>
-                        <SubMemberBlock>
-                            <Member_Green
-                                name={"정아연"}
-                                position={"회장"}
-                            />
-                            <Member_Green
-                                name={"김혜린"}
-                                position={"부회장"}
-                            />
-                            <Member_Green
-                                name={"윤효정"}
-                                position={"총무"}
-                            />
-                        </SubMemberBlock>
+                    <SubMemberBlock>
+                        <Member_Blue name={"이윤지"} position={"프론트장"} />
+                        <Member_Blue name={"김정은"} position={"백엔드장"} />
+                        <Member_Blue name={"김채령"} position={"디자이너장"} />
+                    </SubMemberBlock>
+                </MemberBlock>
 
-                        <SubMemberBlock>
-                            <Member_Blue
-                                name={"이윤지"}
-                                position={"프론트장"}
-                            />
-                            <Member_Blue
-                                name={"김정은"}
-                                position={"백엔드장"}
-                            />
-                            <Member_Blue
-                                name={"김채령"}
-                                position={"디자이너장"}
-                            />
-                        </SubMemberBlock>
-                    </MemberBlock>
-
-                    <AllMemberWrapper>
-                        
-                        <ModalButton_allmember onClick={() => setOpenMemberModal(true)}> 전체 임원 보기 >  </ModalButton_allmember>
-                        <Img_organ_green src={organ_green}></Img_organ_green>
-                        <Img_organ_sun src={organ_sun}></Img_organ_sun>
-                        <Img_organ_pub src={organ_pub}></Img_organ_pub>
-
-                    </AllMemberWrapper>
-
-                </OrganizerWrapper>
+                <AllMemberWrapper>
+                    <ModalButton_allmember onClick={() => setOpenMemberModal(true)}> 전체 임원 보기 >  </ModalButton_allmember>
+                    <Img_organ_green src={organ_green}></Img_organ_green>
+                    <Img_organ_sun src={organ_sun}></Img_organ_sun>
+                    <Img_organ_pub src={organ_pub}></Img_organ_pub>
+                </AllMemberWrapper>
+            </OrganizerWrapper>
 
 
             </WrapperMobile>

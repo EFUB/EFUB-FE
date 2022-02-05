@@ -16,7 +16,6 @@ const Container = styled.div`
     align-items: center;
     @media (max-width: 767px) {
         // phone
-        width: 100%;
         animation: modal-show 1s;
         @keyframes modal-show {
             from {
@@ -53,6 +52,7 @@ const Background = styled.div`
 
 const ModalBlock = styled.div`
     position: absolute;
+    margin-top: 140rem;
     top: 20rem;
     border-radius: 10px;
     padding: 4rem;
@@ -106,14 +106,16 @@ const Contents = styled.div`
        }
 `;
 
-const ModalFrame = ({ _handleModal, children, ...rest }) => {
+const ModalFrame = ({ _handleModal, children, ...rest}) => {
     // _handleModal로 modal open/close 되는 토글 함수 넣어 주면 됨
     /* style, className, onClick, onMouseMove 등의 props를 사용할 수 있도록 */
     /* ...rest를 사용하여 ModalFrame에게 전달 */
+
+    var top = window.pageYOffset;
     return (
         <Container>
             <Background onClick={_handleModal} />
-            <ModalBlock {...rest}>
+            <ModalBlock {...rest} margintop={top}>
                 <Close onClick={_handleModal} />
                 <Contents>
                     {children}

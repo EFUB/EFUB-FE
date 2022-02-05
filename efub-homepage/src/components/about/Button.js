@@ -68,8 +68,8 @@ const StyledButton = styled.button`
       `}
       font-size: 1rem;
       width: ${(props) => props.width || "4"}rem;
-      height: ${(props) => props.height || "3"}rem;
-      padding: 0.7rem 1rem;
+      height: ${(props) => props.height || "2.5"}rem;
+      padding: 0.5rem 0.5rem;
   }
 `;
 
