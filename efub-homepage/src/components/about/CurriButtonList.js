@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../common/Button';
+import Button from './Button';
 
 const buttons = [
     {
@@ -24,6 +24,10 @@ const ButtonBlock = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 767px){
+        width: 100%;
+      }
 `;
 
 const CurriButtonList = ({ select, onSelect }) => {

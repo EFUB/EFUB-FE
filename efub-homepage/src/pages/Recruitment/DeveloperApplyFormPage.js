@@ -10,45 +10,45 @@ import Confident from '../../components/common/Confident'
 import axios from 'axios'
 
 const BannerBlock = styled.div`
-    width: 100%;
-    position: relative;
-    height: 15rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  position: relative;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Title = styled.div`
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
 `;
 
 const Subtitle = styled.div`
-    font-size: 1.25rem;
-    font-family: Roboto;
+  font-size: 1.25rem;
+  font-family: Roboto;
 `;
 
 const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-`
+`;
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-`
+`;
 const Bottom = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 8rem;
-    margin-bottom: 5rem;
-    justify-content: space-between;
-`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 8rem;
+  margin-bottom: 5rem;
+  justify-content: space-between;
+`;
 
 const Question = styled.div`
   font-family: Roboto;
@@ -57,18 +57,22 @@ const Question = styled.div`
   font-size: 1.5rem;
   margin-bottom: 3rem;
   margin-top: 6rem;
-`
+`;
 const Text = styled.div`
   font-family: Roboto;
   font-weight: 500;
   font-size: 1rem;
-`
+`;
 
 const DeveloperApplyFormPage = () => {
+  const location = useLocation();
+  const history = useHistory();
+  const userId = location.state;
+
   const [inputs, setInputs] = useState({
-    first: '',
-    second: '',
-    lang: '',
+    first: "",
+    second: "",
+    lang: "",
   });
 
   const { first, second, lang } = inputs;
@@ -77,7 +81,7 @@ const DeveloperApplyFormPage = () => {
     const { value, name } = e.target;
     setInputs({
       ...inputs,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -123,10 +127,11 @@ const DeveloperApplyFormPage = () => {
   ]);
   const [part, setPart] = useState(1);
   const [score, setScore] = useState(1);
+  const [posts, setPosts] = useState({});
 
   const onToggle = (id) => {
     setStackList(
-      stackList.map(stack =>
+      stackList.map((stack) =>
         stack.id === id ? { ...stack, checked: !stack.checked } : stack
       )
     );
@@ -140,6 +145,94 @@ const DeveloperApplyFormPage = () => {
     setScore(id);
   };
 
+  // const [stacks, setStacks] = useState([]);
+
+  // const onInsert = (stackItem) => {
+  //   let stack = {
+  //     tool_name: stackItem,
+  //   };
+  //   console.log(stack);
+  //   console.log(stacks.push(stack));
+  // };
+
+  // useEffect(() => {
+  //   const list = stackList
+  //     .filter((check) => check.checked === true)
+  //     .map((item) => item.label);
+
+  //   for (let i = 0; i < list.length; i++) {
+  //     onInsert(list[i]);
+  //     return setStacks([]);
+  //   }
+  // }, []);
+
+  //처음 저장
+  const submitSaveDev = () => {
+    const post = {
+      user_id: userId,
+      save_final: false,
+      motive: inputs.first,
+      project_topic: inputs.second,
+      application_field: application_list[part],
+      language: lang,
+      confidence_lang: score,
+      tool: [
+        {
+          tool_name:
+            stackList
+              .filter((check) => check.checked === true)
+              .map((item) => item.label)[0] || "",
+        },
+        {
+          tool_name:
+            stackList
+              .filter((check) => check.checked === true)
+              .map((item) => item.label)[1] || "",
+        },
+        {
+          tool_name:
+            stackList
+              .filter((check) => check.checked === true)
+              .map((item) => item.label)[2] || "",
+        },
+      ],
+      exp: "-",
+      link: "-",
+      orientation: true,
+      interview: [{ date: "-" }, { date: "-" }],
+    };
+    console.log(post);
+    setPosts(post);
+  };
+  
+    // 기존 정보 불러오기  
+  useEffect(()=> {
+    console.log("hi");
+    console.log(userId);
+    axios
+    .post('http://3.34.222.176:8080/api/recruitment/apply/get/dev',{user_id: userId})
+    .then((response) => {
+      console.log(response);
+      //text box 값 할당하기 
+      if(response.data.motive !== null) setInputs(inputs.first = response.data.motive);
+      if(response.data.project_topic !== null) setInputs(inputs.second = response.data.project_topic);
+      if(response.data.language !== null) setInputs(inputs.lang = response.data.language);
+      //지원분야
+      if(response.data.application_field !== null)setPart(part = response.data.application_field);
+      //자신감 
+      if(response.data.confidence_lang !== 0)setScore(score = response.data.confidence_lang);
+      //사용 가능 기술
+      // setStackList(
+      //   stackList.map(stack =>
+      //     stack.id === response.data.tool.tool_id ? { ...stack, checked: !stack.checked } : stack
+      //   )
+      // );
+      
+    });   
+  }, []);   
+  
+  const myContext = useContext(AppContext);
+
   return (
     <>
       <BannerBlock>
@@ -147,13 +240,21 @@ const DeveloperApplyFormPage = () => {
         <Subtitle>지원서 작성</Subtitle>
       </BannerBlock>
       <Main>
-        <Question>1. EFUB에 지원하게 된 동기를 적어주세요. (300자 내외)</Question>
+        <Question>
+          1. EFUB에 지원하게 된 동기를 적어주세요. (300자 내외)
+        </Question>
         <InputBox name="first" value={first} onChange={onChange} />
-        <Question>2. 동아리에 들어온다면 하고 싶은 프로젝트에 대해서 간략히 설명해주세요. (100자 내외)</Question>
+        <Question>
+          2. 동아리에 들어온다면 하고 싶은 프로젝트에 대해서 간략히
+          설명해주세요. (100자 내외)
+        </Question>
         <InputBox name="second" value={second} onChange={onChange} />
         <Question>3. 지원 분야를 선택해주세요.</Question>
         <DeveloperPart part={part} onClickPart={onClickPart} />
-        <Text style={{ marginBottom: 25 }}>3번 문항의 답변에 따라 인턴 지원서 혹은 리드 지원서 페이지로 넘어가게 되니 신중히 체크해 주세요!</Text>
+        <Text style={{ marginBottom: 25 }}>
+          3번 문항의 답변에 따라 인턴 지원서 혹은 리드 지원서 페이지로 넘어가게
+          되니 신중히 체크해 주세요!
+        </Text>
         <Question>4. 자신 있는 프로그래밍 언어를 적어주세요.</Question>
         <InputLine name="lang" value={lang} placeholder="ex. 파이썬" onChange={onChange} />
         <Question>4-1. 위에서 답한 언어에 대한 숙련도를 5점 만점으로 평가해주세요.</Question>
@@ -186,7 +287,7 @@ const DeveloperApplyFormPage = () => {
         </Bottom>
       </Main>
     </>
-  )
-}
+  );
+};
 
 export default DeveloperApplyFormPage;

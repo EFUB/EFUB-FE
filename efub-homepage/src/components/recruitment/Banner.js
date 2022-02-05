@@ -15,8 +15,11 @@ const BannerBlock = styled.div`
 `;
 
 const Title = styled.div`
-    font-size: 3rem;
-    margin-bottom: 3rem;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  @media (max-width: 767px) {
+    font-size: 18px;
+  }
 `;
 
 const RecruitBox = styled.div`
@@ -35,10 +38,10 @@ const RecruitBox = styled.div`
 `;
 
 const TextBox = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-top: 0px;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0px;
+  align-items: flex-start;
 `;
 
 const ButtonBox = styled.div`
@@ -53,21 +56,20 @@ const ButtonBox = styled.div`
 `;
 
 const ButtonItems = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: 9rem;
-    justify-content: space-between;
-    align-items: center;
-
+  display: flex;
+  flex-direction: column;
+  height: 9rem;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const ListBox = styled.div`
-    width: 14rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 5rem;
-    text-align: end;
+  width: 14rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+  text-align: end;
 `;
 
 const Text = styled.div`
@@ -81,16 +83,16 @@ const Text = styled.div`
 `;
 
 const buttons = [
-    {
-        name: "developer",
-        text: "개발자로 지원하기",
-        link: "/developer-apply",
-    },
-    {
-        name: "designer",
-        text: "디자이너로 지원하기",
-        link: "/designer-apply",
-    },
+  {
+    name: "developer",
+    text: "개발자로 지원하기",
+    link: "/developer-apply",
+  },
+  {
+    name: "designer",
+    text: "디자이너로 지원하기",
+    link: "/designer-apply",
+  },
 ];
 
 const Banner = () => {

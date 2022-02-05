@@ -1,71 +1,92 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import Button from "../../components/common/Button";
 import InputLine from "../../components/common/InputLine";
+import SaveUserID from "../../components/common/SaveUserID";
+
+import axios from "axios";
+import { USER_SERVER } from "../../config";
+import {
+  USER_INFO,
+  CONTACT,
+  SAVED_INFO_DES,
+  SAVED_INFO_DEV,
+} from "../../_actions/type";
+import { userInfo } from "../../_actions/user_actions";
 
 const BannerBlock = styled.div`
-    width: 100%;
-    position: relative;
-    height: 15rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  position: relative;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Title = styled.div`
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
 `;
 
 const Subtitle = styled.div`
-    font-size: 1.25rem;
-    font-family: Roboto;
-    margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  font-family: Roboto;
+  margin-bottom: 1.5rem;
 `;
 
 const Main = styled.div`
-    width: 700px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-`
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
 const Bottom = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-    justify-content: space-between;
-`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  justify-content: space-between;
+`;
 const Text = styled.div`
-    font-family: Roboto;
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 2rem;
-`
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 2rem;
+`;
 
 const DesignerApplyMainPage = () => {
-    const [inputs, setInputs] = useState({
-        name: '',
-        studentId: '',
-        major: '',
-        phone: '',
-        code: ''
+  //null 방지를 위해 가상값 넣어줌
+  const history = useHistory();
+  const [inputs, setInputs] = useState({
+    name: "",
+    studentId: "",
+    major: "",
+    phone: "",
+    code: "",
+  });
+
+  const { name, studentId, major, phone, code } = inputs;
+  const position = 2;
+
+  const onChange = (e) => {
+    const { value, name } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
     });
+  };
 
-    const { name, studentId, major, phone, code } = inputs;
-
-    const onChange = (e) => {
-        const { value, name } = e.target;
-        setInputs({
-            ...inputs,
-            [name]: value
-        });
-    };
-
+  // 이 사람이 등록을 한 적이 있는가? : save_final, user_id
+  const [isMember, setIsMember] = useState({
+    status: "idle",
+    userId: "",
+    saveFinal: "",
+  });
     return (
         <>
             <BannerBlock>

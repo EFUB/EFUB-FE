@@ -1,60 +1,121 @@
-import React from "react";
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import styled, { css } from "styled-components";
+import Toggle from "../../assets/recruitment/toggle.png";
 
 const Wrapper = styled.div`
-    width: 780px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 5;
+  width: 780px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  @media (max-width: 767px) {
+    width: 100%;
+    align-items: flex-start;
+  }
 `;
 
 const Line = styled.div`
-    margin-bottom: ${(props) => props.margin};
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-`;
-
-const Title = styled.div`
-    font-family: "Roboto";
-    font-size: 30px;
-    font-weight: bold;
-    margin-top: 8rem;
-    margin-bottom: 5rem;
+  margin-bottom: ${(props) => props.margin};
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    margin-bottom: ${(props) => props.marginXS || "2rem"};
+  }
 `;
 
 const Label = styled.div`
-    margin-bottom: ${(props) => props.margin};
-    font-family: "Roboto";
-    font-weight: bold;
-    font-size: 24px;
+  display: ${(props) => props.displayLG};
+  margin-bottom: ${(props) => props.margin};
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 24px;
+  @media (max-width: 767px) {
+    display: ${(props) => props.displayXS || "flex"};
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.15);
+    width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: ${(props) => props.marginXS};
+  }
+`;
+
+const Title = styled.div`
+  font-family: "Roboto";
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 8rem;
+  margin-bottom: 5rem;
+  @media (max-width: 767px) {
+    font-size: 20px;
+    width: 15rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
 `;
 
 const Text = styled.div`
-    width: 100%;
-    margin-bottom: ${(props) => props.margin};
-    font-family: "Roboto";
-    font-size: 20px;
-    line-height: 40px;
+  width: 100%;
+  margin-bottom: ${(props) => props.margin};
+  font-family: "Roboto";
+  font-size: 20px;
+  line-height: 40px;
+  @media (max-width: 767px) {
+    font-size: 12px;
+    line-height: 25px;
+    margin-bottom: ${(props) => props.marginXS};
+  }
 `;
 
 const Textbox = styled.div`
-    width: ${(props) => props.width};
+  width: ${(props) => props.width};
+  margin-bottom: ${(props) => props.margin};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  @media (max-width: 767px) {
+    margin-bottom: 1rem;
+  }
+`;
+
+const MarginBottom = styled.div`
+  @media (max-width: 767px) {
     margin-bottom: ${(props) => props.margin};
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+  }
 `;
 
 const Message = styled.div`
-    font-family: "Roboto";
-    font-size: 50px;
-    font-weight: bold;
-    margin-bottom: 8rem;
+  font-family: "Roboto";
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 8rem;
+  @media (max-width: 767px) {
+    font-size: 16px;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+  }
+`;
+
+const ToggleImg = styled.img.attrs({ src: Toggle })`
+  width: 0.7rem;
+  height: 0.4rem;
+  transition: 0.2s all ease-in;
+  &:hover {
+    ${(props) => (props.change ? "" : ToggleStyle)}
+  }
+  @media (min-width: 767px) {
+    display: none;
+  }
+`;
+
+const ToggleStyle = css`
+  transform: rotate(180deg);
 `;
 
 const Detail = () => {

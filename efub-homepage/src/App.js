@@ -14,4 +14,14 @@ const App = () => {
   );
 };
 
+// function Content() {
+//   return (
+//     <AppContext.Consumer>
+//       {isMember => (
+//         <DeveloperApplyMainPage isMember={isMember}  />
+//       )}
+//     </AppContext.Consumer>
+//   );
+// }
+
 export default App;

@@ -28,10 +28,13 @@ const Label = styled.div`
 `;
 
 const ContactPage = () => {
+
   const isMobile = useMediaQuery({
     query: "(max-width: 767px)"
   });
 
+  // https://react.vlpt.us/basic/09-multiple-inputs.html 에서 코드 설명함.
+  
   const [inputs, setInputs] = useState({
     email: '',
     message: '',
@@ -42,10 +45,10 @@ const ContactPage = () => {
   const { email, message } = inputs;
 
   const onChange = (e) => {
-    const { value, name } = e.target;
+    const { value, name } = e.target; // 우선 e.target 에서 name과 value를 추출
     setInputs({
-      ...inputs,
-      [name]: value
+      ...inputs, // 기존의 input 객체를 복사한 뒤
+      [name]: value // name 키를 가진 값을 value로 설정
     });
   };
 

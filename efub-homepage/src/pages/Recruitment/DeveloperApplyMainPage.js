@@ -1,9 +1,18 @@
+//연결해야하는부분
+
 import React, { useState } from "react";
 import styled from "styled-components";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/common/Button";
 import InputLine from "../../components/common/InputLine";
+
+
+// import DeveloperApplyFormPage from "./DeveloperApplyFormPage";
+// import DeveloperApplyInternPage from "./DeveloperApplyInternPage";
+// import DeveloperApplyLeadPage from "./DeveloperApplyLeadPage";
+// import DesignerApplyFormPage from "./DesignerApplyFormPage";
+
 
 const BannerBlock = styled.div`
     width: 100%;
@@ -60,6 +69,7 @@ const DeveloperApplyMainPage = () => {
   });
 
   const { name, studentId, major, phone, code } = inputs;
+  const position = 1;
 
   const onChange = (e) => {
     const { value, name } = e.target;

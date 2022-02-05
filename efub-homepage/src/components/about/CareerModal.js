@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
-import FixedModalFrame from '../common/FixedModalFrame';
+import FixedModalFrame from './ModalFrame';
+
 
 import CareerButtonList from './CareerButtonList';
 import CareerContent from './CareerContent'
@@ -12,6 +13,10 @@ const Title = styled.div`
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 4rem;
+
+    @media (max-width: 767px){
+        font-size: 2rem;
+    }
 `;
 
 const CareerModal = ({ _handleModal }) => {
