@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
 import Button from "../../components/common/Button";
 import InputLine from "../../components/common/InputLine";
 import SaveUserID from "../../components/common/SaveUserID";
@@ -61,7 +61,7 @@ const Text = styled.div`
 
 const DesignerApplyMainPage = () => {
   //null 방지를 위해 가상값 넣어줌
-  const history = useHistory();
+  // const history = useHistory();
   const [inputs, setInputs] = useState({
     name: "",
     studentId: "",

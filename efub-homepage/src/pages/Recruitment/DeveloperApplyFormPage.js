@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Button from '../../components/common/Button'
 import InputBox from '../../components/common/InputBox'
 import InputLine from '../../components/common/InputLine'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import DeveloperStack from '../../components/recruitment/DeveloperStack'
 import DeveloperPart from '../../components/recruitment/DeveloperPart'
 import Confident from '../../components/common/Confident'
@@ -66,7 +66,7 @@ const Text = styled.div`
 
 const DeveloperApplyFormPage = () => {
   const location = useLocation();
-  const history = useHistory();
+  // const history = useHistory();
   const userId = location.state;
 
   const [inputs, setInputs] = useState({
@@ -85,7 +85,7 @@ const DeveloperApplyFormPage = () => {
     });
   };
 
-  const { userId } = useParams();
+  // const { userId } = useParams();
 
   const getForm = async (userId) => {
     console.log(userId)
@@ -167,71 +167,71 @@ const DeveloperApplyFormPage = () => {
   // }, []);
 
   //처음 저장
-  const submitSaveDev = () => {
-    const post = {
-      user_id: userId,
-      save_final: false,
-      motive: inputs.first,
-      project_topic: inputs.second,
-      application_field: application_list[part],
-      language: lang,
-      confidence_lang: score,
-      tool: [
-        {
-          tool_name:
-            stackList
-              .filter((check) => check.checked === true)
-              .map((item) => item.label)[0] || "",
-        },
-        {
-          tool_name:
-            stackList
-              .filter((check) => check.checked === true)
-              .map((item) => item.label)[1] || "",
-        },
-        {
-          tool_name:
-            stackList
-              .filter((check) => check.checked === true)
-              .map((item) => item.label)[2] || "",
-        },
-      ],
-      exp: "-",
-      link: "-",
-      orientation: true,
-      interview: [{ date: "-" }, { date: "-" }],
-    };
-    console.log(post);
-    setPosts(post);
-  };
+  // const submitSaveDev = () => {
+  //   const post = {
+  //     user_id: userId,
+  //     save_final: false,
+  //     motive: inputs.first,
+  //     project_topic: inputs.second,
+  //     application_field: application_list[part],
+  //     language: lang,
+  //     confidence_lang: score,
+  //     tool: [
+  //       {
+  //         tool_name:
+  //           stackList
+  //             .filter((check) => check.checked === true)
+  //             .map((item) => item.label)[0] || "",
+  //       },
+  //       {
+  //         tool_name:
+  //           stackList
+  //             .filter((check) => check.checked === true)
+  //             .map((item) => item.label)[1] || "",
+  //       },
+  //       {
+  //         tool_name:
+  //           stackList
+  //             .filter((check) => check.checked === true)
+  //             .map((item) => item.label)[2] || "",
+  //       },
+  //     ],
+  //     exp: "-",
+  //     link: "-",
+  //     orientation: true,
+  //     interview: [{ date: "-" }, { date: "-" }],
+  //   };
+  //   console.log(post);
+  //   setPosts(post);
+  // };
   
-    // 기존 정보 불러오기  
-  useEffect(()=> {
-    console.log("hi");
-    console.log(userId);
-    axios
-    .post('http://3.34.222.176:8080/api/recruitment/apply/get/dev',{user_id: userId})
-    .then((response) => {
-      console.log(response);
-      //text box 값 할당하기 
-      if(response.data.motive !== null) setInputs(inputs.first = response.data.motive);
-      if(response.data.project_topic !== null) setInputs(inputs.second = response.data.project_topic);
-      if(response.data.language !== null) setInputs(inputs.lang = response.data.language);
-      //지원분야
-      if(response.data.application_field !== null)setPart(part = response.data.application_field);
-      //자신감 
-      if(response.data.confidence_lang !== 0)setScore(score = response.data.confidence_lang);
-      //사용 가능 기술
-      // setStackList(
-      //   stackList.map(stack =>
-      //     stack.id === response.data.tool.tool_id ? { ...stack, checked: !stack.checked } : stack
-      //   )
-      // );
+  //   // 기존 정보 불러오기  
+  // useEffect(()=> {
+  //   console.log("hi");
+  //   console.log(userId);
+  //   axios
+  //   .post('http://3.34.222.176:8080/api/recruitment/apply/get/dev',{user_id: userId})
+  //   .then((response) => {
+  //     console.log(response);
+  //     //text box 값 할당하기 
+  //     if(response.data.motive !== null) setInputs(inputs.first = response.data.motive);
+  //     if(response.data.project_topic !== null) setInputs(inputs.second = response.data.project_topic);
+  //     if(response.data.language !== null) setInputs(inputs.lang = response.data.language);
+  //     //지원분야
+  //     if(response.data.application_field !== null)setPart(part = response.data.application_field);
+  //     //자신감 
+  //     if(response.data.confidence_lang !== 0)setScore(score = response.data.confidence_lang);
+  //     //사용 가능 기술
+  //     // setStackList(
+  //     //   stackList.map(stack =>
+  //     //     stack.id === response.data.tool.tool_id ? { ...stack, checked: !stack.checked } : stack
+  //     //   )
+  //     // );
       
-    });   
-  }, []);   
+  //   });   
+  // }, []);   
   
-  const myContext = useContext(AppContext);
+  // const myContext = useContext(AppContext);
 
   return (
     <>
