@@ -170,7 +170,8 @@ const CrNeon = styled.img`
 `
 
 
-const MemberModal = ({ _handleModal, top}) => {
+const MemberModal = ({ _handleModal }) => {
+    const top = window.pageYOffset;
     return (
         <FixedModalFrame _handleModal={_handleModal} top={top} >
             <Title>EFUB organizers</Title>

@@ -16,6 +16,7 @@ const Container = styled.div`
     align-items: center;
     @media (max-width: 767px) {
         // phone
+        width: 100%;
         animation: modal-show 1s;
         @keyframes modal-show {
             from {
@@ -32,6 +33,7 @@ const Container = styled.div`
 
 const Background = styled.div`
     position: fixed;
+    top:0;
     width: 100%;
     height: 100%;
     background-color: rgba(255,255,255,0.15);
@@ -45,15 +47,11 @@ const Background = styled.div`
             opacity: 1;
         }
     }
-    @media (max-width: 767px) {
-        // phone
-       }
 `;
 
 const ModalBlock = styled.div`
     position: absolute;
-    margin-top: 140rem;
-    top: 20rem;
+    top: 15rem;
     border-radius: 10px;
     padding: 4rem;
     background-color: black;
@@ -78,7 +76,6 @@ const ModalBlock = styled.div`
         padding: 2rem;
         width: 90%;
         background-color: black;
-        margin-top: 10rem;
        }
 `;
 
