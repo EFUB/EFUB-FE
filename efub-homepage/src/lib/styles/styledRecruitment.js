@@ -5,6 +5,9 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  @media (max-width: 1023px) {
+    width: 90%;
+  }
 `;
 
 export const BannerBlock = styled.div`

@@ -77,7 +77,7 @@ const Text = styled.div`
   }
 `;
 
-const Banner = () => {
+const PcBanner = () => {
   const navigate = useNavigate();
   return (
     <Wrapper>
@@ -140,4 +140,4 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+export default PcBanner;

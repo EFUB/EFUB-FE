@@ -1,7 +1,7 @@
 import React from 'react';
 import InputBox from '../../components/common/InputBox';
 import InputLine from '../../components/common/InputLine';
-import DeveloperStack from '../../components/recruitment/DeveloperStack';
+import Stack from './Stack';
 import DeveloperPart from '../../components/recruitment/DeveloperPart';
 import Confident from '../../components/common/Confident';
 import Checkbox from '../common/CheckBox';
@@ -61,7 +61,7 @@ const DeveloperForm = ({
       <Question>
         5. 사용할 수 있는 언어 및 프레임워크를 모두 선택해주세요.
       </Question>
-      <DeveloperStack stackList={stackList} onToggle={onToggleStack} />
+      <Stack stackList={stackList} onToggle={onToggleStack} />
       {apply.applicationField === 2 || apply.applicationField === 4 ? (
         <>
           <Line />

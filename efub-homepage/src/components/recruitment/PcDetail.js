@@ -58,7 +58,7 @@ const Message = styled.div`
   margin-bottom: 8rem;
 `;
 
-const Detail = () => {
+const PcDetail = () => {
   return (
     <Wrapper>
       <Title>이화여대 교내 유일 웹 개발 커리어 클럽 EFUB 모집</Title>
@@ -160,4 +160,4 @@ const Detail = () => {
   );
 };
 
-export default Detail;
+export default PcDetail;

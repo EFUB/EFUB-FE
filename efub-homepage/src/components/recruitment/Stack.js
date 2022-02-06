@@ -9,7 +9,7 @@ const Grid = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
 `;
 
-const DeveloperStack = ({ stackList, onToggle }) => {
+const Stack = ({ stackList, onToggle }) => {
   return (
     <>
       <Grid>
@@ -30,4 +30,4 @@ const DeveloperStack = ({ stackList, onToggle }) => {
   );
 };
 
-export default DeveloperStack;
+export default Stack;

@@ -6,7 +6,7 @@ export const userForm = {
   password: '',
 };
 
-export const developer = [
+export const developerStackList = [
   { id: 0, label: 'C', checked: false },
   { id: 1, label: 'Python', checked: false },
   { id: 2, label: 'Java', checked: false },
@@ -22,7 +22,14 @@ export const developer = [
   { id: 12, label: '기타', checked: false },
 ];
 
-export const designer = [];
+export const designerStackList = [
+  { id: 0, label: '피그마', checked: false },
+  { id: 1, label: '어도비 XD', checked: false },
+  { id: 2, label: '일러스트레이터', checked: false },
+  { id: 3, label: '제플린', checked: false },
+  { id: 4, label: '포토샵', checked: false },
+  { id: 5, label: '기타', checked: false },
+];
 
 export const time = [
   { id: 0, label: '3월 13일 토요일 오전 (9AM~12PM)', checked: false },
@@ -34,7 +41,7 @@ export const time = [
   { id: 6, label: '모두 가능합니다!', checked: false },
 ];
 
-export const applyForm = {
+export const developerApplyForm = {
   motive: '',
   projectTopic: '',
   language: '',
@@ -42,7 +49,16 @@ export const applyForm = {
   applicationField: 1,
   confidenceLang: 1,
   check: false,
+  expProject: '',
   expSolve: '',
   seminarTopic: '',
   expStudy: '',
+};
+
+export const designerApplyForm = {
+  motive: '',
+  confidenceTool: 1,
+  activityPlan: '',
+  expSolve: '',
+  check: false,
 };

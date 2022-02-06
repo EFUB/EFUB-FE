@@ -42,9 +42,10 @@ const StudentInfo = ({ onChange, data }) => {
       />
       <InputLine
         name="password"
+        type="password"
         value={data.password}
         label="비밀번호 설정"
-        placeholder="비밀번호 4자리"
+        placeholder="4자리 숫자"
         onChange={onChange}
       />
       <Text style={{ marginTop: '2rem' }}>

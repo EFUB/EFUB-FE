@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import swal from 'sweetalert2';
 import { useMediaQuery } from 'react-responsive';
-import styled from "styled-components";
-import palette from "../lib/styles/palette";
-import InputBox from "../components/common/InputBox";
-import Button from "../components/common/Button";
+import styled from 'styled-components';
+import InputBox from '../components/common/InputBox';
+import Button from '../components/common/Button';
 import Banner from '../components/contact/Banner';
 import Loading from '../components/common/Loading';
+import { sendEmail } from '../lib/api/contact';
 
 const FormBox = styled.div`
   margin-bottom: 5rem;
@@ -28,117 +26,86 @@ const Label = styled.div`
 `;
 
 const ContactPage = () => {
-
   const isMobile = useMediaQuery({
-    query: "(max-width: 767px)"
-  });
-
-  // https://react.vlpt.us/basic/09-multiple-inputs.html 에서 코드 설명함.
-  
-  const [inputs, setInputs] = useState({
-    email: '',
-    message: '',
+    query: '(max-width: 767px)',
   });
 
   const [loading, setLoading] = useState(false);
 
-  const { email, message } = inputs;
+  const [inputs, setInputs] = useState({
+    writerEmail: '',
+    content: '',
+  });
 
   const onChange = (e) => {
-    const { value, name } = e.target; // 우선 e.target 에서 name과 value를 추출
+    const { value, name } = e.target;
     setInputs({
-      ...inputs, // 기존의 input 객체를 복사한 뒤
-      [name]: value // name 키를 가진 값을 value로 설정
+      ...inputs,
+      [name]: value,
     });
   };
 
-  const sendContact = async () => {
+  const _handleClick = async () => {
     setLoading(true);
-    try {
-      const res = await axios.post('http://3.34.222.176:8080/api/contact',
-        {
-          "writer_email": email,
-          "content": message
-        })
-      if (res === 200) {
-        setLoading(false);
-        swal.fire({
-          title: '메일을 성공적으로 보냈습니다!',
-          text: '확인 후 입력하신 주소로 빠르게 답변드리겠습니다 :)',
-          icon: 'success',
-          confirmButtonText: '확인',
-          background: palette.black,
-          color: palette.white,
-          confirmButtonColor: palette.black,
-        })
-      }
-      else {
-        console.log(res)
-      }
-    }
-    catch (e) {
-      console.log(e)
-    }
-  }
+    await sendEmail(inputs);
+    setLoading(false);
+  };
+
   return (
     <>
       <Banner />
-      {
-        isMobile ? (
-          <>
-            <FormBox>
-              <Label>Email</Label>
-              <InputBox
-                name="email"
-                value={email}
-                onChange={onChange}
-                placeholder="답변 받을 이메일 주소 입력"
-                height="3rem"
-              />
-              <Label>문의 내용</Label>
-              <InputBox
-                name="message"
-                value={message}
-                onChange={onChange}
-                placeholder="EFUB과 협업하고 싶어요! / 지원 기준이 어떻게 되나요?"
-              />
-            </FormBox >
-            <Button
-              style={{ width: "90%" }}
-              onClick={() => sendContact()}
-            >전송하기</Button>
-          </>
-        ) : (
-          <>
-            <FormBox>
-              <Label>Email</Label>
-              <InputBox
-                name="email"
-                value={email}
-                onChange={onChange}
-                placeholder="답변 받을 이메일 주소 입력"
-                height="5.5rem"
-              />
-              <Label>문의 내용</Label>
-              <InputBox
-                name="message"
-                value={message}
-                onChange={onChange}
-                placeholder="EFUB과 협업하고 싶어요! / 지원 기준이 어떻게 되나요?"
-              />
-            </FormBox >
-            <Button
-              width="10"
-              style={{ marginBottom: "10rem" }}
-              onClick={() => sendContact()}
-            >전송하기</Button>
-          </>
-        )
-      }
-      {
-        loading ? <Loading /> : <></>
-      }
-
+      {isMobile ? (
+        <>
+          <FormBox>
+            <Label>Email</Label>
+            <InputBox
+              name="writerEmail"
+              value={inputs.writerEmail}
+              onChange={onChange}
+              placeholder="답변 받을 이메일 주소 입력"
+              height="3rem"
+            />
+            <Label>문의 내용</Label>
+            <InputBox
+              name="content"
+              value={inputs.content}
+              onChange={onChange}
+              placeholder="EFUB과 협업하고 싶어요! / 지원 기준이 어떻게 되나요?"
+            />
+          </FormBox>
+          <Button style={{ width: '90%' }} onClick={() => _handleClick()}>
+            전송하기
+          </Button>
+        </>
+      ) : (
+        <>
+          <FormBox>
+            <Label>Email</Label>
+            <InputBox
+              name="writerEmail"
+              value={inputs.writerEmail}
+              onChange={onChange}
+              placeholder="답변 받을 이메일 주소 입력"
+              height="5.5rem"
+            />
+            <Label>문의 내용</Label>
+            <InputBox
+              name="content"
+              value={inputs.content}
+              onChange={onChange}
+              placeholder="EFUB과 협업하고 싶어요! / 지원 기준이 어떻게 되나요?"
+            />
+          </FormBox>
+          <Button
+            width="10"
+            style={{ marginBottom: '10rem' }}
+            onClick={() => _handleClick()}
+          >
+            전송하기
+          </Button>
+        </>
+      )}
+      {loading ? <Loading /> : <></>}
     </>
   );
 };

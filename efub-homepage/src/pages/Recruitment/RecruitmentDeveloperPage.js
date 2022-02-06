@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import swal from 'sweetalert2';
 import Button from '../../components/common/Button';
 import StudentInfo from '../../components/recruitment/StudentInfo';
 import DeveloperForm from '../../components/recruitment/DeveloperForm';
-import palette from '../../lib/styles/palette';
+import { checkDeveloper, submitDeveloper } from '../../lib/api/recruitment';
 
 import {
   userForm,
-  developer,
+  developerStackList,
   time,
-  applyForm,
+  developerApplyForm,
 } from '../../assets/recruitment/recuitmentForm';
 import {
   BannerBlock,
@@ -24,17 +23,24 @@ import {
 
 const RecruitmentDeveloperPage = () => {
   const navigate = useNavigate();
-  const [check, setCheck] = useState(true);
+
+  //지원 불가능이면 false - 화면 안 넘어감
+  //지원 가능이면 true - 화면 넘어감
+  const [check, setCheck] = useState(false);
+
   const [user, setUser] = useState(userForm);
   const _handleUser = (e) => {
-    const { value, name } = e.target;
+    let { value, name } = e.target;
+    if (!(name === 'name' || name === 'department'))
+      value = value.replace(/[^0-9]/g, '');
+    if (name === 'password') value = value.slice(0, 4);
     setUser({
       ...user,
       [name]: value,
     });
   };
 
-  const [stackList, setStackList] = useState(developer);
+  const [stackList, setStackList] = useState(developerStackList);
   const _onToggleStack = (id) => {
     setStackList(
       stackList.map((stack) =>
@@ -52,7 +58,7 @@ const RecruitmentDeveloperPage = () => {
     );
   };
 
-  const [apply, setApply] = useState(applyForm);
+  const [apply, setApply] = useState(developerApplyForm);
   const _handleApply = (e) => {
     const { value, name } = e.target;
     setApply({
@@ -66,7 +72,6 @@ const RecruitmentDeveloperPage = () => {
       applicationField: id,
     });
   };
-
   const _onClickScore = (id) => {
     setApply({
       ...apply,
@@ -80,73 +85,14 @@ const RecruitmentDeveloperPage = () => {
     });
   };
 
-  const onCheck = async (data) => {
-    window.scrollTo(0, 0);
-    setCheck(!check);
+  const _handleCheck = async () => {
+    const res = await checkDeveloper(user);
+    res && setCheck(true);
   };
 
-  const onSubmit = async (user, stackList, timeList, apply) => {
-    let tools = [];
-    stackList.map((s) => s.checked && tools.push(s.label));
-    let interviews = [];
-    timeList.map((t) => t.checked && interviews.push(t.label));
-    let newApply = apply;
-    switch (apply.applicationField) {
-      case 1:
-        apply.applicationField = '인턴개발자 - 프론트엔드';
-        break;
-      case 2:
-        apply.applicationField = '리드개발자 - 프론트엔드';
-        break;
-      case 3:
-        apply.applicationField = '인턴개발자 - 백엔드';
-        break;
-      case 4:
-        apply.applicationField = '리드개발자 - 백엔드';
-        break;
-      case 5:
-        apply.applicationField = '인턴개발자 - 프론트 & 백';
-        break;
-      default:
-        break;
-    }
-    const form = {
-      user: user,
-      tools: tools,
-      interviews: interviews,
-      apply: newApply,
-    };
-    console.log(form);
-
-    swal
-      .fire({
-        text: '제출이 완료된 지원서는 삭제 및 수정이 불가능합니다.',
-        icon: 'warning',
-        iconColor: palette.green,
-        showCancelButton: true,
-        confirmButtonColor: palette.green,
-        cancelButtonColor: '#a8a8a8',
-        confirmButtonText: '제출',
-        cancelButtonText: '닫기',
-        background: palette.black,
-        color: palette.white,
-      })
-      .then(async (result) => {
-        if (result.isConfirmed) {
-          try {
-            const res = 200;
-            if (res === 200) navigate('/recruitment/thankyou');
-          } catch (e) {
-            swal.fire({
-              width: 400,
-              text: '오류가 발생했습니다.',
-              icon: 'error',
-              showConfirmButton: false,
-              timer: 1000,
-            });
-          }
-        }
-      });
+  const _handleSubmit = async () => {
+    const res = await submitDeveloper({ user, stackList, timeList, apply });
+    if (res) navigate('/recruitment/thankyou');
   };
 
   return (
@@ -157,8 +103,6 @@ const RecruitmentDeveloperPage = () => {
       </BannerBlock>
       <Main>
         {check ? (
-          <StudentInfo data={user} onChange={_handleUser} />
-        ) : (
           <DeveloperForm
             onChange={_handleApply}
             onClickPart={_onClickPart}
@@ -170,22 +114,17 @@ const RecruitmentDeveloperPage = () => {
             stackList={stackList}
             timeList={timeList}
           />
+        ) : (
+          <StudentInfo data={user} onChange={_handleUser} />
         )}
         <Bottom>
           {check ? (
-            <>
-              <Text>1/2 페이지</Text>
-              <Button filled onClick={() => onCheck(user)}>
-                다음
-              </Button>
-            </>
-          ) : (
             <>
               <Text>2/2 페이지</Text>
               <ButtonBox>
                 <Button
                   onClick={() => {
-                    setCheck(!check);
+                    setCheck(false);
                     window.scrollTo(0, 0);
                   }}
                 >
@@ -193,11 +132,20 @@ const RecruitmentDeveloperPage = () => {
                 </Button>
                 <Button
                   filled
-                  onClick={() => onSubmit(user, stackList, timeList, apply)}
+                  onClick={() =>
+                    _handleSubmit(user, stackList, timeList, apply)
+                  }
                 >
                   제출
                 </Button>
               </ButtonBox>
+            </>
+          ) : (
+            <>
+              <Text>1/2 페이지</Text>
+              <Button filled onClick={() => _handleCheck()}>
+                다음
+              </Button>
             </>
           )}
         </Bottom>
