@@ -74,6 +74,7 @@ const ModalBlock = styled.div`
     @media (max-width: 767px) {
         // phone
         padding: 2rem;
+        top: 7rem;
         width: 90%;
         background-color: black;
        }

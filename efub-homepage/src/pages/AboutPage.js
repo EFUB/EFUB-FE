@@ -31,7 +31,9 @@ import CareerModal from '../components/about/CareerModal';
 import CurriModal from '../components/about/CurriModal';
 import MemberModal from '../components/about/MemberModal';
 
-// import aboutMobileFirst from '../assets/about/AboutMobileFirst.png';
+import aboutMobilePink from '../assets/about/AboutMobilePink.png';
+import aboutMobileGreen from '../assets/about/AboutMobileGreen.png';
+import aboutMobileBlue from '../assets/about/AboutMobileBlue.png';
 import aboutMobileSecond from '../assets/about/AboutMoileSecond.png';
 
 
@@ -55,6 +57,14 @@ const Wrapper = styled.div`
     display:none;
    }
 `
+
+const RowWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+`
 const WrapperMobile = styled.div`
    display: none;
   @media (max-width: 767px) {
@@ -75,10 +85,9 @@ const MainWrapper = styled.div` // 이펍소개+버튼들
     height:300px;
     @media (max-width: 767px) {
         // phone
-        margin-top: -5rem;
+        margin-top: 10rem;
         margin-bottom: 5rem;
         flex-direction: column;
-        height:600px;
        }
 `
 
@@ -138,6 +147,7 @@ const ReviewWrapper = styled.div` // 퍼비후기
 
     @media (max-width: 767px) {
         // phone
+        margin-top: 0rem;
        }
 `
 const OrganizerWrapper = styled.div` // 이퍼비들 소개
@@ -714,7 +724,7 @@ const AboutPage = () => {
                     </SubIntroWrapper>
                 </IntroWrapper>
 
-                <RotateButton>
+                {/* <RotateButton>
                     <ModalButtonCareer onClick={() => setOpenCareerModal(true)}> EFUB Career >  </ModalButtonCareer>
                     <ModalButtonCurriculum onClick={() => setOpenCurriModal(true)}> EFUB Curriculum >  </ModalButtonCurriculum>
                     
@@ -726,7 +736,28 @@ const AboutPage = () => {
                     <ImgMainPink src={mainPink}></ImgMainPink>
                     <ImgMainLongTri src={mainLongTri}></ImgMainLongTri>
                     <ImgMainTri src={mainTri}></ImgMainTri>
-                </RotateButton>
+                </RotateButton> */}
+                    <RowWrapper> 
+                        <img
+                        src={aboutMobilePink}
+                        alt=""
+                        style={{ width: '50%', cursor: 'pointer'}}
+                        onClick={_handleCareerModal}/>
+
+                    <Link to='/recruitment' style={{width:"50%"}}>
+                        <img
+                        src={aboutMobileGreen}
+                        alt=""
+                        style={{ cursor: 'pointer', height: "100%", width:"100%"}}
+                        />
+                    </Link>
+                        
+                    </RowWrapper>
+                    <img
+                    src={aboutMobileBlue}
+                    alt=""
+                    style={{ width: '100%', cursor: 'pointer', marginTop: "-3.5px" }}
+                    onClick={_handleCurriModal}/>
             </MainWrapper>
 
             <ReviewWrapper>
