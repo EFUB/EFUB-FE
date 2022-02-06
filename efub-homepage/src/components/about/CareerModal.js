@@ -22,6 +22,7 @@ const Title = styled.div`
 const CareerModal = ({ _handleModal }) => {
     const [select, setSelect] = useState('win');
     const onSelect = useCallback(select => setSelect(select), []);
+    
     return (
         <FixedModalFrame _handleModal={_handleModal}>
             <Title>EFUB Career</Title>
