@@ -22,6 +22,12 @@ const Logo = styled.img`
     justify-content: center;
     margin-left: 0.5rem;
     margin-right: 1.5rem;
+
+    @media (max-width: 767px) {
+        // phone
+        width: 15rem;
+        height: 15rem;
+    }
 `;
 
 const TextBox=styled.div`
@@ -61,6 +67,11 @@ const Text=styled.div`
     white-space: pre-wrap;
     margin-top: 2rem;
     margin-bottom: 2rem;
+
+    @media (max-width: 767px) {
+        // phone
+        font-size: 15px;
+    }
 `
 
 function Review1({profile, text}) {
