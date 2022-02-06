@@ -580,21 +580,28 @@ const ImgOrganPub = styled.img`
 
 
 const AboutPage = () => {
+    const [position, setPosition] = useState(0);
+
     const [openCareerModal, setOpenCareerModal] = useState(false);
     const _handleCareerModal = () => {
         setOpenCareerModal(!openCareerModal);
         document.body.style.overflow = "unset";
+        setPosition(window.pageYOffset);
     }
     const [openCurriModal, setOpenCurriModal] = useState(false);
     const _handleCurriModal = () => {
         setOpenCurriModal(!openCurriModal);
         document.body.style.overflow = "unset";
+        setPosition(window.pageYOffset);
     }
     const [openMemberModal, setOpenMemberModal] = useState(false);
     const _handleMemberModal = () => {
         setOpenMemberModal(!openMemberModal);
         document.body.style.overflow = "unset";
+        setPosition(window.pageYOffset);
     }
+
+
 
     // const [change, setChange] = useState(false);
     // const [toggleState, setToggleState] = useState({
@@ -789,21 +796,19 @@ const AboutPage = () => {
                     onClick={_handleMemberModal}
                 />
             </OrganizerWrapper>
-
-
             </WrapperMobile>
 
 
 
 
             {openCareerModal && (
-                <CareerModal _handleModal={_handleCareerModal} />
+                <CareerModal _handleModal={_handleCareerModal} top={position}/>
             )}
             {openCurriModal && (
-                <CurriModal _handleModal={_handleCurriModal} />
+                <CurriModal _handleModal={_handleCurriModal} top={position}/>
             )}
             {openMemberModal && (
-                <MemberModal _handleModal={_handleMemberModal} />
+                <MemberModal _handleModal={_handleMemberModal} top={position}/>
             )}
         </>
     );

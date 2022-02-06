@@ -170,9 +170,9 @@ const CrNeon = styled.img`
 `
 
 
-const MemberModal = ({ _handleModal }) => {
+const MemberModal = ({ _handleModal, top}) => {
     return (
-        <FixedModalFrame _handleModal={_handleModal}>
+        <FixedModalFrame _handleModal={_handleModal} top={top} >
             <Title>EFUB organizers</Title>
             <ScrollDiv>
                 <First> 1기 </First>
