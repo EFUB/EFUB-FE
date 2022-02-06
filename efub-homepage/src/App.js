@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import {Routes, Route } from 'react-router-dom';
 import AdminRoutes from './pages/Admin/AdminRoutes';
 import HomepageRoutes from './routes/HomepageRoutes';
 

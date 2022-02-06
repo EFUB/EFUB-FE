@@ -20,7 +20,7 @@ const Sub = styled.div`
     margin-bottom: 1rem;
     border-bottom: 1px solid rgba(256, 256, 256, 0.15);
 `;
-const Sub_Week = styled.div`
+const SubWeek = styled.div`
     display: flex;
     text-align: center;
     align-items: center;
@@ -31,7 +31,7 @@ const Sub_Week = styled.div`
     margin-bottom: 1rem;
 `;
 
-const Sub_Date = styled.div`
+const SubDate = styled.div`
     display: flex;
     text-align: center;
     align-items: center;
@@ -42,7 +42,7 @@ const Sub_Date = styled.div`
     margin-bottom: 1rem;
 `;
 
-const Sub_Option = styled.div`
+const SubOption = styled.div`
     display: flex;
     text-align: center;
     align-items: center;
@@ -142,9 +142,9 @@ const CurriContent = ({ select }) => {
     return (
         <CurriBlock>
             <Sub>
-                    <Sub_Week> 주차 </Sub_Week>
-                    <Sub_Date> 일자 </Sub_Date>
-                    <Sub_Option> 비고 </Sub_Option>
+                    <SubWeek> 주차 </SubWeek>
+                    <SubDate> 일자 </SubDate>
+                    <SubOption> 비고 </SubOption>
             </Sub>
             {selectedCurris.map(s => (
                 <OneCurri>

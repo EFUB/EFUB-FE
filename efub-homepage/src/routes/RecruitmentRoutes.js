@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router';
+import {Routes, Route } from 'react-router';
 import {
   RecruitmentMainPage,
   RecruitmentDeveloperPage,

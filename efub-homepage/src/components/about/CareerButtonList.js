@@ -14,16 +14,15 @@ const buttons = [
 ];
 
 const ButtonBlock = styled.div`
-    margin-bottom: 2rem;
-    padding-left: 1rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    @media (max-width: 767px){
-        font-size: 13px;
-        padding-left: 0.5rem;
-    }
+margin-bottom: 2rem;
+padding-left: 1rem;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+@media (max-width: 767px){
+    width: 100%;
+  }
 `;
 
 const CareerButtonList = ({ select, onSelect }) => {
