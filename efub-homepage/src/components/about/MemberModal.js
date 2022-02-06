@@ -54,7 +54,7 @@ const SubContent = styled.div`
         display:none;
        }
 `
-const SubContent_member = styled.div` 
+const SubContentMember = styled.div` 
     z-index: 10;
 
     display: flex;
@@ -66,7 +66,7 @@ const SubContent_member = styled.div`
     }
 `
 
-const Ay_neon = styled.img`
+const AyNeon = styled.img`
     width: 130px; height: 120px;
     position: absolute;
     top: -10px; left: 0px;
@@ -85,7 +85,7 @@ const Ay_neon = styled.img`
        }
 `
 
-const Hr_neon = styled.img`
+const HrNeon = styled.img`
     width: 140px; height: 120px;
     position: absolute;
     top: -10px; left: 230px;
@@ -101,7 +101,7 @@ const Hr_neon = styled.img`
         display:none;
        }
 `
-const Hj_neon = styled.img`
+const HjNeon = styled.img`
     width: 150px; height: 100px;
     position: absolute;
     top: -10px; left: 680px;
@@ -117,7 +117,7 @@ const Hj_neon = styled.img`
         display:none;
        }
 `
-const Yj_neon = styled.img`
+const YjNeon = styled.img`
     width: 130px; height: 150px;
     position: absolute;
     top: 300px; left: -20px;
@@ -135,7 +135,7 @@ const Yj_neon = styled.img`
        }
 `
 
-const Je_neon = styled.img`
+const JeNeon = styled.img`
     width: 130px; height: 130px;
     position: absolute;
     top: 300px; left: 430px;
@@ -152,7 +152,7 @@ const Je_neon = styled.img`
         display:none;
        }
 `
-const Cr_neon = styled.img`
+const CrNeon = styled.img`
     width: 230px; height: 130px;
     position: absolute;
     top: 330px; left: 600px;
@@ -171,22 +171,23 @@ const Cr_neon = styled.img`
 
 
 const MemberModal = ({ _handleModal }) => {
+    const top = window.pageYOffset;
     return (
-        <FixedModalFrame _handleModal={_handleModal}>
+        <FixedModalFrame _handleModal={_handleModal} top={top} >
             <Title>EFUB organizers</Title>
             <ScrollDiv>
                 <First> 1기 </First>
             <Content>
-                <SubContent_member>
+                <SubContentMember>
                     <MemberList> </MemberList>
-                </SubContent_member>
+                </SubContentMember>
                 <SubContent>
-                    <Ay_neon src={ay_neon}></Ay_neon>
-                    <Hr_neon src={hr_neon}></Hr_neon>
-                    <Hj_neon src={hj_neon}></Hj_neon>
-                    <Yj_neon src={yj_neon}></Yj_neon>
-                    <Je_neon src={je_neon}></Je_neon>
-                    <Cr_neon src={cr_neon}></Cr_neon>
+                    <AyNeon src={ay_neon}></AyNeon>
+                    <HrNeon src={hr_neon}></HrNeon>
+                    <HjNeon src={hj_neon}></HjNeon>
+                    <YjNeon src={yj_neon}></YjNeon>
+                    <JeNeon src={je_neon}></JeNeon>
+                    <CrNeon src={cr_neon}></CrNeon>
                 </SubContent>
             </Content>
 

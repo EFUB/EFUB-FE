@@ -21,8 +21,10 @@ const Title = styled.div`
 const CurriModal = ({ _handleModal }) => {
     const [select, setSelect] = useState('BE');
     const onSelect = useCallback(select => setSelect(select), []);
+    const top = window.pageYOffset;
+
     return (
-        <FixedModalFrame _handleModal={_handleModal}>
+        <FixedModalFrame _handleModal={_handleModal} top={top}>
             <Title>EFUB Curriculum</Title>
             <CurriButtonList select={select} onSelect={onSelect} ></CurriButtonList>
             <ScrollDiv>

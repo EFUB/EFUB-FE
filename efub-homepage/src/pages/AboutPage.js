@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from "react-router-dom";
 
@@ -8,28 +8,33 @@ import mvp1 from '../assets/about/mvp1.png';
 import mvp2 from '../assets/about/mvp2.png';
 import mvp3 from '../assets/about/mvp3.png';
 
-import main_blue from '../assets/about/main_blue.png';
-import main_circle from '../assets/about/main_circle.png';
-import main_green from '../assets/about/main_green.png';
-import main_long_tri from '../assets/about/main_long_tri.png';
-import main_pink from '../assets/about/main_pink.png';
-import main_tri from '../assets/about/main_tri.png';
+import mainBlue from '../assets/about/main_blue.png';
+import mainCircle from '../assets/about/main_circle.png';
+import mainGreen from '../assets/about/main_green.png';
+import mainLongTri from '../assets/about/main_long_tri.png';
+import mainPink from '../assets/about/main_pink.png';
+import mainTri from '../assets/about/main_tri.png';
 
-import organ_green from '../assets/about/organ_green.png';
-import organ_pub from '../assets/about/organ_pub.png';
-import organ_sun from '../assets/about/organ_sun.png';
+import organGreen from '../assets/about/organ_green.png';
+import organPub from '../assets/about/organ_pub.png';
+import organSun from '../assets/about/organ_sun.png';
 
-import Toggle from '../assets/about/toggle.png';
+// import Toggle from '../assets/about/toggle.png';
 
 import Review1 from '../components/about/Review1';
 import Review2 from '../components/about/Review2';
-import Member_Green from '../components/about/Member_Green';
-import Member_Blue from '../components/about/Member_Blue';
+import MemberGreen from '../components/about/Member_Green';
+import MemberBlue from '../components/about/Member_Blue';
 
 //Modal창
 import CareerModal from '../components/about/CareerModal';
 import CurriModal from '../components/about/CurriModal';
 import MemberModal from '../components/about/MemberModal';
+
+import aboutMobilePink from '../assets/about/AboutMobilePink.png';
+import aboutMobileGreen from '../assets/about/AboutMobileGreen.png';
+import aboutMobileBlue from '../assets/about/AboutMobileBlue.png';
+import aboutMobileSecond from '../assets/about/AboutMoileSecond.png';
 
 
 // 한글은 font-family: 'Roboto', sans-serif;
@@ -52,6 +57,14 @@ const Wrapper = styled.div`
     display:none;
    }
 `
+
+const RowWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+`
 const WrapperMobile = styled.div`
    display: none;
   @media (max-width: 767px) {
@@ -72,10 +85,9 @@ const MainWrapper = styled.div` // 이펍소개+버튼들
     height:300px;
     @media (max-width: 767px) {
         // phone
-        margin-top: -5rem;
+        margin-top: 10rem;
         margin-bottom: 5rem;
         flex-direction: column;
-        height:600px;
        }
 `
 
@@ -135,11 +147,11 @@ const ReviewWrapper = styled.div` // 퍼비후기
 
     @media (max-width: 767px) {
         // phone
+        margin-top: 0rem;
        }
 `
 const OrganizerWrapper = styled.div` // 이퍼비들 소개
     display: flex;
-
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
@@ -279,7 +291,7 @@ const SubTitleGreen = styled.div`
        }
 `
 
-const ModalButton_Career = styled.button`
+const ModalButtonCareer = styled.button`
     z-index: 99;
     background: black;
     color:white;
@@ -306,7 +318,7 @@ const ModalButton_Career = styled.button`
         font-size:18px;
        }
 `
-const ModalButton_Curriculum = styled.button`
+const ModalButtonCurriculum = styled.button`
     z-index: 99;
     background: black;
     color:white;
@@ -333,7 +345,7 @@ const ModalButton_Curriculum = styled.button`
         font-size:18px;
        }
 `
-const ModalButton_apply = styled.button`
+const ModalButtonApply = styled.button`
     z-index: 99;
     background: black;
     color:white;
@@ -360,7 +372,7 @@ const ModalButton_apply = styled.button`
      font-size:18px;
     }
 `
-const ModalButton_allmember = styled.button`
+const ModalButtonAllmember = styled.button`
     z-index: 99;
     background: black;
     color:white;
@@ -390,7 +402,7 @@ const ModalButton_allmember = styled.button`
 
 // main_blue, main_circle, main_green, main_long_tri, main_pink, main_tri 
 
-const Img_main_blue = styled.img`
+const ImgMainBlue = styled.img`
     width: 350px; height: 130px;
     position: absolute;
     top: 155px; left: 90px;
@@ -409,7 +421,7 @@ const Img_main_blue = styled.img`
        }
 `
 
-const Img_main_circle = styled.img`
+const ImgMainCircle = styled.img`
     width: 80px; height: 80px;
     position: absolute;
     top: 180px; left: 20px;
@@ -427,7 +439,7 @@ const Img_main_circle = styled.img`
         top: 170px; left: 120px;
        }
 `
-const Img_main_green = styled.img`
+const ImgMainGreen = styled.img`
     width: 280px; height: 120px;
     position: absolute;
     top: 38px; left: 300px;
@@ -446,7 +458,7 @@ const Img_main_green = styled.img`
        }
 `
 
-const Img_main_long_tri = styled.img`
+const ImgMainLongTri = styled.img`
     width: 200px; height: 120px;
     position: absolute;
     top: 180px; left: 420px;
@@ -465,7 +477,7 @@ const Img_main_long_tri = styled.img`
        }
 `
 
-const Img_main_pink = styled.img`
+const ImgMainPink = styled.img`
     width: 280px; height: 120px;
     position: absolute;
     top: 18px; left: -20px;
@@ -484,7 +496,7 @@ const Img_main_pink = styled.img`
        }
 `
 
-const Img_main_tri = styled.img`
+const ImgMainTri = styled.img`
     width: 80px; height: 80px;
     position: absolute;
     top: 20px; left: 270px;
@@ -505,7 +517,7 @@ const Img_main_tri = styled.img`
 //Organizer 밑 네온사인
 // organ_green, organ_pub, organ_sun 
 
-const Img_organ_green = styled.img`
+const ImgOrganGreen = styled.img`
     width: 260px; height: 120px;
     position: absolute;
     top: 25px; left: -20px;
@@ -522,7 +534,7 @@ const Img_organ_green = styled.img`
         top: 200px; left: 120px;
        }
 `
-const Img_organ_sun = styled.img`
+const ImgOrganSun = styled.img`
     width: 150px; height: 150px;
     position: absolute;
     top: -180px; left: 0px;
@@ -539,7 +551,7 @@ const Img_organ_sun = styled.img`
         top: 30px; left: 120px;
        }
 `
-const Img_organ_pub = styled.img`
+const ImgOrganPub = styled.img`
     width: 290px; height: 370px;
     position: absolute;
     top: -220px; left: 180px;
@@ -560,20 +572,20 @@ const Img_organ_pub = styled.img`
 
 //토글 시작
 
-const ToggleImg = styled.img.attrs({ src: Toggle })`
-  width: 1rem;
-  height: 1rem;
-  transition: 0.2s all ease-in;
-  margin-top: 4rem;
-  margin-left : 1rem;
-  &:hover {
-    ${(props) => (props.change ? ToggleStyle : "")}
-  }
-`;
+// const ToggleImg = styled.img.attrs({ src: Toggle })`
+//   width: 1rem;
+//   height: 1rem;
+//   transition: 0.2s all ease-in;
+//   margin-top: 4rem;
+//   margin-left : 1rem;
+//   &:hover {
+//     ${(props) => (props.change ? ToggleStyle : "")}
+//   }
+// `;
 
-const ToggleStyle = css`
-  transform: rotate(180deg);
-`;
+// const ToggleStyle = css`
+//   transform: rotate(180deg);
+// `;
 
 
 
@@ -594,30 +606,32 @@ const AboutPage = () => {
         document.body.style.overflow = "unset";
     }
 
-    const [change, setChange] = useState(false);
-    const [toggleState, setToggleState] = useState({
-        field: false,
-        guide: false,
-        benefit: false,
-        who: false,
-        method: false,
-        prefer: false,
-        plan: false,
-        ask: false,
-    });
 
-    const toggleHandler = (e) => {
-        const newToggleState = { ...toggleState };
-        const active = e.currentTarget.id;
-        for (let key in newToggleState) {
-        if (key === active) {
-            newToggleState[key] = !toggleState[key];
-        }
-        }
-        setToggleState(newToggleState);
-        setChange(!change);
-        console.log(newToggleState);
-    };
+
+    // const [change, setChange] = useState(false);
+    // const [toggleState, setToggleState] = useState({
+    //     field: false,
+    //     guide: false,
+    //     benefit: false,
+    //     who: false,
+    //     method: false,
+    //     prefer: false,
+    //     plan: false,
+    //     ask: false,
+    // });
+
+    // const toggleHandler = (e) => {
+    //     const newToggleState = { ...toggleState };
+    //     const active = e.currentTarget.id;
+    //     for (let key in newToggleState) {
+    //     if (key === active) {
+    //         newToggleState[key] = !toggleState[key];
+    //     }
+    //     }
+    //     setToggleState(newToggleState);
+    //     setChange(!change);
+    //     console.log(newToggleState);
+    // };
 
     return (
         <>
@@ -636,17 +650,17 @@ const AboutPage = () => {
                         </SubIntroWrapper>
                     </IntroWrapper>
                     <RotateButton>
-                        <ModalButton_Career onClick={() => setOpenCareerModal(true)}> EFUB Career >  </ModalButton_Career>
-                        <ModalButton_Curriculum onClick={() => setOpenCurriModal(true)}> EFUB Curriculum >  </ModalButton_Curriculum>
+                        <ModalButtonCareer onClick={() => setOpenCareerModal(true)}> EFUB Career >  </ModalButtonCareer>
+                        <ModalButtonCurriculum onClick={() => setOpenCurriModal(true)}> EFUB Curriculum >  </ModalButtonCurriculum>
                         
-                        <ModalButton_apply> 
-                            <Link to='/recruitment'> 2기 지원하기 > </Link> </ModalButton_apply>
-                        <Img_main_blue src={main_blue}></Img_main_blue>
-                        <Img_main_circle src={main_circle}></Img_main_circle>
-                        <Img_main_green src={main_green}></Img_main_green>
-                        <Img_main_pink src={main_pink}></Img_main_pink>
-                        <Img_main_long_tri src={main_long_tri}></Img_main_long_tri>
-                        <Img_main_tri src={main_tri}></Img_main_tri>
+                        <ModalButtonApply> 
+                            <Link to='/recruitment'> 2기 지원하기 > </Link> </ModalButtonApply>
+                        <ImgMainBlue src={mainBlue}></ImgMainBlue>
+                        <ImgMainCircle src={mainCircle}></ImgMainCircle>
+                        <ImgMainGreen src={mainGreen}></ImgMainGreen>
+                        <ImgMainPink src={mainPink}></ImgMainPink>
+                        <ImgMainLongTri src={mainLongTri}></ImgMainLongTri>
+                        <ImgMainTri src={mainTri}></ImgMainTri>
                     </RotateButton>
                 </MainWrapper>
 
@@ -678,22 +692,22 @@ const AboutPage = () => {
                 <OrganizerWrapper>
                     <MemberBlock>
                         <SubMemberBlock>
-                            <Member_Green name={"정아연"} position={"회장"} />
-                            <Member_Green name={"김혜린"} position={"부회장"} />
-                            <Member_Green name={"윤효정"} position={"총무"} />
+                            <MemberGreen name={"정아연"} position={"회장"} />
+                            <MemberGreen name={"김혜린"} position={"부회장"} />
+                            <MemberGreen name={"윤효정"} position={"총무"} />
                         </SubMemberBlock>
 
                         <SubMemberBlock>
-                            <Member_Blue name={"이윤지"} position={"프론트장"} />
-                            <Member_Blue name={"김정은"} position={"백엔드장"} />
-                            <Member_Blue name={"김채령"} position={"디자이너장"} />
+                            <MemberBlue name={"이윤지"} position={"프론트장"} />
+                            <MemberBlue name={"김정은"} position={"백엔드장"} />
+                            <MemberBlue name={"김채령"} position={"디자이너장"} />
                         </SubMemberBlock>
                     </MemberBlock>
                     <AllMemberWrapper>
-                        <ModalButton_allmember onClick={() => setOpenMemberModal(true)}> 전체 임원 보기 >  </ModalButton_allmember>
-                        <Img_organ_green src={organ_green}></Img_organ_green>
-                        <Img_organ_sun src={organ_sun}></Img_organ_sun>
-                        <Img_organ_pub src={organ_pub}></Img_organ_pub>
+                        <ModalButtonAllmember onClick={() => setOpenMemberModal(true)}> 전체 임원 보기 >  </ModalButtonAllmember>
+                        <ImgOrganGreen src={organGreen}></ImgOrganGreen>
+                        <ImgOrganSun src={organSun}></ImgOrganSun>
+                        <ImgOrganPub src={organPub}></ImgOrganPub>
                     </AllMemberWrapper>
                 </OrganizerWrapper>
             </Wrapper>
@@ -710,19 +724,40 @@ const AboutPage = () => {
                     </SubIntroWrapper>
                 </IntroWrapper>
 
-                <RotateButton>
-                    <ModalButton_Career onClick={() => setOpenCareerModal(true)}> EFUB Career >  </ModalButton_Career>
-                    <ModalButton_Curriculum onClick={() => setOpenCurriModal(true)}> EFUB Curriculum >  </ModalButton_Curriculum>
+                {/* <RotateButton>
+                    <ModalButtonCareer onClick={() => setOpenCareerModal(true)}> EFUB Career >  </ModalButtonCareer>
+                    <ModalButtonCurriculum onClick={() => setOpenCurriModal(true)}> EFUB Curriculum >  </ModalButtonCurriculum>
                     
-                    <ModalButton_apply> 
-                        <Link to='/recruitment'> 2기 지원하기 > </Link> </ModalButton_apply>
-                    <Img_main_blue src={main_blue}></Img_main_blue>
-                    <Img_main_circle src={main_circle}></Img_main_circle>
-                    <Img_main_green src={main_green}></Img_main_green>
-                    <Img_main_pink src={main_pink}></Img_main_pink>
-                    <Img_main_long_tri src={main_long_tri}></Img_main_long_tri>
-                    <Img_main_tri src={main_tri}></Img_main_tri>
-                </RotateButton>
+                    <ModalButtonApply> 
+                        <Link to='/recruitment'> 2기 지원하기 > </Link> </ModalButtonApply>
+                    <ImgMainBlue src={mainBlue}></ImgMainBlue>
+                    <ImgMainCircle src={mainCircle}></ImgMainCircle>
+                    <ImgMainGreen src={mainGreen}></ImgMainGreen>
+                    <ImgMainPink src={mainPink}></ImgMainPink>
+                    <ImgMainLongTri src={mainLongTri}></ImgMainLongTri>
+                    <ImgMainTri src={mainTri}></ImgMainTri>
+                </RotateButton> */}
+                    <RowWrapper> 
+                        <img
+                        src={aboutMobilePink}
+                        alt=""
+                        style={{ width: '50%', cursor: 'pointer'}}
+                        onClick={_handleCareerModal}/>
+
+                    <Link to='/recruitment' style={{width:"50%"}}>
+                        <img
+                        src={aboutMobileGreen}
+                        alt=""
+                        style={{ cursor: 'pointer', height: "100%", width:"100%"}}
+                        />
+                    </Link>
+                        
+                    </RowWrapper>
+                    <img
+                    src={aboutMobileBlue}
+                    alt=""
+                    style={{ width: '100%', cursor: 'pointer', marginTop: "-3.5px" }}
+                    onClick={_handleCurriModal}/>
             </MainWrapper>
 
             <ReviewWrapper>
@@ -768,40 +803,38 @@ const AboutPage = () => {
             <OrganizerWrapper>
                 <MemberBlock>
                     <SubMemberBlock>
-                        <Member_Green name={"정아연"} position={"회장"} />
-                        <Member_Green name={"김혜린"} position={"부회장"} />
-                        <Member_Green name={"윤효정"} position={"총무"} />
+                        <MemberGreen name={"정아연"} position={"회장"} />
+                        <MemberGreen name={"김혜린"} position={"부회장"} />
+                        <MemberGreen name={"윤효정"} position={"총무"} />
                     </SubMemberBlock>
 
                     <SubMemberBlock>
-                        <Member_Blue name={"이윤지"} position={"프론트장"} />
-                        <Member_Blue name={"김정은"} position={"백엔드장"} />
-                        <Member_Blue name={"김채령"} position={"디자이너장"} />
+                        <MemberBlue name={"이윤지"} position={"프론트장"} />
+                        <MemberBlue name={"김정은"} position={"백엔드장"} />
+                        <MemberBlue name={"김채령"} position={"디자이너장"} />
                     </SubMemberBlock>
                 </MemberBlock>
 
-                <AllMemberWrapper>
-                    <ModalButton_allmember onClick={() => setOpenMemberModal(true)}> 전체 임원 보기 >  </ModalButton_allmember>
-                    <Img_organ_green src={organ_green}></Img_organ_green>
-                    <Img_organ_sun src={organ_sun}></Img_organ_sun>
-                    <Img_organ_pub src={organ_pub}></Img_organ_pub>
-                </AllMemberWrapper>
+                <img
+                    src={aboutMobileSecond}
+                    alt=""
+                    style={{ width: '90%', cursor: 'pointer' }}
+                    onClick={_handleMemberModal}
+                />
             </OrganizerWrapper>
-
-
             </WrapperMobile>
 
 
 
 
             {openCareerModal && (
-                <CareerModal _handleModal={_handleCareerModal} />
+                <CareerModal _handleModal={_handleCareerModal}/>
             )}
             {openCurriModal && (
-                <CurriModal _handleModal={_handleCurriModal} />
+                <CurriModal _handleModal={_handleCurriModal}/>
             )}
             {openMemberModal && (
-                <MemberModal _handleModal={_handleMemberModal} />
+                <MemberModal _handleModal={_handleMemberModal}/>
             )}
         </>
     );

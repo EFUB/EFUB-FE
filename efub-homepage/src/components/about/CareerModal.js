@@ -19,11 +19,13 @@ const Title = styled.div`
     }
 `;
 
-const CareerModal = ({ _handleModal }) => {
+const CareerModal = ({ _handleModal}) => {
     const [select, setSelect] = useState('win');
     const onSelect = useCallback(select => setSelect(select), []);
+    const top = window.pageYOffset;
+    
     return (
-        <FixedModalFrame _handleModal={_handleModal}>
+        <FixedModalFrame _handleModal={_handleModal} top={top}>
             <Title>EFUB Career</Title>
             <CareerButtonList select={select} onSelect={onSelect} ></CareerButtonList>
             <ScrollDiv>
