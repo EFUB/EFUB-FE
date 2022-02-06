@@ -60,6 +60,8 @@ const Wrapper = styled.div`
 
 const RowWrapper = styled.div`
   display: flex;
+  width: 100%;
+  margin-top: 2rem;
   justify-content: center;
   align-items: center;
   flex-direction: row;
