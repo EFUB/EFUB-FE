@@ -580,25 +580,20 @@ const ImgOrganPub = styled.img`
 
 
 const AboutPage = () => {
-    const [position, setPosition] = useState(0);
-
     const [openCareerModal, setOpenCareerModal] = useState(false);
     const _handleCareerModal = () => {
         setOpenCareerModal(!openCareerModal);
         document.body.style.overflow = "unset";
-        setPosition(window.pageYOffset);
     }
     const [openCurriModal, setOpenCurriModal] = useState(false);
     const _handleCurriModal = () => {
         setOpenCurriModal(!openCurriModal);
         document.body.style.overflow = "unset";
-        setPosition(window.pageYOffset);
     }
     const [openMemberModal, setOpenMemberModal] = useState(false);
     const _handleMemberModal = () => {
         setOpenMemberModal(!openMemberModal);
         document.body.style.overflow = "unset";
-        setPosition(window.pageYOffset);
     }
 
 
@@ -802,13 +797,13 @@ const AboutPage = () => {
 
 
             {openCareerModal && (
-                <CareerModal _handleModal={_handleCareerModal} top={position}/>
+                <CareerModal _handleModal={_handleCareerModal}/>
             )}
             {openCurriModal && (
-                <CurriModal _handleModal={_handleCurriModal} top={position}/>
+                <CurriModal _handleModal={_handleCurriModal}/>
             )}
             {openMemberModal && (
-                <MemberModal _handleModal={_handleMemberModal} top={position}/>
+                <MemberModal _handleModal={_handleMemberModal}/>
             )}
         </>
     );
