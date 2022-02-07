@@ -62,11 +62,9 @@ const submit = ({ body, part, navigate }) => {
       })
       .then(async (result) => {
         if (result.isConfirmed) {
-          console.log('확인');
           try {
             const res = await client.post(`recruitment/submit/${part}`, body);
             if (res.data === 200) navigate();
-            else return false;
           } catch (e) {
             swal.fire(SwalError);
           }
@@ -150,7 +148,13 @@ export const submitDeveloper = async ({
   }
 };
 
-export const submitDesigner = async ({ user, stackList, timeList, apply }) => {
+export const submitDesigner = async ({
+  user,
+  stackList,
+  timeList,
+  apply,
+  onNavigate,
+}) => {
   let tools = [];
   stackList.map((s) => s.checked && tools.push(s.label));
   let interviews = [];
@@ -162,7 +166,7 @@ export const submitDesigner = async ({ user, stackList, timeList, apply }) => {
     apply: apply,
   };
   if (apply.motive && apply.activityPlan && apply.expSolve && apply.link) {
-    return submit({ body: form, part: 'design' });
+    return submit({ body: form, part: 'design', navigate: onNavigate });
   } else {
     swal.fire(SwalEmpty);
   }

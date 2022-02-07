@@ -84,9 +84,17 @@ const RecruitmentDesignerPage = () => {
     res && setCheck(true);
   };
 
-  const _handleSubmit = async () => {
-    const res = await submitDesigner({ user, stackList, timeList, apply });
-    if (res) navigate('/recruitment/thankyou');
+  const onNavigate = () => {
+    navigate('thankyou');
+  };
+  const _handleSubmit = () => {
+    submitDesigner({
+      user,
+      stackList,
+      timeList,
+      apply,
+      onNavigate,
+    });
   };
 
   return (

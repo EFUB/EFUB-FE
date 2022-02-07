@@ -95,15 +95,14 @@ const RecruitmentDeveloperPage = () => {
   const onNavigate = () => {
     navigate('thankyou');
   };
-  const _handleSubmit = async () => {
-    const res = await submitDeveloper({
+  const _handleSubmit = () => {
+    submitDeveloper({
       user,
       stackList,
       timeList,
       apply,
       onNavigate,
     });
-    console.log(res);
   };
 
   return (
