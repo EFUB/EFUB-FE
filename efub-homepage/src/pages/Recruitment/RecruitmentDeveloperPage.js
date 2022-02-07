@@ -93,7 +93,7 @@ const RecruitmentDeveloperPage = () => {
   };
 
   const onNavigate = () => {
-    navigate('http://localhost:3000/recruitment/thankyou');
+    navigate('recruitment/thankyou');
   };
   const _handleSubmit = async () => {
     const res = await submitDeveloper({
