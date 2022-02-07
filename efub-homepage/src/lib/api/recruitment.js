@@ -190,7 +190,7 @@ export const checkPass = async ({ body, step }) => {
           timer: 1500,
           backdrop: palette.backdrop,
         });
-      } else if (res.result === '비밀번호가 틀립니다.') {
+      } else if (data.result === '비밀번호가 틀립니다.') {
         swal.fire({
           width: 400,
           background: palette.black,
