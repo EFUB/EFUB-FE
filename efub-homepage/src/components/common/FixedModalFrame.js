@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import close from '../../assets/close-icon.png';
+import close from '../../assets/common/close-icon.png';
 
 const Container = styled.div`
     position: fixed;

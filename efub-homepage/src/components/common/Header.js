@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import Responsive from './Responsive';
 import palette from '../../lib/styles/palette';
-import sidebar from '../../assets/sidebar.png';
-import close from '../../assets/close-icon.png';
+import sidebar from '../../assets/common/sidebar.png';
+import close from '../../assets/common/close-icon.png';
 
 const menus = [
     { name: 'ABOUT', link: '/' },

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import loading from '../../assets/loading.gif';
+import loading from '../../assets/common/loading.gif';
 
 const Background = styled.div`
   background-color: rgba(255,255,255,0.5);

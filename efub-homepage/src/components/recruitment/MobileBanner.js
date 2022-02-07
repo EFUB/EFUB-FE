@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import graphic from '../../assets/recruitment/Mobile.png';
-import close from '../../assets/close-icon.png';
+import close from '../../assets/common/close-icon.png';
 
 const Wrapper = styled.div`
   width: 100%;

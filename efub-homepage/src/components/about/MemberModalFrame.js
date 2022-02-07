@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import close from '../../assets/close-icon.png';
+import close from '../../assets/common/close-icon.png';
 
 const Container = styled.div`
     position: absolute;
@@ -104,7 +104,7 @@ const Contents = styled.div`
        }
 `;
 
-const ModalFrame = ({ _handleModal, top ,children, ...rest}) => {
+const ModalFrame = ({ _handleModal, top, children, ...rest }) => {
     // _handleModal로 modal open/close 되는 토글 함수 넣어 주면 됨
     /* style, className, onClick, onMouseMove 등의 props를 사용할 수 있도록 */
     /* ...rest를 사용하여 ModalFrame에게 전달 */
