@@ -13,25 +13,22 @@ const check = async ({ body, part }) => {
   ) {
     try {
       const res = await client.post(`recruitment/apply/${part}`, body);
-      if (res !== 200) {
-        swal.fire({
-          title: '지원 완료',
-          text: '지원서가 이미 제출되었습니다!',
-          icon: 'success',
-          iconColor: palette.green,
-          showConfirmButton: false,
-          timer: 2000,
-          background: palette.black,
-          color: palette.white,
-          backdrop: palette.backdrop,
-        });
-        return false;
-      } else {
+      if (res.data === 200) {
         window.scrollTo(0, 0);
         return true;
       }
     } catch (e) {
-      swal.fire(SwalError);
+      swal.fire({
+        title: '지원 완료',
+        text: '지원서가 이미 제출되었습니다!',
+        icon: 'success',
+        iconColor: palette.green,
+        showConfirmButton: false,
+        timer: 2000,
+        background: palette.black,
+        color: palette.white,
+        backdrop: palette.backdrop,
+      });
     }
   } else {
     swal.fire(SwalEmpty);
@@ -39,42 +36,53 @@ const check = async ({ body, part }) => {
 };
 
 export const checkDeveloper = async (body) => {
-  check({ body: body, part: 'developer' });
+  return check({ body: body, part: 'develop' });
 };
 
 export const checkDesigner = async (body) => {
-  check({ body: body, part: 'designer' });
+  return check({ body: body, part: 'design' });
 };
 
-const submit = async ({ body, part }) => {
-  swal
-    .fire({
-      text: '제출이 완료된 지원서는 삭제 및 수정이 불가능합니다.',
-      icon: 'warning',
-      iconColor: palette.green,
-      showCancelButton: true,
-      confirmButtonColor: palette.green,
-      cancelButtonColor: '#a8a8a8',
-      confirmButtonText: '제출',
-      cancelButtonText: '닫기',
-      background: palette.black,
-      color: palette.white,
-      backdrop: palette.backdrop,
-    })
-    .then(async (result) => {
-      if (result.isConfirmed) {
-        console.log('body:', body, 'part:', part);
-        try {
-          const res = await client.post(`recruitment/submit/${part}`, body);
-          if (res.status === 200) return true;
-        } catch (e) {
-          swal.fire(SwalError);
+const submit = ({ body, part, navigate }) => {
+  try {
+    swal
+      .fire({
+        text: '제출이 완료된 지원서는 삭제 및 수정이 불가능합니다.',
+        icon: 'warning',
+        iconColor: palette.green,
+        showCancelButton: true,
+        confirmButtonColor: palette.green,
+        cancelButtonColor: '#a8a8a8',
+        confirmButtonText: '제출',
+        cancelButtonText: '닫기',
+        background: palette.black,
+        color: palette.white,
+        backdrop: palette.backdrop,
+      })
+      .then(async (result) => {
+        if (result.isConfirmed) {
+          console.log('확인');
+          try {
+            const res = await client.post(`recruitment/submit/${part}`, body);
+            if (res.data === 200) navigate();
+            else return false;
+          } catch (e) {
+            swal.fire(SwalError);
+          }
         }
-      }
-    });
+      });
+  } catch (e) {
+    console.log(e);
+  }
 };
 
-export const submitDeveloper = async ({ user, stackList, timeList, apply }) => {
+export const submitDeveloper = async ({
+  user,
+  stackList,
+  timeList,
+  apply,
+  onNavigate,
+}) => {
   let tools = [];
   stackList.map((s) => s.checked && tools.push(s.label));
   let interviews = [];
@@ -111,15 +119,27 @@ export const submitDeveloper = async ({ user, stackList, timeList, apply }) => {
     apply.language &&
     apply.expProject
   ) {
-    if (apply.applicationField === 2 || apply.applicationField === 4) {
+    if (
+      apply.applicationField === '리드개발자 - 프론트엔드' ||
+      apply.applicationField === '리드개발자 - 백엔드'
+    ) {
       if (apply.expSolve && apply.seminarTopic && apply.link) {
-        return submit({ body: form, part: 'develop/lead' });
+        return submit({
+          body: form,
+          part: 'develop/lead',
+          navigate: onNavigate,
+        });
       } else {
         swal.fire(SwalEmpty);
       }
     } else {
       if (apply.expStudy) {
-        return submit({ body: form, part: 'develop/intern' });
+        const res = submit({
+          body: form,
+          part: 'develop/intern',
+          navigate: onNavigate,
+        });
+        console.log(res);
       } else {
         swal.fire(SwalEmpty);
       }
@@ -158,7 +178,7 @@ export const checkPass = async ({ body, step }) => {
           width: 400,
           background: palette.black,
           color: palette.white,
-          text: '제출 내역이 존지하지 않습니다.',
+          text: '제출 내역이 존재하지 않습니다.',
           icon: 'error',
           showConfirmButton: false,
           timer: 1500,

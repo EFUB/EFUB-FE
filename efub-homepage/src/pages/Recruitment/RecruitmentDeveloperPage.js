@@ -87,12 +87,23 @@ const RecruitmentDeveloperPage = () => {
 
   const _handleCheck = async () => {
     const res = await checkDeveloper(user);
-    res && setCheck(true);
+    if (res === true) {
+      setCheck(true);
+    }
   };
 
+  const onNavigate = () => {
+    navigate('http://localhost:3000/recruitment/thankyou');
+  };
   const _handleSubmit = async () => {
-    const res = await submitDeveloper({ user, stackList, timeList, apply });
-    if (res) navigate('/recruitment/thankyou');
+    const res = await submitDeveloper({
+      user,
+      stackList,
+      timeList,
+      apply,
+      onNavigate,
+    });
+    console.log(res);
   };
 
   return (
