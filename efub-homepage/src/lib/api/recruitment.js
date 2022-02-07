@@ -176,6 +176,7 @@ export const checkPass = async ({ body, step }) => {
   if (body.name && body.phoneNo && body.password) {
     try {
       const res = await client.post(`recruitment/pass/${step}`, body);
+      console.log(res);
       if (res.result === '합격') return true;
       else if (res.result === '불합격') return false;
       else if (res.result === '잘못된 정보입니다.') {
