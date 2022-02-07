@@ -93,7 +93,7 @@ const RecruitmentDeveloperPage = () => {
   };
 
   const onNavigate = () => {
-    navigate('recruitment/thankyou');
+    navigate('thankyou');
   };
   const _handleSubmit = async () => {
     const res = await submitDeveloper({

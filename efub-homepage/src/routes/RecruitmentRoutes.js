@@ -1,4 +1,4 @@
-import {Routes, Route } from 'react-router';
+import { Routes, Route } from 'react-router';
 import {
   RecruitmentMainPage,
   RecruitmentDeveloperPage,
@@ -14,7 +14,8 @@ const RecruitmentRoutes = () => {
       <Route path="/developer" element={<RecruitmentDeveloperPage />} />
       <Route path="/designer" element={<RecruitmentDesignerPage />} />
       <Route path="/pass" element={<RecruitmentPassPage />} />
-      <Route path="/thankyou" element={<RecruitmentThankyouPage />} />
+      <Route path="/developer/thankyou" element={<RecruitmentThankyouPage />} />
+      <Route path="/designer/thankyou" element={<RecruitmentThankyouPage />} />
     </Routes>
   );
 };
