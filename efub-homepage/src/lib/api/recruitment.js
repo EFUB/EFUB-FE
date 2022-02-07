@@ -175,11 +175,11 @@ export const submitDesigner = async ({
 export const checkPass = async ({ body, step }) => {
   if (body.name && body.phoneNo && body.password) {
     try {
-      const { res: data } = await client.post(`recruitment/pass/${step}`, body);
-      console.log(data);
-      if (data.result === '합격') return true;
-      else if (data.result === '불합격') return false;
-      else if (data.result === '잘못된 정보입니다.') {
+      const res = await client.post(`recruitment/pass/${step}`, body);
+      console.log(res.data);
+      if (res.data.result === '합격') return true;
+      else if (res.data.result === '불합격') return false;
+      else if (res.data.result === '잘못된 정보입니다.') {
         swal.fire({
           width: 400,
           background: palette.black,
@@ -190,7 +190,7 @@ export const checkPass = async ({ body, step }) => {
           timer: 1500,
           backdrop: palette.backdrop,
         });
-      } else if (data.result === '비밀번호가 틀립니다.') {
+      } else if (res.data.result === '비밀번호가 틀립니다.') {
         swal.fire({
           width: 400,
           background: palette.black,
