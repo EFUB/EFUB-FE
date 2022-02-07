@@ -13,6 +13,7 @@ const check = async ({ body, part }) => {
   ) {
     try {
       const res = await client.post(`recruitment/apply/${part}`, body);
+      console.log(res);
       if (res.data === 200) {
         window.scrollTo(0, 0);
         return true;
