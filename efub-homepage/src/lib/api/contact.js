@@ -6,7 +6,6 @@ import { SwalError } from '../../components/common/SwalStyle';
 export const sendEmail = async (body) => {
   try {
     const res = await client.post('contact', body);
-    console.log(res)
     if (res.data === 200) {
       swal.fire({
         title: '메일을 성공적으로 보냈습니다!',

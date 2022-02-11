@@ -49,7 +49,7 @@ const Footer = () => {
                 <IconsBlock>
                     <a href="mailto:ewhaefub@gmail.com"><Icon src={mail} alt="mail" /></a>
                     <a href="https://www.instagram.com/ewha_efub/?hl=ko"><Icon src={instagram} alt="mail" /></a>
-                    <a href="https://www.instagram.com/ewha_efub/?hl=ko"><Icon src={facebook} alt="mail" /></a>
+                    <a href="https://www.facebook.com/ewhaefub/"><Icon src={facebook} alt="mail" /></a>
                 </IconsBlock>
             </Wrapper>
         </FooterBlock>
