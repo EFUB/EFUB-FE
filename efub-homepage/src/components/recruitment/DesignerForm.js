@@ -58,7 +58,7 @@ const DesignerForm = ({
           onToggleCheck();
         }}
         label="네, 확인했습니다."
-        checked={apply.check}
+        checked={apply.orientation}
       />
       <Question style={{ marginTop: '10rem', marginBottom: '5px' }}>
         * 다음 중 면접이 '불가능한' 시간을 선택해주세요.

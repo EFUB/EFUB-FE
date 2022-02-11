@@ -48,7 +48,7 @@ export const developerApplyForm = {
   link: '',
   applicationField: 1,
   confidenceLang: 1,
-  check: false,
+  orientation: false,
   expProject: '',
   expSolve: '',
   seminarTopic: '',
@@ -60,5 +60,5 @@ export const designerApplyForm = {
   confidenceTool: 1,
   activityPlan: '',
   expSolve: '',
-  check: false,
+  orientation: false,
 };

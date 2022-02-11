@@ -75,7 +75,7 @@ const RecruitmentDesignerPage = () => {
   const _onToggleCheck = () => {
     setApply({
       ...apply,
-      check: !apply.check,
+      orientation: !apply.orientation,
     });
   };
 
