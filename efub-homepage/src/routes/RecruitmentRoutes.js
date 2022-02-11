@@ -7,15 +7,15 @@ import {
   RecruitmentThankyouPage,
 } from '../pages/Recruitment/indexRecruitment';
 
-const RecruitmentRoutes = () => {
+const RecruitmentRoutes = ({ onSelect }) => {
   return (
     <Routes>
       <Route path="/" element={<RecruitmentMainPage />} />
       <Route path="/developer" element={<RecruitmentDeveloperPage />} />
       <Route path="/designer" element={<RecruitmentDesignerPage />} />
       <Route path="/pass" element={<RecruitmentPassPage />} />
-      <Route path="/developer/thankyou" element={<RecruitmentThankyouPage />} />
-      <Route path="/designer/thankyou" element={<RecruitmentThankyouPage />} />
+      <Route path="/developer/thankyou" element={<RecruitmentThankyouPage onSelect={onSelect} />} />
+      <Route path="/designer/thankyou" element={<RecruitmentThankyouPage onSelect={onSelect} />} />
     </Routes>
   );
 };

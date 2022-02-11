@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert2';
 import Button from '../common/Button';
-
 import Arrow from '../../assets/recruitment/arrow.png';
+import palette from '../../lib/styles/palette';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -105,7 +106,18 @@ const PcBanner = () => {
           </Text>
         </TextBox>
         <ButtonBox>
-          <ListBox onClick={() => navigate('/recruitment/pass')}>
+          {/* <ListBox onClick={() => navigate('/recruitment/pass')}> */}
+          <ListBox onClick={() => swal.fire({
+            width: 400,
+            background: palette.black,
+            color: palette.white,
+            text: '조회 기간이 아닙니다!',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 1500,
+            backdrop: palette.backdrop,
+          })}>
+
             <div>
               <Text size="30px" font="Roboto">
                 합격자 조회

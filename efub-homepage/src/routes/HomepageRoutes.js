@@ -32,7 +32,7 @@ const HomepageRoutes = () => {
         <Routes>
           <Route element={<AboutPage />} path="/" />
           <Route element={<ProjectPage />} path="/project" />
-          <Route element={<RecruitmentRoutes />} path="/recruitment/*" />
+          <Route element={<RecruitmentRoutes onSelect={onSelect} />} path="/recruitment/*" />
           <Route element={<ContactPage />} path="/contact" />
         </Routes>
       </Main>

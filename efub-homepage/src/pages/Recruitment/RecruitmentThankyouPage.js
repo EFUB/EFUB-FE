@@ -25,13 +25,14 @@ const Subtitle = styled.div`
   margin-bottom: 4rem;
 `;
 
-const RecruitmentThankyouPage = () => {
+const RecruitmentThankyouPage = ({ onSelect }) => {
+  onSelect('RECRUITMENT')
   return (
     <Wrapper>
       <Title>지원해주셔서 감사합니다.</Title>
       <Subtitle>EFUB에서 함께할 당신의 앞날을 응원합니다!</Subtitle>
       <Link to="/">
-        <Button width="14">처음으로 돌아가기</Button>
+        <Button width="14" onClick={() => onSelect('ABOUT')}>처음으로 돌아가기</Button>
       </Link>
     </Wrapper>
   );

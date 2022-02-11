@@ -640,23 +640,6 @@ const ImgOrganPub = styled.img`
   }
 `;
 
-//토글 시작
-
-// const ToggleImg = styled.img.attrs({ src: Toggle })`
-//   width: 1rem;
-//   height: 1rem;
-//   transition: 0.2s all ease-in;
-//   margin-top: 4rem;
-//   margin-left : 1rem;
-//   &:hover {
-//     ${(props) => (props.change ? ToggleStyle : "")}
-//   }
-// `;
-
-// const ToggleStyle = css`
-//   transform: rotate(180deg);
-// `;
-
 const AboutPage = () => {
   const [openCareerModal, setOpenCareerModal] = useState(false);
   const _handleCareerModal = () => {
@@ -673,31 +656,6 @@ const AboutPage = () => {
     setOpenMemberModal(!openMemberModal);
     document.body.style.overflow = 'unset';
   };
-
-  // const [change, setChange] = useState(false);
-  // const [toggleState, setToggleState] = useState({
-  //     field: false,
-  //     guide: false,
-  //     benefit: false,
-  //     who: false,
-  //     method: false,
-  //     prefer: false,
-  //     plan: false,
-  //     ask: false,
-  // });
-
-  // const toggleHandler = (e) => {
-  //     const newToggleState = { ...toggleState };
-  //     const active = e.currentTarget.id;
-  //     for (let key in newToggleState) {
-  //     if (key === active) {
-  //         newToggleState[key] = !toggleState[key];
-  //     }
-  //     }
-  //     setToggleState(newToggleState);
-  //     setChange(!change);
-  //     console.log(newToggleState);
-  // };
 
   return (
     <>

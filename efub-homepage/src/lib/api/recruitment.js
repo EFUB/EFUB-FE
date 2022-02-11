@@ -13,7 +13,6 @@ const check = async ({ body, part }) => {
   ) {
     try {
       const res = await client.post(`recruitment/apply/${part}`, body);
-      console.log(res);
       if (res.data === 200) {
         window.scrollTo(0, 0);
         return true;
@@ -64,14 +63,14 @@ const submit = ({ body, part, navigate }) => {
         if (result.isConfirmed) {
           try {
             const res = await client.post(`recruitment/submit/${part}`, body);
-            if (res.data === 200) navigate();
+            if (res.status === 201) navigate();
           } catch (e) {
             swal.fire(SwalError);
           }
         }
       });
   } catch (e) {
-    console.log(e);
+    swal.fire(SwalError);
   }
 };
 
@@ -116,14 +115,15 @@ export const submitDeveloper = async ({
     apply.motive &&
     apply.projectTopic &&
     apply.language &&
-    apply.expProject
+    apply.expProject &&
+    apply.orientation
   ) {
     if (
       apply.applicationField === '리드개발자 - 프론트엔드' ||
       apply.applicationField === '리드개발자 - 백엔드'
     ) {
       if (apply.expSolve && apply.seminarTopic && apply.link) {
-        return submit({
+        submit({
           body: form,
           part: 'develop/lead',
           navigate: onNavigate,
@@ -133,12 +133,11 @@ export const submitDeveloper = async ({
       }
     } else {
       if (apply.expStudy) {
-        const res = submit({
+        submit({
           body: form,
           part: 'develop/intern',
           navigate: onNavigate,
         });
-        console.log(res);
       } else {
         swal.fire(SwalEmpty);
       }
@@ -165,7 +164,7 @@ export const submitDesigner = async ({
     interviews: interviews,
     apply: apply,
   };
-  if (apply.motive && apply.activityPlan && apply.expSolve && apply.link) {
+  if (apply.motive && apply.activityPlan && apply.expSolve && apply.link && apply.orientation) {
     return submit({ body: form, part: 'design', navigate: onNavigate });
   } else {
     swal.fire(SwalEmpty);
@@ -176,7 +175,6 @@ export const checkPass = async ({ body, step }) => {
   if (body.name && body.phoneNo && body.password) {
     try {
       const res = await client.post(`recruitment/pass/${step}`, body);
-      console.log(res.data);
       if (res.data.result === '합격') return true;
       else if (res.data.result === '불합격') return false;
       else if (res.data.result === '잘못된 정보입니다.') {
