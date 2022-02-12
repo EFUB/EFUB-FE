@@ -12,7 +12,7 @@ const check = async ({ body, part }) => {
     body.password
   ) {
     try {
-      const res = await client.post(`recruitment/apply/${part}`, body);
+      const res = await client.post(`recruitment/check/${part}`, body);
       if (res.data === 200) {
         window.scrollTo(0, 0);
         return true;
@@ -164,7 +164,13 @@ export const submitDesigner = async ({
     interviews: interviews,
     apply: apply,
   };
-  if (apply.motive && apply.activityPlan && apply.expSolve && apply.link && apply.orientation) {
+  if (
+    apply.motive &&
+    apply.activityPlan &&
+    apply.expSolve &&
+    apply.link &&
+    apply.orientation
+  ) {
     return submit({ body: form, part: 'design', navigate: onNavigate });
   } else {
     swal.fire(SwalEmpty);

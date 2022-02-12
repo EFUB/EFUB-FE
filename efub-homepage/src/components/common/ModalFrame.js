@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import close from '../../assets/common/close-icon.png';
 
 const Container = styled.div`
+  top: ${(props) => props.top || 0}px;
+
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,7 +19,6 @@ const Container = styled.div`
 `;
 
 const Background = styled.div`
-  position: fixed;
   width: 100%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.15);
@@ -39,11 +40,10 @@ const ModalBlock = styled.div`
   border-radius: 10px;
   padding: 4rem;
   background-color: black;
-  width: 60rem;
-  @media (max-width: 1120px) {
-    width: 50rem;
-  }
-  @media (max-width: 50rem) {
+  width: 70rem;
+  height: 80%;
+  overflow: scroll;
+  @media (max-width: 1023px) {
     width: 80%;
   }
   min-height: 35rem;
@@ -75,14 +75,14 @@ const Contents = styled.div`
   align-items: center;
 `;
 
-const ModalFrame = ({ position, _handleModal, children, ...rest }) => {
+const ModalFrame = ({ top, position, _handleModal, children, ...rest }) => {
   // _handleModal로 modal open/close 되는 토글 함수 넣어 주면 됨
   /* style, className, onClick, onMouseMove 등의 props를 사용할 수 있도록 */
   /* ...rest를 사용하여 ModalFrame에게 전달 */
   return (
-    <Container y={position}>
+    <Container top={top} y={position}>
       <Background onClick={_handleModal} />
-      <ModalBlock {...rest}>
+      <ModalBlock top={top} {...rest}>
         <Close onClick={_handleModal} />
         <Contents>{children}</Contents>
       </ModalBlock>

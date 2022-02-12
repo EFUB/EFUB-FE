@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const StyledDiv = styled.div`
   width: 100%;
-  height: ${(props) => props.height || "15rem"};
+  height: ${(props) => props.height || '15rem'};
   background-color: rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   justify-content: center;
@@ -12,7 +12,7 @@ const StyledDiv = styled.div`
   flex-direction: column;
   margin-bottom: 2rem;
   @media (max-width: 767px) {
-    height: ${(props) => props.height || "10rem"};
+    height: ${(props) => props.height || '10rem'};
   }
 `;
 
@@ -27,7 +27,7 @@ const StyledInput = styled.textarea`
   color: white;
   background-color: transparent;
   font-size: 1.25rem;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   &::placeholder {
     color: #c4c4c4;
     font-weight: bold;
@@ -38,12 +38,17 @@ const StyledInput = styled.textarea`
   }
 `;
 
-const Input = ({ name, value, placeholder, onChange, height }) => {
+const InputBox = ({ name, value, placeholder, onChange, height }) => {
   return (
-    <StyledDiv height={height} >
-      <StyledInput name={name} value={value} onChange={onChange} placeholder={placeholder || "내용을 입력해주세요."} />
+    <StyledDiv height={height}>
+      <StyledInput
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder || '내용을 입력해주세요.'}
+      />
     </StyledDiv>
   );
 };
 
-export default Input;
+export default InputBox;

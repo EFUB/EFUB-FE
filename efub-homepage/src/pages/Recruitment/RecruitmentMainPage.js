@@ -21,7 +21,8 @@ const BackgroundImg = styled.img`
   } ;
 `;
 
-const RecruitmentMainPage = () => {
+const RecruitmentMainPage = ({ onSelect }) => {
+  onSelect('RECRUITMENT');
   const isMobile = useMediaQuery({
     query: '(max-width: 767px)',
   });

@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { TitleText } from '../../lib/styles/styledAbout';
 import palette from '../../lib/styles/palette';
 import vectorCocktail from '../../assets/about/vectorCocktail.png';
 import organizerButton from '../../assets/about/organizerButton.png';
+import OrganizerModal from './OrganizerModal';
 
 const Organizer = () => {
+  const [modal, setModal] = useState(false);
+  const [position, setPosition] = useState(0);
+
+  const _handleClick = () => {
+    setModal(!modal);
+    setPosition(window.pageYOffset);
+    if (document.body.style.overflow === 'hidden') {
+      document.body.style.overflow = '';
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
+  };
   return (
     <>
       <TitleContainer>
@@ -28,9 +41,12 @@ const Organizer = () => {
         </OrganizerContainer>
         <ButtonContainer>
           <Vector src={vectorCocktail} />
-          <Button src={organizerButton} />
+          <Button src={organizerButton} onClick={() => _handleClick()} />
         </ButtonContainer>
       </Container>
+      {modal && (
+        <OrganizerModal position={position} _handleModal={_handleClick} />
+      )}
     </>
   );
 };
@@ -131,6 +147,7 @@ const Button = styled.img`
   height: 170px;
   position: absolute;
   bottom: 0px;
+  cursor: pointer;
   @media (max-width: 767px) {
     height: 140px;
   }
