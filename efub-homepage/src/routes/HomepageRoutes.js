@@ -12,6 +12,7 @@ import {
 import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
 import Responsive from '../components/common/Responsive';
+import AboutPageRenewal from '../pages/AboutPageRenewal';
 
 const Main = styled(Responsive)`
   min-height: calc(100vh - 14rem);
@@ -30,9 +31,12 @@ const HomepageRoutes = () => {
       <Header menu={menu} onSelect={onSelect} />
       <Main>
         <Routes>
-          <Route element={<AboutPage />} path="/" />
+          <Route element={<AboutPageRenewal />} path="/" />
           <Route element={<ProjectPage />} path="/project" />
-          <Route element={<RecruitmentRoutes onSelect={onSelect} />} path="/recruitment/*" />
+          <Route
+            element={<RecruitmentRoutes onSelect={onSelect} />}
+            path="/recruitment/*"
+          />
           <Route element={<ContactPage />} path="/contact" />
         </Routes>
       </Main>
