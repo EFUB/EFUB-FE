@@ -1,26 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
 import ModalFrame from '../common/ModalFrame';
 import ModalFrameMobile from '../common/ModalFrameMobile';
-import organizers1 from '../../assets/about/organizers1.png';
-import organizers2 from '../../assets/about/organizers2.png';
-import organizersMobile1 from '../../assets/about/organizersMobile1.png';
-import organizersMobile2 from '../../assets/about/organizersMobile2.png';
+import Button from '../common/Button';
+import { TitleText, Text } from '../../lib/styles/styledAbout';
 
 const CareerModal = ({ position, card, _handleModal }) => {
   const isMobile = useMediaQuery({
     query: '(max-width: 767px)',
   });
+  const [buttons, setButtons] = useState([true, false]);
+  const _handleSelect = (index) => {
+    if (index === 0) setButtons([true, false]);
+    else setButtons([false, true]);
+  };
   return (
     <>
       {isMobile ? (
         <ModalMobile top={position} _handleModal={_handleModal}>
-          <Title>career</Title>
+          <TitleText eng>EFUB Career</TitleText>
+          <Button>수상실적</Button>
         </ModalMobile>
       ) : (
-        <Modal top={position} _handleModal={_handleModal}>
-          <Title>career</Title>
+        <Modal
+          inner
+          top={position}
+          style={{ padding: '6rem' }}
+          _handleModal={_handleModal}
+        >
+          <TitleText eng>EFUB Career</TitleText>
+          <ButtonWrapper>
+            <Button
+              round
+              blue
+              width="10"
+              filled={buttons[0]}
+              onClick={() => _handleSelect(0)}
+              style={{ marginRight: '20px' }}
+            >
+              수상실적
+            </Button>
+            <Button
+              round
+              blue
+              width="10"
+              filled={buttons[1]}
+              onClick={() => _handleSelect(1)}
+            >
+              인턴 및 취업
+            </Button>
+          </ButtonWrapper>
+          <ScrollBox>
+            {buttons[0] ? (
+              <>
+                <MarginedText>
+                  '2021 우리은행 온(ON)택트 해커톤 대회 최우수상 수상
+                </MarginedText>
+                <MarginedText>
+                  '2021 제 9회 K-Hackathon 소프트웨어교육혁신센터 이사장상
+                </MarginedText>
+              </>
+            ) : (
+              <>
+                <MarginedText>'2021 SKT 인턴</MarginedText>
+              </>
+            )}
+          </ScrollBox>
         </Modal>
       )}
     </>
@@ -37,24 +83,24 @@ const ModalMobile = styled(ModalFrameMobile)`
   width: 100%;
 `;
 
-const Title = styled.div`
-  text-align: center;
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 3rem;
-  @media (max-width: 767px) {
-    font-size: 2rem;
-    margin-top: 4rem;
-  }
+const MarginedText = styled(Text)`
+  margin-bottom: 10px;
 `;
 
-const Label = styled.div`
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 5rem 0rem 2rem 0rem;
+`;
+
+const ScrollBox = styled.div`
+  background-color: rgba(255, 255, 255, 0.15);
   width: 100%;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  @media (max-width: 767px) {
-    font-size: 1.5rem;
-    margin-top: 1rem;
-  }
+  height: 100%;
+  padding: 3rem;
+  border-radius: 10px;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
