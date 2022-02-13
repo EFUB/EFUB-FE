@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-bottom: 2rem;
 `;
 
