@@ -30,7 +30,8 @@ const Container = styled.div`
 const ModalBlock = styled.div`
   padding: 4rem;
   background-color: black;
-  overflow: scroll;
+  min-height: 100vh;
+  overflow: ${(props) => (props.inner ? 'hidden' : 'scroll')};
   @media (max-width: 767px) {
     padding: 2rem;
   }
@@ -56,13 +57,13 @@ const Contents = styled.div`
   align-items: center;
 `;
 
-const ModalFrameMobile = ({ top, _handleModal, children, ...rest }) => {
+const ModalFrameMobile = ({ inner, top, _handleModal, children, ...rest }) => {
   // _handleModal로 modal open/close 되는 토글 함수 넣어 주면 됨
   /* style, className, onClick, onMouseMove 등의 props를 사용할 수 있도록 */
   /* ...rest를 사용하여 ModalFrame에게 전달 */
   return (
     <Container top={top}>
-      <ModalBlock {...rest}>
+      <ModalBlock inner={inner} {...rest}>
         <Close onClick={_handleModal} />
         <Contents>{children}</Contents>
       </ModalBlock>

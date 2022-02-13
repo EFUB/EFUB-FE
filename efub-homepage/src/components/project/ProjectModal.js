@@ -20,6 +20,9 @@ const Title = styled.div`
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 2rem;
+  @media (max-width: 1023px) {
+    font-size: 2rem;
+  }
   @media (max-width: 767px) {
     font-size: 1.5rem;
     margin-top: 4rem;
@@ -50,6 +53,10 @@ const About = styled.div`
   font-weight: 400;
   width: 30rem;
   line-height: 2.75rem;
+  @media (max-width: 1023px) {
+    font-size: 0.9rem;
+    line-height: 1.75rem;
+  }
   @media (max-width: 767px) {
     font-size: 0.8rem;
     width: 100%;
@@ -127,12 +134,20 @@ const ProjectModal = ({ position, card, _handleModal }) => {
             <Button
               round
               width="8"
-              href={projects[card].links['website']}
               style={{ marginRight: 20 }}
+              onClick={() =>
+                window.open(projects[card].links['website'], '_blank')
+              }
             >
               WebSite
             </Button>
-            <Button round width="8" href={projects[card].links['github']}>
+            <Button
+              round
+              width="8"
+              onClick={() =>
+                window.open(projects[card].links['github'], '_blank')
+              }
+            >
               GitHub
             </Button>
           </ButtonBlock>

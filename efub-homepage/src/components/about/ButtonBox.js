@@ -19,6 +19,7 @@ const ButtonBox = () => {
   const _handleCareerClick = () => {
     setCareerModal(!careerModal);
     setPosition(window.pageYOffset);
+    console.log(document.body.style.overflow);
     if (document.body.style.overflow === 'hidden') {
       document.body.style.overflow = '';
     } else {
@@ -36,7 +37,8 @@ const ButtonBox = () => {
   };
 
   return (
-    <>
+    <div style={{ display: 'flex', flexDirection: 'row' }}>
+      <Width />
       <ButtonContainer>
         <Career src={careerButton} onClick={() => _handleCareerClick()} />
         <Apply src={applyButton} onClick={() => navigate('/recruitment')} />
@@ -45,17 +47,25 @@ const ButtonBox = () => {
         <VectorCircle src={vectorCircle} />
         <VectorCorn src={vectorCorn} />
       </ButtonContainer>
+      <Width />
       {careerModal && (
         <CareerModal position={position} _handleModal={_handleCareerClick} />
       )}
       {curriModal && (
         <CurriModal position={position} _handleModal={_handleCurriClick} />
       )}
-    </>
+    </div>
   );
 };
 
 export default ButtonBox;
+
+const Width = styled.div`
+  width: 0;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
 
 const ButtonContainer = styled.div`
   min-width: 550px;
@@ -66,7 +76,7 @@ const ButtonContainer = styled.div`
     height: 270px;
   }
   @media (max-width: 767px) {
-    min-width: 100%;
+    min-width: 360px;
     height: 220px;
   }
 `;
@@ -95,6 +105,7 @@ const Apply = styled.img`
   }
   @media (max-width: 767px) {
     width: 160px;
+    left: 200px;
   }
 `;
 
@@ -123,7 +134,7 @@ const VectorTriangle = styled.img`
   @media (max-width: 767px) {
     width: 50px;
     top: 20px;
-    right: 130px;
+    left: 180px;
   }
 `;
 
@@ -137,7 +148,7 @@ const VectorCircle = styled.img`
   }
   @media (max-width: 767px) {
     width: 50px;
-    bottom: 20px;
+    top: 160px;
   }
 `;
 
@@ -153,5 +164,6 @@ const VectorCorn = styled.img`
   @media (max-width: 767px) {
     width: 90px;
     bottom: 30px;
+    left: 260px;
   }
 `;

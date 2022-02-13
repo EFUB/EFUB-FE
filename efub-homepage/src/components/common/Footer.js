@@ -19,7 +19,7 @@ const Wrapper = styled(Responsive)`
   align-items: center;
   justify-content: space-between;
   @media (max-width: 767px) {
-    padding: 2rem;
+    padding: 1rem;
   }
 `;
 
@@ -40,6 +40,11 @@ const Icon = styled.img`
   height: 1.5rem;
   width: 1.5rem;
   margin-left: 1.5rem;
+  @media (max-width: 767px) {
+    height: 1.2rem;
+    width: 1.2rem;
+    margin: 0.8rem;
+  }
 `;
 
 const Footer = () => {

@@ -39,10 +39,14 @@ const Organizer = () => {
             </OrganizerBox>
           ))}
         </OrganizerContainer>
-        <ButtonContainer>
-          <Vector src={vectorCocktail} />
-          <Button src={organizerButton} onClick={() => _handleClick()} />
-        </ButtonContainer>
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <Width />
+          <ButtonContainer>
+            <Vector src={vectorCocktail} />
+            <Button src={organizerButton} onClick={() => _handleClick()} />
+          </ButtonContainer>
+          <Width />
+        </div>
       </Container>
       {modal && (
         <OrganizerModal position={position} _handleModal={_handleClick} />
@@ -52,6 +56,13 @@ const Organizer = () => {
 };
 
 export default Organizer;
+
+const Width = styled.div`
+  width: 0;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+`;
 
 const TitleContainer = styled.div`
   display: flex;
@@ -129,7 +140,7 @@ const ButtonContainer = styled.div`
     margin-top: 50px;
   }
   @media (max-width: 767px) {
-    min-width: 100%;
+    min-width: 340px;
     height: 260px;
   }
 `;

@@ -10,6 +10,9 @@ export const TitleText = styled.div`
     font-size: 1.8rem;
     line-height: 160%;
   }
+  @media (max-width: 767px) {
+    font-size: 20px;
+  }
 `;
 
 export const Text = styled.div`
@@ -19,5 +22,8 @@ export const Text = styled.div`
   line-height: 180%;
   @media (max-width: 1023px) {
     font-size: 1rem;
+  }
+  @media (max-width: 767px) {
+    font-size: 12px;
   }
 `;

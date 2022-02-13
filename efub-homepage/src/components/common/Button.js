@@ -1,7 +1,6 @@
-import React from "react";
-import styled, { css } from "styled-components";
-import palette from "../../lib/styles/palette";
-
+import React from 'react';
+import styled, { css } from 'styled-components';
+import palette from '../../lib/styles/palette';
 /**
  * 기본값: 빈 녹색 사각형 한글 버튼
  * props
@@ -18,18 +17,18 @@ const StyledButton = styled.button`
   font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
-  font-family: "Roboto", sans-serif;
+  font-family: ${(props) => (props.eng ? 'Montserrat' : 'Roboto')};
   outline: none;
   cursor: pointer;
   background: transparent;
-  padding: 0.7rem 1rem;
-  width: ${(props) => props.width || "6"}rem;
-  height: ${(props) => props.height || "3"}rem;
+  padding: ${(props) => (props.small ? '0rem' : '0.7rem 1rem')};
+  width: ${(props) => props.width || '6'}rem;
+  height: ${(props) => props.height || '3'}rem;
 
   ${(props) =>
     props.eng &&
     css`
-      font-family: "Montserrat", sans-serif;
+      font-family: 'Montserrat', sans-serif;
     `}
 
   ${(props) =>
@@ -70,5 +69,4 @@ const StyledButton = styled.button`
 `;
 
 const Button = (props) => <StyledButton {...props} />;
-
 export default Button;

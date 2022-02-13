@@ -59,7 +59,7 @@ const Review = () => {
                 도전해보세요! 이번 기수의 우수개발자는 ✨아주 멋진 이펍 각인이
                 들어간 버티컬 마우스✨를 받았답니다…🥺 정말 잘 쓰고 있어요!
                 실력을 키울 수 있는 이펍에서 많이 배워가시고 활동하시길
-                바랄게요! (이로움, Frontend 인턴 개발자)
+                바랄게요! (이로움, FrontEnd 인턴 개발자)
               </Text>
             </ContentBox>
           </ReviewContainer>
@@ -73,7 +73,7 @@ const Review = () => {
                     이펍 1기 임원진 분들께 진심으로 감사드립니다. 우수 개발자로
                     선정되려고 열심히 활동한 것은 아니었지만, 그간의 노력에 대한
                     보상을 받은 것 같아 뿌듯합니다. 이펍 로고가 각인된 특별한
-                    마우스도 잘 쓰겠습니다. (박현아, Backend 개발자)
+                    마우스도 잘 쓰겠습니다. (박현아, BackEnd 개발자)
                   </Text>
                 </ContentBox>
               </>
@@ -85,7 +85,7 @@ const Review = () => {
                     이펍 1기 임원진 분들께 진심으로 감사드립니다. 우수 개발자로
                     선정되려고 열심히 활동한 것은 아니었지만, 그간의 노력에 대한
                     보상을 받은 것 같아 뿌듯합니다. 이펍 로고가 각인된 특별한
-                    마우스도 잘 쓰겠습니다. (박현아, Backend 개발자)
+                    마우스도 잘 쓰겠습니다. (박현아, BackEnd 개발자)
                   </Text>
                 </ContentBox>
                 <Reviewer src={reviewer2} />
@@ -151,6 +151,9 @@ const Reviewer = styled.img`
   @media (max-width: 1023px) {
     width: 240px;
   }
+  @media (max-width: 767px) {
+    width: 180px;
+  }
 `;
 
 const ReviewContainer = styled.div`
@@ -161,6 +164,9 @@ const ReviewContainer = styled.div`
   @media (max-width: 1023px) {
     flex-direction: column;
   }
+  @media (max-width: 767px) {
+    margin-bottom: 50px;
+  }
 `;
 
 const ContentBox = styled.div`
@@ -170,5 +176,8 @@ const ContentBox = styled.div`
   border-radius: 10px;
   @media (max-width: 767px) {
     width: 100%;
+  }
+  @media (max-width: 767px) {
+    padding: 15px;
   }
 `;

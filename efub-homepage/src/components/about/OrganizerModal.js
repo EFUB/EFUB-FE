@@ -51,10 +51,27 @@ export default OrganizerModal;
 
 const Modal = styled(ModalFrame)`
   width: 85%;
+  ::-webkit-scrollbar {
+    display: block;
+    width: 5px;
+  }
+  ::-webkit-scrollbar-corner {
+    display: none;
+  }
+  ::-webkit-scrollbar-thumb {
+    display: block;
+    width: 5px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 100px;
+    border: 0.1px solid white;
+  }
 `;
 
 const ModalMobile = styled(ModalFrameMobile)`
   width: 100%;
+  ::-webkit-scrollbar {
+    display: block;
+  }
 `;
 
 const Title = styled.div`

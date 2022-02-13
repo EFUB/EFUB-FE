@@ -13,6 +13,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @media (max-width: 1023px) {
+    height: 42rem;
+  }
 `;
 
 const Title = styled.div`
@@ -107,17 +110,20 @@ const PcBanner = () => {
         </TextBox>
         <ButtonBox>
           {/* <ListBox onClick={() => navigate('/recruitment/pass')}> */}
-          <ListBox onClick={() => swal.fire({
-            width: 400,
-            background: palette.black,
-            color: palette.white,
-            text: '조회 기간이 아닙니다!',
-            icon: 'error',
-            showConfirmButton: false,
-            timer: 1500,
-            backdrop: palette.backdrop,
-          })}>
-
+          <ListBox
+            onClick={() =>
+              swal.fire({
+                width: 400,
+                background: palette.black,
+                color: palette.white,
+                text: '조회 기간이 아닙니다!',
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500,
+                backdrop: palette.backdrop,
+              })
+            }
+          >
             <div>
               <Text size="30px" font="Roboto">
                 합격자 조회
