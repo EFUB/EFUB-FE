@@ -60,7 +60,11 @@ const RecruitmentDeveloperPage = () => {
 
   const [apply, setApply] = useState(developerApplyForm);
   const _handleApply = (e) => {
-    const { value, name } = e.target;
+    let { value, name } = e.target;
+    if (name === 'motive' || name === 'expSolve') value = value.slice(0, 300);
+    else if (name === 'projectTopic') value = value.slice(0, 100);
+    else if (name === 'expProject' || name === 'expStudy')
+      value = value.slice(0, 500);
     setApply({
       ...apply,
       [name]: value,

@@ -60,7 +60,8 @@ const RecruitmentDesignerPage = () => {
 
   const [apply, setApply] = useState(designerApplyForm);
   const _handleApply = (e) => {
-    const { value, name } = e.target;
+    let { value, name } = e.target;
+    value = value.slice(0, 300);
     setApply({
       ...apply,
       [name]: value,
