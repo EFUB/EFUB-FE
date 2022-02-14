@@ -22,8 +22,8 @@ const project4 = {
   about:
     '날씨 웹 통합 서비스로 기온, 날씨, 미세먼지 농도, 코로나 현황과 더불어 코디 및 환기 시간을 추천해드립니다. 반응형 웹으로구성되어 모바일에서도 손쉽게 이용할 수 있습니다.',
   links: {
-    website: 'https://github.com/Pork-Potatoes',
-    github: 'https://github.com/Pork-Potatoes',
+    website: 'https://github.com/EFUB-SeeMe',
+    github: 'https://github.com/EFUB-SeeMe',
   },
   photos: [photo1, photo2, photo3],
 };

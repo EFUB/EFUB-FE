@@ -22,8 +22,8 @@ const project3 = {
     ],
     about: "공부하는 모습을 녹화해 업로드하거나 실시간 스트리밍하는 스터디 윗 미의 뜻을 차용한 서비스로 스터디 모집, 스톱워치, 소통을 위한 채팅을 중점 기능으로 두고 있습니다.",
     links: {
-        website: "https://github.com/Pork-Potatoes",
-        github: "https://github.com/Pork-Potatoes"
+        website: "https://github.com/SwithMe",
+        github: "https://github.com/SwithMe"
     },
     photos: [
         photo1, photo2, photo3, photo4

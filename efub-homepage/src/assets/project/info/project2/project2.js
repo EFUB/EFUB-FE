@@ -21,8 +21,8 @@ const project2 = {
   about:
     '코딩하는 이화인들을 위한 개발 커뮤니티 서비스로 커뮤니티, 스터디, 코딩 팁과 벗들만의 취업 정보를 공유할 수 있는 TECH&JOBS 기능으로 이루어져 있습니다.',
   links: {
-    website: 'https://github.com/Pork-Potatoes',
-    github: 'https://github.com/Pork-Potatoes',
+    website: 'https://github.com/EWHACODIC',
+    github: 'https://github.com/EWHACODIC',
   },
   photos: [photo1, photo2],
 };
