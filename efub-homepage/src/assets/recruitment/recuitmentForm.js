@@ -32,13 +32,15 @@ export const designerStackList = [
 ];
 
 export const time = [
-  { id: 0, label: '3월 13일 토요일 오전 (9AM~12PM)', checked: false },
-  { id: 1, label: '3월 14일 일요일 오전 (9AM~12PM)', checked: false },
-  { id: 2, label: '3월 13일 토요일 오후 (1PM~6PM)', checked: false },
-  { id: 3, label: '3월 14일 일요일 오후 (1PM~6PM)', checked: false },
-  { id: 4, label: '3월 13일 토요일 저녁 (7PM~10PM)', checked: false },
-  { id: 5, label: '3월 14일 일요일 저녁 (7PM~10PM)', checked: false },
-  { id: 6, label: '모두 가능합니다!', checked: false },
+  { id: 0, label: '3월 3일 목요일 저녁 (7PM~10PM)', checked: false },
+  { id: 1, label: '3월 4일 금요일 저녁 (7PM~10PM)', checked: false },
+  { id: 2, label: '3월 5일 토요일 오전 (10AM~12PM)', checked: false },
+  { id: 3, label: '3월 5일 토요일 오후 (2PM~5PM)', checked: false },
+  { id: 4, label: '3월 5일 토요일 저녁 (7PM~10PM)', checked: false },
+  { id: 5, label: '3월 6일 일요일 오전 (10AM~12PM)', checked: false },
+  { id: 6, label: '3월 6일 일요일 오후 (2PM~5PM)', checked: false },
+  { id: 7, label: '3월 6일 일요일 저녁 (7PM~10PM)', checked: false },
+  { id: 8, label: '모두 가능합니다!', checked: false },
 ];
 
 export const developerApplyForm = {
