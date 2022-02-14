@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@notionhq/client": "^0.4.13",
     "@react-hook/window-size": "^3.0.7",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",

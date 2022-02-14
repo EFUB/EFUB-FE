@@ -7,4 +7,10 @@ module.exports = function (app) {
       changeOrigin: true,
     })
   );
+  app.use(
+    createProxyMiddleware('/pages', {
+      target: "https://api.notion.com/v1",
+      changeOrigin: true,
+    })
+  )
 };
