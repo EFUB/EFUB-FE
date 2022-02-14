@@ -31,7 +31,7 @@ const OrganizerModal = ({ position, card, _handleModal }) => {
           />
         </ModalMobile>
       ) : (
-        <Modal top={position} _handleModal={_handleModal}>
+        <Modal top={position} _handleModal={_handleModal} style={{ padding: '10rem' }}>
           <Title>EFUB organizers</Title>
           <Label>2기</Label>
           <img

@@ -64,10 +64,10 @@ const CareerModal = ({ position, _handleModal }) => {
         <Modal
           inner
           top={position}
-          style={{ padding: '6rem' }}
+          style={{ padding: '3rem' }}
           _handleModal={_handleModal}
         >
-          <TitleText eng>EFUB Career</TitleText>
+          <TitleText eng style={{ fontSize: '30px' }}>EFUB Career</TitleText>
           <ButtonWrapper>
             <Button
               round

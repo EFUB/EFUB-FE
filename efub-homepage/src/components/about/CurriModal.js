@@ -102,10 +102,10 @@ const CurriModal = ({ position, _handleModal }) => {
         <Modal
           inner
           top={position}
-          style={{ padding: '6rem' }}
+          style={{ padding: '3rem' }}
           _handleModal={_handleModal}
         >
-          <TitleText eng style>
+          <TitleText eng style={{ fontSize: '30px' }}>
             EFUB Curriculum
           </TitleText>
           <ButtonWrapper>
