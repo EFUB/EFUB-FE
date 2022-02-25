@@ -139,16 +139,36 @@ const PcBanner = () => {
               width="15"
               height="4"
               filled
-              onClick={() => navigate('/recruitment/developer')}
-            >
+              onClick={() =>
+                swal.fire({
+                  width: 400,
+                  background: palette.black,
+                  color: palette.white,
+                  text: '지원 기간이 아닙니다!',
+                  icon: 'error',
+                  showConfirmButton: false,
+                  timer: 1500,
+                  backdrop: palette.backdrop,
+                })
+              }            >
               개발자로 지원하기
             </Button>
             <Button
               width="15"
               height="4"
               filled
-              onClick={() => navigate('/recruitment/designer')}
-            >
+              onClick={() =>
+                swal.fire({
+                  width: 400,
+                  background: palette.black,
+                  color: palette.white,
+                  text: '지원 기간이 아닙니다!',
+                  icon: 'error',
+                  showConfirmButton: false,
+                  timer: 1500,
+                  backdrop: palette.backdrop,
+                })
+              }            >
               디자이너로 지원하기
             </Button>
           </ButtonItems>
