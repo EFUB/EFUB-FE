@@ -151,6 +151,7 @@ const PcBanner = () => {
                   backdrop: palette.backdrop,
                 })
               }
+              // onClick={() => navigate('/recruitment/developer')}
             >
               개발자로 지원하기
             </Button>
