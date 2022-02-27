@@ -29,7 +29,6 @@ const Title = styled.div`
 const Listbox = styled.div`
   background-color: rgba(255, 255, 255, 0.15);
   width: 90%;
-  height: 30rem;
   margin: 2rem 0rem 3rem 0rem;
   padding: 4rem;
   border-radius: 10px;
@@ -38,12 +37,18 @@ const Listbox = styled.div`
   align-items: center;
   justify-content: center;
   @media (max-width: 767px) {
-    height: 20rem;
+    align-items: flex-start;
   }
 `;
 const Text = styled.div`
   font-size: 20px;
   font-weight: bold;
+  @media (max-width: 1023px) {
+    font-size: 15px;
+  }
+  @media (max-width: 767px) {
+    font-size: 13px;
+  }
 `;
 
 const BtnBox = styled.div`
@@ -145,7 +150,7 @@ const RecruitmentPassPage = () => {
             </Text>
             <Text>
               또한 최대한 많은 분들을 뵙기 위해 긴 기간 동안 면접이
-              진행되는만큼,
+              진행되는 만큼,
             </Text>
             <Text style={{ marginBottom: '2rem' }}>
               면접 내용에 대한 유출은 자제해 주시면 감사하겠습니다.

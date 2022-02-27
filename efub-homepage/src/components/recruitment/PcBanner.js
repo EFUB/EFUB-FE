@@ -109,8 +109,8 @@ const PcBanner = () => {
           </Text>
         </TextBox>
         <ButtonBox>
-          {/* <ListBox onClick={() => navigate('/recruitment/pass')}> */}
-          <ListBox
+          <ListBox onClick={() => navigate('/recruitment/pass')}>
+            {/* <ListBox
             onClick={() =>
               swal.fire({
                 width: 400,
@@ -123,7 +123,7 @@ const PcBanner = () => {
                 backdrop: palette.backdrop,
               })
             }
-          >
+          > */}
             <div>
               <Text size="30px" font="Roboto">
                 합격자 조회
@@ -151,7 +151,7 @@ const PcBanner = () => {
                   backdrop: palette.backdrop,
                 })
               }
-              // onClick={() => navigate('/recruitment/developer')}
+            // onClick={() => navigate('/recruitment/developer')}
             >
               개발자로 지원하기
             </Button>
