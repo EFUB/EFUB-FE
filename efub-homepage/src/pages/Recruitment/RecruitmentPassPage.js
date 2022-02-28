@@ -170,7 +170,7 @@ const RecruitmentPassPage = () => {
             </Button>
             <Button
               widthXS
-              width="12"
+              width="15"
               filled
               onClick={() =>
                 window.open(
