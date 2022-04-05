@@ -19,6 +19,7 @@ const ButtonBox = () => {
   const _handleCareerClick = () => {
     setCareerModal(!careerModal);
     setPosition(window.pageYOffset);
+    console.log(document.body.style.overflow);
     if (document.body.style.overflow === 'hidden') {
       document.body.style.overflow = '';
     } else {

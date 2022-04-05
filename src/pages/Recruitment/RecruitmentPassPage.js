@@ -80,7 +80,7 @@ const RecruitmentPassPage = () => {
   const [fail, setFail] = useState(false);
 
   const _handleClick = async () => {
-    const res = await checkPass({ body: inputs, step: 'final' });
+    const res = await checkPass({ body: inputs, step: 'mid' });
     if (res === true) setPass(true);
     else if (res === false) setFail(true);
   };
@@ -126,28 +126,38 @@ const RecruitmentPassPage = () => {
       )}
       {pass && (
         <>
-          <Title>최종 합격자 발표</Title>
+          <Title>1차 합격자 발표</Title>
           <Listbox>
             <Text style={{ marginBottom: '2rem' }}>
-              안녕하세요, EFUB 2기 운영진입니다.
+              안녕하세요, EFUB입니다.
             </Text>
-            <Text>EFUB 2기의 새로운 퍼비가 되신 걸 축하드립니다! 🎉</Text>
-            <Text>엄청난 경쟁률을 뚫고 합격하신 여러분들과</Text>
-            <Text style={{ marginBottom: '2rem' }}>
-              앞으로 1년 동안 함께 웹개발의 길을 나아가게 되어 영광으로
-              생각합니다.
+            <Text>지원자분께서는 면접 대상자로 선정되셨습니다! 🎉</Text>
+            <Text style={{ marginBottom: '1rem' }}>
+              아래 링크를 통해 노션 페이지에서 본인의 면접 일자 및 시간 확인
+              부탁드립니다.
             </Text>
             <Text>
-              먼저 여러분들의 합격 확인을 위해 아래 구글 폼을 작성해주시면
+              원활한 면접 진행을 위해 지원자 여러분의 면접 과정을 녹화할
+              예정이오니,
+            </Text>
+            <Text>
+              노션 페이지의 구글 폼 동의서를 사전에 작성해 주시면
               감사하겠습니다.
             </Text>
+            <Text style={{ marginBottom: '1rem' }}>
+              모집 종료 직후 녹화된 영상은 여러분의 개인 정보와 함께 즉시
+              삭제됩니다.
+            </Text>
             <Text>
-              공지톡과 사담톡에는 오늘 오후 6시에 초대해 드릴 예정입니다.
+              또한 최대한 많은 분들을 뵙기 위해 긴 기간 동안 면접이
+              진행되는 만큼,
             </Text>
             <Text style={{ marginBottom: '2rem' }}>
-              다시 한 번 지원에 감사드리며, 3월 8일 OT에서 뵙도록 하겠습니다 :)
+              면접 내용에 대한 유출은 자제해 주시면 감사하겠습니다.
             </Text>
-            <Text>EFUB 2기 운영진 일동</Text>
+            <Text>
+              다시 한 번 지원에 감사드리며, 면접일에 뵙도록 하겠습니다.
+            </Text>
           </Listbox>
           <BtnBox>
             <Button
@@ -160,23 +170,23 @@ const RecruitmentPassPage = () => {
             </Button>
             <Button
               widthXS
-              width="14"
+              width="15"
               filled
               onClick={() =>
                 window.open(
-                  'https://docs.google.com/forms/d/e/1FAIpQLSeSoBS_hV-kN84t8dbBYzqmuwPqG-7aa83vlWqHnK7WvC5f3A/viewform',
+                  'https://efub.notion.site/EFUB-2-9a68ccb9f4704596913c734b660fbbac',
                   '_blank',
                 )
               }
             >
-              구글 폼 제출하기
+              노션 페이지로 이동
             </Button>
           </BtnBox>
         </>
       )}
       {fail && (
         <>
-          <Title>최종 합격자 발표</Title>
+          <Title>1차 합격자 발표</Title>
           <Listbox>
             <Text style={{ marginBottom: '2rem' }}>
               안녕하세요, EFUB입니다.
